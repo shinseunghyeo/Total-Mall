@@ -244,6 +244,9 @@
     #section-2{
         display: none;
     }
+    .checkbox-design-All{
+        accent-color: rgb(52, 152, 219);
+    }
     .checkbox-design{
         accent-color: rgb(52, 152, 219);
     }
@@ -420,7 +423,7 @@
                             </div>
                         </div>
                         <div id="check-all">
-                            <input type="checkbox" name="" id="checkAll" class="checkbox-design" >
+                            <input type="checkbox" name="" id="checkAll" class="checkbox-design-All" >
                             <p>모두 동의하기</p>
                         </div>
                         <div id="check-box">
@@ -660,6 +663,28 @@
     })
 
     /* 모두 체크하기 스크립트 */
+    /* 이용약관 동의하지 않으면 안넘어가는 스크립트 */
+    function checkAgreement() {
+        const agreementCheckboxes = $('.checkbox-design');
+        let isAllAgreed = true;
+
+        agreementCheckboxes.each(function () {
+            if (!$(this).prop('checked')) {
+                isAllAgreed = false;
+                return false; // 하나라도 체크되어 있지 않으면 종료
+            }
+        });
+
+        return isAllAgreed;
+    }
+    $('#myForm').submit(function (e) {
+        if (!checkAgreement()) {
+            alert('이용약관에 모두 동의해야 합니다.');
+            e.preventDefault(); // 폼 제출을 중단합니다.
+        }
+    });
+
+    /* 이용약관 동의하지 않으면 안넘어가는 스크립트 */
     /* 카테고리 3개만 클릭하기 스크립트 */
         $(document).ready(function(){
             var maxAllowed = 3;
@@ -677,7 +702,7 @@
                 var count = $('.checkbox-categorie:checked').length;
 
                 if (count !== maxAllowed) {
-                    alert('3개를 선택해야 합니다.');
+                    alert('카테고리는 3개를 선택해야 합니다.');
                     return false; // 폼 전송을 중단합니다.
                 }
             });
