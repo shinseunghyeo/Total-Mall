@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>일반회원 회원가입 페이지</title>
+    <script src="../resources/js/jquery-3.7.1.min.js"></script>
 </head>
 <style>
     /* ---------BASE--------- */
@@ -148,16 +149,25 @@
         width: 300px;
     }
     .input-text2 p{
-        color: red;
+        color: white;
         font-size: 11px;
     }
     #email{
         width: 200px;
     }
     #email2{
-        width: 300px;
+        width: 200px;
     }
     #email-button{
+        border: none;
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 5px 5px 5px 5px;
+        height: 38px;
+        width: 94px;
+        
+    }
+    #email-button2{
         border: none;
         background-color: rgb(52, 152, 219);
         color: white;
@@ -370,7 +380,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="member_id" id="" placeholder="">
-                                <p>아이디는 8~12자로 영어,특수문자,숫자를 포함</p>
+                                <p id="id_test">아이디는 8~12자로 영어,숫자를 포함</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -378,8 +388,8 @@
                                 <p>비밀번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="password" name="member_pw" id="" placeholder="비밀번호는 8~12자">
-                                <p>비밀번호는 8~12자로 영어,특수문자,숫자를 포함</p>
+                                <input type="password" name="member_pw" id="member_pw" placeholder="비밀번호는 8~12자">
+                                <p id="pw_test">비밀번호는 8~16자로 영어,특수문자,숫자를 포함</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -387,8 +397,8 @@
                                 <p>비밀번호 확인</p>
                             </div>
                             <div class="input-text2">
-                                <input type="password" name="member_pw2" id="">
-                                <p>비밀번호가 맞지 않습니다.</p>
+                                <input type="password" name="member_pw2" id="member_pw2">
+                                <p id="pw2_test">비밀번호가 맞지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -397,7 +407,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="member_name" id="">
-                                <p>이름을 적어주세요</p>
+                                <p id="name_test">이름을 적어주세요</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -406,7 +416,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="handphone" id="">
-                                <p>알맞은 형식이 아닙니다.</p>
+                                <p id="handphone_test">전화번호는 010-숫자4자리-숫자4자리로 입력해야 합니다</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -416,7 +426,7 @@
                             <div class="input-text2">
                                 <input type="text" name="email" id="email">
                                 <input type="button" value="이메일 인증" id="email-button">
-                                <p>이메일 형식이 맞지 않습니다.</p>
+                                <p id="email_test">이메일 형식이 맞지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -425,7 +435,8 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="" id="email2">
-                                <p>이메일 번호가 맞지 않습니다.</p>
+                                <input type="button" value="인증번호 확인" id="email-button2">
+                                <p id="email2_test">이메일 번호가 맞지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -434,20 +445,20 @@
                             </div>
                             <div class="input-text2">
                                 <input type="button" value="우편번호 찾기" id="address-button">
-                                <input type="text" name="address1" id="address1">
+                                <input type="text" name="" id="address1">
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1"></div>
                             <div class="input-text2">
-                                <input type="text" name="address2" id="" placeholder="주소">
+                                <input type="text" name="" id="" placeholder="주소">
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1"></div>
                             <div class="input-text2">
-                                <input type="text" name="address3" id="" placeholder="상세주소">
-                                <p>주소 형식이 맞지 않습니다.</p>
+                                <input type="text" name="" id="" placeholder="상세주소">
+                                <p id="address_test">주소 형식이 맞지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text"></div>
@@ -464,6 +475,81 @@
     
 </body>
 <script>
-    
+/* 유효성 검사 */
+$(function () {
+    const regExp_id = /^[A-Za-z0-9~!@#$%^()+|=]{8,12}$/;
+    const regExp_pw = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[~!@#$%^()+|=])[A-Za-z0-9~!@#$%^()+|=]{8,16}$/;
+    const regExp_phone =/^010-\d{4}-\d{4}$/;
+
+    function checkIdValidity() {
+        if (!regExp_id.test(frm_join.member_id.value)) {
+            $("#id_test").css("color", "red")
+        } else {
+            $("#id_test").css("color", "white")
+        }
+    }
+    function checkPwValidity(){
+        if(!regExp_pw.test(frm_join.member_pw.value)){
+            $("#pw_test").css("color","red")
+        } else{
+            $("#pw_test").css("color","white")
+        }
+    }
+    function checkPw2Validity(){
+        if($("#member_pw").val() != $("#member_pw2").val()){
+            $("#pw2_test").css("color","red")
+        } else{
+            $("#pw2_test").css("color","white")
+        }
+    }
+    function checkNameValidity(){
+        if(frm_join.member_name.value.length == 0){
+            $("#name_test").css("color","red")
+        } else{
+            $("#name_test").css("color","white")
+        }
+    }
+    function checkHandphoneValidity(){
+        if(!regExp_phone.test(frm_join.handphone.value)){
+            $("#handphone_test").css("color","red")
+        } else{
+            $("#handphone_test").css("color","white")
+        }
+    }
+
+    // focusout 이벤트에 유효성 검사 함수 연결
+    $('input[name="member_id"]').on('focusout', function () {
+        checkIdValidity();
+    });
+
+    $('input[name="member_pw"]').on('focusout', function () {
+        checkPwValidity();
+    });
+
+    $('input[name="member_pw2"]').on('focusout', function () {
+        checkPw2Validity();
+    });
+
+    $('input[name="member_name"]').on('focusout', function () {
+        checkNameValidity();
+    });
+
+    $('input[name="handphone"]').on('focusout', function () {
+        checkHandphoneValidity();
+    });
+    // submit 이벤트에 전체 유효성 검사 함수 연결
+    frm_join.addEventListener("submit", function (e) {
+        const idValue = frm_join.member_id.value;
+        const idMessage = $("#id_test");
+
+        // 전체 유효성 검사 수행
+        if (!regExp_id.test(idValue)) {
+            alert("???");
+            e.preventDefault(); // 유효성 검사 실패 시 폼 제출 방지
+            idMessage.css("color", "red").text("아이디를 올바르게 입력해주세요.");
+        }
+    });
+});
+/* 유효성 검사 */
 </script>
 </html>
