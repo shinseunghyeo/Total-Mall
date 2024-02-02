@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지1</title>
+    <script src="../resources/js/jquery-3.7.1.min.js"></script>
 </head>
 <style>
     /* ---------BASE--------- */
@@ -407,7 +408,7 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form name="frm_join" method="post" action="joinProcess1.do">
+                <form name="frm_join" method="post" action="joinProcess1.do" id="myForm">
                 	
                     <div id="white-board">
                         <div id="white-board-header">
@@ -660,7 +661,27 @@
 
     /* 모두 체크하기 스크립트 */
     /* 카테고리 3개만 클릭하기 스크립트 */
+        $(document).ready(function(){
+            var maxAllowed = 3;
 
+            $('.checkbox-categorie').on('change', function() {
+                var count = $('.checkbox-categorie:checked').length;
+
+                if (count > maxAllowed) {
+                    $(this).prop('checked', false);
+                    alert('최대 3개까지만 선택 가능합니다.');
+                }
+            });
+
+            $('#myForm').submit(function() {
+                var count = $('.checkbox-categorie:checked').length;
+
+                if (count !== maxAllowed) {
+                    alert('3개를 선택해야 합니다.');
+                    return false; // 폼 전송을 중단합니다.
+                }
+            });
+        });
     /* 카테고리 3개만 클릭하기 스크립트 */
 </script>
 </html>
