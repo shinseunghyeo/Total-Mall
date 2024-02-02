@@ -5,8 +5,8 @@
  <mapper namespace="human.smart.totalMall.MemberMapper">
  	<!-- 회원가입 -->
  	<insert id="join" parameterType="memberVO">
- 		insert into tb_member (member_id, member_pw, member_name, handphone, email, address1, address2, address3)
-			values(#{member_id},#{member_pw},#{member_name},#{handphone},#{email},#{address1},#{address2},#{address3})
+ 		insert into tb_member (member_id, member_pw, member_name, handphone, email, address1, address2, address3, categorie)
+			values(#{member_id},#{member_pw},#{member_name},#{handphone},#{email},#{address1},#{address2},#{address3}, #{categorie})
  	</insert>
  
  

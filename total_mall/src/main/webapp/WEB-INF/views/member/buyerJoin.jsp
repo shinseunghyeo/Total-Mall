@@ -357,6 +357,7 @@
                     </div>
                 </div>
                 <form name="frm_join" method="post" action="joinProcess2.do">
+                	<input type="hidden" name="categorie" value="${categorie.categorie}" />
                     <div id="white-board">
                         <div id="white-board-header">
                             <div>
@@ -377,7 +378,7 @@
                                 <p>비밀번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="member_pw" id="" placeholder="비밀번호는 8~12자">
+                                <input type="password" name="member_pw" id="" placeholder="비밀번호는 8~12자">
                                 <p>비밀번호는 8~12자로 영어,특수문자,숫자를 포함</p>
                             </div>
                         </div>
@@ -386,7 +387,7 @@
                                 <p>비밀번호 확인</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="member_pw2" id="">
+                                <input type="password" name="member_pw2" id="">
                                 <p>비밀번호가 맞지 않습니다.</p>
                             </div>
                         </div>
