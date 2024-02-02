@@ -408,6 +408,7 @@
                     </div>
                 </div>
                 <form name="frm_join" method="post" action="joinProcess1.do">
+                	
                     <div id="white-board">
                         <div id="white-board-header">
                             <div>
@@ -462,47 +463,47 @@
                         <div id="gray-board">
                             <div class="check-categorie">
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="food">
                                     <p>식품</p>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="homeDeco">
                                     <p>홈데코</p>
                                 </div>
                             </div>
                             <div class="check-categorie">
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="hobby">
                                     <p>취미</p>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="dailyNecessity">
                                     <p>생필품</p>
                                 </div>
                             </div>
                             <div class="check-categorie">
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="clothes">
                                     <p>의류</p>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="book">
                                     <p>도서</p>
                                 </div>
                             </div>
                             <div class="check-categorie">
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="furniture">
                                     <p>가구</p>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="homeAppliances">
                                     <p>가전</p>
                                 </div>
                             </div>
                             <div class="check-categorie">
                                 <div>
-                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie">
+                                    <input type="checkbox" name="categorie" id="" class="checkbox-categorie" value="sports">
                                     <p>스포츠</p>
                                 </div>
                             </div>

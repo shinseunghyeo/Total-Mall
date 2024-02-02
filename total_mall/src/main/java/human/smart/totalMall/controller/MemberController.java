@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,19 +38,25 @@ public class MemberController {
 	
 	//구매자 회원가입 페이지 요청 및 처리1
 	@PostMapping("/joinProcess1.do")
-	public String join2(HttpServletRequest request, MemberVO memberVO){
-		System.out.println("???");
-		String[] categorie = request.getParameterValues("categorie");
+	public String joinProcess1(HttpServletRequest request, MemberVO memberVO, Model model){
+		//체크박스 값 받아와서 ,로 구분 후 String타입으로 변경
+		String[] categories = request.getParameterValues("categorie");
+		String categorie = String.join(",", categories);
+		//테스트용
 		System.out.println(categorie);
+		//카테고리를 String타입으로 변경한 것을 memberVO객체에 저장
+		memberVO.setCategorie(categorie);
+		model.addAttribute("categorie", memberVO);
 		return "member/buyerJoin";
 	}
+	
+	
 	//구매자 회원가입 처리2
 	@PostMapping("/joinProcess2.do")
-	public String joinProcess2(MemberVO memberVO) {
+	public String joinProcess2(MemberVO memberVO, Model model) {
 		String viewPage = "member/buyerJoin";
 		
 		if(mJoin.join(memberVO)==1) {
-			System.out.println("테스트1");
 			viewPage = "redirect:/member/login.do";
 		}
 		
