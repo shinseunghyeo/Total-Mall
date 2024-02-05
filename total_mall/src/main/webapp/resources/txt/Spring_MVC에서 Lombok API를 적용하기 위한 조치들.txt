@@ -12,7 +12,7 @@ Lombok API를 자바 코드에 적용하면
 	@NoArgsConstructor: 클래스 위에 정의하면 기본 생성자를 정의해줌
 	@Data: @RequiredArgsConstructor, @Getter @Setter 등을 모두 결합한 형태로 한 번에 생성자와 모든 메소드를 정의해줌
 		   세부적인 설정이 필요없는 경우라면 @Data를 주로 사용함  123456
-
+789
 
 
 
