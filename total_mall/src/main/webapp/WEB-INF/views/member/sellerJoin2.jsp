@@ -497,7 +497,7 @@ $(function () {
 
         // 전체 유효성 검사 수행
         if (!regExp_id.test(idValue)) {
-            alert("???");
+            alert("????");
             e.preventDefault(); // 유효성 검사 실패 시 폼 제출 방지
             idMessage.css("color", "red").text("아이디를 올바르게 입력해주세요.");
         }
