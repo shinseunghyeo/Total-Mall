@@ -37,7 +37,7 @@ public class MemberController {
 	}
 	
 	//구매자 회원가입 페이지 요청 및 처리1
-	@PostMapping("/joinProcess1.do")
+	@PostMapping("/buyerJoinProcess1.do")
 	public String joinProcess1(HttpServletRequest request, MemberVO memberVO, Model model){
 		//체크박스 값 받아와서 ,로 구분 후 String타입으로 변경
 		String[] categories = request.getParameterValues("categorie");
@@ -45,14 +45,13 @@ public class MemberController {
 		//테스트용
 		System.out.println(categorie);
 		//카테고리를 String타입으로 변경한 것을 memberVO객체에 저장
-		memberVO.setCategorie(categorie);
 		model.addAttribute("categorie", memberVO);
 		return "member/buyerJoin";
 	}
 	
 	
 	//구매자 회원가입 처리2
-	@PostMapping("/joinProcess2.do")
+	@PostMapping("/buyerJoinProcess2.do")
 	public String joinProcess2(MemberVO memberVO, Model model) {
 		String viewPage = "member/buyerJoin";
 		
@@ -62,5 +61,30 @@ public class MemberController {
 		
 		return viewPage;
 	}
+	
+	//판매자 회원가입 페이지 요청 및 처리1
+	@PostMapping("/sellerJoinProcess1.do")
+	public String sellerJoinProcess1(HttpServletRequest request, MemberVO memberVO, Model model){
+		
+		return "member/sellerJoin";
+	}
+	
+	//판매자 회원가입 페이지 요청 및 처리2
+	@PostMapping("/sellerJoinProcess2.do")
+	public String sellerJoinProcess2(HttpServletRequest request, MemberVO memberVO, Model model){
+		model.addAttribute("memberVO", memberVO);
+		return "member/sellerJoin2";
+	}
+	
+	//판매자 회원가입 페이지 요청 및 처리3
+	@PostMapping("/sellerJoinProcess3.do")
+	public String sellerJoinProcess3(HttpServletRequest request, MemberVO memberVO, Model model){
+		String viewPage = "member/sellerJoin2";
+		if(mJoin.join(memberVO)==1) {
+			viewPage = "redirect:/member/login.do";
+		}
+		return viewPage;
+	}
+	
 
 }

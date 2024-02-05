@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일반회원 회원가입 페이지</title>
+    <title>기업회원 회원가입 페이지1</title>
     <script src="../resources/js/jquery-3.7.1.min.js"></script>
 </head>
 <style>
@@ -366,7 +366,7 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form name="frm_join" method="post" action="buyerJoinProcess2.do">
+                <form name="frm_join" method="post" action="sellerJoinProcess2.do">
                 	<input type="hidden" name="categorie" value="${categorie.categorie}" />
                     <div id="white-board">
                         <div id="white-board-header">
@@ -465,7 +465,7 @@
                         <div class="input-text"></div>
                     </div>
                     <div id="button">
-                        <input type="submit" value="가입">
+                        <input type="submit" value="다음">
                     </div>
                 </form>
             </div>

@@ -5,8 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일반회원 회원가입 페이지</title>
-    <script src="../resources/js/jquery-3.7.1.min.js"></script>
+    <title>회원가입 페이지1</title>
 </head>
 <style>
     /* ---------BASE--------- */
@@ -94,7 +93,7 @@
         width: 650px;
         background-color: white;
         border-radius: 20px 20px 20px 20px ;
-        height: 600px;
+        height: 430px;
     }
     
     #white-board-header{
@@ -149,56 +148,24 @@
         width: 300px;
     }
     .input-text2 p{
-        color: white;
+        color: red;
         font-size: 11px;
     }
-    #email{
+    #account{
         width: 200px;
     }
-    #email2{
-        width: 200px;
-    }
-    #email-button{
-        border: none;
-        background-color: rgb(52, 152, 219);
-        color: white;
-        border-radius: 5px 5px 5px 5px;
-        height: 38px;
-        width: 94px;
+    #account_select{
+        margin: 0;
+        height: 37px;
+        width: 95px;
+        border-radius: 0;
+        border: 1px solid black;
         
-    }
-    #email-button2{
-        border: none;
-        background-color: rgb(52, 152, 219);
-        color: white;
-        border-radius: 5px 5px 5px 5px;
-        height: 38px;
-        width: 94px;
-        
-    }
-    #email-button:hover{
-        cursor: pointer;
-    }
-    #address-button{
-        border: none;
-        background-color: rgb(52, 152, 219);
-        color: white;
-        border-radius: 5px 5px 5px 5px;
-        height: 36.5px;
-        width: 100px;
-        margin: auto;
-        
-    }
-    #address-button:hover{
-        cursor: pointer;
-    }
-    #address1{
-        width: 194px;
     }
 
     #button input{
         margin-top: 20px;
-        margin-left: 700px;
+        margin-left: 265px;
         width: 150px;
         height: 50px;
         background-color: rgb(52, 152, 219);
@@ -366,8 +333,16 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form name="frm_join" method="post" action="buyerJoinProcess2.do">
-                	<input type="hidden" name="categorie" value="${categorie.categorie}" />
+                <form name="frm_join" method="post" action="sellerJoinProcess3.do">
+                	<input type="hidden" name="member_id" value="${memberVO.member_id}" />
+                	<input type="hidden" name="member_pw" value="${memberVO.member_pw}" />
+                	<input type="hidden" name="member_name" value="${memberVO.member_name}" />
+                	<input type="hidden" name="handphone" value="${memberVO.handphone}" />
+                	<input type="hidden" name="email" value="${memberVO.email}" />
+                	<input type="hidden" name="address1" value="${memberVO.address1}" />
+                	<input type="hidden" name="address2" value="${memberVO.address2}" />
+                	<input type="hidden" name="address3" value="${memberVO.address3}" />
+                	
                     <div id="white-board">
                         <div id="white-board-header">
                             <div>
@@ -376,96 +351,67 @@
                         </div>
                         <div class="input-text" id="input-top">
                             <div class="input-text1">
-                                <p>아이디</p>
+                                <p>대표자 명</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="member_id" id="" placeholder="아이디는 8~12자로 영어,숫자를 포함">
-                                <p id="id_test">아이디는 8~12자로 영어,숫자를 포함</p>
+                                <input type="text" name="representative_name" id="" placeholder="">
+                                <p id="">대표자명이 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1">
-                                <p>비밀번호</p>
+                                <p>사업자 등록번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="password" name="member_pw" id="member_pw" placeholder="비밀번호는 8~16자로 영어,특수문자,숫자를 포함">
-                                <p id="pw_test">비밀번호는 8~16자로 영어,특수문자,숫자를 포함</p>
+                                <input type="text" name="company_number" id="" placeholder="비밀번호는 8~12자">
+                                <p>사업자 등록번호가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1">
-                                <p>비밀번호 확인</p>
+                                <p>상호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="password" name="member_pw2" id="member_pw2" placeholder="위 비밀번호와 동일하게 적어주세요">
-                                <p id="pw2_test">비밀번호가 맞지 않습니다.</p>
+                                <input type="text" name="mutual" id="">
+                                <p>상호가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1">
-                                <p>이름</p>
+                                <p>통신판매번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="member_name" id="" placeholder="이름을 적어주세요">
-                                <p id="name_test">이름을 적어주세요</p>
+                                <input type="text" name="mail_order_number" id="">
+                                <p>통신판매번호가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1">
-                                <p>휴대폰</p>
+                                <p>계좌</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="handphone" id="" placeholder="010-숫자4자리-숫자4자리로 입력해야 합니다">
-                                <p id="handphone_test">010-숫자4자리-숫자4자리로 입력해야 합니다</p>
+                                <input type="text" name="account1" id="account">
+                                <select name="account2" id="account_select">
+                                    <option value="">농협</option>
+                                    <option value="">국민</option>
+                                    <option value="">신한은행</option>
+                                </select>
+                                <p>계좌가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1">
-                                <p>이메일</p>
+                                <p>예금주명</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="email" id="email">
-                                <input type="button" value="이메일 인증" id="email-button" placeholder="이메일 형식에 맞춰서 적어주세요">
-                                <p id="email_test">이메일 형식이 맞지 않습니다.</p>
+                                <input type="text" name="depositor_name" id="">
+                                <p>예금주명이 맞지 않습니다</p>
                             </div>
                         </div>
-                        <div class="input-text">
-                            <div class="input-text1">
-                                <p>이메일 인증 번호</p>
-                            </div>
-                            <div class="input-text2">
-                                <input type="text" name="" id="email2">
-                                <input type="button" value="인증번호 확인" id="email-button2">
-                                <p id="email2_test">이메일 번호가 맞지 않습니다.</p>
-                            </div>
-                        </div>
-                        <div class="input-text">
-                            <div class="input-text1">
-                                <p>주소</p>
-                            </div>
-                            <div class="input-text2">
-                                <input type="button" value="우편번호 찾기" id="address-button">
-                                <input type="text" name="address1" id="address1" placeholder="우편번호">
-                            </div>
-                        </div>
-                        <div class="input-text">
-                            <div class="input-text1"></div>
-                            <div class="input-text2">
-                                <input type="text" name="address2" id="" placeholder="주소">
-                            </div>
-                        </div>
-                        <div class="input-text">
-                            <div class="input-text1"></div>
-                            <div class="input-text2">
-                                <input type="text" name="address3" id="" placeholder="상세주소">
-                                <p id="address_test">상세주소를 적어주세요.</p>
-                            </div>
-                        </div>
-                        <div class="input-text"></div>
-                        <div class="input-text"></div>
                     </div>
                     <div id="button">
-                        <input type="submit" value="가입">
+                        <input type="button" value="이전">
+                        <input type="submit" value="가입" id="next-button">
                     </div>
                 </form>
             </div>
@@ -477,10 +423,6 @@
 <script>
 /* 유효성 검사 */
 $(function () {
-    const regExp_id = /^[A-Za-z0-9~!@#$%^()+|=]{8,12}$/;
-    const regExp_pw = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[~!@#$%^()+|=])[A-Za-z0-9~!@#$%^()+|=]{8,16}$/;
-    const regExp_phone =/^010-\d{4}-\d{4}$/;
-
     function checkIdValidity() {
         if (!regExp_id.test(frm_join.member_id.value)) {
             $("#id_test").css("color", "red")
