@@ -1,0 +1,22 @@
+@charset "UTF-8";
+    #ThousandLine{background-color: rgb(245, 245, 245);width: 100%;height: 800px;}
+    #ThousandContainer{width: 650px; margin: auto;text-align: center;}
+    #AttendanceLine{background-color: powderblue;width: 100%;height: 800px;}
+    #AttendanceContainer{width: 800px; margin: auto;text-align: center;}
+    #DronLine{background-color: gainsboro;width: 100%;height: 800px;}
+    #DronContainer{width: 650px; margin: auto;position: relative;text-align: center;}
+    #DrowingLine{background-color: lightsteelblue;width: 100%;height: 800px;}
+    #DrowingContainer{width: 650px; margin: auto;text-align: center;}
+    #TimeLine{width: 100%;height: 800px;}
+    #TimeContainer{width: 550px; margin: auto;text-align: center;}
+    #BoomLine{background-color: rgb(11, 25, 51);width: 100%;height: 800px;}
+    #BoomContainer{width: 650px; margin: auto;text-align: center;}
+    #WinterLine{background-color: rgb(238, 218, 194);width: 100%;height: 800px;}
+    #WinterContainer{width: 650px; margin: auto;position: relative;text-align: center;}
+    #EventLine{background-color: rgb(0, 0, 41);width: 100%;height: 1200px;}
+    #EventContainer{width: 650px; margin: auto;position: relative;text-align: center;}
+    
+    #current-time {margin: 0;font-size: 5em;color: #333;padding: 10px;background-color: #fff;border-radius: 8px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);display: inline-block;}
+    
+    .NavName{width: 100%;}
+    .NavImg{width: 100%;cursor: auto;}
