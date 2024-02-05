@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/Tcss_NavPage/Tcss_Navpage.css">
+<link rel="stylesheet" href="../resources/css/NavPage/Navpage.css">
 </head>
 <body>
-  	<%@ include file="../Main/T_Header2.jsp" %>
+  	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------이벤트--------- -->
     <div id="EventLine" style="background-color: rgb(0, 0, 41);width: 100%;height: 1200px;">
         <div id="EventContainer" style="width: 650px; margin: auto;position: relative;text-align: center;">

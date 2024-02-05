@@ -8,12 +8,12 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home() {
-		return "T_TotalMall";
+		return "TotalMall";
 	}
 	
-	@GetMapping("/T_TotalMall.do")
+	@GetMapping("/TotalMall.do")
 	public String home2() {
-		return "T_TotalMall";
+		return "TotalMall";
 	}
 	
 }

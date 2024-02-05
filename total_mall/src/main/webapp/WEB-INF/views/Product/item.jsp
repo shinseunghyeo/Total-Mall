@@ -32,7 +32,7 @@
                         <option value="신발">3</option>
                     </select>
                     <a href=""><button>장바구니</button></a>
-                    <a href="T_PurchasePage.html"><button>구매</button></a>
+                    <a href="PurchasePage.html"><button>구매</button></a>
                 </p>
             </div>
         </div>

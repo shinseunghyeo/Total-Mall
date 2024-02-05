@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/Tcss_NavPage/Tcss_Navpage.css">
+<link rel="stylesheet" href="../resources/css/NavPage/Navpage.css">
 </head>
 <body>
-  	<%@ include file="../Main/T_Header2.jsp" %>
+  	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------1000상품--------- -->
     <div id="ThousandLine">
         <div id="ThousandContainer">

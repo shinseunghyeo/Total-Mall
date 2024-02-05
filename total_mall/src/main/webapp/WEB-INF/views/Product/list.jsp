@@ -14,8 +14,8 @@
             <div id="KategoryServemenuLine">
                 <h2>카테고리</h2>
                 <span>식품</span><br>
-                <a href="T_KategoryPage.html">>고기</a><br>
-                <a href="T_KategoryPage.html">>야채</a><br>
+                <a href="KategoryPage.html">>고기</a><br>
+                <a href="KategoryPage.html">>야채</a><br>
                 <a href="">>과일</a><br>
                 <a href="">>냉동</a><br><br>
                 <span>홈데코</span><br>
@@ -47,7 +47,7 @@
             </div>
             <div id="KategoryProductLine">
                 <div id="KategoryProductContainer">
-                    <a href="T_EventPage.html" id="KategoryEventbox">
+                    <a href="EventPage.html" id="KategoryEventbox">
                         <div id="KategoryEvent">
                             <button id="FoodImg1" onmouseover="PakgeImg(1, 'FoodImg1')"></button>
                             <button id="FoodImg2" onmouseover="PakgeImg(2, 'FoodImg2')"></button>

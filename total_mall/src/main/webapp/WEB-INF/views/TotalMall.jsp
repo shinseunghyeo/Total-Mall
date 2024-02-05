@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1,user-scalable=no">
-<link rel="stylesheet" href="resources/css/Tcss_Main/Tcss_TotalMall.css">
+<link rel="stylesheet" href="resources/css/Main/TotalMall.css">
 <title>Insert title here</title>
 </head>
 <body>
-  	<%@ include file="Main/T_Header.jsp" %>
+  	<%@ include file="Main/Header.jsp" %>
 
     <!-- ---------이벤트--------- -->
     <div id="EventLine" onmouseover="Eventovermouse()"onmouseout="Eventoutmouse()">
@@ -711,5 +711,5 @@
     <!-- ---------마지막 상품--------- -->
 
 </body>
-<script type="text/javascript" src="resources/js/Tjs_Main/Tjs_TotalMall.js"></script>
+<script type="text/javascript" src="resources/js/Main/TotalMall.js"></script>
 </html>
