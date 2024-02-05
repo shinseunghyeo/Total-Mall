@@ -254,8 +254,8 @@
                 <img src="../resources/img/Headerimg/달력.png" width="20"><a href="${pageContext.request.contextPath}/nav/Attendance.do">출석체크</a>
             </div>
             <div id="LogLine">
-                <a href="">로그인</a>
-                <a href="">회원가입</a>
+                <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
                 <a href="">고객센터</a>
             </div>
         </nav>
