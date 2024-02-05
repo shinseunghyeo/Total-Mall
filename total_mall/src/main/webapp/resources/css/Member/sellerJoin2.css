@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+
+    
+    #section-wrap{
+        margin: 0 auto;
+        background-color: rgb(224, 224, 224);
+        width: 1100px;
+        height: 1100px;
+        /* height: 50px; */
+    }
+    #section-1{
+        margin: 0 auto;
+        
+    }
+    #section-header{
+        padding-top: 50px;
+        margin: 0 auto;
+        width: 650px;
+        display: flex;
+        padding-bottom: 20px;
+        
+    }
+    #section-header1{
+        width: 75%;
+        font-size: 30px;
+        font-weight: 800;
+    }
+    #section-header1 p{
+        margin: 0;
+    }
+    #section-header2{
+        display: flex;
+    }
+    #section-header2 p{
+        margin-top: 15px;
+        margin-bottom: 0px;
+        margin-left: 15px;
+        font-weight: 600;
+    }
+    #section-header2 p:last-child{
+        text-decoration: underline;
+        color: rgb(52, 152, 219);
+    }
+    #white-board{
+        margin: 0 auto;
+        width: 650px;
+        background-color: white;
+        border-radius: 20px 20px 20px 20px ;
+        height: 430px;
+    }
+    
+    #white-board-header{
+        display: flex;
+    }
+    #white-board-header2{
+        display: flex;
+    }
+    #white-board-header div:first-child{
+        width: 100%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 20px 20px 0 0;
+    }
+    #white-board-header div p{
+        margin: 0;
+        line-height: 70px;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+    }
+    #input-top{
+        margin-top: 30px;
+    }
+    .input-text{
+        display: flex;
+        
+    }
+    .input-text p{
+        margin: 0;
+    }
+    .input-text1{
+        width: 35%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+
+    }
+    .input-text1 p{
+        float: right;
+        margin-right: 20px;
+    }
+    .input-text2{
+        width: 55%;
+    }
+    .input-text2 input{
+        border: 1px solid black;
+        margin: 0;
+        padding: 0;
+        height: 35px;
+        width: 300px;
+    }
+    .input-text2 p{
+        color: white;
+        font-size: 11px;
+    }
+    #account{
+        width: 200px;
+    }
+    #account_select{
+        margin: 0;
+        height: 37px;
+        width: 95px;
+        border-radius: 0;
+        border: 1px solid black;
+        
+    }
+
+    #button input{
+        margin-top: 20px;
+        margin-left: 265px;
+        width: 150px;
+        height: 50px;
+        background-color: rgb(52, 152, 219);
+        border: none;
+        border-radius: 15px 15px 15px 15px;
+        font-size: 25px;
+        font-weight: 800;
+        color: white;
+    }
+    #button input:hover{
+        cursor: pointer;
+    }
+    #section-1{
+        display: block;
+    }
+    
+    
