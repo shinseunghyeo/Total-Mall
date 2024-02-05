@@ -148,7 +148,7 @@
         width: 300px;
     }
     .input-text2 p{
-        color: red;
+        color: white;
         font-size: 11px;
     }
     #account{
@@ -355,7 +355,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="representative_name" id="" placeholder="">
-                                <p id="">대표자명이 올바르지 않습니다.</p>
+                                <p id="representative_name_test">대표자명이 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -364,7 +364,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="company_number" id="" placeholder="비밀번호는 8~12자">
-                                <p>사업자 등록번호가 올바르지 않습니다.</p>
+                                <p id="company_number_test">사업자 등록번호가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -373,7 +373,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="mutual" id="">
-                                <p>상호가 올바르지 않습니다.</p>
+                                <p id="mutual_test">상호가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -382,7 +382,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="mail_order_number" id="">
-                                <p>통신판매번호가 올바르지 않습니다.</p>
+                                <p id="mail_order_number_test">통신판매번호가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -396,7 +396,7 @@
                                     <option value="">국민</option>
                                     <option value="">신한은행</option>
                                 </select>
-                                <p>계좌가 올바르지 않습니다.</p>
+                                <p id="account_test">계좌가 올바르지 않습니다.</p>
                             </div>
                         </div>
                         <div class="input-text">
@@ -405,7 +405,7 @@
                             </div>
                             <div class="input-text2">
                                 <input type="text" name="depositor_name" id="">
-                                <p>예금주명이 맞지 않습니다</p>
+                                <p id="depositor_name_test">예금주명이 맞지 않습니다</p>
                             </div>
                         </div>
                     </div>
@@ -423,61 +423,72 @@
 <script>
 /* 유효성 검사 */
 $(function () {
-    function checkIdValidity() {
-        if (!regExp_id.test(frm_join.member_id.value)) {
-            $("#id_test").css("color", "red")
+    function checkRnameValidity() {
+        if (frm_join.representative_name.value.length == 0) {
+            $("#representative_name_test").css("color", "red")
         } else {
-            $("#id_test").css("color", "white")
+            $("#representative_name_test").css("color", "white")
         }
     }
-    function checkPwValidity(){
-        if(!regExp_pw.test(frm_join.member_pw.value)){
-            $("#pw_test").css("color","red")
+    function checkCnumberValidity(){
+        if(frm_join.company_number.value.length == 0){
+            $("#company_number_test").css("color","red")
         } else{
-            $("#pw_test").css("color","white")
+            $("#company_number_test").css("color","white")
         }
     }
-    function checkPw2Validity(){
-        if($("#member_pw").val() != $("#member_pw2").val()){
-            $("#pw2_test").css("color","red")
+    function checkMutualValidity(){
+        if(frm_join.mutual.value.length == 0){
+            $("#mutual_test").css("color","red")
         } else{
-            $("#pw2_test").css("color","white")
+            $("#mutual_test").css("color","white")
         }
     }
-    function checkNameValidity(){
-        if(frm_join.member_name.value.length == 0){
-            $("#name_test").css("color","red")
+    function checkMailOrderValidity(){
+        if(frm_join.mail_order_number.value.length == 0){
+            $("#mail_order_number_test").css("color","red")
         } else{
-            $("#name_test").css("color","white")
+            $("#mail_order_number_test").css("color","white")
         }
     }
-    function checkHandphoneValidity(){
-        if(!regExp_phone.test(frm_join.handphone.value)){
-            $("#handphone_test").css("color","red")
+    function checkAccountValidity(){
+        if(frm_join.account1.value.length == 0){
+            $("#account_test").css("color","red")
         } else{
-            $("#handphone_test").css("color","white")
+            $("#account_test").css("color","white")
+        }
+    }
+    function checkDepositorNameValidity(){
+        if(frm_join.depositor_name.value.length == 0){
+            $("#depositor_name_test").css("color","red")
+        } else{
+            $("#depositor_name_test").css("color","white")
         }
     }
 
     // focusout 이벤트에 유효성 검사 함수 연결
-    $('input[name="member_id"]').on('focusout', function () {
-        checkIdValidity();
+    $('input[name="representative_name"]').on('focusout', function () {
+    	checkRnameValidity();
     });
 
-    $('input[name="member_pw"]').on('focusout', function () {
-        checkPwValidity();
+    $('input[name="company_number"]').on('focusout', function () {
+    	checkCnumberValidity();
     });
 
-    $('input[name="member_pw2"]').on('focusout', function () {
-        checkPw2Validity();
+    $('input[name="mutual"]').on('focusout', function () {
+    	checkMutualValidity();
     });
 
-    $('input[name="member_name"]').on('focusout', function () {
-        checkNameValidity();
+    $('input[name="mail_order_number"]').on('focusout', function () {
+    	checkMailOrderValidity();
     });
 
-    $('input[name="handphone"]').on('focusout', function () {
-        checkHandphoneValidity();
+    $('input[name="account1"]').on('focusout', function () {
+    	checkAccountValidity();
+    });
+    
+    $('input[name="depositor_name"]').on('focusout', function () {
+    	checkDepositorNameValidity();
     });
     // submit 이벤트에 전체 유효성 검사 함수 연결
     frm_join.addEventListener("submit", function (e) {
