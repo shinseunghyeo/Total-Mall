@@ -411,7 +411,7 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form name="frm_join" method="post" action="joinProcess1.do" id="myForm">
+                <form name="frm_join" method="post" action="buyerJoinProcess1.do" id="myForm">
                 	
                     <div id="white-board">
                         <div id="white-board-header">
@@ -450,12 +450,12 @@
                             <div class="check-box">
                                 <input type="checkbox" name="" id="" class="checkbox-design">
                                 <p>개인정보 제 3자 제공 동의</p>
-                                <p>(선택)</p>
+                                <p>(필수)</p>
                             </div>
                             <div class="check-box">
                                 <input type="checkbox" name="" id="" class="checkbox-design">
                                 <p>혜택 알림 이메일, 문자 앱 푸시</p>
-                                <p>(선택)</p>
+                                <p>(필수)</p>
                             </div>
                         </div>
                         <div id="categorie-header">
@@ -528,7 +528,7 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form action="join_seller_1.html">
+                <form name="frm_join2" method="post" action="sellerJoinProcess1.do" id="myForm2">
                     <div id="white-board2">
                         <div id="white-board-header2">
                             <div>
@@ -566,17 +566,17 @@
                             <div class="check-box">
                                 <input type="checkbox" name="" id="" class="checkbox-design2">
                                 <p>개인정보 제 3자 제공 동의</p>
-                                <p>(선택)</p>
+                                <p>(필수)</p>
                             </div>
                             <div class="check-box">
                                 <input type="checkbox" name="" id="" class="checkbox-design2">
                                 <p>혜택 알림 이메일, 문자 앱 푸시</p>
-                                <p>(선택)</p>
+                                <p>(필수)</p>
                             </div>
                             <div class="check-box">
                                 <input type="checkbox" name="" id="" class="checkbox-design2">
                                 <p>Total Mall 지원 할인동의</p>
-                                <p>(선택)</p>
+                                <p>(필수)</p>
                             </div>
                         </div>
                     </div>
@@ -663,7 +663,7 @@
     })
 
     /* 모두 체크하기 스크립트 */
-    /* 이용약관 동의하지 않으면 안넘어가는 스크립트 */
+    /* 개인회원 이용약관 동의하지 않으면 안넘어가는 스크립트 */
     function checkAgreement() {
         const agreementCheckboxes = $('.checkbox-design');
         let isAllAgreed = true;
@@ -684,7 +684,29 @@
         }
     });
 
-    /* 이용약관 동의하지 않으면 안넘어가는 스크립트 */
+    /* 개인회원 이용약관 동의하지 않으면 안넘어가는 스크립트 */
+    /* 기업회원 이용약관 동의하지 않으면 안넘어가는 스크립트 */
+    function checkAgreement2() {
+        const agreementCheckboxes = $('.checkbox-design2');
+        let isAllAgreed = true;
+
+        agreementCheckboxes.each(function () {
+            if (!$(this).prop('checked')) {
+                isAllAgreed = false;
+                return false; // 하나라도 체크되어 있지 않으면 종료
+            }
+        });
+
+        return isAllAgreed;
+    }
+    $('#myForm2').submit(function (e) {
+        if (!checkAgreement2()) {
+            alert('이용약관에 모두 동의해야 합니다.');
+            e.preventDefault(); // 폼 제출을 중단합니다.
+        }
+    });
+
+    /* 기업회원 이용약관 동의하지 않으면 안넘어가는 스크립트 */
     /* 카테고리 3개만 클릭하기 스크립트 */
         $(document).ready(function(){
             var maxAllowed = 3;
