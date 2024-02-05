@@ -146,7 +146,7 @@
     
 </style>
 <body>
-    <%@ include file="../Main/T_Header2.jsp" %>
+    <%@ include file="../Main/Header2.jsp" %>
     <section>
         <div id="section-wrap">
             <div id="section-1">

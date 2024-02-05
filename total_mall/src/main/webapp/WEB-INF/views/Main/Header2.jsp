@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/Tcss_Main/Tcss_Header.css">
+<link rel="stylesheet" href="../resources/css/Main/Header.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
                 <img onclick="KategoryMenuOn()" src="../resources/img/Headerimg/카테고리.png" width="40">
             </div>
             <div id="SiteLogo">
-                <a href="${pageContext.request.contextPath}/T_TotalMall.do"><img src="../resources/img/Headerimg/사이트로고.png" width="130"></a>
+                <a href="${pageContext.request.contextPath}/TotalMall.do"><img src="../resources/img/Headerimg/사이트로고.png" width="130"></a>
             </div>
             <div id="SearchContainer">
                 <div id="SearchLine">
@@ -28,7 +28,7 @@
                         <option value="신발">신발</option>
                     </select><hr>
                     <input type="text" placeholder="검색창">
-                    <a href="T_SearchPage.html"><img src="../resources/img/Headerimg/검색.png"></a>
+                    <a href="SearchPage.html"><img src="../resources/img/Headerimg/검색.png"></a>
                 </div>
             </div>
             <div id="UserIcon">
@@ -90,7 +90,7 @@
                                     <h1>고기</h1>
                                 </div>
                             </a>
-                            <a style="width: 25%; margin: 0;" href="T_KategoryPage.html"><div class="image-container"  
+                            <a style="width: 25%; margin: 0;" href="KategoryPage.html"><div class="image-container"  
                                 onmouseover="changeimage(this, '야채')" onmouseout="restoreimage(this, '야채')">
                                     <img class="normal-image" src="../resources/img/Headerimg/야채.png" style="width: 100%;">
                                     <img class="Kategorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
@@ -268,5 +268,5 @@
     </header>
     <!-- ---------HEADER--------- -->
 </body>
-<script type="text/javascript" src="../resources/js/Tjs_Main/Tjs_Header2.js"></script>
+<script type="text/javascript" src="../resources/js/Main/Header2.js"></script>
 </html>
