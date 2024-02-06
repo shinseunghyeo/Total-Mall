@@ -49,31 +49,31 @@
                         <h2 style="margin: 0;margin-left: 10px;color: white;">전체 카테고리</h2><br>
                     </div>
                     <div id="Kategory1" onmouseover="handleMouseOver('Kategory1','ServeKategory1')">
-                        <p href="">식품></p><br>
+                        <p>식품></p><br>
                     </div>
                     <div id="Kategory2" onmouseover="handleMouseOver('Kategory2','ServeKategory2')">
-                        <p href="">홈데코></p><br>
+                        <p>홈데코></p><br>
                     </div>
                     <div id="Kategory3" onmouseover="handleMouseOver('Kategory3','ServeKategory3')">
-                        <p href="">취미></p><br>
+                        <p>취미></p><br>
                     </div>
                     <div id="Kategory4" onmouseover="handleMouseOver('Kategory4','ServeKategory4')">
-                        <p href="">생필품></p><br>
+                        <p>생필품></p><br>
                     </div>
                     <div id="Kategory5" onmouseover="handleMouseOver('Kategory5','ServeKategory5')">
-                        <p href="">의류></p><br>
+                        <p>의류></p><br>
                     </div>
                     <div id="Kategory6" onmouseover="handleMouseOver('Kategory6','ServeKategory6')">
-                        <p href="">도서></p><br>
+                        <p>도서></p><br>
                     </div>
                     <div id="Kategory7" onmouseover="handleMouseOver('Kategory7','ServeKategory7')">
-                        <p href="">가구></p><br>
+                        <p>가구></p><br>
                     </div>
                     <div id="Kategory8" onmouseover="handleMouseOver('Kategory8','ServeKategory8')">
-                        <p href="">가전></p><br>
+                        <p>가전></p><br>
                     </div>
                     <div id="Kategory9" onmouseover="handleMouseOver('Kategory9','ServeKategory9')">
-                        <p href="">스포츠></p><br>
+                        <p>스포츠></p><br>
                     </div>
                 </div>
                 <div id="serveMenucontainer">
@@ -83,14 +83,14 @@
                     <div id="serveMenubox">
                         <div id="KategoryContainer_Serve">
                             <div class="ServeKategorydisplay" id="ServeKategory1">
-                                <a style="width: 25%; margin: 0;" href=""><div class="image-container" 
+                                <a style="width: 25%; margin: 0;" href="category/list.do?k_idx=1"><div class="image-container" 
                                 onmouseover="changeimage(this, '고기')" onmouseout="restoreimage(this, '고기')">
                                     <img class="normal-image" src="resources/img/Headerimg/고기.png">
                                     <img class="Kategorymain-image" src="resources/img/Headerimg/카테고리메뉴배경.png">
                                     <h1>고기</h1>
                                 </div>
                             </a>
-                            <a style="width: 25%; margin: 0;" href="KategoryPage.html"><div class="image-container"  
+                            <a style="width: 25%; margin: 0;" href=""><div class="image-container"  
                                 onmouseover="changeimage(this, '야채')" onmouseout="restoreimage(this, '야채')">
                                     <img class="normal-image" src="resources/img/Headerimg/야채.png" style="width: 100%;">
                                     <img class="Kategorymain-image" src="resources/img/Headerimg/카테고리메뉴배경.png">

@@ -1,8 +1,11 @@
 @charset "UTF-8";
 
+    a {margin-left: 10px; text-decoration: none;color: inherit;font-weight: bold;}
+    a:hover {color: black;text-decoration: underline;}
+    
     #FinalMallLine img, #FoodSlide img, #FoodSlide2 img, #FoodSlide3 img,#KategoryMallLine img{border: 2px solid black;}
     /* ---------이벤트--------- */
-    #EventLine{width: 100%;display: flex;justify-content: center;}
+    #EventLine{width: 100%;display: flex;justify-content: center;overflow-x: hidden;}
     #EventLine #EventMall{margin-left: -6000px; height: 390px;position: relative;}
     #EventLine #EventMall img{position: absolute;}
     /* ---------이벤트--------- */
