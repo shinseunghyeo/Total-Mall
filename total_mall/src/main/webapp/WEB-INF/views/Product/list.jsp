@@ -14,36 +14,36 @@
             <div id="KategoryServemenuLine">
                 <h2>카테고리</h2>
                 <span>식품</span><br>
-                <a href="T_KategoryPage.html">>고기</a><br>
-                <a href="T_KategoryPage.html">>야채</a><br>
-                <a href="">>과일</a><br>
-                <a href="">>냉동</a><br><br>
+                <a href="Category.do?k_idx=1">>고기</a><br>
+                <a href="Category.do?k_idx=2">>야채</a><br>
+                <a href="Category.do?k_idx=3">>과일</a><br>
+                <a href="Category.do?k_idx=4">>냉동</a><br><br>
                 <span>홈데코</span><br>
-                <a href="">>주방</a><br>
-                <a href="">>커튼</a><br><br>
+                <a href="Category.do?k_idx=5">>주방</a><br>
+                <a href="Category.do?k_idx=6">>커튼</a><br><br>
                 <span>취미</span><br>
-                <a href="">>게임</a><br>
-                <a href="">>레고</a><br>
-                <a href="">>펫용품</a><br><br>
+                <a href="Category.do?k_idx=7">>게임</a><br>
+                <a href="Category.do?k_idx=8">>레고</a><br>
+                <a href="Category.do?k_idx=9">>펫용품</a><br><br>
                 <span>생필품</span><br>
-                <a href="">>생필품</a><br>
-                <a href="">>바디헤어</a><br><br>
+                <a href="Category.do?k_idx=10">>생필품</a><br>
+                <a href="Category.do?k_idx=11">>바디헤어</a><br><br>
                 <span>의류</span><br>
-                <a href="">>남성</a><br>
-                <a href="">>여성</a><br><br>
+                <a href="Category.do?k_idx=12">>남성</a><br>
+                <a href="Category.do?k_idx=13">>여성</a><br><br>
                 <span>도서</span><br>
-                <a href="">>교육</a><br>
-                <a href="">>소설</a><br>
-                <a href="">>해외</a><br><br>
+                <a href="Category.do?k_idx=14">>교육</a><br>
+                <a href="Category.do?k_idx=15">>소설</a><br>
+                <a href="Category.do?k_idx=16">>해외</a><br><br>
                 <span>가구</span><br>
-                <a href="">>생활</a><br>
-                <a href="">>침상</a><br><br>
+                <a href="Category.do?k_idx=17">>생활</a><br>
+                <a href="Category.do?k_idx=18">>침상</a><br><br>
                 <span>가전</span><br>
-                <a href="">>가전</a><br>
-                <a href="">>디지털</a><br><br>
+                <a href="Category.do?k_idx=19">>가전</a><br>
+                <a href="Category.do?k_idx=20">>디지털</a><br><br>
                 <span>스포츠</span><br>
-                <a href="">>축구</a><br>
-                <a href="">>골프</a>        
+                <a href="Category.do?k_idx=21">>축구</a><br>
+                <a href="Category.do?k_idx=22">>골프</a>        
             </div>
             <div id="KategoryProductLine">
                 <div id="KategoryProductContainer">
