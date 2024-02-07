@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -254,9 +255,18 @@
                 <img src="../resources/img/Headerimg/달력.png" width="20"><a href="${pageContext.request.contextPath}/nav/Attendance.do">출석체크</a>
             </div>
             <div id="LogLine">
-                <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
-                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-                <a href="">고객센터</a>
+            <c:choose>
+            	<c:when test="${not empty member }">
+            		<a href="">${member.member_name }님</a>
+	                <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+	                <a href="">고객센터</a>
+            	</c:when>
+            	<c:otherwise>
+            		<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+	                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
+	                <a href="">고객센터</a>
+            	</c:otherwise>
+            </c:choose>
             </div>
         </nav>
         <div id="SearchMenu">
