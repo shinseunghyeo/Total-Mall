@@ -1,6 +1,29 @@
+/* 우편번호 찾기 */
+function daumPost() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			//도로명일 경우 R, 지번일 경우 J 의 값을 가지고 있다.
+			console.log('data.userSelectedType : ' + data.userSelectedType)
+			console.log('data.roadAddress : ' + data.roadAddress)
+			console.log('data.jibunAddress : ' + data.jibunAddress)
+			console.log('data.zonecode : ' + data.zonecode)
+			var addr = ""
+			if (data.userSelectedType == 'R') {//도로명일 경우 R
+				addr = data.roadAddress
+			} else {//지번일 경우 J
+				addr = data.jibunAddress
+			}
+			document.getElementById("address1").value = data.zonecode
+			$("#address2").val(addr)
+			$("#address3").focus()
 
-/* 유효성 검사 */
+		}
+	}).open()
+
+}
+/* 우편번호 찾기 */
 $(function () {
+	/* 유효성 검사 */
     const regExp_id = /^[A-Za-z0-9~!@#$%^()+|=]{8,12}$/;
     const regExp_pw = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[~!@#$%^()+|=])[A-Za-z0-9~!@#$%^()+|=]{8,16}$/;
     const regExp_phone =/^010-\d{4}-\d{4}$/;
@@ -73,5 +96,15 @@ $(function () {
             idMessage.css("color", "red").text("아이디를 올바르게 입력해주세요.");
         }
     });
+    /* 유효성 검사 */
+    
+    
+
+        
+    
 });
-/* 유효성 검사 */
+
+
+
+
+

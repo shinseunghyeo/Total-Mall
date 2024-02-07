@@ -8,7 +8,7 @@
     <title>기업회원 회원가입 페이지1</title>
     <link rel="stylesheet" href="../resources/css/Member/sellerJoin.css">
     <script src="../resources/js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="../resources/js/Member/sellerJoin.js"></script>
+    
 </head>
 
 <body>
@@ -103,20 +103,20 @@
                                 <p>주소</p>
                             </div>
                             <div class="input-text2">
-                                <input type="button" value="우편번호 찾기" id="address-button">
+                                <input type="button" value="우편번호 찾기" id="address-button" onclick="daumPost();">
                                 <input type="text" name="address1" id="address1" placeholder="우편번호">
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1"></div>
                             <div class="input-text2">
-                                <input type="text" name="address2" id="" placeholder="주소">
+                                <input type="text" name="address2" id="address2" placeholder="주소">
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1"></div>
                             <div class="input-text2">
-                                <input type="text" name="address3" id="" placeholder="상세주소">
+                                <input type="text" name="address3" id="address2" placeholder="상세주소">
                                 <p id="address_test">상세주소를 적어주세요.</p>
                             </div>
                         </div>
@@ -134,4 +134,6 @@
     
 </body>
 
+<script type="text/javascript" src="../resources/js/Member/sellerJoin.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

@@ -104,20 +104,20 @@
                                 <p>주소</p>
                             </div>
                             <div class="input-text2">
-                                <input type="button" value="우편번호 찾기" id="address-button">
+                                <input type="button" value="우편번호 찾기" id="address-button" onclick="daumPost();">
                                 <input type="text" name="address1" id="address1" placeholder="우편번호">
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1"></div>
                             <div class="input-text2">
-                                <input type="text" name="address2" id="" placeholder="주소">
+                                <input type="text" name="address2" id="address2" placeholder="주소">
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-text1"></div>
                             <div class="input-text2">
-                                <input type="text" name="address3" id="" placeholder="상세주소">
+                                <input type="text" name="address3" id="address3" placeholder="상세주소">
                                 <p id="address_test">상세주소를 적어주세요.</p>
                             </div>
                         </div>
@@ -134,5 +134,5 @@
     </section>
     
 </body>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>
