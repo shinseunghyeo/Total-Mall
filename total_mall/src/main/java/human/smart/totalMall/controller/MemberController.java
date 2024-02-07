@@ -19,7 +19,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin;
+	MemberService mJoin, mLogin, mFindId;
 	
 	
 	
@@ -109,6 +109,26 @@ public class MemberController {
 		if(mJoin.join(memberVO)==1) {
 			viewPage = "redirect:/member/login.do";
 		}
+		return viewPage;
+	}
+	
+	//아이디/비밀번호찾기 페이지 요청
+	@GetMapping("/findidpw.do")
+	public String findidpw() {
+		return "member/findidpw";
+	}
+	
+	//아이디 찾기 처리
+	@PostMapping("/findId.do")
+	public String findId(String member_name, String email,Model model) {
+		String viewPage = "member/findidpw";
+		
+		MemberVO memberVO = mFindId.findId(member_name, email);
+		if(memberVO != null) {
+			model.addAttribute("memberVO", memberVO);
+			viewPage = "member/findid";
+		}
+		
 		return viewPage;
 	}
 	

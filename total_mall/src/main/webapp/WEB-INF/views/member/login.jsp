@@ -39,7 +39,7 @@
                             </div>
                             <div id="find-id">
                                 <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-                                <a href="find_id,pw.html">아이디/비밀번호 찾기</a>
+                                <a href="${pageContext.request.contextPath}/member/findidpw.do">아이디/비밀번호 찾기</a>
                             </div>
                         </div>
                         <div id="question">

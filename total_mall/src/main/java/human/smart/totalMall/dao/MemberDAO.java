@@ -1,6 +1,8 @@
 package human.smart.totalMall.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -26,5 +28,13 @@ public class MemberDAO {
 	//비밀번호 가져오기
 	public String getPassword(String member_id) {
 		return sqlSession.selectOne(MAPPER+".getPassword", member_id);
+	}
+	//아이디 찾기
+	public MemberVO findId(String member_name, String email) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("member_name", member_name);
+		map.put("email", email);
+		
+		return sqlSession.selectOne(MAPPER+".findId", map);
 	}
 }
