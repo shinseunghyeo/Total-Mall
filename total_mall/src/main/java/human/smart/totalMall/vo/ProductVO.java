@@ -9,7 +9,7 @@ public class ProductVO {
 	private int p_idx;
 	private String category_name;
 	private String product_name;
-	private int product_code;
+	private String product_code;
 	private String brand;
 	private String summary;
 	private String detail;

@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <div id="KategoryPage">
+    <div id="CategoryPage">
         <h3 style="color: #3498db;">추천 검색어 > 돼지고기 / 소고기 / 닭고기</h3>
-        <div id="KategoryServeLine">
-            <div id="KategoryServemenuLine">
+        <div id="CategoryServeLine">
+            <div id="CategoryServemenuLine">
                 <h2>카테고리</h2>
                 <span>식품</span><br>
-                <a href="T_KategoryPage.html">>고기</a><br>
-                <a href="T_KategoryPage.html">>야채</a><br>
+                <a href="T_CategoryPage.html">>고기</a><br>
+                <a href="T_CategoryPage.html">>야채</a><br>
                 <a href="">>과일</a><br>
                 <a href="">>냉동</a><br><br>
                 <span>홈데코</span><br>

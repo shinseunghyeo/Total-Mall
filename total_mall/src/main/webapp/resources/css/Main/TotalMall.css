@@ -3,7 +3,7 @@
     a {margin-left: 10px; text-decoration: none;color: inherit;font-weight: bold;}
     a:hover {color: black;text-decoration: underline;}
     
-    #FinalMallLine img, #FoodSlide img, #FoodSlide2 img, #FoodSlide3 img,#KategoryMallLine img{border: 2px solid black;}
+    #FinalMallLine img, #FoodSlide img, #FoodSlide2 img, #FoodSlide3 img,#CategoryMallLine img{border: 2px solid black;}
     /* ---------이벤트--------- */
     #EventLine{width: 100%;display: flex;justify-content: center;overflow-x: hidden;}
     #EventLine #EventMall{margin-left: -6000px; height: 390px;position: relative;}
@@ -31,25 +31,25 @@
     /* ---------오늘의 상품--------- */
 
     /* ---------카테고리 추천 상품--------- */
-    .KategoryBestLine{width: 950px; height: 300px;margin: auto;}
-    .KategoryBestLine .Kategory_LeftArrow{width: 2%; height: 60px;}
-    .KategoryBestLine .KategoryBest{display: flex;justify-content: center;align-items: center;text-align: center;}
-    .KategoryBestLine .KategoryBestContainer{width: 1000px;height: 250px;overflow: hidden;position: relative;}
+    .CategoryBestLine{width: 950px; height: 300px;margin: auto;}
+    .CategoryBestLine .Category_LeftArrow{width: 2%; height: 60px;}
+    .CategoryBestLine .CategoryBest{display: flex;justify-content: center;align-items: center;text-align: center;}
+    .CategoryBestLine .CategoryBestContainer{width: 1000px;height: 250px;overflow: hidden;position: relative;}
     #FoodSlide div{transition: margin-left 1s;}
     #FoodSlide, #FoodSlide2, #FoodSlide3{height: 250px;position: absolute;display: flex;transition: margin-left 0.4s;}
-    .KategoryBestbox{width: 900px; display: flex;gap: 30px;justify-content: center;align-items: center;margin-left: 0px;}
-    .KategoryBestbox img{width: 100%;height: 190px;}
-    .KategoryBestbox div{width: 30%;}
+    .CategoryBestbox{width: 900px; display: flex;gap: 30px;justify-content: center;align-items: center;margin-left: 0px;}
+    .CategoryBestbox img{width: 100%;height: 190px;}
+    .CategoryBestbox div{width: 30%;}
     /* ---------카테고리 추천 상품--------- */
 
     /* ---------카테고리별 상품--------- */
-    #KategoryMallLine{width: 950px; height: 5900px;margin: auto;margin-top: 50px;}
-    #KategoryMallLine .KategoryMall{width: 950px;margin: auto; height: 600px;display: flex;text-align: center;gap: 10px;margin-bottom: 50px;}
-    #KategoryMallLine .KategoryMallMainimg{width: 25%;height: 554px;}
-    #KategoryMallLine .KategoryMallMenu{width: 75%;}
-    #KategoryMallLine .KategoryMallbox{width: 100%;display: flex;gap: 10px;}
-    #KategoryMallLine .KategoryMallbox div{width: 33%;}
-    #KategoryMallLine .KategoryMallbox img{width: 100%;height: 250px;}
+    #CategoryMallLine{width: 950px; height: 5900px;margin: auto;margin-top: 50px;}
+    #CategoryMallLine .CategoryMall{width: 950px;margin: auto; height: 600px;display: flex;text-align: center;gap: 10px;margin-bottom: 50px;}
+    #CategoryMallLine .CategoryMallMainimg{width: 25%;height: 554px;}
+    #CategoryMallLine .CategoryMallMenu{width: 75%;}
+    #CategoryMallLine .CategoryMallbox{width: 100%;display: flex;gap: 10px;}
+    #CategoryMallLine .CategoryMallbox div{width: 33%;}
+    #CategoryMallLine .CategoryMallbox img{width: 100%;height: 250px;}
     /* ---------카테고리별 상품--------- */
 
     /* ---------마지막 상품--------- */

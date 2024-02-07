@@ -1,4 +1,3 @@
-
 let foodimgnum=1;
 let foodcount=0;
     for(let i = 1; i<8; i++){
@@ -11,7 +10,7 @@ let foodcount=0;
 function PakgeImg(foodnum, Food){
     var FoodImg = document.getElementById("FoodImg");
     var FoodId = document.getElementById(Food);
-    FoodImg.src = "Mallimg/식품" + foodnum + ".jpg";
+    FoodImg.src = "../resources/img/Mallimg/식품" + foodnum + ".jpg";
     foodimgnum = foodnum;
     for(let i = 1; i<8; i++){
         var FoodI = document.getElementById('FoodImg' + i);
@@ -35,7 +34,7 @@ function EventSlide(){
         }
         var FoodI = document.getElementById('FoodImg' + foodimgnum);
         var FoodImg = document.getElementById("FoodImg");
-        FoodImg.src = "Mallimg/식품" + foodimgnum + ".jpg";
+        FoodImg.src = "../resources/img/Mallimg/식품" + foodimgnum + ".jpg";
         FoodI.style.backgroundColor = 'navy';
         foodcount=0;
     }

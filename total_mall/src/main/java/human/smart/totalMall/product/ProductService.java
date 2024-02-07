@@ -1,4 +1,4 @@
-package human.smart.totalMall.Category;
+package human.smart.totalMall.product;
 
 import human.smart.totalMall.vo.ProductVO;
 
