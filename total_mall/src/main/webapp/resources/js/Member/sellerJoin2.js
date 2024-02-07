@@ -1,6 +1,7 @@
 
-/* 유효성 검사 */
+
 $(function () {
+	/* 유효성 검사 */
     function checkRnameValidity() {
         if (frm_join.representative_name.value.length == 0) {
             $("#representative_name_test").css("color", "red")
@@ -80,5 +81,7 @@ $(function () {
             idMessage.css("color", "red").text("아이디를 올바르게 입력해주세요.");
         }
     });
+    /* 유효성 검사 */
+
 });
-/* 유효성 검사 */
+

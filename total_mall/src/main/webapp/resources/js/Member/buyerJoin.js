@@ -1,4 +1,27 @@
+/* 우편번호 찾기 */
+function daumPost() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			//도로명일 경우 R, 지번일 경우 J 의 값을 가지고 있다.
+			console.log('data.userSelectedType : ' + data.userSelectedType)
+			console.log('data.roadAddress : ' + data.roadAddress)
+			console.log('data.jibunAddress : ' + data.jibunAddress)
+			console.log('data.zonecode : ' + data.zonecode)
+			var addr = ""
+			if (data.userSelectedType == 'R') {//도로명일 경우 R
+				addr = data.roadAddress
+			} else {//지번일 경우 J
+				addr = data.jibunAddress
+			}
+			document.getElementById("address1").value = data.zonecode
+			$("#address2").val(addr)
+			$("#address3").focus()
 
+		}
+	}).open()
+
+}
+/* 우편번호 찾기 */
 /* 유효성 검사 */
 $(function () {
     const regExp_id = /^[A-Za-z0-9~!@#$%^()+|=]{8,12}$/;
