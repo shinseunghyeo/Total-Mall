@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+
+   
+    #section-wrap{
+        margin: 0 auto;
+        background-color: rgb(224, 224, 224);
+        width: 1100px;
+        height: 500px;
+        /* height: 50px; */
+    }
+    #section-1{
+        margin: 0 auto;
+        padding-top: 70px;
+    }
+    
+    #white-board{
+        margin: 0 auto;
+        width: 500px;
+        background-color: white;
+        height: 330px;
+        border-radius: 15px 15px 15px 15px ;
+    }
+    #white-board2{
+        margin: 0 auto;
+        width: 500px;
+        background-color: white;
+        height: 330px;
+        border-radius: 15px 15px 15px 15px ;
+    }
+    #white-board-top{
+        display: flex;
+        height: 50px;
+    }
+    #find-id{
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 15px 0 0 0;
+    }
+    #find-pw{
+        background-color: gray;
+        color: white;
+        border-radius: 0 15px 0 0;
+    }
+    #find-id:hover, #find-pw:hover, #find-id2:hover, #find-pw2:hover{
+        cursor: pointer;
+    }
+    #find-id2{
+        background-color: gray;
+        color: white;
+        border-radius: 15px 0 0 0;
+
+    }
+    #find-pw2{        
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 0 15px 0 0;;
+    }
+    #find-id, #find-pw{
+        width: 50%;
+        text-align: center;
+        line-height: 50px;
+    }
+    #find-id2, #find-pw2{
+        width: 50%;
+        /* border-bottom: 1px solid gray; */
+        text-align: center;
+        line-height: 50px;
+    }
+    #find-id p, #find-pw p{
+        margin: 0px;
+        font-size: 23px;
+        font-weight: 550;
+    }
+    #find-id2 p, #find-pw2 p{
+        margin: 0px;
+        font-size: 23px;
+        font-weight: 550;
+    }
+    #find-pw{
+        border-left: 1px solid gray;
+    }
+    #find-pw2{
+        border-left: 1px solid gray;
+    }
+    #white-board-bottom{
+        text-align: center;
+        margin-top: 30px;
+    }
+    #white-board-bottom p{
+        color: white;
+    }
+    .input{
+        width: 330px;
+        height: 40px;
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+    #input-id{
+        border-bottom: 0;
+    }
+    input[type="submit"]:hover{
+        cursor: pointer;
+    }
+    #id-submit{
+        width: 330px;
+        height: 50px;
+        border-radius: 15px 15px 15px 15px;
+        border: 0;
+        background-color: rgb(52, 152, 219);
+        font-size: 20px;
+        font-weight: 800;
+        color: white;
+    }
+    #white-board{
+        display: block;
+    }
+    #white-board2{
+        display: none;
+    }
+    
+    
