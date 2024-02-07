@@ -17,9 +17,9 @@ public class ProductController {
     private ProductService cList;
 
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
-    public String list(int p_idx, Model model) {
-        ProductVO vo = cList.getProduct(p_idx);
+    public String list(String category, Model model) {
+        ProductVO vo = cList.getProduct(category);
         model.addAttribute("category", vo);
-        return "category/list";
+        return "Product/list";
     }
 }
