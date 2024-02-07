@@ -8,6 +8,16 @@
  		insert into tb_member (member_id, member_pw, member_name, handphone, email, address1, address2, address3, categorie, representative_name, company_number, mutual, mail_order_number, account1, account2, depositor_name)
 			values(#{member_id},#{member_pw},#{member_name},#{handphone},#{email},#{address1},#{address2},#{address3}, #{categorie}, #{representative_name}, #{company_number}, #{mutual}, #{mail_order_number}, #{account1}, #{account2}, #{depositor_name})
  	</insert>
- 
+ 	
+ 	<!-- 로그인 -->
+ 	<select id="login" parameterType="string" resultType="memberVO">
+ 		select * from tb_member
+ 			where member_id=#{member_id}
+ 	</select>
+ 	
+ 	<!-- 비밀번호 가져오기 -->
+	<select id="getPassword" parameterType="string" resultType="string">
+		select member_pw from tb_member where member_id=#{member_id} and cancel_or_not=0
+	</select>
  
 </mapper>

@@ -13,7 +13,7 @@
         <section>
             <div id="section-wrap">
                 <div class="white-board" id="buyerSection">
-                    <form action="">
+                    <form method="post" action="loginProcess.do">
                         <div id="logo2">
                             <img src="../resources/img/Headerimg/사이트로고.png" alt="#">
                         </div>
@@ -25,10 +25,10 @@
                             </div>
                         </div>
                         <div id="id">
-                            <input type="text" name="" id="text-id" placeholder="아이디">
+                            <input type="text" name="member_id" id="text-id" placeholder="아이디">
                         </div>
                         <div id="pw">
-                            <input type="text" name="" id="text-pw" placeholder="비밀번호">
+                            <input type="password" name="member_pw" id="text-pw" placeholder="비밀번호">
                         </div>
                         <div id="another">
                             <div id="id-check">

@@ -1,6 +1,7 @@
 package human.smart.totalMall.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin;
+	MemberService mJoin, mLogin;
 	
 	
 	
@@ -28,6 +29,31 @@ public class MemberController {
 	@GetMapping("/login.do")
 	public String login() {
 		return "member/login";
+	}
+	//로그인 처리 요청
+	@PostMapping("/loginProcess.do")
+	public String loginProcess(String member_id, String member_pw,
+								HttpServletRequest request, Model model) {
+		String viewPage = "member/login";
+		
+		MemberVO memberVO = mLogin.login(member_id, member_pw);
+		
+		if(memberVO != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", memberVO);
+			viewPage = "redirect:/TotalMall.do";
+		}
+			
+		
+		return viewPage;
+	}
+	
+	//로그아웃 처리 요청
+	@GetMapping("/logout.do")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/TotalMall.do";
 	}
 	
 	//회원가입 페이지 요청
