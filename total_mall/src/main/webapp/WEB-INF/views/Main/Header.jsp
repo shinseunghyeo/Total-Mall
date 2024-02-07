@@ -84,7 +84,7 @@
                     <div id="serveMenubox">
                         <div id="KategoryContainer_Serve">
                             <div class="ServeKategorydisplay" id="ServeKategory1">
-                                <a style="width: 25%; margin: 0;" href="category/list.do?k_idx=1"><div class="image-container" 
+                                <a style="width: 25%; margin: 0;" href="category/list.do?p_idx=1"><div class="image-container" 
                                 onmouseover="changeimage(this, '고기')" onmouseout="restoreimage(this, '고기')">
                                     <img class="normal-image" src="resources/img/Headerimg/고기.png">
                                     <img class="Kategorymain-image" src="resources/img/Headerimg/카테고리메뉴배경.png">
