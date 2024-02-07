@@ -5,8 +5,8 @@
 <mapper namespace="human.smart.totalMall.ProductMapper">
 
 	<!-- 하나의 게시글 조회: select -->
-	<select id="getProduct" parameterType="ProductVO">
-		select * from tb_product where p_idx = #{p_idx}
+	<select id="getProduct" parameterType="string" resultType="productVO">
+		select * from tb_product where category = #{category}
 	</select>
 
 </mapper>

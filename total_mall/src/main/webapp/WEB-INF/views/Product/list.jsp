@@ -9,7 +9,7 @@
 <body>
     <!-- ---------카테고리 페이지--------- -->
     <div id="KategoryPage">
-        <h3 style="color: #3498db;">홈> 식품> 과일</h3>
+        <h3 style="color: #3498db;">홈> 식품> 과일 ${category.p_idx }</h3>
         <div id="KategoryServeLine">
             <div id="KategoryServemenuLine">
                 <h2>카테고리</h2>

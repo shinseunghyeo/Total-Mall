@@ -84,14 +84,14 @@
                     <div id="serveMenubox">
                         <div id="KategoryContainer_Serve">
                             <div class="ServeKategorydisplay" id="ServeKategory1">
-                                <a style="width: 25%; margin: 0;" href="category/list.do?p_idx=1"><div class="image-container" 
+                                <a style="width: 25%; margin: 0;" href="category/list.do?category=meat"><div class="image-container" 
                                 onmouseover="changeimage(this, '고기')" onmouseout="restoreimage(this, '고기')">
                                     <img class="normal-image" src="resources/img/Headerimg/고기.png">
                                     <img class="Kategorymain-image" src="resources/img/Headerimg/카테고리메뉴배경.png">
                                     <h1>고기</h1>
                                 </div>
                             </a>
-                            <a style="width: 25%; margin: 0;" href=""><div class="image-container"  
+                            <a style="width: 25%; margin: 0;" href="category/list.do"><div class="image-container"  
                                 onmouseover="changeimage(this, '야채')" onmouseout="restoreimage(this, '야채')">
                                     <img class="normal-image" src="resources/img/Headerimg/야채.png" style="width: 100%;">
                                     <img class="Kategorymain-image" src="resources/img/Headerimg/카테고리메뉴배경.png">
