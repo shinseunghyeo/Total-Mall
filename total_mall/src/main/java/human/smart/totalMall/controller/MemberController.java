@@ -19,7 +19,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId;
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess;
 	
 	
 	
@@ -127,10 +127,39 @@ public class MemberController {
 		if(memberVO != null) {
 			model.addAttribute("memberVO", memberVO);
 			viewPage = "member/findid";
+		}else {
+			model.addAttribute("msg", "이름과 이메일에 맞는 아이디가 없습니다.");
 		}
 		
 		return viewPage;
 	}
 	
-
+	//비밀번호 찾기 처리
+	@PostMapping("/findPw.do")
+	public String findPw(String member_id, String email, Model model) {
+		String viewPage = "member/findidpw";
+		MemberVO memberVO = mFindPw.findPw(member_id, email);
+		
+		
+		if(memberVO != null) {
+			model.addAttribute("memberVO", memberVO);
+			viewPage = "member/findPw";
+		}else {
+			model.addAttribute("msg2", "아이디와 이메일에 맞는 아이디가 없습니다.");
+		}
+		
+		return viewPage;
+	}
+	
+	//비밀번호 변경 처리
+	@PostMapping("/findPwProcess.do")
+	public String findPwProcess(MemberVO memberVO) {
+		String viewPage = "member/findPw";
+		
+		MemberVO newVO = mFindPwProcess.findPwProcess(memberVO);
+		if(newVO != null) {
+			viewPage = "redirect:/TotalMall.do";
+		}
+		return viewPage;
+	}
 }
