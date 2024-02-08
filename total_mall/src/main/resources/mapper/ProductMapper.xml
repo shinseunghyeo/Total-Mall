@@ -6,7 +6,21 @@
 
 	<!-- 하나의 게시글 조회: select -->
 	<select id="getProduct" parameterType="string" resultType="productVO">
-		select * from tb_product where category = #{category}
+		select * from tb_product where category_name = #{category_name}
 	</select>
 
+	<!-- 글등록: insert -->
+		<insert id="insert" parameterType="ProductVO">
+			<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
+			<choose>
+				<when test="origin_file_name1 != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수 -->
+					insert into tb_product (m_idx, category_name, product_name, product_code, brand, summary, detail,start_date,end_date,p_origin_file_name1,p_save_file_name1,price,sales_unit,p_reg_date,p_last_modified_date)
+						   values(#{m_idx},#{category_name}, #{product_name}, #{product_code}, #{brand}, #{summary}, #{detail},#{start_date},#{end_date},#{p_origin_file_name1},#{p_save_file_name1},#{price},#{sales_unit},#{p_reg_date},#{p_last_modified_date})
+				</when>
+				<otherwise>
+					insert into tb_product (m_idx, category_name, product_name, product_code, brand, summary, detail,start_date,end_date,price,sales_unit,p_reg_date,p_last_modified_date)
+						   values(#{m_idx},#{category_name}, #{product_name}, #{product_code}, #{brand}, #{summary}, #{detail},#{start_date},#{end_date},#{price},#{sales_unit},#{p_reg_date},#{p_last_modified_date})
+				</otherwise>
+			</choose>
+		</insert>
 </mapper>
