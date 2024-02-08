@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------이벤트--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>

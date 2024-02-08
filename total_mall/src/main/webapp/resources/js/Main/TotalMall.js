@@ -49,12 +49,12 @@ function EventSlide() {
 }
 function FoodSlideLeft(Food){
     if(parseInt(Food.style.marginLeft)<0){
-        Food.style.marginLeft = parseInt(Food.style.marginLeft)+900+"px";
+        Food.style.marginLeft = parseInt(Food.style.marginLeft)+1000+"px";
     }
 }
 function FoodSlideRight(Food){
-    if(parseInt(Food.style.marginLeft)>-3600){
-        Food.style.marginLeft = parseInt(Food.style.marginLeft)-900+"px";
+    if(parseInt(Food.style.marginLeft)>-4000){
+        Food.style.marginLeft = parseInt(Food.style.marginLeft)-1000+"px";
     }
 }
 RunTime();

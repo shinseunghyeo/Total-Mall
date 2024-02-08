@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------토탈붐--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>
