@@ -26,5 +26,23 @@
 		 		 where member_name=#{member_name} and email=#{email} 
 		 		 and cancel_or_not=0
  	</select>
- 
+ 	
+ 	<!-- 비밀번호 찾기 -->
+	<select id="findPw" parameterType="map" resultType="memberVO">
+ 		select * from tb_member 
+		 		 where member_id=#{member_id} and email=#{email} 
+		 		 and cancel_or_not=0
+ 	</select>
+ 	
+ 	<!-- 비밀번호 변경 -->
+	<update id="findPwProcess" parameterType="memberVO">
+		update tb_member set member_pw=#{member_pw}, last_modified_date=now()
+				         where m_idx=#{m_idx}
+	
+	</update>
+ 	
+ 	<!-- 한 명의 회원정보 가져오기 -->
+ 	<select id="getMember" parameterType="_int" resultType="memberVO">
+		select * from tb_member where m_idx = #{m_idx}
+	</select> 
 </mapper>

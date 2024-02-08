@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,13 +29,20 @@
                         <div id="white-board-bottom">
                             <input type="text" name="member_name" id="input-id" placeholder="이름" class="input">
                             <input type="text" name="email" id="" placeholder="이메일" class="input">
-                            <p>이메일 규칙에 맞춰서 적어주세요</p>
+                            <c:choose>
+                            	<c:when test="${not empty msg }">
+                            		<c:out value="<p> ${msg} </p>" escapeXml="false" />
+                            	</c:when>
+                            	<c:otherwise>
+                            		<c:out value="<p> 가입시 작성한 이름과 이메일을 적어주세요</p>" escapeXml="false" />
+                            	</c:otherwise>
+                            </c:choose>
                             <input type="submit" value="아이디 찾기" id="id-submit">
                         </div>
                     </form>
                 </div>
                 <div id="white-board2">
-                    <form action="find_pw2.html">
+                    <form method="post" action="findPw.do">
                         <div id="white-board-top">
                             <div id="find-id2">
                                 <p onclick="userTypeChange('findId')">아이디 찾기</p>
@@ -46,7 +54,14 @@
                         <div id="white-board-bottom">
                             <input type="text" name="member_id" id="input-id" placeholder="아이디" class="input">
                             <input type="text" name="email" id="" placeholder="이메일" class="input">
-                            <p>아이디, 이메일 규칙에 맞춰서 적어주세요</p>
+                            <c:choose>
+                            	<c:when test="${not empty msg2 }">
+                            		<c:out value="<p> ${msg2} </p>" escapeXml="false" />
+                            	</c:when>
+                            	<c:otherwise>
+                            		<c:out value="<p> 가입시 작성한 아이디와 이메일을 적어주세요</p>" escapeXml="false" />
+                            	</c:otherwise>
+                            </c:choose>
                             <input type="submit" value="비밀번호 재설정" id="id-submit">
                         </div>
                     </form>

@@ -11,3 +11,4 @@ function userTypeChange(userType){
         whiteBoard2.style.display = "block"
     }
 }
+

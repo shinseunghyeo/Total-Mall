@@ -29,8 +29,12 @@
                             <div id="id-bottom">
                                 <p>${memberVO.member_id }</p>
                             </div>
-                            <input type="submit" value="로그인 하러 가기" class="find-id-button2">
+                            <a href="${pageContext.request.contextPath}/member/login.do">
+                            <input type="button" value="로그인 하러 가기" class="find-id-button2">
+                            </a>
+                            <a href="${pageContext.request.contextPath}/member/findidpw.do">
                             <input type="button" value="비밀번호 재설정" class="find-id-button2">
+                            </a>
                         </div>
                     </form>
                 </div>
