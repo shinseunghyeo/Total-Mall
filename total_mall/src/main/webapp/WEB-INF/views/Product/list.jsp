@@ -162,6 +162,7 @@
             </div>
         </div>
     </div>
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 <script type="text/javascript" src="../resources/js/Product/list.js"></script>
 </html>

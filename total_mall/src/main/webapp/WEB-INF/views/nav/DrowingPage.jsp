@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------드로윙--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>

@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------1000상품--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>

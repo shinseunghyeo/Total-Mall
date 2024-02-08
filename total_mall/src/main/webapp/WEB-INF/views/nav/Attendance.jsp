@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------출석체크--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>

@@ -19,7 +19,7 @@
     <!-- ---------이벤트--------- -->
     <!-- ---------오늘의 상품--------- -->
     <div style="width: 100%;">
-        <h2 style="margin: auto;width: 950px;">오늘의 상품</h2><br>
+        <h2 style="margin: auto;width: 1050px;">오늘의 상품</h2><br>
     </div>
     <div id="TodayMallServeLine">
         <div id="TodayMallServeLeft">
@@ -709,7 +709,7 @@
         </div>
     </div>
     <!-- ---------마지막 상품--------- -->
-
+  	<%@ include file="Main/MainFooter.jsp" %>
 </body>
 <script type="text/javascript" src="resources/js/Main/TotalMall.js"></script>
 </html>

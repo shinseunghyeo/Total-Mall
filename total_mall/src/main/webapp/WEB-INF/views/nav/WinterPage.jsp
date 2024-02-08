@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------겨울축제--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>

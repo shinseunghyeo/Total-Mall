@@ -1,1 +1,11 @@
 @charset "UTF-8";
+
+    footer{width: 100%;height: 270px;}
+    .footerline_color{opacity: 0.2;}
+    .footerline_color2{opacity: 0.5;}
+    #Footerline{width: 1050px; margin: auto;font-size: 12px;}
+    #Footerline a{margin: 0;}
+    #Footerline #Utility_box span{margin: 0 20px;margin-top: -1px;opacity: 0.5;}
+    #Footerline #Company_box{display: flex;}
+    #Footerline #Company_box p{margin: 0; width: 50%;}
+    #Footerline #Company_box span{font-weight: bold;font-size: 14px;}

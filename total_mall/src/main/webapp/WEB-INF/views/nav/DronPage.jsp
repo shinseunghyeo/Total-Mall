@@ -18,5 +18,6 @@
         </div>
     </div>
     <!-- ---------드론배송--------- -->
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>
