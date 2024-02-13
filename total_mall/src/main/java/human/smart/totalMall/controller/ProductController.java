@@ -37,12 +37,12 @@ public class ProductController {
 
         return "Product/item";
     }
-    @GetMapping("/serch.do") // 임시
-    public String serch(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
+    @GetMapping("/search.do") // 임시
+    public String search(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
     	List<ProductVO> boardList = cList.getProducts(searchVO);
     	model.addAttribute("boardList", boardList);
 
-        return "Product/serch";
+        return "Product/search";
     }
     
   //제품등록 페이지 요청 처리
