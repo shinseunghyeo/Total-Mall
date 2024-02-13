@@ -142,13 +142,13 @@
 		<c:otherwise>
 			<c:forEach begin="1" end="5" varStatus="vs">
                     <div class="CategoryProduct">
-                        <a href="${pageContext.request.contextPath}/product/item.do">
+                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${boardList[vs.count-1].p_idx}">
                         	<img src="../resources/img/Mallimg/${boardList[vs.count-1].save_file_name1}">
                        	</a>
-                        <a href="${pageContext.request.contextPath}/product/item.do">
+                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${boardList[vs.count-1].p_idx}">
                         	${boardList[vs.count-1].summary}
                         </a>
-                        <a href="${pageContext.request.contextPath}/product/item.do">
+                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${boardList[vs.count-1].p_idx}">
 	                        ${boardList[vs.count-1].price}원
                         </a>
                     </div>
