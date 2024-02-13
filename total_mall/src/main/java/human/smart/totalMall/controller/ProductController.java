@@ -61,5 +61,11 @@ public class ProductController {
   		
   		return viewPage;
   	}
-    
+  	
+  	
+  	//장바구니 페이지 요청 처리
+  	@GetMapping("/cart.do")
+	public String cart() {
+		return "Product/cart";
+	}
 }

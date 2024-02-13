@@ -34,7 +34,9 @@
             </div>
             <div id="UserIcon">
                 <img src="../resources/img/Headerimg/사용자 아이콘.png" width="40">
-                <img src="../resources/img/Headerimg/장바구니 아이콘.png" width="40">
+                <a href="${pageContext.request.contextPath}/product/cart.do">
+                	<img src="resources/img/Headerimg/장바구니 아이콘.png" width="40">
+                </a>
                 <img onclick="ServeMall()" src="../resources/img/Headerimg/서브 아이콘.png" width="40">
             </div>
         </div>
