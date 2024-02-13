@@ -22,17 +22,17 @@
                 <a href="${pageContext.request.contextPath}/TotalMall.do"><img src="resources/img/Headerimg/사이트로고.png" width="130"></a>
             </div>
             <form method="get" action="product/search.do">
-            <div id="SearchContainer">
-                <div id="SearchLine">
-                    <select>
-                        <option value="전체">전체</option>
-                        <option value="의류">의류</option>
-                        <option value="신발">신발</option>
-                    </select><hr>
-                    <input type="text" placeholder="검색창" name="searchWord">
-                    <button type="submit"><img src="resources/img/Headerimg/검색.png"></button>
-                </div>
-            </div>
+	            <div id="SearchContainer">
+	                <div id="SearchLine">
+	                    <select>
+	                        <option value="전체">전체</option>
+	                        <option value="의류">의류</option>
+	                        <option value="신발">신발</option>
+	                    </select><hr>
+	                    <input type="text" placeholder="검색창" name="searchWord">
+	                    <button style="border: none;background: none;" type="submit"><img src="resources/img/Headerimg/검색.png"></button>
+	                </div>
+	            </div>
 			</form>
 
             <div id="UserIcon">

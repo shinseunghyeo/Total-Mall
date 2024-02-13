@@ -17,7 +17,7 @@
     #MainLine #SearchContainer{width: 50%; margin: auto;margin-left: 30px;}
     #MainLine #SearchLine{width: 610px; height: 40px; background-color: white;border: 2px solid #3498db;border-radius: 30px;display: flex;align-items: center;}
     #MainLine #SearchLine select{width: 20%;border-radius: 30px;}
-    #MainLine #SearchLine input{width: 80%;border-radius: 30px; outline: none;}
+    #MainLine #SearchLine input[type="text"]{width: 80%;border-radius: 30px; outline: none;}
     #MainLine #SearchLine img{width: 25px;height: 25px;z-index: 10;padding-right: 10px;}
     #MainLine #UserIcon{width: 20%;text-align: end;margin-right: 25px;}
     #MainLine #UserIcon img{margin-left: 20px;}

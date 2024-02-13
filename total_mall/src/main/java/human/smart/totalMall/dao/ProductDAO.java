@@ -32,5 +32,8 @@ public class ProductDAO{
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);
 	}
+	public List<ProductVO> getProducts2(SearchVO vo){
+		return sqlSession.selectList(MAPPER+".getProducts2", vo);
+	}
 
 }
