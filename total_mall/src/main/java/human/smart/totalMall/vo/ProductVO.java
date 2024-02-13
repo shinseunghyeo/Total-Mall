@@ -6,8 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class ProductVO {
@@ -34,4 +32,5 @@ public class ProductVO {
 	
 	
 	private MultipartFile uploadFile;
+	private MultipartFile uploadFile2;
 }
