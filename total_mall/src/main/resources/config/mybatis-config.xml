@@ -8,6 +8,7 @@
  	<typeAliases>
  		<typeAlias alias="memberVO" type="human.smart.totalMall.vo.MemberVO" />
  		<typeAlias alias="productVO" type="human.smart.totalMall.vo.ProductVO" />
+ 		<typeAlias alias="searchVO" type="human.smart.totalMall.vo.SearchVO" />
  		
  		
  	</typeAliases>

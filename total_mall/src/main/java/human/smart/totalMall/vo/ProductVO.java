@@ -13,7 +13,7 @@ import lombok.Setter;
 public class ProductVO {
 	private int p_idx;
 	private int m_idx;//회원 번호
-	private String category_name;
+	private String category;
 	private String product_name;
 	private String product_code;
 	private String brand;

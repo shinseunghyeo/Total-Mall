@@ -1,9 +1,12 @@
 package human.smart.totalMall.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.SearchVO;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -26,4 +29,8 @@ public class ProductDAO{
 	public int insert(ProductVO vo) {
 		return sqlSession.insert(MAPPER + ".insert", vo);
 	}
+	public List<ProductVO> getProducts(SearchVO vo){
+		return sqlSession.selectList(MAPPER+".getProducts", vo);
+	}
+
 }
