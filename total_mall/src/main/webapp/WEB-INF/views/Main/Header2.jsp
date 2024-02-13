@@ -50,31 +50,31 @@
                         <h2 style="margin: 0;margin-left: 10px;color: white;">전체 카테고리</h2><br>
                     </div>
                     <div id="Category1" onmouseover="handleMouseOver('Category1','ServeCategory1')">
-                        <p href="">식품></p><br>
+                        <p>식품></p><br>
                     </div>
                     <div id="Category2" onmouseover="handleMouseOver('Category2','ServeCategory2')">
-                        <p href="">홈데코></p><br>
+                        <p>홈데코></p><br>
                     </div>
                     <div id="Category3" onmouseover="handleMouseOver('Category3','ServeCategory3')">
-                        <p href="">취미></p><br>
+                        <p>취미></p><br>
                     </div>
                     <div id="Category4" onmouseover="handleMouseOver('Category4','ServeCategory4')">
-                        <p href="">생필품></p><br>
+                        <p>생필품></p><br>
                     </div>
                     <div id="Category5" onmouseover="handleMouseOver('Category5','ServeCategory5')">
-                        <p href="">의류></p><br>
+                        <p>의류></p><br>
                     </div>
                     <div id="Category6" onmouseover="handleMouseOver('Category6','ServeCategory6')">
-                        <p href="">도서></p><br>
+                        <p>도서></p><br>
                     </div>
                     <div id="Category7" onmouseover="handleMouseOver('Category7','ServeCategory7')">
-                        <p href="">가구></p><br>
+                        <p>가구></p><br>
                     </div>
                     <div id="Category8" onmouseover="handleMouseOver('Category8','ServeCategory8')">
-                        <p href="">가전></p><br>
+                        <p>가전></p><br>
                     </div>
                     <div id="Category9" onmouseover="handleMouseOver('Category9','ServeCategory9')">
-                        <p href="">스포츠></p><br>
+                        <p>스포츠></p><br>
                     </div>
                 </div>
                 <div id="serveMenucontainer">

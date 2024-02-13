@@ -1,24 +1,20 @@
 package human.smart.totalMall.product;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import human.smart.totalMall.dao.ProductDAO;
 import human.smart.totalMall.vo.ProductVO;
-import human.smart.totalMall.vo.SearchVO;
 import lombok.AllArgsConstructor;
 
-@Service("cList")
+@Service("pitem")
 @AllArgsConstructor
-public class ProductlistService implements ProductService {
+public class ProductitemService implements ProductService {
 	
 	private ProductDAO dao;
 
 	@Override
-	public List<ProductVO> getProducts(SearchVO vo){
-		vo.setStartIdx((vo.getPageNum()-1)*10);
-		return dao.getProducts(vo);
+	public ProductVO getProduct(String category) {
+		return dao.getProduct(category);
 	}
-
+	
 }

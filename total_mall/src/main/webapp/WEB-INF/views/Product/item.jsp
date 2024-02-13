@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/product/item.css">
 </head>
 <body>
+  	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------상품상세보기--------- -->
     <div id="ProductdetailLine">
         <h3>홈> 식품> 고기> 삼겹살</h3>
@@ -192,5 +194,7 @@
         </div>
     </div>
     <!-- ---------상품정보--------- -->
+    <%@include file="../Main/Footer2.jsp" %>
 </body>
+<script type="text/javascript" src="../resources/js/Product/item.js"></script>
 </html>
