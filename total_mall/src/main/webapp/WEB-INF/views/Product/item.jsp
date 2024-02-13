@@ -33,7 +33,8 @@
                         <option value="의류">2</option>
                         <option value="신발">3</option>
                     </select>
-                    <a href=""><button>장바구니</button></a>
+                    
+                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=3&m_idx=${member.m_idx}"><button>장바구니</button></a>
                     <a href="T_PurchasePage.html"><button>구매</button></a>
                 </p>
             </div>

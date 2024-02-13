@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import human.smart.totalMall.product.ProductService;
+import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 
@@ -21,7 +22,7 @@ import human.smart.totalMall.vo.SearchVO;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pInsert;
+    private ProductService cList, pSearch, pInsert, pCartInsert;
 
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
@@ -74,5 +75,21 @@ public class ProductController {
   	@GetMapping("/cart.do")
 	public String cart() {
 		return "Product/cart";
+	}
+  	
+  	//장바구니에 상품 담기 요청 처리
+  	@GetMapping("/cartProcess.do")
+	public String cartProcess(CartVO vo, HttpServletRequest request) {
+  		String viewPage = "Product/cart";//장바구니등록 실패시 JSP페이지
+  		
+  		//글등록 요청을 BoardInsertService클래스로 처리
+  		int result = pCartInsert.cartInsert(vo,request);
+  		
+  		if(result == 1) {
+  			System.out.println("성공");
+  			viewPage = "redirect:cart.do";//장바구니등록 성공시 JSP페이지 
+  		}
+  		
+  		return viewPage;
 	}
 }
