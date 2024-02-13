@@ -21,7 +21,7 @@
             <div id="SiteLogo">
                 <a href="${pageContext.request.contextPath}/TotalMall.do"><img src="resources/img/Headerimg/사이트로고.png" width="130"></a>
             </div>
-            <form method="post" action="Search.do">
+            <form method="get" action="product/search.do">
             <div id="SearchContainer">
                 <div id="SearchLine">
                     <select>

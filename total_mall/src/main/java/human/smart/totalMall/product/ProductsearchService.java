@@ -6,9 +6,9 @@ import human.smart.totalMall.dao.ProductDAO;
 import human.smart.totalMall.vo.ProductVO;
 import lombok.AllArgsConstructor;
 
-@Service("pItem")
+@Service("pSearch")
 @AllArgsConstructor
-public class ProductitemService implements ProductService {
+public class ProductsearchService implements ProductService {
 	
 	private ProductDAO dao;
 
