@@ -237,6 +237,9 @@
             margin: auto;
             text-align: center;
         }
+        #event p{
+            color: red;
+        }
         #event>img{
             width: 400px;
             

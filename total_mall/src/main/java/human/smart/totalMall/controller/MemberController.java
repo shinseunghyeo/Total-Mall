@@ -42,6 +42,8 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberVO);
 			viewPage = "redirect:/TotalMall.do";
+		}else {
+			model.addAttribute("msg", "아이디 또는 비밀번호가 맞지 않습니다.");
 		}
 			
 		
