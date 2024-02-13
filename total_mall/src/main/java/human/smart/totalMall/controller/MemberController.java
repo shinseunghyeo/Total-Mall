@@ -1,8 +1,6 @@
 package human.smart.totalMall.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +32,8 @@ public class MemberController {
 	}
 	//로그인 처리 요청
 	@PostMapping("/loginProcess.do")
-	public String loginProcess(String member_id, String member_pw, 
-								HttpServletRequest request,HttpServletResponse response, Model model,
-								boolean rememberId) {
+	public String loginProcess(String member_id, String member_pw,
+								HttpServletRequest request, Model model) {
 		String viewPage = "member/login";
 		
 		MemberVO memberVO = mLogin.login(member_id, member_pw);
@@ -45,19 +42,8 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberVO);
 			viewPage = "redirect:/TotalMall.do";
-			
-			
 		}else {
 			model.addAttribute("msg", "아이디 또는 비밀번호가 맞지 않습니다.");
-		}
-		if(rememberId) {
-			Cookie cookie = new Cookie("member_id", member_id);
-			response.addCookie(cookie);
-			System.out.println(cookie);
-		} else {
-			Cookie cookie = new Cookie("member_id", member_id);
-			cookie.setMaxAge(0);
-			response.addCookie(cookie);
 		}
 			
 		
