@@ -13,7 +13,7 @@ LIMIT 20 OFFSET 0;
 	
 	<!-- 상품등록: insert -->
 	<insert id="insert" parameterType="ProductVO">
-				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,start_date,end_date,origin_file_name1,save_file_name1,origin_file_name2,save_file_name2,price,sales_unit,p_reg_date,p_last_modified_date)
-					   values(#{m_idx},#{category}, #{product_name}, #{product_code}, #{brand}, #{summary}, #{detail},#{start_date},#{end_date},#{origin_file_name1},#{save_file_name1},#{origin_file_name2},#{save_file_name2},#{price},#{sales_unit},#{p_reg_date},#{p_last_modified_date})
+				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,start_date,end_date,origin_file_name1,save_file_name1,origin_file_name2,save_file_name2,price,sales_unit,discount_rate,quantity)
+					   values(#{m_idx},#{category}, #{product_name}, #{product_code}, #{brand}, #{summary}, #{detail},#{start_date},#{end_date},#{origin_file_name1},#{save_file_name1},#{origin_file_name2},#{save_file_name2},#{price},#{sales_unit},#{discount_rate},#{quantity})
 	</insert>
 </mapper>
