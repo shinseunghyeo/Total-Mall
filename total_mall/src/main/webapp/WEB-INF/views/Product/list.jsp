@@ -11,7 +11,7 @@
   	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------카테고리 페이지--------- -->
     <div id="CategoryPage">
-        <h3 style="color: #3498db;">홈> 식품> 과일 ${category.p_idx }</h3>
+        <h3 style="color: #3498db;">홈> 식품> 과일 ${category.category}</h3>
         <div id="CategoryServeLine">
             <div id="CategoryServemenuLine">
                 <h2>카테고리</h2>
@@ -64,31 +64,20 @@
                     <div id="CategoryProductbox">
                         <br><h3>핫딜 세일</h3><hr>
                         <div class="Productmain">
-                            <div class="CategoryProduct">
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
+    <c:choose>
+		<c:when test="${empty boardList}">
+			<tr><td colspan="6">등록된 게시물이 없습니다</td></tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach begin="1" end="5" varStatus="vs">
+                    <div class="CategoryProduct">
+                        <img src="../resources/img/Mallimg/${boardList[vs.count-1].save_file_name1}">
+                        <a href="">${boardList[vs.count-1].summary}</a>
+                        ${boardList[vs.count-1].price}원
+                    </div>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
                         </div>
                     </div>
                     <div id="CategoryProductbestbox">
