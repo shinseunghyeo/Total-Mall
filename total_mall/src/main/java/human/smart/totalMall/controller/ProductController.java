@@ -43,6 +43,7 @@ public class ProductController {
     	model.addAttribute("boardList", boardList);
 
         return "Product/search";
+        
     }
     
   //제품등록 페이지 요청 처리
