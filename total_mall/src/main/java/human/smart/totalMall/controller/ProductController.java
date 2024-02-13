@@ -38,9 +38,9 @@ public class ProductController {
         return "Product/item";
     }
     @GetMapping("/search.do") // 임시
-    public String search(Model model) {
-    	
-    	
+    public String search(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
+    	List<ProductVO> boardList = cList.getProducts(searchVO);
+    	model.addAttribute("boardList", boardList);
 
         return "Product/search";
     }
