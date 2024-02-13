@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>기업회원 상품등록</title>
-
+<link rel="stylesheet" href="../resources/css/product/seller.css">
 </head>
 <body>
 
 	<section>
 		<!-- 전체 화면 wrap -->
 		<div id="wrap">
-			<%@ include file="../Main/seller_nav.jsp"%>
+
 			<!-- 화면 내용이 변하는 부분: inner_wrap -->
 			<div id="inner_wrap">
 				<!-- 상품등록 전체 페이지 -->
@@ -40,28 +40,28 @@
 												id="frm_category">
 													<option value="" selected>-------------- 카테고리를
 														선택하세요 --------------</option>
-													<option value="1, 'meat'">식품 - 고기</option>
-													<option value="2, 'vegetables'">식품 - 야채</option>
-													<option value="3, 'fruits'">식품 - 과일</option>
-													<option value="4, 'frozen">식품 - 냉동</option>
-													<option value="5, 'kitchen'">홈데코 - 주방</option>
-													<option value="6, 'curtain'">홈데코 - 커튼</option>
-													<option value="7, 'games'">취미 - 게임</option>
-													<option value="8, 'lego'">취미 - 레고</option>
-													<option value="9, 'petsupplies'">취미 - 펫용품</option>
-													<option value="10, 'dailynecessities'">생필품 - 생필품</option>
-													<option value="11, 'bodyhair'">생필품 - 바디헤어</option>
-													<option value="12, 'men'">의류 - 남성</option>
-													<option value="13, 'women'">의류 - 여성</option>
-													<option value="14, 'education'">도서 - 교육</option>
-													<option value="15, 'novels'">도서 - 소설</option>
-													<option value="16, 'overseas'">도서 - 해외</option>
-													<option value="17, 'living'">가구 - 생활</option>
-													<option value="18, 'bedding'">가구 - 침상</option>
-													<option value="19, 'homeAppliances'">가전 - 가전</option>
-													<option value="20, 'digital'">가전 - 디지털</option>
-													<option value="21, 'soccer'">스포츠 - 축구</option>
-													<option value="22, 'golf'">스포츠 - 골프</option>
+													<option value="meat">식품 - 고기</option>
+													<option value="vegetables">식품 - 야채</option>
+													<option value="fruits">식품 - 과일</option>
+													<option value="frozen">식품 - 냉동</option>
+													<option value="kitchen">홈데코 - 주방</option>
+													<option value="curtain">홈데코 - 커튼</option>
+													<option value="games">취미 - 게임</option>
+													<option value="lego">취미 - 레고</option>
+													<option value="petsupplies">취미 - 펫용품</option>
+													<option value="dailynecessities">생필품 - 생필품</option>
+													<option value="bodyhair">생필품 - 바디헤어</option>
+													<option value="men">의류 - 남성</option>
+													<option value="women">의류 - 여성</option>
+													<option value="education">도서 - 교육</option>
+													<option value="novels">도서 - 소설</option>
+													<option value="overseas">도서 - 해외</option>
+													<option value="living">가구 - 생활</option>
+													<option value="bedding">가구 - 침상</option>
+													<option value="homeAppliances">가전 - 가전</option>
+													<option value="digital">가전 - 디지털</option>
+													<option value="soccer">스포츠 - 축구</option>
+													<option value="golf">스포츠 - 골프</option>
 											</select></td>
 										</tr>
 										<tr>
@@ -119,20 +119,20 @@
 										<tr>
 											<th class="th_left">할인율 (%)</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="" id=""></td>
+												name="discount_rate" id=""></td>
 										</tr>
 
 										<tr>
 											<th class="th_left">수량</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="" id=""></td>
+												name="quantity" id=""></td>
 										</tr>
 									</tbody>
 
 								</table>
 								<div class="btn_wrap">
-									<input type="reset" class="btn_left" value="취소하기">
-									<input type="submit" class="btn_right" value="등록하기">
+									<input type="reset" class="btn_left" value="취소하기"> <input
+										type="submit" class="btn_right" value="등록하기">
 								</div>
 							</div>
 						</div>

@@ -27,6 +27,8 @@ public class ProductVO {
 	private String save_file_name2;
 	private int price;
 	private String sales_unit;
+	private int discount_rate;
+	private int quantity;
 	private Date p_reg_date;
 	private Date p_last_modified_date;
 	
