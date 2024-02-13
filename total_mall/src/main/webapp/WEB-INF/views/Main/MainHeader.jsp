@@ -21,6 +21,7 @@
             <div id="SiteLogo">
                 <a href="${pageContext.request.contextPath}/TotalMall.do"><img src="resources/img/Headerimg/사이트로고.png" width="130"></a>
             </div>
+            <form method="post" action="Search.do">
             <div id="SearchContainer">
                 <div id="SearchLine">
                     <select>
@@ -28,10 +29,12 @@
                         <option value="의류">의류</option>
                         <option value="신발">신발</option>
                     </select><hr>
-                    <input type="text" placeholder="검색창">
-                    <a href="SearchPage.html"><img src="resources/img/Headerimg/검색.png"></a>
+                    <input type="text" placeholder="검색창" name="searchWord">
+                    <button type="submit"><img src="resources/img/Headerimg/검색.png"></button>
                 </div>
             </div>
+			</form>
+
             <div id="UserIcon">
                 <img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
                 <a href="${pageContext.request.contextPath}/product/cart.do">

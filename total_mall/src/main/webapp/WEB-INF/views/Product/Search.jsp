@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="CategoryPage">
-        <h3 style="color: #3498db;">추천 검색어 > 돼지고기 / 소고기 / 닭고기</h3>
+        <h3 style="color: #3498db;">추천 검색어 > 돼지고기 / 소고기 / 닭고기 </h3>
         <div id="CategoryServeLine">
             <div id="CategoryServemenuLine">
                 <h2>카테고리</h2>
