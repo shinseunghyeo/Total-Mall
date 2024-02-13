@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
     <div id="CategoryPage">
         <h3 style="color: #3498db;">추천 검색어 > 돼지고기 / 소고기 / 닭고기 </h3>
