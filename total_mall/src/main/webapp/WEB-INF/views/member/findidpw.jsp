@@ -70,7 +70,6 @@
 
         </div>
     </section>
-    <%@ include file="../Main/Footer2.jsp" %>
     
 </body>
 <script type="text/javascript" src="../resources/js/Member/findidpw.js"></script>

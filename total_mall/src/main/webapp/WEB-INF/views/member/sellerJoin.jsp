@@ -131,7 +131,6 @@
 
         </div>
     </section>
-    <%@ include file="../Main/Footer2.jsp" %>
     
 </body>
 
