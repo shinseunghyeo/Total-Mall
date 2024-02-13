@@ -137,7 +137,7 @@
                         <div class="Productmain">
     <c:choose>
 		<c:when test="${empty boardList}">
-			<tr><td colspan="6">등록된 게시물이 없습니다</td></tr>
+			<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
 		</c:when>
 		<c:otherwise>
 			<c:forEach begin="1" end="5" varStatus="vs">
