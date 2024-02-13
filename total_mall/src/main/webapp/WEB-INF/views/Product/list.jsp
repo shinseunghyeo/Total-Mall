@@ -116,7 +116,7 @@
                 <a href="list.do?category=digital">>디지털</a><br><br>
                 <span>스포츠</span><br>
                 <a href="list.do?category=soccer">>축구</a><br>
-                <a href="list.do?category=golf">>골프</a>        
+                <a href="list.do?category=golf">>골프</a>
             </div>
             <div id="CategoryProductLine">
                 <div id="CategoryProductContainer">

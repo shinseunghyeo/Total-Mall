@@ -21,30 +21,28 @@ import human.smart.totalMall.vo.SearchVO;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pInsert;
+    private ProductService cList, pSearch, pInsert;
 
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
-    public String list(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
+    public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> boardList = cList.getProducts(searchVO);
     	model.addAttribute("boardList", boardList);
 
         return "Product/list";
     }
     @GetMapping("/item.do") // 임시
-    public String item(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
+    public String item(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> boardList = cList.getProducts(searchVO);
     	model.addAttribute("boardList", boardList);
 
         return "Product/item";
     }
     @GetMapping("/search.do") // 임시
-    public String search(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
-    	List<ProductVO> boardList = cList.getProducts(searchVO);
+    public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
+    	List<ProductVO> boardList = pSearch.getProducts(searchVO);
     	model.addAttribute("boardList", boardList);
 
         return "Product/search";
-        
-        
     }
     
   //제품등록 페이지 요청 처리
