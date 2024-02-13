@@ -30,6 +30,13 @@ public class ProductController {
 
         return "Product/list";
     }
+    @GetMapping("/item.do") // 두 번째 메서드의 URL 변경
+    public String item(@ModelAttribute("sVO")SearchVO searchVO, String category, Model model) {
+    	List<ProductVO> boardList = cList.getProducts(searchVO);
+    	model.addAttribute("boardList", boardList);
+
+        return "Product/item";
+    }
     
   //제품등록 페이지 요청 처리
     @GetMapping("/write.do")

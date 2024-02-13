@@ -18,6 +18,7 @@
                 <a href="">청소년보호정책</a><span>|</span>
                 <a href="">개인정보처리방침</a><span>|</span>
                 <a href="">제휴·광고</a>
+                <a style="float: right;" href="">판매자 서비스 </a>
             </div><br><hr class="footerline_color2"><br>
             <div id="Company_box">
                 <p>
