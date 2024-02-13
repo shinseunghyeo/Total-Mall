@@ -28,9 +28,6 @@ public class ProductController {
     	List<ProductVO> boardList = cList.getProducts(searchVO);
     	model.addAttribute("boardList", boardList);
 
-    	ProductVO vo = cList.getProduct(category);
-        model.addAttribute("category", vo);
-        
         return "Product/list";
     }
     

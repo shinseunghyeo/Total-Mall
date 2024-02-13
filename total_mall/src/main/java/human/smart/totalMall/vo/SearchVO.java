@@ -7,7 +7,7 @@ import lombok.Data;
 public class SearchVO {
 	private String searchField;
 	private String searchWord;
-	private String categoryWord;
+	private String category;
 	//보완된 SQL문으로 인해 추가함
 	private int pageNum;
 	private int pageBlock;
