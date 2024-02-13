@@ -11,7 +11,9 @@
   	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------카테고리 페이지--------- -->
     <div id="CategoryPage">
-        <h3 style="color: #3498db;">홈> 식품> 과일 ${category.category}</h3>
+        <h3 style="color: #3498db;">홈> 식품> 과일 ${boardList[0].category}</h3>
+        
+        
         <div id="CategoryServeLine">
             <div id="CategoryServemenuLine">
                 <h2>카테고리</h2>
