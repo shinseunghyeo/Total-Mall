@@ -29,14 +29,14 @@
 	                            </div>
 	                        </div>
 	                        <div id="id">
-	                            <input type="text" name="member_id" id="text-id" placeholder="아이디" value="${cookie.member_id.value }">
+	                            <input type="text" name="member_id" id="text-id" placeholder="아이디">
 	                        </div>
 	                        <div id="pw">
 	                            <input type="password" name="member_pw" id="text-pw" placeholder="비밀번호">
 	                        </div>
 	                        <div id="another">
 	                            <div id="id-check">
-	                                <input type="checkbox" ${empty cookie.member_id.value ? "":"checked" } name="rememberId" id="id-checkbox">
+	                                <input type="checkbox" name="" id="id-checkbox">
 	                                <p>아이디 저장</p>
 	                            </div>
 	                            <div id="find-id">

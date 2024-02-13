@@ -18,7 +18,7 @@ public class MemberLoginService implements MemberService {
 	@Override
 	public MemberVO login(String member_id, String member_pw) {
 		MemberVO memberVO = null;
-
+		
 		try {
 			String encodePassword = dao.getPassword(member_id);
 			if(encodePassword != null) {
