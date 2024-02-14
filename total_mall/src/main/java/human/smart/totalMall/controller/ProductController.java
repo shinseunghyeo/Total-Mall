@@ -48,6 +48,10 @@ public class ProductController {
     public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> boardList2 = pSearch.getProducts2(searchVO);
     	model.addAttribute("boardList2", boardList2);
+    	if(searchVO.getPageNum() == 0) {
+    		searchVO.setPageNum(1);
+    	}
+    	
     	pageNav = pPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
     	
     	model.addAttribute("pageNav", pageNav);
