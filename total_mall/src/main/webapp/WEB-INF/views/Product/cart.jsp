@@ -34,12 +34,12 @@
                     </div>
                     
                     <c:choose>
-                    	<c:when test="${empty CartList }">
-                    		
+                    	<c:when test="${empty cartList }">
+                    		<p>????</p>
                     	</c:when>
                     	<c:otherwise>
 	                    	<c:forEach var="i" begin="1" end="5" varStatus="vs">
-	                    		<c:if test="${not empty cartList[vs.count-1] }">
+	                    		<c:if test="${not empty cartList[i-1] }">
 	                    			<div class="cart_item">
 				                        <div class="cart_item_seller">
 				                            <p>${i}</p>

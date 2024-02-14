@@ -86,9 +86,9 @@ public class ProductController {
   	
   	//장바구니 페이지 요청 처리
   	@GetMapping("/cart.do")
-	public String cart(CartVO vo, Model model) {
-  		List<CartVO> cartList = pCartList.getCarts(vo);
-		model.addAttribute("CartList", cartList);
+	public String cart(Model model) {
+  		List<CartVO> cartList = pCartList.getCarts();
+		model.addAttribute("cartList", cartList);
 		return "Product/cart";
 	}
   	
