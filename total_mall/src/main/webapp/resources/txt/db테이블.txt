@@ -1,3 +1,5 @@
+
+-- 상품 테이블 --
 create table tb_product(
 	p_idx int unsigned auto_increment,
     category varchar(30),
@@ -28,3 +30,18 @@ values (1, 'meat'), (2, 'vegetables'), (3, 'fruits'), (4, 'frozen'), (5, 'kitche
 (19, 'homeAppliances'), (20, 'digital'), (21, 'soccer'), (22, 'golf');
 insert into tb_product(category, product_name, product_code, brand, summary, detail, save_file_name1, price)
 values ('meat', '삼겁살', 'ASD123412341234', 'a마켓', '저렴한 가격의 상품', '전국에서 가장 저렴함 상품. 오랜기간 숙성된 고기.', '사과.jpg', 1500);
+
+-- 장바구니 테이블 --
+create table tb_cart (
+	c_idx int unsigned not null auto_increment,
+    p_idx int unsigned not null, -- 상품 번호
+    m_idx int unsigned not null,
+    c_quantity int,
+    c_start_date datetime default now(),
+    c_update_time datetime default now(),
+    constraint tb_cart_pk primary key(c_idx),
+    constraint tb_cart_fk foreign key (p_idx)
+    references tb_product (p_idx) 
+);
+
+select * from tb_cart;

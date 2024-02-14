@@ -41,5 +41,10 @@ public class ProductDAO{
 	public int cartInsert(CartVO vo) {
 		return sqlSession.insert(MAPPER + ".cartInsert", vo);
 	}
+	
+	//장바구니 리스트 출력하기
+	public List<CartVO> getCarts(CartVO vo){
+		return sqlSession.selectList(MAPPER+".getCarts", vo);
+	}
 
 }

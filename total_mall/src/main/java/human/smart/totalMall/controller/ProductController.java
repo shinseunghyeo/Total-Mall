@@ -22,7 +22,7 @@ import human.smart.totalMall.vo.SearchVO;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pInsert, pCartInsert;
+    private ProductService cList, pSearch, pInsert, pCartInsert, pCartList;
 
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
@@ -32,9 +32,10 @@ public class ProductController {
         return "Product/list";
     }
     @GetMapping("/item.do") // 임시
-    public String item(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
+    public String item(@ModelAttribute("sVO")SearchVO searchVO, Model model, int p_idx) {
     	List<ProductVO> boardList = cList.getProducts(searchVO);
     	model.addAttribute("boardList", boardList);
+    	model.addAttribute("p_idx", p_idx);
 
         return "Product/item";
     }
@@ -73,23 +74,29 @@ public class ProductController {
   	
   	//장바구니 페이지 요청 처리
   	@GetMapping("/cart.do")
-	public String cart() {
+	public String cart(CartVO vo, Model model) {
+  		List<CartVO> cartList = pCartList.getCarts(vo);
+		model.addAttribute("CartList", cartList);
 		return "Product/cart";
 	}
   	
   	//장바구니에 상품 담기 요청 처리
   	@GetMapping("/cartProcess.do")
-	public String cartProcess(CartVO vo, HttpServletRequest request) {
-  		String viewPage = "Product/cart";//장바구니등록 실패시 JSP페이지
+	public String cartProcess(CartVO vo, HttpServletRequest request, Model model) {
+  		String viewPage = "redirect:item.do";//장바구니등록 실패시 JSP페이지
   		
   		//글등록 요청을 BoardInsertService클래스로 처리
   		int result = pCartInsert.cartInsert(vo,request);
   		
   		if(result == 1) {
   			System.out.println("성공");
-  			viewPage = "redirect:cart.do";//장바구니등록 성공시 JSP페이지 
+  			viewPage = "redirect:cart.do";//장바구니등록 성공시 JSP페이지
+  			
   		}
   		
   		return viewPage;
 	}
+  	
+  
+  	
 }
