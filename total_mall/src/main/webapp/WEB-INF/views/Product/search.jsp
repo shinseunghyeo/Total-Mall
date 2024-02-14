@@ -55,24 +55,14 @@
                         <span id="price_Hight" onclick="asdf('price_Hight')" style="cursor: pointer;">높은 가격</span>
                         <span id="price_Row" onclick="asdf('price_Row')" style="cursor: pointer;">낮은 가격</span>
                     </h3><hr>
-                    <div id="Searchproductbox">
-						<a href="${pageContext.request.contextPath}/product/item.do">
-                        <img src="../resources/img/Mallimg/삼겹살.jpg">
-                       	</a>
-                        <div id="SearchProduct">
-                            <a href="${pageContext.request.contextPath}/product/item.do">
-                            국내산 한돈 삼겹살
-                            </a><br>
-                            ${boardList[vs.count-1].price}원<br>
-                        </div>
-                        <div class="SearchProductPrice">
-                            <button>장바구니</button>
-                            <button><a href="T_PurchasePage.html">구매</a></button>
-                        </div>
-                    </div>
+                    
 					<c:choose>
-						<c:when test="${empty boardList}">
-							<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+						<c:when test="${empty boardList2}">
+							<tr><td colspan="6">
+							검색하신 '${searchWord}'에 대한<br>
+							검색결과가 없습니다.<br>
+							정확한 검색어인지 확인하고 다시 검색해 보세요.
+							</td></tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach begin="1" end="5" varStatus="vs">
@@ -82,9 +72,9 @@
 			                       	</a>
 			                        <div id="SearchProduct">
 			                            <a href="${pageContext.request.contextPath}/product/item.do">
-			                            국내산 한돈 삼겹살
+			                            ${boardList2[vs.count-1].summary}
 			                            </a><br>
-			                            ${boardList[vs.count-1].price}원<br>
+			                            ${boardList2[vs.count-1].price}원<br>
 			                        </div>
 			                        <div class="SearchProductPrice">
 			                            <button>장바구니</button>
