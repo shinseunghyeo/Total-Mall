@@ -13,5 +13,6 @@ public interface ProductService {
 	default int insert(ProductVO vo, HttpServletRequest request) {return 0;}
 	default List<ProductVO> getProducts(SearchVO vo){return null;}
 	default List<ProductVO> getProducts2(SearchVO vo){return null;}
-	default int cartInsert(CartVO vo, HttpServletRequest request) {return 0;};
+	default int cartInsert(CartVO vo, HttpServletRequest request) {return 0;}
+	default List<CartVO> getCarts(CartVO vo){return null;};
 }

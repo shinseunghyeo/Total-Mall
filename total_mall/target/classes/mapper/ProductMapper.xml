@@ -28,4 +28,11 @@ LIMIT 20 OFFSET 0
 				insert into tb_cart (c_idx, p_idx, m_idx, c_quantity )
 					   values(#{c_idx},#{p_idx}, #{m_idx}, #{c_quantity})
 	</insert>
+	
+	<!-- 장바구니 상품목록 불러오기: select -->
+	<select id="getCarts" parameterType="CartVO" resultType="cartVO">
+		select * from tb_cart 
+			where m_idx = ${m_idx}
+			and p_idx = ${p_idx}
+	</select>
 </mapper>
