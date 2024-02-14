@@ -9,7 +9,7 @@ import human.smart.totalMall.vo.CartVO;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor 
-@Service("pCartlist")
+@Service("pCartList")
 public class ProductCartlistService implements ProductService {
 
     private ProductDAO dao;
