@@ -12,18 +12,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
+import lombok.Setter;
 
 @Controller
 @RequestMapping("/product") // 모든 메서드에 대한 공통 경로 설정
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pInsert, pCartInsert, pCartList;
+    private ProductService cList, pSearch, pPage, pInsert, pCartInsert, pCartList;
 
+    @Setter(onMethod_={ @Autowired })
+	PageNav pageNav;
+    
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> boardList = cList.getProducts(searchVO);
@@ -41,8 +46,11 @@ public class ProductController {
     }
     @GetMapping("/search.do") // 임시
     public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
-    	List<ProductVO> boardList = pSearch.getProducts(searchVO);
-    	model.addAttribute("boardList", boardList);
+    	List<ProductVO> boardList2 = pSearch.getProducts2(searchVO);
+    	model.addAttribute("boardList2", boardList2);
+    	pageNav = pPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+    	
+    	model.addAttribute("pageNav", pageNav);
 
         return "Product/search";
     }
