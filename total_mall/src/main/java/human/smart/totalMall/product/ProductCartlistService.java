@@ -15,10 +15,10 @@ public class ProductCartlistService implements ProductService {
     private ProductDAO dao;
 
     @Override
-    public List<CartVO> getCarts(CartVO vo) {
+    public List<CartVO> getCarts() {
         
 
-        return dao.getCarts(vo);
+        return dao.getCarts();
     }
 
     

@@ -43,8 +43,8 @@ public class ProductDAO{
 	}
 	
 	//장바구니 리스트 출력하기
-	public List<CartVO> getCarts(CartVO vo){
-		return sqlSession.selectList(MAPPER+".getCarts", vo);
+	public List<CartVO> getCarts(){
+		return sqlSession.selectList(MAPPER+".getCarts");
 	}
 
 }
