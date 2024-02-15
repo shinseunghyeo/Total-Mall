@@ -10,10 +10,16 @@
     #ProductdetailLine #ProductContent h1,#ProductContent h2{margin: 0;}
     #ProductdetailLine #Productpurchase{display: flex;height: 50px;align-items: end;}
     #ProductdetailLine #Productpurchase span{width: 10%;margin-bottom: 10px;}
-    #ProductdetailLine #Productpurchase select{width: 10%;height: 40px; text-align: center;}
-    #ProductdetailLine #Productpurchase button{width: 150px; height: 50px; background-color: #3498db;color: white;font-weight: bold;border: none;cursor: pointer;}
-    #ProductdetailLine #Productpurchase a{width: 25%;margin-left: 50px;}
+    #ProductdetailLine #Productpurchase .input-wrapper{width: 15%;height: 40px;}
+    #ProductdetailLine #Productpurchase a button{width: 150px; height: 50px; background-color: #3498db;color: white;font-weight: bold;border: none;cursor: pointer;}
+    #ProductdetailLine #Productpurchase a{width: 22%;margin-left: 50px;}
     /* ---------상품상세보기--------- */
+
+    /* ---------개수--------- */
+    .input-wrapper {display: flex;align-items: center;justify-content: center;width: 200px;}
+    .input-wrapper input[type="text"] {text-align: center;width: 30px;}
+    .input-wrapper button {width: 20px;height: 20px;font-size: 16px;cursor: pointer;font-size: 10px;}
+
     /* ---------상품정보--------- */
     #TogetherProductLine{width: 1050px;margin: auto;}
     #TogetherProductLine span{display: flex;}
@@ -33,6 +39,9 @@
     /* ---------상세정보--------- */
     #productDetails{display: block;padding: 40px;}
     #productDetails img{width: 100%;cursor: auto;}
+    #productDetails ol{padding: 0;}
+    #productDetails td, #productDetails li, #productDetails span{font-size: 13px;padding: 5px;}
+    #productDetails td, #productDetails ol, #productDetails span{padding-left: 17px;}
     #productReviews{display: none;padding: 40px;}
     #productReviews #Reviewsbox{display: flex;}
     #productReviews #Reviewsbox h2{margin: 0px; width: 50%;}
