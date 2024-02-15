@@ -13,9 +13,8 @@ public class ProductitemService implements ProductService {
 	private ProductDAO dao;
 
 	@Override
-	public ProductVO getProduct(int p_idx) {
-		return dao.getProduct(p_idx);
+	public ProductVO getProduct(String category) {
+		return dao.getProduct(category);
 	}
-	
 	
 }

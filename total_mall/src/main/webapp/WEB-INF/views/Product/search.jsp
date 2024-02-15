@@ -57,7 +57,7 @@
                     </h3><hr>
                     
 					<c:choose>
-						<c:when test="${empty productList2}">
+						<c:when test="${empty boardList2}">
 							<tr><td colspan="6">
 							검색하신 '${searchWord}'에 대한<br>
 							검색결과가 없습니다.<br>
@@ -72,9 +72,9 @@
 			                       	</a>
 			                        <div id="SearchProduct">
 			                            <a href="${pageContext.request.contextPath}/product/item.do">
-			                            ${productList2[vs.count-1].summary}
+			                            ${boardList2[vs.count-1].summary}
 			                            </a><br>
-			                            ${productList2[vs.count-1].price}원<br>
+			                            ${boardList2[vs.count-1].price}원<br>
 			                        </div>
 			                        <div class="SearchProductPrice">
 			                            <button>장바구니</button>
