@@ -1,0 +1,9 @@
+create table tb_cart (
+    c_idx int unsigned not null auto_increment,
+    m_idx int unsigned not null,
+    c_quantity int,
+    c_start_date datetime default now(),
+    c_update_time datetime default now(),
+    constraint tb_cart_fk foreign key (p_idx)
+    references tb_product (p_idx) 
+);

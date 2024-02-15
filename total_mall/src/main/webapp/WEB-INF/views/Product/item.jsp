@@ -103,8 +103,8 @@
                         <input type="text" id="inputBox" oninput="checkInput()" value="0" required>
                         <button id="incrementButton" onclick="increment()">+</button>
                     </div>
-                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${p_idx}&m_idx=${member.m_idx}"><button>장바구니</button></a>
-                    <a href="T_PurchasePage.html"><button>구매</button></a>
+                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}"><button>장바구니</button></a>
+                    <a href="${pageContext.request.contextPath}/product/purchase.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}"><button>구매</button></a>
                 </div>
             </div>
         </div>

@@ -56,6 +56,14 @@
 			<exclude-mapping path="/product/search.do"/>
 			<exclude-mapping path="/product/item.do"/>
 			
+			<exclude-mapping path="/nav/WinterPage.do"/>
+			<exclude-mapping path="/nav/DronPage.do"/>
+			<exclude-mapping path="/nav/TotalboomPage.do"/>
+			<exclude-mapping path="/nav/DrowingPage.do"/>
+			<exclude-mapping path="/nav/ThousandPage.do"/>
+			<exclude-mapping path="/nav/Timemall.do"/>
+			<exclude-mapping path="/nav/Attendance.do"/>
+			<exclude-mapping path="/nav/EventPage.do"/>
 	 
 			<beans:bean id="loginInterceptor" class="human.smart.totalMall.interceptor.LoginInterceptor"/>
 		</interceptor>
