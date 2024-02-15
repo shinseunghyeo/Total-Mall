@@ -92,19 +92,20 @@
                     <h1>${product.product_name}</h1>
                     <h2>★★★★★</h2><br>
                     <h2>${product.price}원</h2>
-                    <h2>10% 90,000원</h2>
+                    <h2>10% 90,000원</h2><hr>
+					<h3>상품내용</h3>
+					${product.summary}
                 </div>
-                <p id="Productpurchase">
-                    <span >개수</span>
-                    <select>
-                        <option value="전체">1</option>
-                        <option value="의류">2</option>
-                        <option value="신발">3</option>
-                    </select>
-                    
-                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${p_idx }&m_idx=${member.m_idx}"><button>장바구니</button></a>
+                <div id="Productpurchase">
+                    <span>개수</span>
+                    <div class="input-wrapper">
+                        <button id="decrementButton" onclick="decrement()">-</button>
+                        <input type="text" id="inputBox" oninput="checkInput()" value="0" required>
+                        <button id="incrementButton" onclick="increment()">+</button>
+                    </div>
+                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${p_idx}&m_idx=${member.m_idx}"><button>장바구니</button></a>
                     <a href="T_PurchasePage.html"><button>구매</button></a>
-                </p>
+                </div>
             </div>
         </div>
     </div>
@@ -150,8 +151,48 @@
         </div>
         <div id="productDetails">
             <h2>상세정보</h2>
-            <img src="../resources/img/Mallimg/식품1.jpg">
-            <img src="../resources/img/Mallimg/식품1.jpg">
+            <img src="Mallimg/식품1.jpg">
+            <img src="Mallimg/식품1.jpg"><br><br><br><br><br><br><hr>
+            <h3>상세내용</h3>
+            <span style="padding-left: 10px;">${product.detail}</span><hr>
+            <h3>상품 정보 제공 고시</h3><hr>
+            <table>
+                <tr>
+                    <td>상품번호</td>
+                    <td>${product.product_code}</td>
+                </tr>
+                <tr>
+                    <td>브랜드</td>
+                    <td>${product.brand}</td>
+                </tr>
+                <tr>
+                    <td>부가세 면세여부</td>
+                    <td>과세상품</td>
+                </tr>
+                <tr>
+                    <td>사업자구분</td>
+                    <td>개인사업자</td>
+                </tr>
+                <tr>
+                    <td>과세자구분</td>
+                    <td>일반과세자+간이과세자(세금계산서 발급사업자)</td>
+                </tr>
+            </table><hr>
+            <h3>주의사항</h3>
+            <ol>
+                <li>
+                    전자상거래 등에서의 소비자보호법에 관한 법률에 의거하여 미성년자가 물품을 구매하는 경우,<br>
+                    법정대리인이 동의하지 않으면 미성년자 본인 또는 법정대리인이 구매를 취소할 수 있습니다.<br>
+                </li>
+                <li>
+                    토탈몰에 등록된 판매 상품과 상품의 내용, 거래 정보 및 가격은 판매자가 등록한 것으로<br>
+                    토탈몰은 해당 내용에 대하여 일체의 책임을 지지 않습니다.<br>
+                </li>
+                <li>
+                    토탈몰의 결제시스템을 이용하지 않고 판매자와 직접 거래하실 경우 상품을 받지 못하거나 구매한 상품과 상이한 상품을 받는 등<br>
+                    피해가 발생할 수 있으니 유의 바랍니다. 직거래로 인해 발생한 피해에 대해 토탈몰은 책임을 지지 않습니다.<br>
+                </li>
+            </ol>
         </div>
         <div id="productReviews">
         <br>

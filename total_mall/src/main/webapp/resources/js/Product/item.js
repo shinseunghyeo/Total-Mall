@@ -1,3 +1,46 @@
+// -----------개수최대값-----------
+var prevValue = "0"; // 이전 값 저장 변수
+
+function checkInput() {
+    var inputBox = document.getElementById("inputBox");
+    var value = inputBox.value;
+
+    if (/^\d*$/.test(value) || value === "") {
+        if (parseInt(value) > 999) {
+            inputBox.value = prevValue; // 999 이상의 값은 이전 값으로 복원
+        } else {
+            prevValue = value; // 이전 값 갱신
+        }
+    } else {
+        inputBox.value = prevValue; // 숫자가 아닌 경우 이전 값으로 복원
+    }
+
+    // 첫자리가 0이 되지 않도록 처리
+    if (value.length > 1 && value[0] === "0") {
+        inputBox.value = value.slice(1);
+    }
+}
+
+function increment() {
+    var inputBox = document.getElementById("inputBox");
+    var value = parseInt(inputBox.value) || 0;
+    if (value < 999) {
+        inputBox.value = value + 1;
+        prevValue = inputBox.value;
+    }
+}
+
+function decrement() {
+    var inputBox = document.getElementById("inputBox");
+    var value = parseInt(inputBox.value) || 0;
+    if (value > 0) {
+        inputBox.value = value - 1;
+        prevValue = inputBox.value;
+    }
+}
+// -----------개수최대값-----------
+
+
 // -----------상품정보-----------
 let linkTime = true;
 var a1 = document.getElementById("a1");
