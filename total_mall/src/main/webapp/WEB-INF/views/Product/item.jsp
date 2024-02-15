@@ -13,70 +13,70 @@
     <div id="ProductdetailLine">
         <c:choose>
 			<c:when test="${product.category eq 'meat'}">
-       			<h3 style="color: #3498db;">홈> 식품> 고기</h3>
+       			<h3 style="color: #3498db;">홈> 식품> 고기 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'vegetables'}">
-       			<h3 style="color: #3498db;">홈> 식품> 야채</h3>
+       			<h3 style="color: #3498db;">홈> 식품> 야채 > ${product.product_name}</h3>
        		</c:when>
-			<c:when test="${product.category eq 'fruits'}">
-       			<h3 style="color: #3498db;">홈> 식품> 과일</h3>
+       		<c:when test="${product.category eq 'fruits'}">
+       			<h3 style="color: #3498db;">홈> 식품> 과일 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'frozen'}">
-       			<h3 style="color: #3498db;">홈> 식품> 냉동</h3>
+       			<h3 style="color: #3498db;">홈> 식품> 냉동 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'kitchen'}">
-       			<h3 style="color: #3498db;">홈> 홈데코> 주방</h3>
+       			<h3 style="color: #3498db;">홈> 홈데코> 주방 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'curtain'}">
-       			<h3 style="color: #3498db;">홈> 홈데코> 커튼</h3>
+       			<h3 style="color: #3498db;">홈> 홈데코> 커튼 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'games'}">
-       			<h3 style="color: #3498db;">홈> 취미> 게임</h3>
+       			<h3 style="color: #3498db;">홈> 취미> 게임 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'lego'}">
-       			<h3 style="color: #3498db;">홈> 취미> 레고</h3>
+       			<h3 style="color: #3498db;">홈> 취미> 레고 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'petsupplies'}">
-       			<h3 style="color: #3498db;">홈> 취미> 펫용품</h3>
+       			<h3 style="color: #3498db;">홈> 취미> 펫용품 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'dailynecessities'}">
-       			<h3 style="color: #3498db;">홈> 생필품> 생필품</h3>
+       			<h3 style="color: #3498db;">홈> 생필품> 생필품 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'bodyhair'}">
-       			<h3 style="color: #3498db;">홈> 생필품> 바디헤어</h3>
+       			<h3 style="color: #3498db;">홈> 생필품> 바디헤어 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'men'}">
-       			<h3 style="color: #3498db;">홈> 의류> 남성</h3>
+       			<h3 style="color: #3498db;">홈> 의류> 남성 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'women'}">
-       			<h3 style="color: #3498db;">홈> 의류> 여성</h3>
+       			<h3 style="color: #3498db;">홈> 의류> 여성 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'education'}">
-       			<h3 style="color: #3498db;">홈> 도서> 교육</h3>
+       			<h3 style="color: #3498db;">홈> 도서> 교육 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'novels'}">
-       			<h3 style="color: #3498db;">홈> 도서> 소설</h3>
+       			<h3 style="color: #3498db;">홈> 도서> 소설 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'overseas'}">
-       			<h3 style="color: #3498db;">홈> 도서> 해외</h3>
+       			<h3 style="color: #3498db;">홈> 도서> 해외 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'living'}">
-       			<h3 style="color: #3498db;">홈> 가구> 생활</h3>
+       			<h3 style="color: #3498db;">홈> 가구> 생활 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'bedding'}">
-       			<h3 style="color: #3498db;">홈> 가구> 침상</h3>
+       			<h3 style="color: #3498db;">홈> 가구> 침상 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'homeAppliances'}">
-       			<h3 style="color: #3498db;">홈> 가전> 가전</h3>
+       			<h3 style="color: #3498db;">홈> 가전> 가전 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'digital'}">
-       			<h3 style="color: #3498db;">홈> 가전> 디지털</h3>
+       			<h3 style="color: #3498db;">홈> 가전> 디지털 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'soccer'}">
-       			<h3 style="color: #3498db;">홈> 스포츠> 축구</h3>
+       			<h3 style="color: #3498db;">홈> 스포츠> 축구 > ${product.product_name}</h3>
        		</c:when>
 			<c:when test="${product.category eq 'golf'}">
-       			<h3 style="color: #3498db;">홈> 스포츠> 골프</h3>
+       			<h3 style="color: #3498db;">홈> 스포츠> 골프 > ${product.product_name}</h3>
        		</c:when>
         	<c:otherwise>
         		상품을 등록해주세요.
@@ -154,7 +154,7 @@
             <img src="Mallimg/식품1.jpg">
             <img src="Mallimg/식품1.jpg"><br><br><br><br><br><br><hr>
             <h3>상세내용</h3>
-            <span style="padding-left: 10px;">${product.detail}</span><hr>
+            <span>${product.detail}</span><br><hr>
             <h3>상품 정보 제공 고시</h3><hr>
             <table>
                 <tr>
