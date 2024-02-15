@@ -11,20 +11,88 @@
   	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------상품상세보기--------- -->
     <div id="ProductdetailLine">
-        <h3>홈> 식품> 고기> 삼겹살</h3>
+        <c:choose>
+			<c:when test="${product.category eq 'meat'}">
+       			<h3 style="color: #3498db;">홈> 식품> 고기</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'vegetables'}">
+       			<h3 style="color: #3498db;">홈> 식품> 야채</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'fruits'}">
+       			<h3 style="color: #3498db;">홈> 식품> 과일</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'frozen'}">
+       			<h3 style="color: #3498db;">홈> 식품> 냉동</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'kitchen'}">
+       			<h3 style="color: #3498db;">홈> 홈데코> 주방</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'curtain'}">
+       			<h3 style="color: #3498db;">홈> 홈데코> 커튼</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'games'}">
+       			<h3 style="color: #3498db;">홈> 취미> 게임</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'lego'}">
+       			<h3 style="color: #3498db;">홈> 취미> 레고</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'petsupplies'}">
+       			<h3 style="color: #3498db;">홈> 취미> 펫용품</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'dailynecessities'}">
+       			<h3 style="color: #3498db;">홈> 생필품> 생필품</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'bodyhair'}">
+       			<h3 style="color: #3498db;">홈> 생필품> 바디헤어</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'men'}">
+       			<h3 style="color: #3498db;">홈> 의류> 남성</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'women'}">
+       			<h3 style="color: #3498db;">홈> 의류> 여성</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'education'}">
+       			<h3 style="color: #3498db;">홈> 도서> 교육</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'novels'}">
+       			<h3 style="color: #3498db;">홈> 도서> 소설</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'overseas'}">
+       			<h3 style="color: #3498db;">홈> 도서> 해외</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'living'}">
+       			<h3 style="color: #3498db;">홈> 가구> 생활</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'bedding'}">
+       			<h3 style="color: #3498db;">홈> 가구> 침상</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'homeAppliances'}">
+       			<h3 style="color: #3498db;">홈> 가전> 가전</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'digital'}">
+       			<h3 style="color: #3498db;">홈> 가전> 디지털</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'soccer'}">
+       			<h3 style="color: #3498db;">홈> 스포츠> 축구</h3>
+       		</c:when>
+			<c:when test="${product.category eq 'golf'}">
+       			<h3 style="color: #3498db;">홈> 스포츠> 골프</h3>
+       		</c:when>
+        	<c:otherwise>
+        		상품을 등록해주세요.
+        	</c:otherwise>
+        </c:choose>
         <div id="ProductdetailContainer">
             <div id="ProductMainimg">
-                <img style="width: 100%;" src="Mallimg/삼겹살.jpg" >
+                <img style="width: 100%;" src="../resources/img/Mallimg/${product.save_file_name1}" >
             </div>
             <div id="Productdetail">
                 <div id="ProductContent">
                     <br>
-                    <h1>삼겹살/돼지고기/국내산/한돈</h1>
+                    <h1>${product.product_name}</h1>
                     <h2>★★★★★</h2><br>
-                    <h2>99,999원</h2>
+                    <h2>${product.price}원</h2>
                     <h2>10% 90,000원</h2>
-                    옵션보기<br>
-                    배송정보<hr>
                 </div>
                 <p id="Productpurchase">
                     <span >개수</span>
@@ -49,28 +117,28 @@
         </span>
         <hr>
         <div id="TogetherProductcontainer">
-            <img onclick="totallink_Left()" style="width: 5%;" src="Mallimg/왼쪽 아이콘.png">
+            <img onclick="totallink_Left()" style="width: 5%;" src="../resources/img/Mallimg/왼쪽 아이콘.png">
             <div id="TogetherProductbox">
                 <div id="a1" style="margin-left: -1000px;">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
                 </div>
                 <div id="a2" style="margin-left: 0px;">
-                    <img src="Mallimg/삼겹살3.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살3.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
                 </div>
                 <div id="a3" style="margin-left: 1000px;">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살2.jpg">
-                    <img src="Mallimg/삼겹살3.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
+                    <img src="../resources/img/Mallimg/삼겹살3.jpg">
                 </div>
             </div>
-            <img onclick="totallink_Right()" style="width: 5%;" src="Mallimg/오른쪽 아이콘.png">
+            <img onclick="totallink_Right()" style="width: 5%;" src="../resources/img/Mallimg/오른쪽 아이콘.png">
         </div>
     </div><br><br>
     <div id="DetailsLine">
@@ -82,8 +150,8 @@
         </div>
         <div id="productDetails">
             <h2>상세정보</h2>
-            <img src="Mallimg/식품1.jpg">
-            <img src="Mallimg/식품1.jpg">
+            <img src="../resources/img/Mallimg/식품1.jpg">
+            <img src="../resources/img/Mallimg/식품1.jpg">
         </div>
         <div id="productReviews">
         <br>
@@ -102,41 +170,41 @@
             아이디<br>
             상품명★★★★★<br>
             2024.00.00<br>
-            <img src="Mallimg/삼겹살.jpg" width="50">
-            <img src="Mallimg/삼겹살2.jpg" width="50">
-            <img src="Mallimg/삼겹살3.jpg" width="50"><br>
+            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
             "---------------------평가내용---------------------"<br>
             "---------------------평가내용---------------------"<br><hr>
             아이디<br>
             상품명★★★★★<br>
             2024.00.00<br>
-            <img src="Mallimg/삼겹살.jpg" width="50">
-            <img src="Mallimg/삼겹살2.jpg" width="50">
-            <img src="Mallimg/삼겹살3.jpg" width="50"><br>
+            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
             "---------------------평가내용---------------------"<br>
             "---------------------평가내용---------------------"<br><hr>
             아이디<br>
             상품명★★★★★<br>
             2024.00.00<br>
-            <img src="Mallimg/삼겹살.jpg" width="50">
-            <img src="Mallimg/삼겹살2.jpg" width="50">
-            <img src="Mallimg/삼겹살3.jpg" width="50"><br>
+            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
             "---------------------평가내용---------------------"<br>
             "---------------------평가내용---------------------"<br><hr>
             아이디<br>
             상품명★★★★★<br>
             2024.00.00<br>
-            <img src="Mallimg/삼겹살.jpg" width="50">
-            <img src="Mallimg/삼겹살2.jpg" width="50">
-            <img src="Mallimg/삼겹살3.jpg" width="50"><br>
+            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
             "---------------------평가내용---------------------"<br>
             "---------------------평가내용---------------------"<br><hr>
             아이디<br>
             상품명★★★★★<br>
             2024.00.00<br>
-            <img src="Mallimg/삼겹살.jpg" width="50">
-            <img src="Mallimg/삼겹살2.jpg" width="50">
-            <img src="Mallimg/삼겹살3.jpg" width="50"><br>
+            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
+            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
             "---------------------평가내용---------------------"<br>
             "---------------------평가내용---------------------"<br><hr>
         </div>

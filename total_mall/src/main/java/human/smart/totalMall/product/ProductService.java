@@ -11,7 +11,7 @@ import human.smart.totalMall.vo.SearchVO;
 
 public interface ProductService {
 	default PageNav setPageNav(PageNav pageNav, int pageNum, int pageBlock){return null;}
-	default ProductVO getProduct(String category) {return null;}
+	default ProductVO getProduct(int p_idx) {return null;}
 	default int insert(ProductVO vo, HttpServletRequest request) {return 0;}
 	default List<ProductVO> getProducts(SearchVO vo){return null;}
 	default List<ProductVO> getProducts2(SearchVO vo){return null;}
