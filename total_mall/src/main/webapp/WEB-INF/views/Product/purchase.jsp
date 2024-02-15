@@ -5,24 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/product/purchase.css">
 </head>
 <body>
+  	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------결제페이지--------- -->
+    <form>
     <div id="PurchaseLine">
         <div id="Purchasepage"><br>
             <h2>구매자 정보</h2>
             <table style="border-collapse: collapse;" border="1">
                 <tr>
                     <td>이름</td>
-                    <td>홍길동</td>
+                    <td>${member.member_name}</td>
                 </tr>
                 <tr>
                     <td>이메일</td>
-                    <td>human@naver.com</td>
+                    <td>${member.email}</td>
                 </tr>
                 <tr>
                     <td>휴대폰 번호</td>
-                    <td>010-0000-0000 <button>수정</button></td>
+                    <td>${member.handphone} <button>수정</button></td>
                 </tr>
             </table>
         </div>
@@ -31,15 +34,15 @@
             <table border="1">
                 <tr>
                     <td>이름</td>
-                    <td>홍길동</td>
+                    <td>${member.member_name}</td>
                 </tr>
                 <tr>
                     <td>배송주소</td>
-                    <td>천안시</td>
+                    <td>${member.address2}</td>
                 </tr>
                 <tr>
                     <td>휴대폰 번호</td>
-                    <td>010-0000-0000 <button>수정</button></td>
+                    <td>${member.handphone}<button>수정</button></td>
                 </tr>
                 <tr>
                     <td>요청사항</td>
@@ -95,6 +98,8 @@
         </div><br>
 
     </div>
+    </form>
     <!-- ---------결제페이지--------- -->
+    <%@include file="../Main/Footer2.jsp" %>
 </body>
 </html>

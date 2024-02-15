@@ -135,93 +135,71 @@
                     <div id="CategoryProductbox">
                         <br><h3>핫딜 세일</h3><hr>
                         <div class="Productmain">
-    <c:choose>
-		<c:when test="${empty productList}">
-			<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-		</c:when>
-		<c:otherwise>
-			<c:forEach begin="1" end="5" varStatus="vs">
-                    <div class="CategoryProduct">
-                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-                        	<img src="../resources/img/Mallimg/${productList[vs.count-1].save_file_name1}">
-                       	</a>
-                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-                        	${productList[vs.count-1].summary}
-                        </a>
-                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-	                        ${productList[vs.count-1].price}원
-                        </a>
-                    </div>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
+						    <c:choose>
+								<c:when test="${empty productList}">
+									<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach begin="1" end="5" varStatus="vs">
+					                    <div class="CategoryProduct">
+					                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+					                        	<img src="../resources/img/Mallimg/${productList[vs.count-1].save_file_name1}">
+					                       	</a>
+					                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+					                        	${productList[vs.count-1].summary}
+					                        </a>
+					                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+						                        ${productList[vs.count-1].price}원
+					                        </a>
+					                    </div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
                         </div>
                     </div>
                     <div id="CategoryProductbestbox">
                         <br><h3>검색어 순위</h3><hr>
                         <div class="Productmain">
-                            <div class="CategoryProduct">
-                                <span>1</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>2</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>3</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>4</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>5</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
+   						    <c:choose>
+								<c:when test="${empty productList}">
+									<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="i" begin="1" end="5" varStatus="vs">
+			                            <div class="CategoryProduct">
+			                                <span>${i}</span>
+			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+				                                <img src="../resources/img/Mallimg/${productList[vs.count-1].save_file_name1}">
+			                                </a>
+			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+				                                ${productList[i-1].summary}
+			                                </a>
+	    		                            ${productList[i-1].price}원
+	        		                    </div>
+                                	</c:forEach>
+								</c:otherwise>
+							</c:choose>
                         </div>
                         <div class="Productmain">
-                            <div class="CategoryProduct">
-                                <span>6</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>7</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>8</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>9</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
-                            <div class="CategoryProduct">
-                                <span>10</span>
-                                <img src="../resources/img/Mallimg/사과.jpg">
-                                <a href="">경북 햇 부사사과 가정용 4kg 18과내 / 중과 이상</a>
-                                22,900원
-                            </div>
+   						    <c:choose>
+								<c:when test="${empty productList}">
+									<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="i" begin="6" end="10" varStatus="vs">
+			                            <div class="CategoryProduct">
+			                                <span>${i}</span>
+			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+				                                <img src="../resources/img/Mallimg/${productList[i-1].save_file_name1}">
+			                                </a>
+			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+				                                ${productList[i-1].summary}
+			                                </a>
+	    		                            ${productList[i].price}원
+	        		                    </div>
+                                	</c:forEach>
+								</c:otherwise>
+							</c:choose>
                         </div><br><br>
                     </div>
                 </div>
