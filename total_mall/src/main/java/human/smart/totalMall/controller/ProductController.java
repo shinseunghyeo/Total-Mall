@@ -24,7 +24,7 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pInsert, pCartInsert, pCartList;
+    private ProductService cList, pSearch, pPage, pItem, pPurchase, pInsert, pCartInsert, pCartList;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -41,8 +41,14 @@ public class ProductController {
 		ProductVO vo = pItem.getProduct(p_idx);
 		model.addAttribute("product", vo);
 		
-		return "Product/item";
+		return "Product/item";		
+	}
+    @GetMapping("/purchase.do") // 임시
+	public String purchase(int p_idx, Model model) {
+		ProductVO vo = pPurchase.getProduct(p_idx);
+		model.addAttribute("purchase", vo);
 		
+		return "Product/purchase";
 	}
     @GetMapping("/search.do") // 임시
     public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {

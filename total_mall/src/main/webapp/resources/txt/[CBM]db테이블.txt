@@ -1,0 +1,107 @@
+create table tb_member(
+	m_idx int unsigned auto_increment,
+	categorie varchar(50),
+    member_id varchar(30) not null unique,
+	member_pw varchar(30) not null,
+    member_name varchar(20) not null,
+    handphone varchar(20) not null unique,
+    email varchar(50) not null unique,
+    address1 varchar(10) not null,
+    address2 varchar(40) not null,
+    address3 varchar(30) not null,
+    representative_name varchar(40) default "홍",
+    company_number varchar(20) default "1",
+    mutual varchar(20) default "삼",
+    mail_order_number varchar(30) default "1",
+    account1 varchar(30) default "1",
+    account2 varchar(30) default "1",
+    Depositor_name varchar(20) default "홍",
+    grade decimal(1) default 0,
+    join_date datetime default now(),
+    update_date datetime default now(),
+    cancel_or_not decimal(1) default 0,
+    constraint tb_member_pk primary key(m_idx)
+);
+
+alter table tb_member change join_date reg_date datetime;
+alter table tb_member change update_date last_modified_date datetime;
+alter table tb_member modify column member_pw varchar(100);
+alter table tb_member alter column categorie set default "3";
+ALTER TABLE tb_member MODIFY COLUMN reg_date TIMESTAMP DEFAULT NOW();
+ALTER TABLE tb_member MODIFY COLUMN last_modified_date TIMESTAMP DEFAULT NOW();
+
+select * from tb_product;
+
+create table tb_product(
+	p_idx int unsigned auto_increment,
+    category varchar(30),
+    product_name varchar(100),
+	product_code varchar(50),
+	brand varchar(30),
+	summary	varchar(50),
+	detail	varchar(1000),
+	start_date datetime,
+	end_date datetime,
+	origin_file_name1 varchar(50),
+	save_file_name1 varchar(50),
+	origin_file_name2 varchar(50),
+	save_file_name2 varchar(50),
+	price int,
+	sales_unit varchar(50),
+	discount_rate int,
+	quantity int,
+    p_reg_date datetime,
+    p_last_modified_date datetime,
+    constraint tb_product_pk primary key(p_idx)
+);
+
+insert into tb_product(p_idx, category)
+values (1, 'meat'), (2, 'vegetables'), (3, 'fruits'), (4, 'frozen'), (5, 'kitchen'), (6, 'curtain'), 
+(7, 'games'), (8, 'lego'), (9, 'petsupplies'), (10, 'dailynecessities'), (11, 'bodyhair'), (12, 'men'), 
+(13, 'women'), (14, 'education'), (15, 'novels'), (16, 'overseas'), (17, 'living'), (18, 'bedding'), 
+(19, 'homeAppliances'), (20, 'digital'), (21, 'soccer'), (22, 'golf');
+insert into tb_product(category, product_name, product_code, brand, summary, detail, save_file_name1, price)
+values ('meat', '삼겁살', 'ASD123412341234', 'a마켓', '저렴한 가격의 상품', '전국에서 가장 저렴함 상품. 오랜기간 숙성된 고기.', '사과.jpg', 1500);
+insert into tb_product(category, product_name, product_code, brand, summary, detail, save_file_name1, price)
+values ('meat', '삼겁살', 'DGBSF412341234', 'B마켓', '신선한 제품', '전국에서 가장 저렴함 상품. 오랜기간 숙성된 고기.', '사과.jpg', 1500);
+insert into tb_product(category, product_name, product_code, brand, summary, detail, save_file_name1, price)
+values ('meat', '삼겁살', 'DNFS23412341234', 'C마켓', '오늘의 신상품', '전국에서 가장 저렴함 상품. 오랜기간 숙성된 고기.', '사과.jpg', 1500);
+create table orders(
+	o_idx int unsigned auto_increment,
+    pay varchar(255),
+    totalprice int(11),
+    requests varchar(255),
+    created_date timestamp,
+    modified_date timestamp,
+    constraint orders_pk primary key(o_idx)
+);
+
+
+drop table tb_product//;
+
+select * from tb_product;
+
+
+
+show tables;
+
+select * from tb_product where category = 'meat';
+SELECT * FROM tb_product WHERE category LIKE '%meat%'
+ORDER BY p_idx DESC
+LIMIT 20 OFFSET 1;
+
+select * from tb_product where category = 'meat';
+
+SELECT * FROM tb_product WHERE category LIKE 'curtain'
+ORDER BY p_idx DESC
+LIMIT 20 OFFSET 0;
+
+				select * from tb_product
+                where summary like CONCAT('%','','%')
+						 		order by p_idx desc
+				                limit 0, 10;
+				select * from tb_product
+				where summary like CONCAT('%', '','%')
+				order by p_idx desc
+				limit 0, 5
+

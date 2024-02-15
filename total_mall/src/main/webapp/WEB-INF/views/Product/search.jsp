@@ -67,11 +67,11 @@
 						<c:otherwise>
 							<c:forEach begin="1" end="5" varStatus="vs">
 			                    <div id="Searchproductbox">
-									<a class="productimg" href="${pageContext.request.contextPath}/product/item.do">
-			                        	<img src="../resources/img/Mallimg/삼겹살.jpg">
+									<a class="productimg" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
+			                        	<img src="../resources/img/Mallimg/${productList2[vs.count-1].save_file_name1}">
 			                       	</a>
 			                        <div id="SearchProduct">
-			                            <a href="${pageContext.request.contextPath}/product/item.do">
+			                            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
 			                            ${productList2[vs.count-1].summary}
 			                            </a><br>
 			                            ${productList2[vs.count-1].price}원<br>
