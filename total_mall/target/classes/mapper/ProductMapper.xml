@@ -18,10 +18,14 @@
 				order by p_idx desc
 				limit 0, 5
 	</select>
-	<!-- 상품등록: insert -->
+			<!-- 상품등록: insert -->
 	<insert id="insert" parameterType="ProductVO">
-				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,start_date,end_date,origin_file_name1,save_file_name1,origin_file_name2,save_file_name2,price,sales_unit,discount_rate,quantity)
-					   values(#{m_idx},#{category}, #{product_name}, #{product_code}, #{brand}, #{summary}, #{detail},#{start_date},#{end_date},#{origin_file_name1},#{save_file_name1},#{origin_file_name2},#{save_file_name2},#{price},#{sales_unit},#{discount_rate},#{quantity})
+				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,
+										start_date,end_date,origin_file_name1,save_file_name1,
+										origin_file_name2,save_file_name2,price,discount_rate,quantity)
+					   values(#{m_idx},#{category}, #{product_name}, #{product_code}, #{brand}, #{summary}, #{detail},
+					   		#{start_date},#{end_date},#{origin_file_name1},#{save_file_name1},
+					   		#{origin_file_name2},#{save_file_name2},#{price},#{discount_rate},#{quantity})
 	</insert>
 	
 	<!-- 장바구니 상품등록: insert -->

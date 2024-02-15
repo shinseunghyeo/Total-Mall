@@ -35,7 +35,28 @@
 	            </div>
 			</form>
             <div id="UserIcon">
-                <img src="../resources/img/Headerimg/사용자 아이콘.png" width="40">
+                				<c:choose>
+					<c:when test="${member.grade eq 9}">
+						<a
+							href="${pageContext.request.contextPath}/member/sellermypage.do">
+							<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+						</a>
+					</c:when>
+					<c:when test="${member.grade eq 1}">
+						<a href="${pageContext.request.contextPath}/member/buyermypage.do">
+							<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+						</a>
+					</c:when>
+					<c:when test="${member.grade eq 8}">
+						<a href="${pageContext.request.contextPath}/member/adminmypage.do">
+							<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+						</a>
+					</c:when>
+					<c:otherwise>
+						<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+					</c:otherwise>
+				</c:choose>
+
                 <a href="${pageContext.request.contextPath}/product/cart.do">
                 	<img src="../resources/img/Headerimg/장바구니 아이콘.png" width="40">
                 </a>

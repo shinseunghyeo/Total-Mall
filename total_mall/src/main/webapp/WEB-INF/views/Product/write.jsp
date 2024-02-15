@@ -18,7 +18,7 @@
 			<div id="inner_wrap">
 				<!-- 상품등록 전체 페이지 -->
 				<div id="write_frm">
-					<form name="frm_write" method="post" action="writeProcess.do"
+					<form name="frm_write" method="post" action="../product/writeProcess.do"
 						enctype="multipart/form-data">
 
 						<h1>상품 등록</h1>
@@ -111,11 +111,7 @@
 											<td colspan="2"><input type="text" class="input_txt"
 												name="price" id=""></td>
 										</tr>
-										<tr>
-											<th class="th_left">판매 단위</th>
-											<td colspan="2"><input type="text" class="input_txt"
-												name="sales_unit" id=""></td>
-										</tr>
+										
 										<tr>
 											<th class="th_left">할인율 (%)</th>
 											<td colspan="2"><input type="text" class="input_txt"

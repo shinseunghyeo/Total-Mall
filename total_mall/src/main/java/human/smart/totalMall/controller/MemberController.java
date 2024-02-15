@@ -175,4 +175,18 @@ public class MemberController {
 		}
 		return viewPage;
 	}
+	
+	//기업회원 마이페이지
+	@GetMapping("/sellermypage.do")
+	public String mypage() {
+		return "member/sellermypage";
+	}
+	
+	@GetMapping("/sellermypage/Product/write.do")
+	public String insert() {
+		return "Product/write";
+	}
+	
+	
+	
 }
