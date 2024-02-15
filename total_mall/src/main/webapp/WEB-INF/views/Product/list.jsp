@@ -13,70 +13,70 @@
     <!-- ---------카테고리 페이지--------- -->
     <div id="CategoryPage">
         <c:choose>
-			<c:when test="${productList[0].category eq 'meat'}">
+			<c:when test="${boardList[0].category eq 'meat'}">
        			<h3 style="color: #3498db;">홈> 식품> 고기</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'vegetables'}">
+			<c:when test="${boardList[0].category eq 'vegetables'}">
        			<h3 style="color: #3498db;">홈> 식품> 야채</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'fruits'}">
+			<c:when test="${boardList[0].category eq 'fruits'}">
        			<h3 style="color: #3498db;">홈> 식품> 과일</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'frozen'}">
+			<c:when test="${boardList[0].category eq 'frozen'}">
        			<h3 style="color: #3498db;">홈> 식품> 냉동</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'kitchen'}">
+			<c:when test="${boardList[0].category eq 'kitchen'}">
        			<h3 style="color: #3498db;">홈> 홈데코> 주방</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'curtain'}">
+			<c:when test="${boardList[0].category eq 'curtain'}">
        			<h3 style="color: #3498db;">홈> 홈데코> 커튼</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'games'}">
+			<c:when test="${boardList[0].category eq 'games'}">
        			<h3 style="color: #3498db;">홈> 취미> 게임</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'lego'}">
+			<c:when test="${boardList[0].category eq 'lego'}">
        			<h3 style="color: #3498db;">홈> 취미> 레고</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'petsupplies'}">
+			<c:when test="${boardList[0].category eq 'petsupplies'}">
        			<h3 style="color: #3498db;">홈> 취미> 펫용품</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'dailynecessities'}">
+			<c:when test="${boardList[0].category eq 'dailynecessities'}">
        			<h3 style="color: #3498db;">홈> 생필품> 생필품</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'bodyhair'}">
+			<c:when test="${boardList[0].category eq 'bodyhair'}">
        			<h3 style="color: #3498db;">홈> 생필품> 바디헤어</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'men'}">
+			<c:when test="${boardList[0].category eq 'men'}">
        			<h3 style="color: #3498db;">홈> 의류> 남성</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'women'}">
+			<c:when test="${boardList[0].category eq 'women'}">
        			<h3 style="color: #3498db;">홈> 의류> 여성</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'education'}">
+			<c:when test="${boardList[0].category eq 'education'}">
        			<h3 style="color: #3498db;">홈> 도서> 교육</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'novels'}">
+			<c:when test="${boardList[0].category eq 'novels'}">
        			<h3 style="color: #3498db;">홈> 도서> 소설</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'overseas'}">
+			<c:when test="${boardList[0].category eq 'overseas'}">
        			<h3 style="color: #3498db;">홈> 도서> 해외</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'living'}">
+			<c:when test="${boardList[0].category eq 'living'}">
        			<h3 style="color: #3498db;">홈> 가구> 생활</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'bedding'}">
+			<c:when test="${boardList[0].category eq 'bedding'}">
        			<h3 style="color: #3498db;">홈> 가구> 침상</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'homeAppliances'}">
+			<c:when test="${boardList[0].category eq 'homeAppliances'}">
        			<h3 style="color: #3498db;">홈> 가전> 가전</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'digital'}">
+			<c:when test="${boardList[0].category eq 'digital'}">
        			<h3 style="color: #3498db;">홈> 가전> 디지털</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'soccer'}">
+			<c:when test="${boardList[0].category eq 'soccer'}">
        			<h3 style="color: #3498db;">홈> 스포츠> 축구</h3>
        		</c:when>
-			<c:when test="${productList[0].category eq 'golf'}">
+			<c:when test="${boardList[0].category eq 'golf'}">
        			<h3 style="color: #3498db;">홈> 스포츠> 골프</h3>
        		</c:when>
         	<c:otherwise>
@@ -136,20 +136,20 @@
                         <br><h3>핫딜 세일</h3><hr>
                         <div class="Productmain">
     <c:choose>
-		<c:when test="${empty productList}">
+		<c:when test="${empty boardList}">
 			<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
 		</c:when>
 		<c:otherwise>
 			<c:forEach begin="1" end="5" varStatus="vs">
                     <div class="CategoryProduct">
-                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-                        	<img src="../resources/img/Mallimg/${productList[vs.count-1].save_file_name1}">
+                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${boardList[vs.count-1].p_idx}">
+                        	<img src="../resources/img/Mallimg/${boardList[vs.count-1].save_file_name1}">
                        	</a>
-                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-                        	${productList[vs.count-1].summary}
+                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${boardList[vs.count-1].p_idx}">
+                        	${boardList[vs.count-1].summary}
                         </a>
-                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-	                        ${productList[vs.count-1].price}원
+                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${boardList[vs.count-1].p_idx}">
+	                        ${boardList[vs.count-1].price}원
                         </a>
                     </div>
 			</c:forEach>

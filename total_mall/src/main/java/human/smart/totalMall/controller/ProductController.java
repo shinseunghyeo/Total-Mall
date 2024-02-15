@@ -24,30 +24,30 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pInsert, pCartInsert, pCartList;
+    private ProductService cList, pSearch, pPage, pInsert, pCartInsert, pCartList;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
     
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
-    	List<ProductVO> productList = cList.getProducts(searchVO);
-    	model.addAttribute("productList", productList);
+    	List<ProductVO> boardList = cList.getProducts(searchVO);
+    	model.addAttribute("boardList", boardList);
 
         return "Product/list";
     }
     @GetMapping("/item.do") // 임시
-	public String item(int p_idx, Model model) {
-		ProductVO vo = pItem.getProduct(p_idx);
-		model.addAttribute("product", vo);
-		
-		return "Product/item";
-		
-	}
+    public String item(@ModelAttribute("sVO")SearchVO searchVO, Model model, int p_idx) {
+    	List<ProductVO> boardList = cList.getProducts(searchVO);
+    	model.addAttribute("boardList", boardList);
+    	model.addAttribute("p_idx", p_idx);
+
+        return "Product/item";
+    }
     @GetMapping("/search.do") // 임시
     public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
-    	List<ProductVO> productList2 = pSearch.getProducts2(searchVO);
-    	model.addAttribute("productList2", productList2);
+    	List<ProductVO> boardList2 = pSearch.getProducts2(searchVO);
+    	model.addAttribute("boardList2", boardList2);
     	if(searchVO.getPageNum() == 0) {
     		searchVO.setPageNum(1);
     	}
