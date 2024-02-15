@@ -27,33 +27,40 @@
 	</beans:bean>
 	
 	<!-- Interceptor 관련 설정 추가 -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
 			<mapping path="/**/*.do"/>
-			경로 패턴을 가리키는 특수문자(*: 0개 또는 그 이상의 문자, ?: 1개 글자, **: 0개 또는 그 이상의 폴더경로
-			
-			로그인 인터셉터에서 제외되는 요청들
+	
 			<exclude-mapping path="/"/>
-			<exclude-mapping path="/index.do"/>
+			<exclude-mapping path="/TotalMall.do"/>
 			
-			회원관리에서 제외되는 요청들 
+	 
 			<exclude-mapping path="/member/join.do"/>
 			<exclude-mapping path="/member/checkId.do"/>
 			<exclude-mapping path="/member/emailCheck.do"/>
-			<exclude-mapping path="/member/joinProcess.do"/>
+			<exclude-mapping path="/member/buyerJoinProcess1.do"/>
+			<exclude-mapping path="/member/buyerJoinProcess2.do"/>
+			<exclude-mapping path="/member/sellerJoinProcess1.do"/>
+			<exclude-mapping path="/member/sellerJoinProcess2.do"/>
+			<exclude-mapping path="/member/sellerJoinProcess3.do"/>
+			<exclude-mapping path="/member/findidpw.do"/>
+			<exclude-mapping path="/member/findId.do"/>
+			<exclude-mapping path="/member/findPw.do"/>
+			<exclude-mapping path="/member/findPwProcess.do"/>
 			<exclude-mapping path="/member/login.do"/>
 			<exclude-mapping path="/member/loginProcess.do"/>
 			
-			게시판에서 제외되는 요청들 
-			<exclude-mapping path="/board/list.do"/>
-			<exclude-mapping path="/board/view.do"/>
-			<exclude-mapping path="/board/download.do"/>
+	 
+			<exclude-mapping path="/product/list.do"/>
+			<exclude-mapping path="/product/item.do"/>
+			<exclude-mapping path="/product/search.do"/>
+			<exclude-mapping path="/product/item.do"/>
 			
-			로그인 인터셉터의 기능을 수행하는 자바클랫스 빈 등록 
+	 
 			<beans:bean id="loginInterceptor" class="human.smart.totalMall.interceptor.LoginInterceptor"/>
 		</interceptor>
 	
-	</interceptors> -->
+	</interceptors>
 	
 	<!-- 컴포넌트 스캔을 이용한 빈 자동 등록. 정의된 패키지와 하위 패키지에 있는 자바클래스의
 	     어노테이션을 확인해서 빈으로 등록시켜줌  -->
