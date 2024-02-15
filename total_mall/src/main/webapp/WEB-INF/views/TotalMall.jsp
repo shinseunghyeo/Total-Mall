@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1,user-scalable=no">
 <link rel="stylesheet" href="resources/css/Main/TotalMall.css">
-<title>Insert title here</title>
+<title>Insert title here2</title>
 </head>
 <body>
   	<%@ include file="Main/MainHeader.jsp" %>
