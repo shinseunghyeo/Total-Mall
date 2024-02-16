@@ -19,6 +19,7 @@ function checkInput() {
     if (value.length > 1 && value[0] === "0") {
         inputBox.value = value.slice(1);
     }
+    updateCartLink();
 }
 
 function increment() {
@@ -28,6 +29,7 @@ function increment() {
         inputBox.value = value + 1;
         prevValue = inputBox.value;
     }
+    updateCartLink();
 }
 
 function decrement() {
@@ -37,8 +39,33 @@ function decrement() {
         inputBox.value = value - 1;
         prevValue = inputBox.value;
     }
+    updateCartLink();
 }
 // -----------개수최대값-----------
+var contextPath = "${pageContext.request.contextPath}";
+var productPIdx = "${product.p_idx}";
+var memberMIdx = "${member.m_idx}";
+function updateCartLink() {
+        var cQuantity = document.getElementById("inputBox").value;
+
+        // 기존의 href 값을 읽어옴
+        var cartLink = document.getElementById("cartLink");
+        var originalHref = cartLink.getAttribute("href");
+
+        // 기존의 c_quantity 값을 찾아냄
+        var cQuantityIndex = originalHref.indexOf("c_quantity=");
+
+        if (cQuantityIndex !== -1) {
+            // c_quantity가 이미 존재하면 값을 수정
+            var newHref = originalHref.substring(0, cQuantityIndex) + "c_quantity=" + cQuantity;
+            cartLink.setAttribute("href", newHref);
+        } else {
+            // c_quantity가 없으면 추가
+            var separator = originalHref.indexOf('?') !== -1 ? '&' : '?';
+            var newHref = originalHref + separator + "c_quantity=" + cQuantity;
+            cartLink.setAttribute("href", newHref);
+        }
+    }
 
 
 // -----------상품정보-----------

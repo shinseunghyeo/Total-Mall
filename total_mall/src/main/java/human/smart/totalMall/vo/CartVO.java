@@ -16,4 +16,9 @@ public class CartVO {
 	private Date c_start_date;
 	private Date c_update_time;
 	
+	//추가
+	private String product_name;
+	private int price;
+	private int discount_rate;
+	
 }

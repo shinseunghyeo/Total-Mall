@@ -1,14 +1,13 @@
 @charset "UTF-8";
 
 
-    
     @font-face {
         font-family: "G-market-Light";
-        src: url(font/GmarketSansTTFLight.ttf);
+        src: url('../fonts/GmarketSansTTFLight.woff') format('woff');
     }
     @font-face {
         font-family: "G-market-Bold";
-        src: url(font/GmarketSansTTFBold.ttf);
+        src:  url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
     }
     #white-board{
         margin: 0 auto;
@@ -148,10 +147,21 @@
         width: 10%;
         text-align: center;
     }
-    .cart_item-4 select{
-        margin-top: 62.5px;
-        height: 25px;
-        width: 60px;
+    .cart_item-4 input[type="text"]{
+        border-radius: 0;
+        border: solid 1px black; 
+        margin-top: 50px;
+        height: 17px;
+        
+        width: 50px;
+        text-align: center;
+    }
+    .cart_item-4 input[type="button"]{
+        margin: 0;
+        padding: 0;
+    }
+    .cart_item-4 a{
+    	margin: 0;
     }
     .cart_item-5{
         width: 20%;
