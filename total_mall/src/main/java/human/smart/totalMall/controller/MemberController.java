@@ -176,17 +176,57 @@ public class MemberController {
 		return viewPage;
 	}
 	
-	//기업회원 마이페이지
+	
+/////////////////////////////// 기업회원 마이페이지 ///////////////////////////////	
+	
+	//기업회원 마이페이지 처리
 	@GetMapping("/sellermypage.do")
-	public String mypage() {
+	public String sellerMypage() {
 		return "member/sellermypage";
 	}
 	
+	//기업회원 마이페이지 홈
+	@GetMapping("/sellermypage/member/sellerhome.do")
+	public String sellerHome() {
+		return "member/sellerhome";
+	}
+	
+	//기업회원 상품등록페이지 처리
 	@GetMapping("/sellermypage/Product/write.do")
 	public String insert() {
 		return "Product/write";
 	}
 	
+	//기업회원 상품등록페이지 처리
+	@GetMapping("/sellermypage/member/sellerupdate.do")
+	public String sellerUpdate() {
+		return "member/sellerupdate";
+	}
+	
+/////////////////////////////// 개인회원 마이페이지 ///////////////////////////////		
+	
+	//개인회원 마이페이지 처리
+	@GetMapping("/buyermypage.do")
+	public String buyerMypage() {
+		return "member/buyermypage";
+	}
+
+	//개인회원 마이페이지 홈
+	@GetMapping("/buyermypage/member/buyerhome.do")
+	public String buyerhome() {
+		return "member/buyerhome";
+	}
+	
+	//개인회원 회원정보 설정
+	@GetMapping("/buyermypage/member/buyerupdate.do")
+	public String buyerUpdate() {
+		return "member/buyerupdate";
+	}
+	
+	@GetMapping("/buyermypage/member/buyeraddress.do")
+	public String buyerAddress() {
+		return "member/buyeraddress";
+	}
 	
 	
 }

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기업회원 상품등록</title>
-<link rel="stylesheet" href="../resources/css/product/seller.css">
+<link rel="stylesheet" href="../resources/css/Member/seller.css">
 </head>
 <body>
 

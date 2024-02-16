@@ -21,26 +21,21 @@ $(function () {
         boldCss
     });
     $(".seller_nav_ul_li:not(.seller_nav_ul_li:first)").css({
-        navCss,
+        backgroundColor: "rgb(158, 158, 158)",
         lightCss
     });
 
 
     //비활성 페이지 숨김처리
     const hidePages = [
-        "#write_frm",
-        "#table_wrap2",
-        "#product_management",
-        "#SearchproductLine",
-        "#order_list",
-        "#update_info"
+        "#short_cut"
     ];
     // hidePages.forEach(page => $(page).css("display", "none"));
 
     //판매자 페이지 네비게이션 클릭시 css 변경
     $("#seller_nav_ul").on("click", ".seller_nav_ul_li", function () {
         $(".seller_nav_ul_li").css({
-            navCss
+            backgroundColor: "rgba(224, 224, 224, 0.42)",
         });
         $(this).css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
@@ -48,10 +43,8 @@ $(function () {
         });
 
         const pages = [
-            "#write_frm",
-            "#product_management",
-            "#order_list",
-            "#update_info"
+            "#short_cut",
+            
         ];
         hidePages.forEach(page => $(page).css({
             display: "none"
@@ -59,8 +52,9 @@ $(function () {
         
 
         if ($(this).is(".seller_nav_ul_li:eq(0)")) {
-            loadContent("");
+            loadContent("sellermypage/member/sellerhome.do");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(0))").css({
+	            backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         };
@@ -68,34 +62,39 @@ $(function () {
         if ($(this).is(".seller_nav_ul_li:eq(1)")) {
             loadContent("sellermypage/Product/write.do");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(1))").css({
+                backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         };
 
         if ($(this).is(".seller_nav_ul_li:eq(2)")) {
-            loadContent("");
+            loadContent("#");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(2))").css({
+                backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         };
 
         if ($(this).is(".seller_nav_ul_li:eq(3)")) {
-            loadContent("");
+            loadContent("#");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(3))").css({
+                backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         };
 
         if ($(this).is(".seller_nav_ul_li:eq(4)")) {
-            loadContent("");
+            loadContent("sellermypage/member/sellerupdate.do");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(4))").css({
+                backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         }; 
         
 		if ($(this).is(".seller_nav_ul_li:eq(5)")) {
-            loadContent("");
+            loadContent("#");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(5))").css({
+                backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         }; 
