@@ -33,6 +33,10 @@
                         <p></p>
                     </div>
                     
+                    <input type="hidden" name="m_idx" value="${member.m_idx }">
+                    <c:set var="totalOrderAmount" value="0" />
+                    <c:set var="totalDiscount" value="0" />
+                    <c:set var="totalDelivery" value="${cartList.size() * 2500 }" />
                     <c:choose>
                     	<c:when test="${empty cartList }">
                     		<p>????</p>
@@ -52,19 +56,15 @@
 				                                <img src="Mallimg/고구마.jpg" alt="">
 				                            </div>
 				                            <div class="cart_item-3">
-				                                <p><a href="">30%쿠폰 캘빈클라인 백화점 어쩌구 어쩌구 어쩌구 어쩌구 어쩌구 어쩌구 어쩌구 어쩌구</a></p>
+				                                <p><a href="">${cartList[i-1].product_name }</a></p>
 				                            </div>
 				                            <div class="cart_item-4">
-				                                <select name="" id="">
-				                                    <option value="">1</option>
-				                                    <option value="">2</option>
-				                                    <option value="">3</option>
-				                                </select><br>
-				                                <input type="button" value="변경" style="width: 60px;">
+				                            	<input type="text" name="" id="" value="${cartList[i-1].c_quantity }">
+                                				<a href="${pageContext.request.contextPath}/product/cartQuantityUpdate.do?m_idx=${member.m_idx }&p_idx=${cartList[i-1].p_idx}&c_quantity=${cartList[i-1].c_quantity}"><input type="button" value="변경" style="width: 60px;"></a>
 				                            </div>
 				                            <div class="cart_item-5">
 				                                <div>
-				                                    <p>38000원</p>
+				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }</p>
 				                                </div>
 				                                <div>
 				                                    <input type="button" value="X" onclick="removeCartItem(this)">
@@ -77,7 +77,7 @@
 				                                    <p>상품금액</p>
 				                                </div>
 				                                <div style="text-align: center;;">
-				                                    <p>53,260원</p>
+				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -88,7 +88,7 @@
 				                                    <p>할인금액</p>
 				                                </div>
 				                                <div class="discount-div">
-				                                    <p>3,000원</p>
+				                                    <p>${(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue() }원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -110,12 +110,14 @@
 				                                    <p>주문금액</p>
 				                                </div>
 				                                <div>
-				                                    <p>32,280원</p>
+				                                    <p>${(cartList[i-1].price*cartList[i-1].c_quantity)-(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()+2500 }원</p>
 				                                </div>
 				                            </div>
 				                            
 				                        </div>
 				                    </div>
+				                    <c:set var="totalOrderAmount" value="${totalOrderAmount + (cartList[i-1].price*cartList[i-1].c_quantity)}" />
+				                    <c:set var="totalDiscount" value="${totalDiscount + (cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()}" />
 	                    		</c:if>
 	                    	</c:forEach>
                     		
@@ -124,6 +126,7 @@
 
                     
                 </div>
+                
                 <div id="right-div">
                     <div id="right_header">
                         <h1>결제 예정금액</h1>
@@ -133,7 +136,7 @@
                             <p>상품금액</p>
                         </div>
                         <div>
-                            <h2>108,000원</h2>
+                            <h2>${totalOrderAmount }원</h2>
                         </div>
                     </div>
                     <div id="right_second_div">
@@ -141,7 +144,7 @@
                             <p>할인금액</p>
                         </div>
                         <div>
-                            <h2>8,000원</h2>
+                            <h2>${totalDiscount }원</h2>
                         </div>
                     </div>
                     <div id="right_third_div">
@@ -149,7 +152,7 @@
                             <p>배송비</p>
                         </div>
                         <div>
-                            <h2>2,500원</h2>
+                            <h2>${totalDelivery}원</h2>
                         </div>
                     </div>
                     <div id="right_fourth_div">
@@ -157,7 +160,7 @@
                             <p>합계</p>
                         </div>
                         <div>
-                            <h2>102,500원</h2>
+                            <h2>${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
                         </div>
                     </div>
                     <div id="right_fifth_div">
@@ -165,6 +168,7 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden">
         </form>
         </div>
     </section>

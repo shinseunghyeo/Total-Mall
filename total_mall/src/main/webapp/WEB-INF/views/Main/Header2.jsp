@@ -57,7 +57,7 @@
 					</c:otherwise>
 				</c:choose>
 
-                <a href="${pageContext.request.contextPath}/product/cart.do">
+                <a href="${pageContext.request.contextPath}/product/cart.do?m_idx=${member.m_idx}">
                 	<img src="../resources/img/Headerimg/장바구니 아이콘.png" width="40">
                 </a>
                 <img onclick="ServeMall()" src="../resources/img/Headerimg/서브 아이콘.png" width="40">

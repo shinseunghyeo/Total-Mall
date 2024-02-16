@@ -1,7 +1,5 @@
 package human.smart.totalMall.product;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import human.smart.totalMall.dao.ProductDAO;
@@ -9,16 +7,18 @@ import human.smart.totalMall.vo.CartVO;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor 
-@Service("pCartList")
-public class ProductCartlistService implements ProductService {
+@Service("pCartQuantityUpdate")
+public class ProductCartQuantityUpdateService implements ProductService {
 
     private ProductDAO dao;
 
     @Override
-    public List<CartVO> getCarts(int m_idx) {
-        
+    public int cartQuantityUpdate(CartVO vo) {
+        int result = 0;
 
-        return dao.getCarts(m_idx);
+        result = dao.cartQuantityUpdate(vo);
+
+        return result;
     }
 
     
