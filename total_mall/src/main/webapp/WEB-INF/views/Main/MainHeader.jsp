@@ -60,7 +60,9 @@
 						</a>
 					</c:when>
 					<c:otherwise>
+						<a href="${pageContext.request.contextPath}/member/login.do">
 						<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+						</a>
 					</c:otherwise>
 				</c:choose>
 				<a href="${pageContext.request.contextPath}/product/cart.do?m_idx=${member.m_idx}"> <img

@@ -1,0 +1,1294 @@
+
+    /* 글씨체 변경 */
+    @font-face {
+        font-family: "G-market-Light";
+		src: url(../resources/font/GmarketSansTTFLight.ttf);
+    }
+
+    @font-face {
+        font-family: "G-market-Bold";
+        src: url(../resources/font/GmarketSansTTFBold.ttf);
+    }
+
+    p,
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    input[type='button'] {
+        font-family: "G-market-Light";
+    }
+
+    /* 글씨체 변경 */
+
+
+
+
+    /* section 시작 */
+    section {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #wrap {
+        width: 1050px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        /* background-color: rgb(224, 224, 224); */
+    }
+
+    #buyer_nav {
+        width: 210px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: white;
+        position: fixed;
+    }
+
+    #buyer_nav_ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-content: center;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    .buyer_nav_ul_li {
+        list-style: none;
+        /* font-size: 17px; */
+        height: 35px;
+        /* text-align: center; */
+        /* border: 0.0625rem solid; */
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        padding: 0.875rem 0;
+        width: 100%;
+        cursor: pointer !important;
+    }
+
+    #hide_menu>li {
+        list-style: none;
+        text-align: center;
+        margin: 7%;
+    }
+
+    #nav_back {
+        width: 20%;
+        height: auto;
+    }
+
+    #inner_wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        /* background-color: rgba(224, 224, 224, 0.42); */
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    #inner_wrap::before {
+        content: "";
+        display: none;
+        width: 20%;
+    }
+
+    /* //////////////////////등급 시작////////////////////////// */
+    #grade_wrap {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 10rem;
+        width: 100%;
+    }
+
+    #bar {
+        width: 80%;
+        height: 1rem;
+        background-color: rgba(224, 224, 224, 0.42);
+        border-radius: 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: center;
+    }
+
+    .svg {
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        border-radius: 100%;
+
+    }
+
+    #grade {
+        width: 80%;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline-start: 0;
+
+    }
+
+    /* //////////////////////등급 끝////////////////////////// */
+
+    #buyer_home {
+        width: 72%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-content: center;
+        align-items: stretch;
+        padding: 4%;
+        /* width: 94%; */
+        background-color: rgb(224, 224, 224);
+    }
+
+    #home_wrap {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        width: 94%;
+        padding: 3%;
+    }
+
+    /* //////////////////////최근 주문 내역/////////////////////// */
+
+    .new_order {
+        padding-top: 15px;
+        width: 100%;
+    }
+
+    .new-menu {
+        background-color: white;
+        border-radius: 5px;
+        margin: 0;
+        width: 100%;
+        height: 30px;
+        display: flex;
+        border: 1px solid black;
+    }
+
+    .p-1 {
+        width: 10%;
+        margin: auto 10px;
+    }
+
+    .p-2 {
+        width: 40%;
+    }
+
+    .p-3 {
+        width: 15%;
+    }
+
+    .p-4 {
+        width: 5%;
+    }
+
+    .p-5 {
+        width: 10%;
+    }
+
+    .p-6 {
+        width: 20%;
+    }
+
+    .p-1 p,
+    .p-2 p,
+    .p-3 p,
+    .p-4 p,
+    .p-5 p,
+    .p-6 p {
+        margin: 0;
+        line-height: 30px;
+        font-weight: 800;
+        font-family: "G-market-Bold";
+        text-align: center;
+    }
+
+    .new-item {
+        background-color: white;
+        border-radius: 5px;
+        margin: 15px 0;
+        width: 100%;
+        height: 100px;
+        border: 1px solid black;
+        display: flex;
+    }
+
+    .new-img-div {
+        width: 10%;
+        margin: 10px;
+    }
+
+    .new-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .new-name {
+        width: 40%;
+    }
+
+    .new-name p {
+        margin-right: 5px;
+    }
+
+    .new-date {
+        width: 17%;
+        text-align: center;
+        font-size: 13px;
+        line-height: 100px;
+        font-weight: 800;
+    }
+
+    .new-name p a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .new-name p a:hover {
+        text-decoration: underline;
+    }
+
+    .new-date p,
+    .new-quantity p,
+    .new-price p {
+        margin: 0;
+    }
+
+    .new-quantity {
+        width: 5%;
+        text-align: center;
+        line-height: 100px;
+        font-weight: 800;
+    }
+
+    .new-price {
+        width: 11%;
+        text-align: center;
+        line-height: 100px;
+        font-weight: 800;
+    }
+
+    .new-price p {
+        font-family: "G-market-Bold";
+    }
+
+    .new-another {
+        width: 20%;
+        text-align: center;
+    }
+
+    .new-another-button {
+        width: 80%;
+        margin-top: 8px;
+        height: 23px;
+        border: 0.5px solid gray;
+        border-radius: 5px;
+        color: white;
+        background-color: rgb(52, 152, 219);
+        font-weight: 600;
+    }
+
+    .new-another-button:hover {
+        cursor: pointer;
+    }
+
+    /* //////////////////////최근 주문 내역/////////////////////// */
+
+    /* //////////////////////전체 주문 내역/////////////////////// */
+
+    .history-board {
+        padding-top: 15px;
+        width: 80%;
+        background-color: rgb(224, 224, 224);
+        padding: 0 0 4% 0;
+    }
+
+    .history-board h1 {
+        margin: 2.5%;
+    }
+
+    .item-menu {
+        background-color: white;
+        border-radius: 5px;
+        margin: 0 auto;
+        width: 95%;
+        height: 30px;
+        display: flex;
+        border: 1px solid black;
+    }
+
+    .p-1 {
+        width: 10%;
+        margin: auto 10px;
+    }
+
+    .p-2 {
+        width: 40%;
+    }
+
+    .p-3 {
+        width: 15%;
+    }
+
+    .p-4 {
+        width: 5%;
+    }
+
+    .p-5 {
+        width: 10%;
+    }
+
+    .p-6 {
+        width: 20%;
+    }
+
+    .p-1 p,
+    .p-2 p,
+    .p-3 p,
+    .p-4 p,
+    .p-5 p,
+    .p-6 p {
+        margin: 0;
+        line-height: 30px;
+        font-weight: 800;
+        font-family: "G-market-Bold";
+        text-align: center;
+    }
+
+    .history-item {
+        background-color: white;
+        border-radius: 5px;
+        margin: 15px auto;
+        width: 95%;
+        height: 100px;
+        border: 1px solid black;
+        display: flex;
+    }
+
+    .item-img-div {
+        width: 10%;
+        margin: 10px;
+    }
+
+    .item-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .item-name {
+        width: 40%;
+    }
+
+    .item-name p {
+        margin-right: 5px;
+    }
+
+    .item-date {
+        width: 15%;
+        text-align: center;
+        font-size: 13px;
+        line-height: 100px;
+        font-weight: 800;
+    }
+
+    .item-name p a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .item-name p a:hover {
+        text-decoration: underline;
+    }
+
+    .item-date p,
+    .item-quantity p,
+    .item-price p {
+        margin: 0;
+    }
+
+    .item-quantity {
+        width: 5%;
+        text-align: center;
+        line-height: 100px;
+        font-weight: 800;
+    }
+
+    .item-price {
+        width: 10%;
+        text-align: center;
+        line-height: 100px;
+        font-weight: 800;
+    }
+
+    .item-price p {
+        font-family: "G-market-Bold";
+    }
+
+    .item-another {
+        width: 20%;
+        text-align: center;
+    }
+
+    .item-another-button {
+        width: 80%;
+        margin-top: 8px;
+        height: 23px;
+        border: 0.5px solid gray;
+        border-radius: 5px;
+        color: white;
+        background-color: rgb(52, 152, 219);
+        font-weight: 600;
+    }
+
+    .item-another-button:hover {
+        cursor: pointer;
+    }
+
+    /* //////////////////////전체 주문 내역/////////////////////// */
+
+
+    /* //////////////////////회원정보 변경/////////////////////// */
+
+    #section-wrap {
+        margin: 0 auto;
+        background-color: rgb(224, 224, 224);
+        width: 1100px;
+        height: 1100px;
+        /* height: 50px; */
+    }
+
+
+
+    #info_update {
+        margin: 0 auto;
+        display: block;
+        background-color: rgb(224, 224, 224);
+        width: 80%;
+        padding: 0 0 4% 0;
+    }
+
+
+
+    #section-header {
+        padding-top: 50px;
+        margin: 0 auto;
+        width: 650px;
+        display: flex;
+        padding-bottom: 20px;
+
+    }
+
+    #section-header1 {
+        width: 75%;
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    #section-header1 p {
+        margin: 0;
+    }
+
+    #section-header2 {
+        display: flex;
+    }
+
+    #section-header2 p {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        margin-left: 15px;
+        font-weight: 600;
+    }
+
+    #section-header2 p:first-child {
+        text-decoration: underline;
+        color: rgb(52, 152, 219);
+    }
+
+    #update_form #white-board {
+        margin: 0 auto;
+        width: 650px;
+        background-color: white;
+        border-radius: 20px 20px 20px 20px;
+        height: 1050px;
+    }
+
+
+    #update_form #white-board-header {
+        display: flex;
+    }
+
+    #white-board-header2 {
+        display: flex;
+    }
+
+    #update_form #white-board-header div:first-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 20px 0 0 0;
+    }
+
+    #update_form #white-board-header div:hover {
+        cursor: pointer;
+    }
+
+    #update_form #white-board-header div p {
+        margin: 0;
+        line-height: 70px;
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+    }
+
+    #update_form #white-board-header div:last-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(94, 94, 94);
+        text-align: center;
+        border-radius: 0 20px 0 0;
+    }
+
+    #update_form #white-board-header2 div:first-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(94, 94, 94);
+        text-align: center;
+        border-radius: 20px 0 0 0;
+    }
+
+    #update_form #white-board-header2 div:hover {
+        cursor: pointer;
+    }
+
+    #update_form #white-board-header2 div p {
+        margin: 0;
+        line-height: 70px;
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+    }
+
+    #update_form #white-board-header2 div:last-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 0 20px 0 0;
+    }
+
+    #update_form #check-all {
+        padding-left: 50px;
+        display: flex;
+        border-bottom: 1px solid gray;
+    }
+
+    #update_form #check-all input {
+        width: 25px;
+    }
+
+    #update_form #check-all input:checked {
+        background-color: yellow;
+    }
+
+    #update_form #check-all p {
+        margin-left: 15px;
+        font: bold 15px Arial, sans-serif;
+    }
+
+    #update_form #check-box {
+        border-bottom: 1px solid gray;
+    }
+
+    #update_form #check-box2 {
+        border-bottom: none;
+    }
+
+    #update_form .check-box {
+        margin-left: 90px;
+        display: flex;
+    }
+
+    #update_form .check-box input {
+        margin-right: 15px;
+        width: 25px;
+    }
+
+    #update_form #categorie-header {
+        margin: 0 auto;
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 30px;
+        font-weight: 800;
+        background-color: rgb(52, 152, 219);
+        border-radius: 20px 20px 20px 20px;
+        color: white;
+    }
+
+    #update_form #categorie-header2 {
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    #update_form #gray-board {
+        margin: 0 auto;
+        background-color: rgb(224, 224, 224);
+        width: 500px;
+        height: 270px;
+    }
+
+    #update_form .check-categorie {
+        display: flex;
+    }
+
+    #update_form .check-categorie div {
+        display: flex;
+        width: 50%;
+    }
+
+    #update_form .check-categorie div:first-child {
+        margin-left: 100px;
+    }
+
+    #update_form .check-categorie div input {
+        width: 25px;
+        margin-right: 10px;
+    }
+
+    #update_form #button a {
+        text-decoration: none;
+    }
+
+    #update_form #button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #update_form #button input {
+        margin-top: 20px;
+        margin-left: 435px;
+        width: 150px;
+        height: 50px;
+        background-color: rgb(52, 152, 219);
+        border: none;
+        border-radius: 15px 15px 15px 15px;
+        font-size: 25px;
+        font-weight: 800;
+        color: white;
+    }
+
+    #update_form #button input:hover {
+        cursor: pointer;
+    }
+
+    #update_form #section-2 {
+        display: none;
+    }
+
+    #update_form .checkbox-design {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #update_form .checkbox-design2 {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #update_form #checkAll2 {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #update_form .checkbox-categorie {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #update_form #section-wrap {
+        margin: 0 auto;
+        background-color: rgb(224, 224, 224);
+        width: 1100px;
+        height: 1100px;
+        /* height: 50px; */
+    }
+
+
+    #update_form #section-header2 p {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        margin-left: 15px;
+        font-weight: 600;
+    }
+
+    #update_form #section-header2 p:last-child {
+        text-decoration: underline;
+        color: rgb(52, 152, 219);
+    }
+
+
+
+    #update_form #white-board-header {
+        display: flex;
+    }
+
+    #update_form #white-board-header2 {
+        display: flex;
+    }
+
+    #update_form #white-board-header div:first-child {
+        width: 100%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 20px 20px 0 0;
+    }
+
+    #update_form #white-board-header div p {
+        margin: 0;
+        line-height: 70px;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+    }
+
+    #update_form #input-top {
+        margin-top: 30px;
+    }
+
+    #update_form .input-text {
+        display: flex;
+
+    }
+
+    #update_form .input-text p {
+        margin: 0;
+    }
+
+    #update_form .input-text1 {
+        width: 35%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+
+    }
+
+    #update_form .input-text1 p {
+        float: right;
+        margin-right: 20px;
+    }
+
+    #update_form .input-text2 {
+        width: 55%;
+    }
+
+    #update_form .input-text2 input {
+        border: 1px solid black;
+        margin: 0;
+        padding: 0;
+        height: 35px;
+        width: 300px;
+    }
+
+    #update_form .input-text2 p {
+        color: red;
+        font-size: 11px;
+    }
+
+    #update_form #email {
+        width: 200px;
+    }
+
+    #update_form #email2 {
+        width: 300px;
+    }
+
+    #update_form #email-button {
+        border: none;
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 5px 5px 5px 5px;
+        height: 38px;
+        width: 94px;
+
+    }
+
+    #update_form #email-button:hover {
+        cursor: pointer;
+    }
+
+    #update_form #address-button {
+        border: none;
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 5px 5px 5px 5px;
+        height: 36.5px;
+        width: 100px;
+        margin: auto;
+
+    }
+
+    #update_form #address-button:hover {
+        cursor: pointer;
+    }
+
+    #update_form #address1 {
+        width: 194px;
+    }
+
+    /* #button input {
+        margin-top: 20px;
+        margin-left: 700px;
+        width: 150px;
+        height: 50px;
+        background-color: rgb(52, 152, 219);
+        border: none;
+        border-radius: 15px 15px 15px 15px;
+        font-size: 25px;
+        font-weight: 800;
+        color: white;
+    } */
+
+    #update_form #button input:hover {
+        cursor: pointer;
+    }
+
+
+
+
+
+    /* //////////////////////회원정보 변경/////////////////////// */
+
+    /* //////////////////////주소록 설정 시작/////////////////////// */
+
+
+
+    #address_setting {
+        margin: 0 auto;
+        /* display: block; */
+        background-color: rgb(224, 224, 224);
+        width: 80%;
+        padding: 0 0 4% 0;
+    }
+
+
+
+    #address_header {
+        padding-top: 50px;
+        margin: 0 auto;
+        width: 650px;
+        display: flex;
+        padding-bottom: 20px;
+
+    }
+
+    #address_header1 {
+        width: 75%;
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    #address_header1 p {
+        margin: 0;
+    }
+
+    #address_header2 {
+        display: flex;
+    }
+
+    #address_header2 p {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        margin-left: 15px;
+        font-weight: 600;
+    }
+
+    #address_header2 p:first-child {
+        text-decoration: underline;
+        color: rgb(52, 152, 219);
+    }
+
+    #address_setting #white-board {
+        margin: 0 auto;
+        padding-bottom: 2rem;
+        width: 650px;
+        background-color: white;
+        border-radius: 20px 20px 20px 20px;
+        height: auto;
+    }
+
+    #address_setting .adrs_frm {
+        margin: 1rem 0 2.5rem 0;
+    }
+
+    #address_setting #default_set {
+        text-align: right;
+        margin-right: 7.5rem;
+    }
+
+
+    #address_setting #white-board-header {
+        display: flex;
+    }
+
+    #address_setting #white-board-header2 {
+        display: flex;
+    }
+
+    #address_setting #white-board-header div:first-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 20px 0 0 0;
+    }
+
+    #address_setting #white-board-header div:hover {
+        cursor: pointer;
+    }
+
+    #address_setting #white-board-header div p {
+        margin: 0;
+        line-height: 70px;
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+    }
+
+    #address_setting #white-board-header div:last-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(94, 94, 94);
+        text-align: center;
+        border-radius: 0 20px 0 0;
+    }
+
+    #address_setting #white-board-header2 div:first-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(94, 94, 94);
+        text-align: center;
+        border-radius: 20px 0 0 0;
+    }
+
+    #address_setting #white-board-header2 div:hover {
+        cursor: pointer;
+    }
+
+    #address_setting #white-board-header2 div p {
+        margin: 0;
+        line-height: 70px;
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+    }
+
+    #address_setting #white-board-header2 div:last-child {
+        width: 50%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 0 20px 0 0;
+    }
+
+    #address_setting #check-all {
+        padding-left: 50px;
+        display: flex;
+        border-bottom: 1px solid gray;
+    }
+
+    #address_setting #check-all input {
+        width: 25px;
+    }
+
+    #address_setting #check-all input:checked {
+        background-color: yellow;
+    }
+
+    #address_setting #check-all p {
+        margin-left: 15px;
+        font: bold 15px Arial, sans-serif;
+    }
+
+    #address_setting #check-box {
+        border-bottom: 1px solid gray;
+    }
+
+    #address_setting #check-box2 {
+        border-bottom: none;
+    }
+
+    #address_setting .check-box {
+        margin-left: 90px;
+        display: flex;
+    }
+
+    #address_setting .check-box input {
+        margin-right: 15px;
+        width: 25px;
+    }
+
+    #address_setting #categorie-header {
+        margin: 0 auto;
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 30px;
+        font-weight: 800;
+        background-color: rgb(52, 152, 219);
+        border-radius: 20px 20px 20px 20px;
+        color: white;
+    }
+
+    #address_setting #categorie-header2 {
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    #address_setting #gray-board {
+        margin: 0 auto;
+        background-color: rgb(224, 224, 224);
+        width: 500px;
+        height: 270px;
+    }
+
+    #address_setting .check-categorie {
+        display: flex;
+    }
+
+    #address_setting .check-categorie div {
+        display: flex;
+        width: 50%;
+    }
+
+    #address_setting .check-categorie div:first-child {
+        margin-left: 100px;
+    }
+
+    #address_setting .check-categorie div input {
+        width: 25px;
+        margin-right: 10px;
+    }
+
+
+    #address_setting #button input {
+        margin-top: 20px;
+        margin-left: 595px;
+        width: 150px;
+        height: 50px;
+        background-color: rgb(52, 152, 219);
+        border: none;
+        border-radius: 15px 15px 15px 15px;
+        font-size: 25px;
+        font-weight: 800;
+        color: white;
+    }
+
+    #address_setting #button input:hover {
+        cursor: pointer;
+    }
+
+    #address_setting #address_2 {
+        display: none;
+    }
+
+    #address_setting .checkbox-design {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #address_setting .checkbox-design2 {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #address_setting #checkAll2 {
+        accent-color: rgb(52, 152, 219);
+    }
+
+    #address_setting .checkbox-categorie {
+        accent-color: rgb(52, 152, 219);
+    }
+
+
+    #address_setting #address_header2 p {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        margin-left: 15px;
+        font-weight: 600;
+    }
+
+    #address_setting #address_header2 p:last-child {
+        text-decoration: underline;
+        color: rgb(52, 152, 219);
+    }
+
+
+
+    #address_setting #white-board-header {
+        display: flex;
+    }
+
+    #address_setting #white-board-header2 {
+        display: flex;
+    }
+
+    #address_setting #white-board-header div:first-child {
+        width: 100%;
+        height: 70px;
+        background-color: rgb(52, 152, 219);
+        text-align: center;
+        border-radius: 20px 20px 0 0;
+    }
+
+    #address_setting #white-board-header div p {
+        margin: 0;
+        line-height: 70px;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+    }
+
+    #address_setting #input-top {
+        margin-top: 30px;
+    }
+
+    #address_setting .input-text {
+        display: flex;
+
+    }
+
+    #address_setting .input-text p {
+        margin: 0;
+    }
+
+    #address_setting .input-text1 {
+        width: 35%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+
+    }
+
+    #address_setting .input-text1 p {
+        float: right;
+        margin-right: 20px;
+    }
+
+    #address_setting .input-text2 {
+        width: 55%;
+    }
+
+    #address_setting .input-text2 input {
+        border: 1px solid black;
+        margin: 0;
+        padding: 0;
+        height: 35px;
+        width: 300px;
+    }
+
+    #address_setting .input-text2 p {
+        color: red;
+        font-size: 11px;
+    }
+
+    #address_setting #email {
+        width: 200px;
+    }
+
+    #address_setting #email2 {
+        width: 300px;
+    }
+
+    #address_setting #email-button {
+        border: none;
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 5px 5px 5px 5px;
+        height: 38px;
+        width: 94px;
+
+    }
+
+    #address_setting #email-button:hover {
+        cursor: pointer;
+    }
+
+    #address_setting #address-button {
+        border: none;
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 5px 5px 5px 5px;
+        height: 36.5px;
+        width: 100px;
+        margin: auto;
+
+    }
+
+    #address_setting #address-button:hover {
+        cursor: pointer;
+    }
+
+    #address_setting #address1 {
+        width: 194px;
+    }
+
+    /* #button input {
+        margin-top: 20px;
+        margin-left: 700px;
+        width: 150px;
+        height: 50px;
+        background-color: rgb(52, 152, 219);
+        border: none;
+        border-radius: 15px 15px 15px 15px;
+        font-size: 25px;
+        font-weight: 800;
+        color: white;
+    } */
+
+    #address_setting #button input:hover {
+        cursor: pointer;
+    }
+
+
+
+
+
+    /* //////////////////////주소록 설정 끝/////////////////////// */
+
