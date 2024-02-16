@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+    /* ---------고객센터해더--------- */
+    #CustomerMain{width: 1050px; height: 110px; background-color: #3498db;margin: auto;}
+    #CustomerMain #CustomerMainbox{height: 100%; display: flex;}
+    #CustomerMain #CustomerTitle{color: whitesmoke;width: 30%;display: flex;align-items: center; justify-content: center;font-size: 35px;font-weight: bold;}
+    #CustomerMain #CustomerContent{width: 60%;display: flex;align-items: center; justify-content: center;font-size: 22px;font-weight: bold;color: coral;}
+    #CustomerMain #CustomerContent input{width: 500px; height: 40px; padding: 0; margin-top: 5px;}
+    #CustomerMain #CustomerNum{width: 35%;display: flex;align-items: center; justify-content: center;color: white;font-size: 13px;}
+    #CustomerMain #CustomerNum span{font-size: 20px;}
+    #CustomerList{width: 1050px; margin: auto;}
+    #CustomerList #CustomerListbox{display: flex;font-size: 15px;font-weight: bold;}
+    #CustomerList #CustomerListbox a{padding-left: 20px;margin: 10px;}
+    #CustomerList #CustomerListbox a:hover {color: coral;}
+    /* ---------고객센터해더--------- */
+    /* ---------자주 묻는 질문--------- */
+    #QnALine{width: 1050px; margin: auto;}
+    #QnALog{height: 100px; display: flex; align-items: center; justify-content: center; background-color: #dff2ff;}
+    #QnALog span{margin: 0; font-weight: 800;}
+    #QnALog a{margin: 0;margin-left: 20px; width: 70px; text-align: center; border-radius: 10px;background-color: #3498db;color: white;}
+    summary::-webkit-details-marker {display: none;}
+    summary:before {content: 'Q';color: blue;padding: 0 1.5em;}
+    summary {display: flex;align-items: center;height: 80px;list-style: none;cursor: pointer;}
+    details p{padding-top: 20px;padding-left: 60px;}
+    .details-toggle::after {content: '▶';padding-right: 15px;}
+    details[open] .details-toggle::after {content: '▼';}
+    .details-toggle {float: right;margin-left: 10px;}
+    .ListLine{opacity: 0.45;}
+    /* ---------자주 묻는 질문--------- */

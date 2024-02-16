@@ -284,12 +284,12 @@
             	<c:when test="${not empty member }">
             		<a href="">${member.member_name }님</a>
 	                <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-	                <a href="">고객센터</a>
+	                <a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
             	</c:when>
             	<c:otherwise>
             		<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
 	                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-	                <a href="">고객센터</a>
+	                <a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
             	</c:otherwise>
             </c:choose>
             </div>
