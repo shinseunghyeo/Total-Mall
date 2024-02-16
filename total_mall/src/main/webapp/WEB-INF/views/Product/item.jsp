@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,27 +87,29 @@
             <div id="ProductMainimg">
                 <img style="width: 100%;" src="../resources/img/Mallimg/${product.save_file_name1}" >
             </div>
-            <div id="Productdetail">
-                <div id="ProductContent">
-                    <br>
-                    <h1>${product.product_name}</h1>
-                    <h2>★★★★★</h2><br>
-                    <h2>${product.price}원</h2>
-                    <h2>10% 90,000원</h2><hr>
-					<h3>상품내용</h3>
-					${product.summary}
-                </div>
-                <div id="Productpurchase">
-                    <span>개수</span>
-                    <div class="input-wrapper">
-                        <button id="decrementButton" onclick="decrement()">-</button>
-                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="0" required>
-                        <button id="incrementButton" onclick="increment()">+</button>
-                    </div>
-                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button>장바구니</button></a>
-                    <a href="${pageContext.request.contextPath}/product/purchase.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}"><button>구매</button></a>
-                </div>
-            </div>
+	            <div id="Productdetail">
+	                <div id="ProductContent">
+	                    <br>
+	                    <h1>${product.product_name}</h1>
+	                    <h2>★★★★★</h2><br>
+	                    <h2>${product.price}원</h2>
+	                    <h2>10% 90,000원</h2><hr>
+						<h3>상품내용</h3>
+						${product.summary}
+	                </div>
+	                <div id="Productpurchase">
+	                    <span>개수</span>
+	                    <div class="input-wrapper">
+	                        <button id="decrementButton" onclick="decrement()">-</button>
+	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="0" required>
+	                        <button id="incrementButton" onclick="increment()">+</button>
+	                    </div>
+	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button>장바구니</button></a>
+	                    <a href="${pageContext.request.contextPath}/product/purchase.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="purchaseLink" onclick="updateLinks()">
+					        <button>구매</button>
+					    </a>
+	                </div>
+	            </div>
         </div>
     </div>
     <!-- ---------상품상세보기--------- -->

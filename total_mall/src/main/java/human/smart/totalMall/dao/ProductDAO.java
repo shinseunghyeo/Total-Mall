@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.CartVO;
+import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.RequiredArgsConstructor;
@@ -53,7 +54,20 @@ public class ProductDAO{
 		return sqlSession.update(MAPPER+".cartQuantityUpdate",vo);
 	}
 	
+	//장바구니 상품 삭제하기
+	public int cartDelete(CartVO vo) {
+		return sqlSession.update(MAPPER+".cartDelete",vo);
+	}
 	
+	//주문 테이블 상품 추가하기
+	public int purchaseInsert(OrderVO vo) {
+		return sqlSession.insert(MAPPER + ".purchaseInsert", vo);
+	}
+	
+	//주문테이블 리스트 출력하기
+	public List<OrderVO> getOrders(int m_idx){
+		return sqlSession.selectList(MAPPER+".getOrders", m_idx);
+	}
 	
 
 }

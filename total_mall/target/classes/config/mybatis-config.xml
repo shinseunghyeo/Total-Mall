@@ -10,6 +10,7 @@
  		<typeAlias alias="productVO" type="human.smart.totalMall.vo.ProductVO" />
  		<typeAlias alias="searchVO" type="human.smart.totalMall.vo.SearchVO" />
  		<typeAlias alias="cartVO" type="human.smart.totalMall.vo.CartVO" />
+ 		<typeAlias alias="orderVO" type="human.smart.totalMall.vo.OrderVO" />
  		
  	</typeAliases>
  

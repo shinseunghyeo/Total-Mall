@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니 페이지</title>
+    <script src="../resources/js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="../resources/css/product/cart.css">
 </head>
 
@@ -14,7 +17,7 @@
     <%@ include file="../Main/Header2.jsp" %>
     <section>
         <div id="white-board">
-            <form action="T_PurchasePage.html">
+            
             <div id="cart-header">
                 <h1>장바구니</h1>
             </div>
@@ -58,16 +61,24 @@
 				                            <div class="cart_item-3">
 				                                <p><a href="">${cartList[i-1].product_name }</a></p>
 				                            </div>
-				                            <div class="cart_item-4">
-				                            	<input type="text" name="" id="" value="${cartList[i-1].c_quantity }">
-                                				<a href="${pageContext.request.contextPath}/product/cartQuantityUpdate.do?m_idx=${member.m_idx }&p_idx=${cartList[i-1].p_idx}&c_quantity=${cartList[i-1].c_quantity}"><input type="button" value="변경" style="width: 60px;"></a>
-				                            </div>
+				                            <form method="get" action="cartQuantityUpdate.do">
+					                            <div class="cart_item-4">
+					                            	<input type="hidden" name="m_idx" value="${member.m_idx }">
+					                            	<input type="hidden" name="p_idx" value="${cartList[i-1].p_idx }">
+					                            	<input type="text" name="c_quantity" id="" value="${cartList[i-1].c_quantity }">
+	                                				<input type="submit" value="변경" style="width: 60px;">
+	                                			</div>
+				                            </form>
 				                            <div class="cart_item-5">
 				                                <div>
 				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }</p>
 				                                </div>
 				                                <div>
-				                                    <input type="button" value="X" onclick="removeCartItem(this)">
+				                                	<form id="deleteForm" method="get" action="cartDelete.do">
+					                                	<input type="hidden" name="m_idx" value="${member.m_idx }">
+						                            	<input type="hidden" name="p_idx2" value="${cartList[i-1].p_idx }">
+				                                    	<input type="button" value="X" onclick="deleteCart()">
+				                                    </form>
 				                                </div>
 				                            </div>
 				                        </div>
@@ -76,7 +87,7 @@
 				                                <div>
 				                                    <p>상품금액</p>
 				                                </div>
-				                                <div style="text-align: center;;">
+				                                <div style="text-align: center;">
 				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
 				                                </div>
 				                            </div>
@@ -127,49 +138,54 @@
                     
                 </div>
                 
-                <div id="right-div">
-                    <div id="right_header">
-                        <h1>결제 예정금액</h1>
-                    </div>
-                    <div id="right_first_div">
-                        <div>
-                            <p>상품금액</p>
-                        </div>
-                        <div>
-                            <h2>${totalOrderAmount }원</h2>
-                        </div>
-                    </div>
-                    <div id="right_second_div">
-                        <div>
-                            <p>할인금액</p>
-                        </div>
-                        <div>
-                            <h2>${totalDiscount }원</h2>
-                        </div>
-                    </div>
-                    <div id="right_third_div">
-                        <div>
-                            <p>배송비</p>
-                        </div>
-                        <div>
-                            <h2>${totalDelivery}원</h2>
-                        </div>
-                    </div>
-                    <div id="right_fourth_div">
-                        <div>
-                            <p>합계</p>
-                        </div>
-                        <div>
-                            <h2>${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
-                        </div>
-                    </div>
-                    <div id="right_fifth_div">
-                        <input type="submit" value="결제">
-                    </div>
-                </div>
+                <form id="purchase-form">
+                	<input type="hidden" name="total_product_price" value="${totalOrderAmount}">
+                	<input type="hidden" name="total_delevery_fee" value="${totalDelivery}">
+                	<input type="hidden" name="total_price" value="${totalOrderAmount-totalDiscount+totalDelivery }">
+	                <div id="right-div">
+	                    <div id="right_header">
+	                        <h1>결제 예정금액</h1>
+	                    </div>
+	                    <div id="right_first_div">
+	                        <div>
+	                            <p>상품금액</p>
+	                        </div>
+	                        <div>
+	                            <h2>${totalOrderAmount }원</h2>
+	                        </div>
+	                    </div>
+	                    <div id="right_second_div">
+	                        <div>
+	                            <p>할인금액</p>
+	                        </div>
+	                        <div>
+	                            <h2>${totalDiscount }원</h2>
+	                        </div>
+	                    </div>
+	                    <div id="right_third_div">
+	                        <div>
+	                            <p>배송비</p>
+	                        </div>
+	                        <div>
+	                            <h2>${totalDelivery}원</h2>
+	                        </div>
+	                    </div>
+	                    <div id="right_fourth_div">
+	                        <div>
+	                            <p>합계</p>
+	                        </div>
+	                        <div>
+	                            <h2>${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
+	                        </div>
+	                    </div>
+	                    <div id="right_fifth_div">
+	                        <input type="submit" value="결제">
+	                    </div>
+	                </div>
+                </form>
             </div>
             <input type="hidden">
-        </form>
+        
         </div>
     </section>
     <%@ include file="../Main/Footer2.jsp" %>

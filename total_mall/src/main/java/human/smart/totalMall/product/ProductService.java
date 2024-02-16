@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.vo.CartVO;
+import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 
@@ -17,5 +18,8 @@ public interface ProductService {
 	default List<ProductVO> getProducts2(SearchVO vo){return null;}
 	default int cartInsert(CartVO vo, HttpServletRequest request) {return 0;}
 	default List<CartVO> getCarts(int m_idx){return null;}
-	default int cartQuantityUpdate(CartVO vo) {return 0;};
+	default int cartQuantityUpdate(CartVO vo) {return 0;}
+	default int cartDelete(CartVO vo) {return 0;}
+	default int purchaseInsert(OrderVO vo) {return 0;}
+	default List<OrderVO> getOrders(int m_idx){return null;}
 }

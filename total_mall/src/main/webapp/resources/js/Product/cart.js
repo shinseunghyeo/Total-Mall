@@ -1,11 +1,12 @@
 
     /* 장바구니 아이템 삭제 스크립트 */
-    function removeCartItem(button) {
-        var cartItem = button.closest('.cart_item');
-        if (cartItem) {
-        cartItem.style.display = 'none'; 
-        }
-    }
+    function deleteCart(){
+		const ans = confirm("정말로 삭제하겠습니까?");
+		
+		if(ans){
+			document.getElementById('deleteForm').submit();
+		}
+	}
     /* 장바구니 아이템 삭제 스크립트 */
     /* 모두 체크하기 스크립트 */
     document.querySelector('#checkAll');
@@ -29,4 +30,12 @@
             }
         }
     })
+    
+    
     /* 모두 체크하기 스크립트 */
+    
+    /* 장바구니 수량변경 스크립트 */
+	
+    /* 장바구니 수량변경 스크립트 */
+    
+    

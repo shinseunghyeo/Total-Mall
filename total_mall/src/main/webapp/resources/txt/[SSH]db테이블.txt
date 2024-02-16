@@ -7,3 +7,22 @@ create table tb_cart (
     constraint tb_cart_fk foreign key (p_idx)
     references tb_product (p_idx) 
 );
+
+
+
+
+주문테이블
+create table tb_order (
+	o_idx int unsigned not null auto_increment,
+    m_idx int unsigned,
+    p_idx int unsigned,
+    c_quantity int,
+    payment_status int,
+    o_start_date datetime default now(),
+    o_update_time datetime default now(),
+    constraint tb_order_pk primary key(o_idx),
+    constraint tb_order_fk foreign key (m_idx)
+    references tb_member (m_idx) ,
+	constraint tb_order_fk2 foreign key (p_idx)
+    references tb_product (p_idx) 
+);
