@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
+import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.Setter;
@@ -24,7 +25,8 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pPurchase, pInsert, pCartInsert, pCartList, pCartQuantityUpdate;
+    private ProductService cList, pSearch, pPage, pItem, pPurchaseInsert, pPurchaseList, pInsert, 
+    		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -44,12 +46,18 @@ public class ProductController {
 		return "Product/item";		
 	}
     @GetMapping("/purchase.do") // 임시
-	public String purchase(int p_idx, Model model) {
-		ProductVO vo = pPurchase.getProduct(p_idx);
-		model.addAttribute("purchase", vo);
+	public String purchase(OrderVO vo, int m_idx, Model model) {
+		int result = pPurchaseInsert.purchaseInsert(vo);
+		List<OrderVO> orderList = pPurchaseList.getOrders(m_idx);
+		model.addAttribute("orderList", orderList);
+		if(result == 1) {
+			
+		}
 		
 		return "Product/purchase";
 	}
+    
+    
     @GetMapping("/search.do") // 임시
     public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> productList2 = pSearch.getProducts2(searchVO);
@@ -133,6 +141,18 @@ public class ProductController {
   		return viewPage;
   	}
   	
-  
+  	@GetMapping("/cartDelete.do")
+  	public String cartDelete(int m_idx, int p_idx2) {
+  		String viewPage ="redirect:cart.do?m_idx="+m_idx;
+  		CartVO vo = new CartVO();
+  		vo.setM_idx(m_idx);
+  		vo.setP_idx(p_idx2);
+  		System.out.println(p_idx2);
+  		
+  		int result = pCartDelete.cartDelete(vo);
+  		
+  		
+  		return viewPage;
+  	}
   	
 }

@@ -19,7 +19,7 @@ function checkInput() {
     if (value.length > 1 && value[0] === "0") {
         inputBox.value = value.slice(1);
     }
-    updateCartLink();
+     updateLinks();
 }
 
 function increment() {
@@ -29,7 +29,7 @@ function increment() {
         inputBox.value = value + 1;
         prevValue = inputBox.value;
     }
-    updateCartLink();
+     updateLinks();
 }
 
 function decrement() {
@@ -39,33 +39,44 @@ function decrement() {
         inputBox.value = value - 1;
         prevValue = inputBox.value;
     }
-    updateCartLink();
+     updateLinks();
 }
 // -----------개수최대값-----------
+// 쿼리스트링 변경문 
 var contextPath = "${pageContext.request.contextPath}";
 var productPIdx = "${product.p_idx}";
 var memberMIdx = "${member.m_idx}";
-function updateCartLink() {
-        var cQuantity = document.getElementById("inputBox").value;
+var prevValue = 0; // 이전 값 저장 변수
+function updateLinks() {
+    // 장바구니 링크 업데이트
+    updateLink("cartLink", "c_quantity", getInputBoxValue());
 
-        // 기존의 href 값을 읽어옴
-        var cartLink = document.getElementById("cartLink");
-        var originalHref = cartLink.getAttribute("href");
+    // 구매 링크 업데이트
+    updateLink("purchaseLink", "c_quantity", getInputBoxValue());
+}
+function getInputBoxValue() {
+    return document.getElementById("inputBox").value;
+}
+function updateLink(linkId, parameterName, parameterValue) {
+    // 기존의 href 값을 읽어옴
+    var link = document.getElementById(linkId);
+    var originalHref = link.getAttribute("href");
 
-        // 기존의 c_quantity 값을 찾아냄
-        var cQuantityIndex = originalHref.indexOf("c_quantity=");
+    // 기존의 parameter 값을 찾아냄
+    var parameterIndex = originalHref.indexOf(parameterName + "=");
 
-        if (cQuantityIndex !== -1) {
-            // c_quantity가 이미 존재하면 값을 수정
-            var newHref = originalHref.substring(0, cQuantityIndex) + "c_quantity=" + cQuantity;
-            cartLink.setAttribute("href", newHref);
-        } else {
-            // c_quantity가 없으면 추가
-            var separator = originalHref.indexOf('?') !== -1 ? '&' : '?';
-            var newHref = originalHref + separator + "c_quantity=" + cQuantity;
-            cartLink.setAttribute("href", newHref);
-        }
+    if (parameterIndex !== -1) {
+        // parameter가 이미 존재하면 값을 수정
+        var newHref = originalHref.substring(0, parameterIndex) + parameterName + "=" + parameterValue;
+        link.setAttribute("href", newHref);
+    } else {
+        // parameter가 없으면 추가
+        var separator = originalHref.indexOf('?') !== -1 ? '&' : '?';
+        var newHref = originalHref + separator + parameterName + "=" + parameterValue;
+        link.setAttribute("href", newHref);
     }
+}
+// 쿼리스트링 변경문 
 
 
 // -----------상품정보-----------
@@ -150,3 +161,5 @@ function PakgeImg(foodnum, Food){
     FoodId.style.backgroundColor = 'navy';
 }
 // -----------상품정보-----------
+
+/* 즉시 구매 스크립트 */
