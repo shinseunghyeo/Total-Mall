@@ -24,7 +24,7 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pPurchase, pInsert, pCartInsert, pCartList;
+    private ProductService cList, pSearch, pPage, pItem, pPurchase, pInsert, pCartInsert, pCartList, pCartQuantityUpdate;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -92,15 +92,15 @@ public class ProductController {
   	
   	//장바구니 페이지 요청 처리
   	@GetMapping("/cart.do")
-	public String cart(Model model) {
-  		List<CartVO> cartList = pCartList.getCarts();
+	public String cart(int m_idx, Model model) {
+  		List<CartVO> cartList = pCartList.getCarts(m_idx);
 		model.addAttribute("cartList", cartList);
 		return "Product/cart";
 	}
   	
   	//장바구니에 상품 담기 요청 처리
   	@GetMapping("/cartProcess.do")
-	public String cartProcess(CartVO vo, HttpServletRequest request, Model model) {
+	public String cartProcess(int p_idx,  CartVO vo, HttpServletRequest request, Model model) {
   		String viewPage = "redirect:item.do";//장바구니등록 실패시 JSP페이지
   		
   		//글등록 요청을 BoardInsertService클래스로 처리
@@ -108,12 +108,30 @@ public class ProductController {
   		
   		if(result == 1) {
   			System.out.println("성공");
-  			viewPage = "redirect:cart.do";//장바구니등록 성공시 JSP페이지
+  			viewPage = "redirect:item.do?p_idx="+p_idx;//장바구니등록 성공시 JSP페이지
   			
   		}
   		
   		return viewPage;
 	}
+  	
+  	@GetMapping("/cartQuantityUpdate.do")
+  	public String cartQuantityUpdate(int m_idx, int p_idx, int c_quantity) {
+  		String viewPage ="redirect:cart.do?m_idx="+m_idx;
+  		CartVO vo = new CartVO();
+  		vo.setM_idx(m_idx);
+  		vo.setP_idx(p_idx);
+  		vo.setC_quantity(c_quantity);
+  		
+  		System.out.println(m_idx+""+p_idx+""+c_quantity);
+  		System.out.println("실패");
+  		int result = pCartQuantityUpdate.cartQuantityUpdate(vo);
+  		if(result == 1) {
+  			viewPage ="redirect:cart.do?m_idx="+m_idx;
+  			System.out.println("성공");
+  		}
+  		return viewPage;
+  	}
   	
   
   	

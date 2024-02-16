@@ -35,7 +35,17 @@
 	</insert>
 	
 	<!-- 장바구니 상품목록 불러오기: select -->
-	<select id="getCarts" parameterType="CartVO" resultType="cartVO">
-		select * from tb_cart 
+	<select id="getCarts" parameterType="_int" resultType="cartVO">
+		select a.c_idx, a.m_idx, a.c_quantity, b.p_idx, b.product_name, b.price, b.discount_rate
+		from tb_cart a left outer join tb_product b on a.p_idx = b.p_idx 
+		where a.m_idx = #{m_idx}
+		
 	</select>
+	
+	<!-- 장바구니 수량 변경하기 -->
+	<update id="cartQuantityUpdate" parameterType="CartVO">
+		update tb_cart set c_quantity=#{c_quantity}
+			where m_idx=#{m_idx}
+			and p_idx=#{p_idx}
+	</update>
 </mapper>
