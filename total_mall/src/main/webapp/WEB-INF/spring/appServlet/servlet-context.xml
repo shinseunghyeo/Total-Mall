@@ -65,6 +65,9 @@
 			<exclude-mapping path="/nav/Attendance.do"/>
 			<exclude-mapping path="/nav/EventPage.do"/>
 	 
+			<exclude-mapping path="/customercenter/QnA.do"/>
+			<exclude-mapping path="/customercenter/notice.do"/>
+
 			<beans:bean id="loginInterceptor" class="human.smart.totalMall.interceptor.LoginInterceptor"/>
 		</interceptor>
 	

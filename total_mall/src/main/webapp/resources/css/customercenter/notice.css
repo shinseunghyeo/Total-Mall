@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+    /* ---------고객센터해더--------- */
+    #CustomerMain{width: 1050px; height: 110px; background-color: #3498db;margin: auto;}
+    #CustomerMain #CustomerMainbox{height: 100%; display: flex;}
+    #CustomerMain #CustomerTitle{color: whitesmoke;width: 30%;display: flex;align-items: center; justify-content: center;font-size: 35px;font-weight: bold;}
+    #CustomerMain #CustomerContent{width: 60%;display: flex;align-items: center; justify-content: center;font-size: 22px;font-weight: bold;color: coral;}
+    #CustomerMain #CustomerContent input{width: 500px; height: 40px; padding: 0; margin-top: 5px;}
+    #CustomerMain #CustomerNum{width: 35%;display: flex;align-items: center; justify-content: center;color: white;font-size: 13px;}
+    #CustomerMain #CustomerNum span{font-size: 20px;}
+    #CustomerList{width: 1050px; margin: auto;}
+    #CustomerList #CustomerListbox{display: flex;font-size: 15px;font-weight: bold;}
+    #CustomerList #CustomerListbox a{padding-left: 20px;margin: 10px;}
+    #CustomerList #CustomerListbox a:hover {color: coral;}
+    /* ---------고객센터해더--------- */
+    /* ---------토탈소식--------- */
+    #NoticeTitle{width: 1050px;margin: auto;}
+    #NoticeTitle h3{margin-left: 10px;}
+    #NoticeLine{width: 1050px; min-height: 700px; margin: auto; border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);margin-bottom: 100px;display: flex;}
+    #NoticeMenubox{width: 22%; border-right: solid 1px rgba(0, 0, 0, 0.2);}
+    #NoticeMenubox #NoticeMenu{margin: 30px;display: flex;flex-direction: column;gap: 10px;}
+    #NoticeMenubox #NoticeMenu a{margin: 0;}
+    #NoticeMenubox #NoticeMenu a:hover{color: #3498db;text-decoration: underline;}
+    #NoticeContentbox{width: 78%;}
+    #NoticeContentbox #NoticeContenttitle{margin: 0; margin-top: 35px;margin-bottom: 5px; margin-left: 52px;}
+    #NoticeContentbox #NoticeContent{width: 90%; min-height: 500px; margin: auto;border-top: 1px solid rgba(0, 0, 0, 0.78);}
+    .Notcename{height: 50px; border-bottom: 1px solid rgba(0, 0, 0, 0.3);display: flex;align-items: center;}
+    .Notcename a{margin-left: 10px;}
+    /* ---------토탈소식--------- */
