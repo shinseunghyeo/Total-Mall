@@ -1,9 +1,14 @@
+
+장바구니 테이블
 create table tb_cart (
-    c_idx int unsigned not null auto_increment,
+	c_idx int unsigned not null auto_increment,
+    p_idx int unsigned not null, -- 상품 번호
     m_idx int unsigned not null,
     c_quantity int,
     c_start_date datetime default now(),
     c_update_time datetime default now(),
+    payment_or_not int default 0,
+    constraint tb_cart_pk primary key(c_idx),
     constraint tb_cart_fk foreign key (p_idx)
     references tb_product (p_idx) 
 );
@@ -11,18 +16,15 @@ create table tb_cart (
 
 
 
-주문테이블
+주문 테이블
 create table tb_order (
 	o_idx int unsigned not null auto_increment,
     m_idx int unsigned,
     p_idx int unsigned,
-    c_quantity int,
-    payment_status int,
+    pay varchar(255),
+    totalprice int,
+    requests varchar(255),
     o_start_date datetime default now(),
     o_update_time datetime default now(),
-    constraint tb_order_pk primary key(o_idx),
-    constraint tb_order_fk foreign key (m_idx)
-    references tb_member (m_idx) ,
-	constraint tb_order_fk2 foreign key (p_idx)
-    references tb_product (p_idx) 
+    constraint tb_order_pk primary key(o_idx)
 );

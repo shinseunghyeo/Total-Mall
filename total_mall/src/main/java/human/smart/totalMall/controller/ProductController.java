@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
+import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.Setter;
@@ -28,7 +29,7 @@ public class ProductController {
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert,
     		pModify, pDiscontinued, pContinued, 
-    		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete;
+    		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -222,6 +223,7 @@ public class ProductController {
   		return viewPage;
 	}
   	
+  //장바구니 수량 업데이트
   	@GetMapping("/cartQuantityUpdate.do")
   	public String cartQuantityUpdate(int m_idx, int p_idx, int c_quantity) {
   		String viewPage ="redirect:cart.do?m_idx="+m_idx;
@@ -240,6 +242,7 @@ public class ProductController {
   		return viewPage;
   	}
   	
+  	//장바구니 삭제 (수정필요)
   	@GetMapping("/cartDelete.do")
   	public String cartDelete(int m_idx, int p_idx2) {
   		String viewPage ="redirect:cart.do?m_idx="+m_idx;
@@ -252,6 +255,19 @@ public class ProductController {
   		
   		
   		return viewPage;
+  	}
+  	
+  	//결제
+  	@GetMapping("/payment.do")
+  	public String payment(OrderVO vo) {
+  		int m_idx = vo.getM_idx();
+  		
+  		if(vo.getDirect() == 1) {
+  			pCartPaymentUpdate.cartPaymentUpdate(m_idx);
+  		} else if(vo.getDirect() == 0) {
+  			
+  		}
+  		return "Product/purchase";
   	}
   	
 }

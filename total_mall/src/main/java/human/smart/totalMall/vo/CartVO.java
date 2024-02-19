@@ -16,6 +16,9 @@ public class CartVO {
 	private Date c_start_date;
 	private Date c_update_time;
 	
+	//결제여부
+	private int payment_or_not;
+	
 	//추가
 	private String product_name;
 	private int price;

@@ -38,7 +38,7 @@
                     <c:set var="totalDelivery" value="${cartList.size() * 2500 }" />
                     <c:choose>
                     	<c:when test="${empty cartList }">
-                    		<p>????</p>
+                    		<p>장바구니에 담긴 상품이 없습니다.</p>
                     	</c:when>
                     	<c:otherwise>
 	                    	<c:forEach var="i" begin="1" end="5" varStatus="vs">
