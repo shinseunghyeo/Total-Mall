@@ -136,6 +136,7 @@
 		select a.c_idx, a.m_idx, a.c_quantity, b.p_idx, b.product_name, b.price, b.discount_rate
 		from tb_cart a left outer join tb_product b on a.p_idx = b.p_idx 
 		where a.m_idx = #{m_idx}
+		and payment_or_not = 0
 		
 	</select>
 	
@@ -144,6 +145,7 @@
 		update tb_cart set c_quantity=#{c_quantity}
 			where m_idx=#{m_idx}
 			and p_idx=#{p_idx}
+			and payment_or_not = 0
 	</update>
 	
 	<!-- 장바구니 삭제하기 -->
@@ -151,6 +153,7 @@
 		delete from tb_cart 
 				where m_idx=#{m_idx}
 				and p_idx=#{p_idx}
+				and payment_or_not = 0
 	</delete>
 	
 	<!-- 장바구니에서 결제여부 변경하기 -->
@@ -159,6 +162,16 @@
 			where m_idx=#{m_idx}
 	</update>
 	
-	<!-- 주문테이블 가져오기 -->
+	<!-- 주문테이블 상품 추가하기 -->
+	<insert id="orderInsert" parameterType="OrderVO">
+				insert into tb_order (o_idx, m_idx, pay, totalprice, requests )
+					   values(#{o_idx},#{m_idx}, #{pay}, #{totalprice}, #{requests})
+	</insert>
+	
+	<!-- 직접 구매 상품 장바구니 상품등록: insert -->
+	<insert id="cartInsert2" parameterType="CartVO">
+				insert into tb_cart (c_idx, p_idx, m_idx, c_quantity, payment_or_not )
+					   values(#{c_idx},#{p_idx}, #{m_idx}, #{c_quantity}, 1)
+	</insert>
 	
 </mapper>

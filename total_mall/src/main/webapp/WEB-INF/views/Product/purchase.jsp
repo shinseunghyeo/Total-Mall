@@ -67,18 +67,26 @@
         </div> -->
         <c:set var="totalOrderAmount" value="0" />
         <c:choose>
+        	
         	<c:when test="${product.c_quantity == 0 }">
         		<c:set var="totalOrderAmount" value="${product.total_product_price}" />
-        		<input type="hidden" name="direct" value="1">	
+        		<input type="hidden" name="direct" value="1">
+        		<input type="hidden" name="totalprice" value="${totalOrderAmount + product.totalDelivery - product.totalDiscount}">	
         	</c:when>
+        	
         	<c:otherwise>
         		<c:set var="totalOrderAmount" value="${totalOrderAmount + product.c_quantity*product.price}" />
-        		<input type="hidden" name="direct" value="0">	
+        		<input type="hidden" name="direct" value="0">
+        		<input type="hidden" name="totalprice" value="${totalOrderAmount + product.totalDelivery - product.totalDiscount}">
+        		<input type="hidden" name="p_idx" value="${product.p_idx }">
+        		<input type="hidden" name="c_quantity" value="${product.c_quantity }">
         	</c:otherwise>
         </c:choose>
         
         <input type="hidden" name="m_idx" value="${member.m_idx}">
-        <input type="hidden" name="totalprice" value="${totalOrderAmount + product.totalDelivery - product.totalDiscount}">
+        
+        <input type="hidden" name="pay" value="a">
+        <input type="hidden" name="requests" value="a">
 		
 		
         <div id="Purchasepage"><br>

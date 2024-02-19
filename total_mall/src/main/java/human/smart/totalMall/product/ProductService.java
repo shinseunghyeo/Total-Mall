@@ -27,5 +27,8 @@ public interface ProductService {
 	default int discontinued(int p_idx) {return 0;}
 	default int continued(int p_idx) {return 0;}
 	
-	default int cartPaymentUpdate(int m_idx) {return 1;};
+	default int cartPaymentUpdate(int m_idx) {return 1;}
+	default int orderInsert(OrderVO vo) {return 0;}
+	default int cartInsert2(CartVO vo) {return 0;}
+	
 }
