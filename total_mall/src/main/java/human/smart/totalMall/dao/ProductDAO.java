@@ -54,6 +54,10 @@ public class ProductDAO{
 	public List<ProductVO> getProducts2(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts2", vo);
 	}
+	//총 게시물수 조회
+	public int getTotalCount(SearchVO vo) {
+		return sqlSession.selectOne(MAPPER+".getTotalCount", vo);
+	}
 	
 	//장바구니에 상품 추가하기
 	public int cartInsert(CartVO vo) {

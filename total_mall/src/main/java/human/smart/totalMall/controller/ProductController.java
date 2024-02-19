@@ -27,7 +27,7 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pInsert,
+    private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, 
     		pModify, pDiscontinued, pContinued, 
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate;
 
@@ -69,9 +69,8 @@ public class ProductController {
     	if(searchVO.getPageNum() == 0) {
     		searchVO.setPageNum(1);
     	}
-    	
+    	pageNav.setTotalRows(pTotalCount.getTotalCount(searchVO));
     	pageNav = pPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
-    	
     	model.addAttribute("pageNav", pageNav);
 
         return "Product/search";
