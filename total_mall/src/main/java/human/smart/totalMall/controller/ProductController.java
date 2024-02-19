@@ -25,7 +25,7 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pPurchaseInsert, pPurchaseList, pInsert, 
+    private ProductService cList, pSearch, pPage, pItem, pInsert, 
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete;
 
     @Setter(onMethod_={ @Autowired })
@@ -46,13 +46,14 @@ public class ProductController {
 		return "Product/item";		
 	}
     @GetMapping("/purchase.do") // 임시
-	public String purchase(OrderVO vo, int m_idx, Model model) {
-		int result = pPurchaseInsert.purchaseInsert(vo);
-		List<OrderVO> orderList = pPurchaseList.getOrders(m_idx);
-		model.addAttribute("orderList", orderList);
-		if(result == 1) {
-			
-		}
+	public String purchase(int p_idx, int m_idx, int c_quantity, int total_product_price,
+			int totalDelivery, int totalDiscount, Model model) {
+    	ProductVO vo = pItem.getProduct(p_idx);
+		vo.setC_quantity(c_quantity);
+		vo.setTotal_product_price(total_product_price);
+		vo.setTotalDelivery(totalDelivery);
+		vo.setTotalDiscount(totalDiscount);
+		model.addAttribute("product", vo);
 		
 		return "Product/purchase";
 	}

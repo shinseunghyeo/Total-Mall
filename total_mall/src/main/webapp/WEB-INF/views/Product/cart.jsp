@@ -23,10 +23,6 @@
             </div>
             <div id="cart-middle">
                 <div id="left-div">
-                    <div id="selectAll-div">
-                        <input type="checkbox" name="" id="checkAll">
-                        <p>전체 선택</p>
-                    </div>
                     <div id="list-div">
                         <p></p>
                         <p>상품사진</p>
@@ -52,16 +48,13 @@
 				                            <p>${i}</p>
 				                        </div>
 				                        <div style="display: flex;width: 100%;">
-				                            <div class="cart_item-1">
-				                                <input type="checkbox" name="" id="" class="checkbox-design">
-				                            </div>
 				                            <div class="cart_item-2">
 				                                <img src="Mallimg/고구마.jpg" alt="">
 				                            </div>
 				                            <div class="cart_item-3">
 				                                <p><a href="">${cartList[i-1].product_name }</a></p>
 				                            </div>
-				                            <form method="get" action="cartQuantityUpdate.do">
+				                            <form id="cart_item-4-form" method="get" action="cartQuantityUpdate.do">
 					                            <div class="cart_item-4">
 					                            	<input type="hidden" name="m_idx" value="${member.m_idx }">
 					                            	<input type="hidden" name="p_idx" value="${cartList[i-1].p_idx }">
@@ -138,10 +131,15 @@
                     
                 </div>
                 
-                <form id="purchase-form">
+                <form id="purchase-form" method="get" action="purchase.do">
                 	<input type="hidden" name="total_product_price" value="${totalOrderAmount}">
                 	<input type="hidden" name="total_delevery_fee" value="${totalDelivery}">
                 	<input type="hidden" name="total_price" value="${totalOrderAmount-totalDiscount+totalDelivery }">
+                	<input type="hidden" name="p_idx" value="1">
+                	<input type="hidden" name="m_idx" value="${member.m_idx }">
+                	<input type="hidden" name="c_quantity" value="0">
+                	<input type="hidden" name="totalDiscount" value="${totalDiscount }">
+                	<input type="hidden" name="totalDelivery" value="${totalDelivery }">
 	                <div id="right-div">
 	                    <div id="right_header">
 	                        <h1>결제 예정금액</h1>

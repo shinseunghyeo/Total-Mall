@@ -57,16 +57,8 @@
 	</delete>
 	
 	<!-- 주문테이블 추가하기 -->
-	<insert id="purchaseInsert" parameterType="OrderVO">
-				insert into tb_order (m_idx, p_idx, c_quantity, payment_status)
-					   values(#{m_idx},#{p_idx},#{c_quantity}, 0)
-	</insert>
+	
 	
 	<!-- 주문테이블 가져오기 -->
-	<select id="getOrders" parameterType="_int" resultType="orderVO">
-		select a.o_idx, a.m_idx,a.c_quantity, b.p_idx, b.price, b.discount_rate
-		from tb_order a left outer join tb_product b on a.p_idx = b.p_idx 
-		where a.m_idx = #{m_idx}
-		
-	</select>
+	
 </mapper>

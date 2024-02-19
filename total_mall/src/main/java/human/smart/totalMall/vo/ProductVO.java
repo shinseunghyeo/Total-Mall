@@ -36,4 +36,13 @@ public class ProductVO {
 	
 	private MultipartFile uploadFile;
 	private MultipartFile uploadFile2;
+	
+	
+	//수량 추가, 총 상품가격, 총 배송비, 총 할인액
+	private int c_quantity;
+	private int total_product_price;
+	private int totalDelivery;
+	private int totalDiscount;
+	
+	
 }

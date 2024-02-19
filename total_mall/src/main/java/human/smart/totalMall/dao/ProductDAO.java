@@ -60,14 +60,10 @@ public class ProductDAO{
 	}
 	
 	//주문 테이블 상품 추가하기
-	public int purchaseInsert(OrderVO vo) {
-		return sqlSession.insert(MAPPER + ".purchaseInsert", vo);
-	}
+	
+	
 	
 	//주문테이블 리스트 출력하기
-	public List<OrderVO> getOrders(int m_idx){
-		return sqlSession.selectList(MAPPER+".getOrders", m_idx);
-	}
 	
 
 }
