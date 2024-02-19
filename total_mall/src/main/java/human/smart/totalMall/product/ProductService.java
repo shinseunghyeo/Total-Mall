@@ -22,4 +22,7 @@ public interface ProductService {
 	default int cartDelete(CartVO vo) {return 0;}
 	default int purchaseInsert(OrderVO vo) {return 0;}
 	default List<OrderVO> getOrders(int m_idx){return null;}
+	default int modify(ProductVO vo, HttpServletRequest request){return 0;}
+	default int discontinued(int p_idx) {return 0;}
+	default int continued(int p_idx) {return 0;}
 }
