@@ -29,7 +29,8 @@ public class ProductController {
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, 
     		pModify, pDiscontinued, pContinued, 
-    		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate;
+    		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
+    		pOrderInsert, pCartInsert2;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -214,7 +215,6 @@ public class ProductController {
   		int result = pCartInsert.cartInsert(vo,request);
   		
   		if(result == 1) {
-  			System.out.println("성공");
   			viewPage = "redirect:item.do?p_idx="+p_idx;//장바구니등록 성공시 JSP페이지
   			
   		}
@@ -248,9 +248,9 @@ public class ProductController {
   		CartVO vo = new CartVO();
   		vo.setM_idx(m_idx);
   		vo.setP_idx(p_idx2);
-  		System.out.println(p_idx2);
   		
-  		int result = pCartDelete.cartDelete(vo);
+  		System.out.println(p_idx2);
+  		pCartDelete.cartDelete(vo);
   		
   		
   		return viewPage;
@@ -258,13 +258,15 @@ public class ProductController {
   	
   	//결제
   	@GetMapping("/payment.do")
-  	public String payment(OrderVO vo) {
+  	public String payment(OrderVO vo, CartVO vo2) {
   		int m_idx = vo.getM_idx();
   		
   		if(vo.getDirect() == 1) {
   			pCartPaymentUpdate.cartPaymentUpdate(m_idx);
+  			pOrderInsert.orderInsert(vo);
   		} else if(vo.getDirect() == 0) {
-  			
+  			pCartInsert2.cartInsert2(vo2);
+  			pOrderInsert.orderInsert(vo);
   		}
   		return "Product/purchase";
   	}

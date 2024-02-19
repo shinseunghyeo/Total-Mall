@@ -80,13 +80,21 @@ public class ProductDAO{
 		return sqlSession.update(MAPPER+".cartDelete",vo);
 	}
 	
-	//주문 테이블 상품 추가하기
+	//장바구니 테이블 결제여부 변경하기
 	public int cartPaymentUpdate(int m_idx) {
 		return sqlSession.update(MAPPER+".cartPaymentUpdate", m_idx);
 	}
 	
+	//주문 테이블 상품 추가하기
+	public int orderInsert(OrderVO vo) {
+		return sqlSession.insert(MAPPER + ".orderInsert", vo);
+	}
 	
-	//주문테이블 리스트 출력하기
+	
+	//직접 구매 상품 장바구니에 상품 추가하기
+	public int cartInsert2(CartVO vo) {
+		return sqlSession.insert(MAPPER + ".cartInsert2", vo);
+	}
 	
 
 }
