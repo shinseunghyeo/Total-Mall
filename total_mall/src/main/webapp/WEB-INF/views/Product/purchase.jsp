@@ -51,7 +51,7 @@
                 </tr>
             </table>
         </div>
-        <div id="Purchasepage"><br>
+		<!--         <div id="Purchasepage"><br>
             <h2>배송 2건</h2>
             <table border="1">
                 <tr>
@@ -64,12 +64,17 @@
                     <td>빵 1개</td>
                 </tr>
             </table>
-        </div>
+        </div> -->
         <c:set var="totalOrderAmount" value="0" />
-        <c:forEach var="i" begin="1" end="5">
-        	<c:set var="totalOrderAmount" value="${totalOrderAmount + orderList[i-1].price*orderList[i-1].c_quantity}" />	
-        </c:forEach>
-        
+        <c:choose>
+        	<c:when test="${product.c_quantity == 0 }">
+        		<c:set var="totalOrderAmount" value="${product.total_product_price}" />	
+        	</c:when>
+        	<c:otherwise>
+        		<c:set var="totalOrderAmount" value="${totalOrderAmount + product.c_quantity*product.price}" />	
+        	</c:otherwise>
+        </c:choose>
+        	        
         <div id="Purchasepage"><br>
             <h2>결제 정보</h2>
             <table border="1">
@@ -78,13 +83,16 @@
                     <td>${totalOrderAmount} 원</td>
                 </tr>
                 <tr>
+                	<td>할인금액</td>
+                	<td>${product.totalDiscount}</td>
+                </tr>
+                <tr>
                     <td>배송비</td>
-                    <c:set var="totalDelivery" value="${orderList.size() * 2500 }" />
-                    <td>${totalDelivery }</td>
+                    <td>${product.totalDelivery }</td>
                 </tr>
                 <tr>
                     <td>총결제금액</td>
-                    <td>${totalOrderAmount + totalDelivery}원</td>
+                    <td>${totalOrderAmount + product.totalDelivery - product.totalDiscount}원</td>
                 </tr>
                 <tr>
                     <td>결제방법</td>
