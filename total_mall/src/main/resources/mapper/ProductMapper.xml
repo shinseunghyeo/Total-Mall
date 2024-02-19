@@ -18,7 +18,7 @@
 				order by p_idx desc
 				limit 0, 5
 	</select>
-			<!-- 상품등록: insert -->
+	<!-- 상품등록: insert -->
 	<insert id="insert" parameterType="ProductVO">
 				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,
 										start_date,end_date,origin_file_name1,save_file_name1,
@@ -27,6 +27,54 @@
 					   		#{start_date},#{end_date},#{origin_file_name1},#{save_file_name1},
 					   		#{origin_file_name2},#{save_file_name2},#{price},#{discount_rate},#{quantity})
 	</insert>
+	
+	<!-- 상품 수정하기: update -->
+	<insert id="modify" parameterType="ProductVO">
+		<choose>
+			<when test="origin_file_name1 != null and origin_file_name2 != null">		
+				update tb_product set category=#{category}, product_name=#{product_name}, product_code=#{product_code}, 
+										brand=#{brand}, summary=#{summary}, detail=#{detail}, start_date=#{start_date}, end_date=#{end_date},
+										origin_file_name1=#{origin_file_name1},save_file_name1=#{save_file_name1},
+										origin_file_name2=#{origin_file_name2},save_file_name2=#{save_file_name2},
+										price=#{price},discount_rate=#{discount_rate},quantity=#{quantity},p_last_modified_date=now()
+					   				where p_idx=#{p_idx}
+			</when>
+			<when test="origin_file_name1 != null">		
+				update tb_product set category=#{category}, product_name=#{product_name}, product_code=#{product_code}, 
+										brand=#{brand}, summary=#{summary}, detail=#{detail}, start_date=#{start_date}, end_date=#{end_date},
+										origin_file_name1=#{origin_file_name1},save_file_name1=#{save_file_name1},
+										price=#{price},discount_rate=#{discount_rate},quantity=#{quantity},p_last_modified_date=now()
+					   				where p_idx=#{p_idx}
+			</when>
+			<when test="origin_file_name2 != null">		
+				update tb_product set category=#{category}, product_name=#{product_name}, product_code=#{product_code}, 
+										brand=#{brand}, summary=#{summary}, detail=#{detail}, start_date=#{start_date}, end_date=#{end_date},
+										origin_file_name2=#{origin_file_name2},save_file_name2=#{save_file_name2},
+										price=#{price},discount_rate=#{discount_rate},quantity=#{quantity},p_last_modified_date=now()
+					   				where p_idx=#{p_idx}
+			</when>
+			<otherwise>
+				update tb_product set category=#{category}, product_name=#{product_name}, product_code=#{product_code}, 
+										brand=#{brand}, summary=#{summary}, detail=#{detail}, start_date=#{start_date}, end_date=#{end_date},
+										price=#{price},discount_rate=#{discount_rate},quantity=#{quantity},p_last_modified_date=now()
+					   				where p_idx=#{p_idx}
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<!-- 상품 판매중단 처리: update -->
+	<update id="discontinued" parameterType="_int">
+		update tb_product set p_status=1, p_last_modified_date=now()
+			   where p_idx = #{p_idx}
+	</update>
+	<!-- 상품 판매복구 처리: update -->
+	<update id="continued" parameterType="_int">
+		update tb_product set p_status=0, p_last_modified_date=now()
+			   where p_idx = #{p_idx}
+	</update>
+	
+	
+	
 	
 	<!-- 장바구니 상품등록: insert -->
 	<insert id="cartInsert" parameterType="CartVO">

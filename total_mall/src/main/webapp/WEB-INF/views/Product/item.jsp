@@ -5,8 +5,59 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 상세보기</title>
 <link rel="stylesheet" href="../resources/css/product/item.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+function discontinuedPost() {
+    const ans = confirm("정말로 판매를 중단하겠습니까?");
+
+    if (ans) {
+        $.ajax({
+            type: "GET",
+            url: "discontinued.do",
+            data: {
+                p_idx: ${product.p_idx}
+            },
+            success: function(response) {
+                // 서버 응답에 대한 처리를 여기에 추가
+                console.log(response);
+                // 예를 들어, 페이지 리로드
+                location.reload();
+            },
+            error: function(error) {
+                // 에러 처리를 여기에 추가
+                console.error("Ajax request failed: ", error);
+            }
+        });
+    }
+}
+function continuedPost() {
+    const ans = confirm("정말로 판매를 재개하겠습니까?");
+
+    if (ans) {
+        $.ajax({
+            type: "GET",
+            url: "continued.do",
+            data: {
+                p_idx: ${product.p_idx}
+            },
+            success: function(response) {
+                // 서버 응답에 대한 처리를 여기에 추가
+                console.log(response);
+                // 예를 들어, 페이지 리로드
+                location.reload();
+            },
+            error: function(error) {
+                // 에러 처리를 여기에 추가
+                console.error("Ajax request failed: ", error);
+            }
+        });
+    }
+}
+
+
+</script>
 </head>
 <body>
   	<%@ include file="../Main/Header2.jsp" %>
@@ -96,6 +147,17 @@
 	                    <h2>10% 90,000원</h2><hr>
 						<h3>상품내용</h3>
 						${product.summary}
+						<c:if test="${member.m_idx eq product.m_idx}">
+						<a href="modify.do?p_idx=${product.p_idx}"><input type="button" value="상품수정"></a>
+						<c:choose>
+						<c:when test="${product.p_status eq 0}">
+							<input type="button" value="판매중단" onclick="discontinuedPost()" >
+						</c:when>
+						<c:when test="${product.p_status eq 1}">
+							<input type="button" value="판매재개" onclick="continuedPost()" >
+						</c:when>
+						</c:choose>
+						</c:if>
 	                </div>
 	                <div id="Productpurchase">
 	                    <span>개수</span>

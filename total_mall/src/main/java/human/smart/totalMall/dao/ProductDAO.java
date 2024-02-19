@@ -28,9 +28,26 @@ public class ProductDAO{
 		return sqlSession.selectOne(MAPPER+".getProduct", p_idx);
 	}
 	
+	// 상품 등록하기
 	public int insert(ProductVO vo) {
 		return sqlSession.insert(MAPPER + ".insert", vo);
 	}
+	// 상품 수정하기
+	public int modify(ProductVO vo) {
+		return sqlSession.update(MAPPER + ".modify", vo);
+	}
+
+	// 상품 판매중단 하기
+	public int discontinued(int p_idx) {
+		return sqlSession.update(MAPPER + ".discontinued", p_idx);
+	}
+
+	// 상품 판매재개 하기
+	public int continued(int p_idx) {
+		return sqlSession.update(MAPPER + ".continued", p_idx);
+	}
+
+	
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);
 	}
