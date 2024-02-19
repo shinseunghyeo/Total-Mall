@@ -25,4 +25,6 @@ public interface ProductService {
 	default int modify(ProductVO vo, HttpServletRequest request){return 0;}
 	default int discontinued(int p_idx) {return 0;}
 	default int continued(int p_idx) {return 0;}
+	
+	default int cartPaymentUpdate(int m_idx) {return 1;};
 }

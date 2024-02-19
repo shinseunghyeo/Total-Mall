@@ -77,7 +77,9 @@ public class ProductDAO{
 	}
 	
 	//주문 테이블 상품 추가하기
-	
+	public int cartPaymentUpdate(int m_idx) {
+		return sqlSession.update(MAPPER+".cartPaymentUpdate", m_idx);
+	}
 	
 	
 	//주문테이블 리스트 출력하기

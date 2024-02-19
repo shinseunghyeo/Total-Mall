@@ -11,7 +11,7 @@
 <body>
   	<%@ include file="../Main/Header2.jsp" %>
     <!-- ---------결제페이지--------- -->
-    <form>
+    <form method="get" action="payment.do">
     <div id="PurchaseLine">
         <div id="Purchasepage"><br>
             <h2>구매자 정보</h2>
@@ -68,13 +68,19 @@
         <c:set var="totalOrderAmount" value="0" />
         <c:choose>
         	<c:when test="${product.c_quantity == 0 }">
-        		<c:set var="totalOrderAmount" value="${product.total_product_price}" />	
+        		<c:set var="totalOrderAmount" value="${product.total_product_price}" />
+        		<input type="hidden" name="direct" value="1">	
         	</c:when>
         	<c:otherwise>
-        		<c:set var="totalOrderAmount" value="${totalOrderAmount + product.c_quantity*product.price}" />	
+        		<c:set var="totalOrderAmount" value="${totalOrderAmount + product.c_quantity*product.price}" />
+        		<input type="hidden" name="direct" value="0">	
         	</c:otherwise>
         </c:choose>
-        	        
+        
+        <input type="hidden" name="m_idx" value="${member.m_idx}">
+        <input type="hidden" name="totalprice" value="${totalOrderAmount + product.totalDelivery - product.totalDiscount}">
+		
+		
         <div id="Purchasepage"><br>
             <h2>결제 정보</h2>
             <table border="1">
@@ -95,7 +101,7 @@
                     <td>${totalOrderAmount + product.totalDelivery - product.totalDiscount}원</td>
                 </tr>
                 <tr>
-                    <td>결제방법</td>
+                    <td>결제계좌</td>
                     <td>
                         계좌이체 - 은행명<br>
                         쿠페이 머니 - 사이트 캐시<br>
@@ -108,8 +114,8 @@
             </table>
         </div>
         <div id="Purchase"><br>
-            <button>결제하기</button>
-            <button>취소</button>
+        	<input type="submit" value="결제하기">
+	        <button>취소</button>
         </div><br>
 
     </div>
