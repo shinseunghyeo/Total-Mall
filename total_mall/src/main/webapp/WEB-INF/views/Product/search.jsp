@@ -55,17 +55,16 @@
                         <span id="price_Hight" onclick="asdf('price_Hight')" style="cursor: pointer;">높은 가격</span>
                         <span id="price_Row" onclick="asdf('price_Row')" style="cursor: pointer;">낮은 가격</span>
                     </h3><hr>
-                    
 					<c:choose>
 						<c:when test="${empty productList2}">
 							<tr><td colspan="6">
-							검색하신 '${searchWord}'에 대한<br>
+							검색하신 '${sVO.searchWord}'에 대한<br>
 							검색결과가 없습니다.<br>
 							정확한 검색어인지 확인하고 다시 검색해 보세요.
 							</td></tr>
 						</c:when>
 						<c:otherwise>
-							<c:forEach begin="1" end="5" varStatus="vs">
+							<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">
 			                    <div id="Searchproductbox">
 									<a class="productimg" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
 			                        	<img src="../resources/img/Mallimg/${productList2[vs.count-1].save_file_name1}">
@@ -84,7 +83,13 @@
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-                    1
+	<c:if test="${not empty productList2}" >
+		<tr>
+			<td colspan="6" id="td_paging">
+				<%@ include file="paging.jsp" %>
+			</td>
+		</tr>
+	</c:if>
                 </div>
             </div>
         </div>

@@ -13,10 +13,59 @@
 				LIMIT 20 OFFSET 0
 	</select>
 	<select id="getProducts2" parameterType="SearchVO" resultType="productVO">
-				select * from tb_product
-				where summary like CONCAT('%',#{searchWord},'%')
-				order by p_idx desc
-				limit 0, 5
+						<choose>
+			<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
+				select /*+ INDEX(tb_product tb_product_pk) */
+				        		*
+				        		from tb_product
+						<choose>
+							<when test="searchField == 'title'"><!-- 검색영역: 제목 -->
+								where title like CONCAT('%',#{searchWord},'%')
+							</when>
+							<when test="searchField == 'content'"><!-- 검색영역: 내용 -->
+								where content like CONCAT('%',#{searchWord},'%')
+							</when>
+							<otherwise><!-- 검색영역: 작성자 -->
+								where summary like CONCAT('%',#{searchWord},'%')
+							</otherwise>
+						</choose>
+						 		order by p_idx desc
+				                limit 1, 10
+			</when>
+			<otherwise><!-- 검색어가 없는 경우  -->
+				select /*+ INDEX(tb_product tb_product_pk) */
+				        		*
+				        		from tb_product
+				        		order by p_idx desc
+				       			limit 1, 10
+			</otherwise>
+		</choose>
+	</select>
+		<!-- 총 게시물수 조회: select -->
+	<select id="getTotalCount" parameterType="searchVO" resultType="_int">
+		<!-- 검색어가 있는 경우와 없는 경우  -->
+		<choose>
+			<when test="searchWord != null">
+				select count(*)
+					from tb_product
+					<choose>
+						<when test="searchField == 'title'"><!-- 검색영역: 제목 -->
+							where title like CONCAT('%',#{searchWord},'%')
+						</when>
+						<when test="searchField == 'content'"><!-- 검색영역: 내용 -->
+							where content like CONCAT('%',#{searchWord},'%')
+						</when>
+						<otherwise><!-- 검색영역: 작성자 -->
+							where summary like CONCAT('%',#{searchWord},'%')
+						</otherwise>
+					</choose>
+			</when>
+			<otherwise>
+				select count(*)
+					from tb_product
+			</otherwise>
+		</choose>
+	
 	</select>
 	<!-- 상품등록: insert -->
 	<insert id="insert" parameterType="ProductVO">
