@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>구매 페이지</title>
 <link rel="stylesheet" href="../resources/css/product/purchase.css">
 </head>
 <body>
@@ -15,56 +15,47 @@
     <div id="PurchaseLine">
         <div id="Purchasepage"><br>
             <h2>구매자 정보</h2>
-            <table style="border-collapse: collapse;" border="1">
-                <tr>
-                    <td>이름</td>
+            <table>
+                <tr class="tr1">
+                    <td class="td1">이름</td>
                     <td>${member.member_name}</td>
                 </tr>
-                <tr>
-                    <td>이메일</td>
+                <tr class="tr2">
+                    <td class="td1">이메일</td>
                     <td>${member.email}</td>
                 </tr>
-                <tr>
-                    <td>휴대폰 번호</td>
-                    <td>${member.handphone} <button>수정</button></td>
+                <tr class="tr2">
+                    <td class="td1">휴대폰 번호</td>
+                    <td>${member.handphone}</td>
                 </tr>
             </table>
         </div>
         <div id="Purchasepage"><br>
             <h2>받는 사람 정보</h2>
-            <table border="1">
-                <tr>
-                    <td>이름</td>
+            <table>
+                <tr class="tr1">
+                    <td class="td1">이름</td>
                     <td>${member.member_name}</td>
                 </tr>
-                <tr>
-                    <td>배송주소</td>
-                    <td>${member.address2}</td>
+                <tr class="tr2">
+                    <td class="td1">배송주소</td>
+                    <td>${member.address2}  ${member.address3}</td>
                 </tr>
-                <tr>
-                    <td>휴대폰 번호</td>
-                    <td>${member.handphone}<button>수정</button></td>
+                <tr class="tr2">
+                    <td class="td1">휴대폰 번호</td>
+                    <td>${member.handphone}</td>
                 </tr>
-                <tr>
-                    <td>요청사항</td>
-                    <td>문앞<button>변경</button></td>
+                <tr class="tr2">
+                    <td class="td1">요청사항</td>
+                    <td>
+                        <select name="" class="request">
+                            <option value="부재시 문 앞에 놓아주세요">부재시 문 앞에 놓아주세요</option>
+                            <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                        </select>
+                    </td>
                 </tr>
             </table>
         </div>
-		<!--         <div id="Purchasepage"><br>
-            <h2>배송 2건</h2>
-            <table border="1">
-                <tr>
-                    <td>내일 도착예정</td>
-                </tr>
-                <tr>
-                    <td>우유 1개</td>
-                </tr>
-                <tr>
-                    <td>빵 1개</td>
-                </tr>
-            </table>
-        </div> -->
         <c:set var="totalOrderAmount" value="0" />
         <c:choose>
         	
@@ -91,39 +82,37 @@
 		
         <div id="Purchasepage"><br>
             <h2>결제 정보</h2>
-            <table border="1">
-                <tr>
-                    <td>총상품가격</td>
+            <table>
+                <tr class="tr1">
+                    <td class="td1">총상품가격</td>
                     <td>${totalOrderAmount} 원</td>
                 </tr>
-                <tr>
-                	<td>할인금액</td>
+                <tr class="tr2">
+                	<td class="td1">할인금액</td>
                 	<td>${product.totalDiscount}</td>
                 </tr>
-                <tr>
-                    <td>배송비</td>
+                <tr class="tr2">
+                    <td class="td1">배송비</td>
                     <td>${product.totalDelivery }</td>
                 </tr>
-                <tr>
-                    <td>총결제금액</td>
-                    <td>${totalOrderAmount + product.totalDelivery - product.totalDiscount}원</td>
+                <tr class="tr2">
+                    <td class="td1 payment">총결제금액</td>
+                    <td class="payment">${totalOrderAmount + product.totalDelivery - product.totalDiscount}원</td>
                 </tr>
-                <tr>
-                    <td>결제계좌</td>
+                <tr class="tr2">
+                    <td class="td1">결제계좌</td>
                     <td>
-                        계좌이체 - 은행명<br>
-                        쿠페이 머니 - 사이트 캐시<br>
-                        신용/체크카드 - 카드명,할부<br>
-                        법인카드 - 카드명, 할부 <br>
-                        휴대폰 - 휴대폰번호<br>
-                        무통장입금 -은행명
+                        <input type="text" name="" id="" value="23-12121-1212" class="purchase-account1">
+                        <select name="" id="" class="purchase-account2">
+                            <option value="농협">농협</option>
+                            <option value="신한">신한</option>
+                        </select>
                     </td>
                 </tr>
             </table>
         </div>
         <div id="Purchase"><br>
-        	<input type="submit" value="결제하기">
-	        <button>취소</button>
+            <input type="submit" value="결제하기" class="submit-button">
         </div><br>
 
     </div>
