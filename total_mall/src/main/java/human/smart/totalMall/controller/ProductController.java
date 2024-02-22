@@ -59,7 +59,7 @@ public class ProductController {
 		ProductVO vo = pItem.getProduct(p_idx);
 		model.addAttribute("product", vo);
 		
-		return "Product/item";
+		return "product/item";
 	}
     @GetMapping("/purchase.do") // 임시
 	public String purchase(int p_idx, int m_idx, int c_quantity, int total_product_price,
@@ -71,7 +71,7 @@ public class ProductController {
 		vo.setTotalDiscount(totalDiscount);
 		model.addAttribute("product", vo);
 		
-		return "Product/purchase";
+		return "product/purchase";
 	}
     
     
@@ -86,11 +86,11 @@ public class ProductController {
     	pageNav = pPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
     	model.addAttribute("pageNav", pageNav);
 
-        return "Product/search";
+        return "product/search";
     }
 	@PostMapping("/review.do")
 	public String review() {
-		return "Product/review";//views/member폴더에 대한 경로 추가
+		return "product/review";//views/member폴더에 대한 경로 추가
 	}
 	//글등록 요청 처리
 	@PostMapping("/reviewProcess.do")
@@ -106,7 +106,7 @@ public class ProductController {
   //제품등록 페이지 요청 처리
     @GetMapping("/write.do")
 	public String write() {
-		return "Product/write";
+		return "product/write";
 	}
     
   //제품등록 요청 처리
@@ -171,7 +171,7 @@ public class ProductController {
 
 		model.addAttribute("product", vo);
 
-		return "Product/modify";
+		return "product/modify";
 	}
 
 	// 상품수정 요청 처리
@@ -180,7 +180,7 @@ public class ProductController {
 		// 요청 처리 메소드의 매개변수: 글등록 페이지에서 입력된 값, 파일 업로드를 위해서
 		// 웹프로그램의 uploads폴더에 대한 실제 경로를 얻기 위해서 request객체 필요
 
-		String viewPage = "Product/modify";// 글수정 실패시 JSP페이지
+		String viewPage = "product/modify";// 글수정 실패시 JSP페이지
 
 		// 글등록 요청을 BoardModifyService클래스로 처리
 		int result = pModify.modify(vo, request);
@@ -199,7 +199,7 @@ public class ProductController {
 
 		int result = pDiscontinued.discontinued(p_idx);
 
-		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/Product/list.do";
+		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/product/list.do";
 
 		// 로그 추가
 
@@ -217,7 +217,7 @@ public class ProductController {
 		// 게시글 삭제하는 것을 BoardDeleteService클래스를 이용해서 처리함
 		int result = pContinued.continued(p_idx);
 
-		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/Product/list.do";
+		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/product/list.do";
 
 		return viewPage;// views/member폴더에 대한 경로 추가
 
@@ -232,7 +232,7 @@ public class ProductController {
 		// MemberVO에서 m_idx 값을 가져와서 설정
 		int m_idx = member.getM_idx();
 		model.addAttribute("m_idx", m_idx);
-		return "Product/myplist";
+		return "product/myplist";
 	}
 
 	// 판매중인 상품수 호출
@@ -263,7 +263,7 @@ public class ProductController {
 	public String cart(int m_idx, Model model) {
   		List<CartVO> cartList = pCartList.getCarts(m_idx);
 		model.addAttribute("cartList", cartList);
-		return "Product/cart";
+		return "product/cart";
 	}
   	
   	//장바구니에 상품 담기 요청 처리
@@ -328,7 +328,7 @@ public class ProductController {
   			pCartInsert2.cartInsert2(vo2);
   			pOrderInsert.orderInsert(vo);
   		}
-  		return "Product/purchase";
+  		return "product/purchase";
   	}
   	
 }
