@@ -136,7 +136,27 @@
 		update tb_product set p_status=0, p_last_modified_date=now()
 			   where p_idx = #{p_idx}
 	</update>
+	<!-- 내 상품조회: select -->
+	<select id="getProducts3" parameterType="_int"
+		resultType="productVO">
+		SELECT * FROM tb_product WHERE m_idx LIKE #{m_idx}
+		ORDER BY p_last_modified_date DESC
+		LIMIT 20 OFFSET 0
+	</select>
 	
+	<!-- 판매중인 상품 수: select -->
+	<select id="p_con" resultType="_int">
+        SELECT COUNT(*)
+        FROM tb_product
+        WHERE p_status = 0;
+    </select>
+    
+    <!-- 판매중단 상품 수: select -->
+	<select id="p_discon" resultType="_int">
+        SELECT COUNT(*)
+        FROM tb_product
+        WHERE p_status = 1;
+    </select>
 	
 	
 	

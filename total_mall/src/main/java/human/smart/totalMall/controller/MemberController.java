@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import human.smart.service.member.MemberService;
+import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.ProductVO;
 import lombok.Setter;
 
 @Controller
@@ -23,6 +25,8 @@ public class MemberController {
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess;
 	
+	@Setter(onMethod_={ @Autowired })
+    ProductService pCon, pDiscon;
 	
 	
 	
@@ -177,31 +181,77 @@ public class MemberController {
 	}
 	
 	
-/////////////////////////////// 기업회원 마이페이지 ///////////////////////////////	
+/////////////////////////////// 기업회원 마이페이지 홈 ///////////////////////////////	
 	
-	//기업회원 마이페이지 처리
-	@GetMapping("/sellermypage.do")
-	public String sellerMypage() {
-		return "member/sellermypage";
-	}
-	
-	//기업회원 마이페이지 홈
-	@GetMapping("/sellermypage/member/sellerhome.do")
-	public String sellerHome() {
-		return "member/sellerhome";
-	}
-	
-	//기업회원 상품등록페이지 처리
-	@GetMapping("/sellermypage/Product/write.do")
-	public String insert() {
-		return "Product/write";
-	}
-	
-	//기업회원 상품등록페이지 처리
-	@GetMapping("/sellermypage/member/sellerupdate.do")
-	public String sellerUpdate() {
-		return "member/sellerupdate";
-	}
+//기업회원 마이페이지 처리
+@GetMapping("/sellermypage.do")
+public String sellerMypage(Model model) {
+int p_con = pCon.p_con();//판매중인 상품
+int p_discon = pDiscon.p_discon();////판매중단 상품
+
+model.addAttribute("p_con", p_con);
+model.addAttribute("p_discon", p_discon);
+return "member/sellermypage";
+}
+
+//기업회원 마이페이지 홈
+@GetMapping("sellerhome.do")
+public String sellerHome(Model model) {
+int p_con = pCon.p_con();
+int p_discon = pDiscon.p_discon();
+
+model.addAttribute("p_con", p_con);
+model.addAttribute("p_discon", p_discon);
+return "member/sellerhome";
+}
+
+//기업회원 마이페이지에 출력
+@GetMapping("/sellermypage/member/sellerhome.do")
+public String sellerHome() {
+return "forward:/member/sellerhome.do";
+}
+
+
+/////////////////////////////// 기업회원 마이페이지 메뉴 ///////////////////////////////	
+//기업회원 상품등록페이지 처리
+@GetMapping("/sellermypage/Product/write.do")
+public String insert() {
+	return "forward:/product/write.do";
+}
+//기업회원 상품등록페이지 처리
+@GetMapping("/sellermypage/Product/item.do")
+public String item(HttpSession session) {
+	 ProductVO vo = (ProductVO) session.getAttribute("vo");
+	 int p_idx = vo.getP_idx();
+	return "forward:/product/item.do?p_idx="+p_idx;
+}
+
+//기업회원 회원정보수정페이지 처리
+@GetMapping("/sellermypage/member/sellerupdate.do")
+public String sellerUpdate() {
+	return "member/sellerupdate";
+}
+
+//기업회원 상품관리 페이지 처리	
+@GetMapping("/sellermypage/Product/myplist.do")
+public String myplist(HttpSession session, Model model) {
+    // 세션에서 MemberVO를 가져옵니다.
+    MemberVO member = (MemberVO) session.getAttribute("member");
+
+    // MemberVO가 null이 아니고, m_idx 값이 있다면
+    if (member != null) {
+        int m_idx = member.getM_idx();
+        model.addAttribute("m_idx", m_idx);
+        return "forward:/product/myplist.do?m_idx=" + m_idx;
+    } else {
+        // 세션에 MemberVO가 없으면 로그인 페이지로 이동하거나 다른 적절한 처리를 수행합니다.
+        return "redirect:/login"; // 로그인 페이지로 리다이렉트하는 예시
+    }
+}
+
+
+
+
 	
 /////////////////////////////// 개인회원 마이페이지 ///////////////////////////////		
 	

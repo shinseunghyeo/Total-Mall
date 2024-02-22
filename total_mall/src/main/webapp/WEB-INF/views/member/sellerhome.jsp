@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="../resources/js/Member/seller_mypage.js"></script>
 </head>
 <body>
 				<div id="short_cut">
@@ -48,8 +51,8 @@
 							<div class="inner_box">
 								<h2>상품관리</h2>
 								<ul>
-									<li><a href="#">판매중인 상품 수 <b>10 &gt;</b></a></li>
-									<li><a href="#">임시저장 상품 수 <b>10 &gt;</b></a></li>
+									<li><a href="../product/p_con.do">판매중인 상품 수 <b>${p_con} &gt;</b></a></li>
+									<li><a href="../product/p_discon.do">판매중단 상품 수 <b>${p_discon} &gt;</b></a></li>
 									<li><a href="#">품절/기한 만료 상품 수 <b>10 &gt;</b></a></li>
 								</ul>
 							</div>

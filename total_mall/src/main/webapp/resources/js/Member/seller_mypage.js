@@ -25,6 +25,7 @@ $(function () {
         lightCss
     });
 
+    
 
     //비활성 페이지 숨김처리
     const hidePages = [
@@ -68,7 +69,7 @@ $(function () {
         };
 
         if ($(this).is(".seller_nav_ul_li:eq(2)")) {
-            loadContent("#");
+            loadContent("sellermypage/Product/myplist.do");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(2))").css({
                 backgroundColor: "rgb(158, 158, 158)",
                 lightCss
