@@ -36,5 +36,6 @@ public interface ProductService {
 	default int cartPaymentUpdate(int m_idx) {return 1;}
 	default int orderInsert(OrderVO vo) {return 0;}
 	default int cartInsert2(CartVO vo) {return 0;}
+	default CartVO cartCheck(CartVO vo) {return null;}
 	
 }

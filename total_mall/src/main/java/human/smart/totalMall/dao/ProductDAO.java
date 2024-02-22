@@ -2,6 +2,7 @@ package human.smart.totalMall.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -101,6 +102,17 @@ public class ProductDAO{
 	//장바구니 테이블 결제여부 변경하기
 	public int cartPaymentUpdate(int m_idx) {
 		return sqlSession.update(MAPPER+".cartPaymentUpdate", m_idx);
+	}
+	
+	//장바구니 상품 확인하기
+	public CartVO cartCheck(CartVO vo) {
+		CartVO vo2 = null;
+		try {
+		    vo2 = sqlSession.selectOne(MAPPER+".cartCheck", vo);
+		} catch (PersistenceException e) {
+		    vo2 = null;
+		}
+		return vo2;
 	}
 	
 	//주문 테이블 상품 추가하기

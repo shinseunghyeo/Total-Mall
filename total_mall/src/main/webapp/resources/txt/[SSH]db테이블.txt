@@ -20,7 +20,6 @@ create table tb_cart (
 create table tb_order (
 	o_idx int unsigned not null auto_increment,
     m_idx int unsigned,
-    p_idx int unsigned,
     pay varchar(255),
     totalprice int,
     requests varchar(255),
