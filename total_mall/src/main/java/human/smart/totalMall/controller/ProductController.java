@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
+import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.ReviewVO;
@@ -29,7 +31,7 @@ public class ProductController {
 
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, 
-    		pModify, pDiscontinued, pContinued, 
+    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2;
 
@@ -108,22 +110,23 @@ public class ProductController {
 	}
     
   //제품등록 요청 처리
-  	@PostMapping("writeProcess.do")
-  	public String writeProcess(ProductVO vo, HttpServletRequest request) {
-  	//요청 처리 메소드의 매개변수: 글등록 페이지에서 입력된 값, 파일 업로드를 위해서
-  	//웹프로그램의 uploads폴더에 대한 실제 경로를 얻기 위해서 request객체 필요
-  	
-  		String viewPage = "product/write";//글등록 실패시 JSP페이지
-  		
-  		//글등록 요청을 BoardInsertService클래스로 처리
-  		int result = pInsert.insert(vo,request);
-  		
-  		if(result == 1) {
-  			viewPage = "redirect:list.do";//글등록 성공시 JSP페이지 
-  		}
-  		
-  		return viewPage;
-  	}
+    @PostMapping("writeProcess.do")
+	public String writeProcess(ProductVO vo, HttpServletRequest request) {
+		// 요청 처리 메소드의 매개변수: 글등록 페이지에서 입력된 값, 파일 업로드를 위해서
+		// 웹프로그램의 uploads폴더에 대한 실제 경로를 얻기 위해서 request객체 필요
+
+		String viewPage = "redirect:/member/sellermypage.do";// 글등록 실패시 JSP페이지
+
+		// 글등록 요청을 BoardInsertService클래스로 처리
+		int result = pInsert.insert(vo, request);
+
+		
+		if (result == 1) {
+			viewPage = "redirect:/member/sellermypage.do";// 글등록 성공시 JSP페이지
+		}
+
+		return viewPage;
+	}
 	// 상품수정 페이지 카테고리
 	@ModelAttribute("categoryMap")
 	public Map<String, String> getCategoryMap() {
@@ -181,9 +184,9 @@ public class ProductController {
 
 		// 글등록 요청을 BoardModifyService클래스로 처리
 		int result = pModify.modify(vo, request);
-
+		int p_idx = vo.getP_idx();
 		if (result == 1) {
-			viewPage = "redirect:list.do";// 글수정 성공시 JSP페이지
+			viewPage = "redirect:/product/item.do?p_idx=" + p_idx;// 글수정 성공시 JSP페이지
 		}
 
 		return viewPage;
@@ -192,36 +195,69 @@ public class ProductController {
 	// 상품 판매 중단 요청 처리
 	@GetMapping("/discontinued.do")
 	public String discontinued(int p_idx, Model model) {
-	    // 로그 추가
-	    System.out.println("Discontinued method called with p_idx: " + p_idx);
+		// 로그 추가
 
-	    int result = pDiscontinued.discontinued(p_idx);
+		int result = pDiscontinued.discontinued(p_idx);
 
-	    String viewPage = (result == 1) ? "redirect:/Product/list.do" : "redirect:/Product/item.do?p_idx=" + p_idx;
+		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/Product/list.do";
 
-	    // 로그 추가
-	    System.out.println("Redirecting to: " + viewPage);
+		// 로그 추가
 
-	    return viewPage;
+		return viewPage;
 	}
-	
+
 	// 상품 판매 재개 요청 처리
-		@GetMapping("/continued.do")
-		public String continued(int p_idx, Model model) {
-			// 요청과 함께 전달되는 값: b_idx
-			// 전달되는 값을 @RequestParam("b_idx")을 이용해서 전달값의 이름과
-			// 다른 매개변수에 할당 받을 수 있음(값의 이름을 바꿀 수 있다)
-			// public String view(@RequestParam("b_idx") int bIdx, Model model) {
+	@GetMapping("/continued.do")
+	public String continued(int p_idx, Model model) {
+		// 요청과 함께 전달되는 값: b_idx
+		// 전달되는 값을 @RequestParam("b_idx")을 이용해서 전달값의 이름과
+		// 다른 매개변수에 할당 받을 수 있음(값의 이름을 바꿀 수 있다)
+		// public String view(@RequestParam("b_idx") int bIdx, Model model) {
 
-			// 게시글 삭제하는 것을 BoardDeleteService클래스를 이용해서 처리함
-			int result = pContinued.continued(p_idx);
+		// 게시글 삭제하는 것을 BoardDeleteService클래스를 이용해서 처리함
+		int result = pContinued.continued(p_idx);
 
-			String viewPage = (result == 1) ? "redirect:/Product/list.do" : "redirect:/Product/item.do?p_idx=" + p_idx;
+		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/Product/list.do";
 
-			return viewPage;// views/member폴더에 대한 경로 추가
+		return viewPage;// views/member폴더에 대한 경로 추가
 
-		}
-  	
+	}
+	// 내 상품보기
+	@GetMapping("myplist.do")
+	public String myplist(@ModelAttribute("sVO") SearchVO searchVO, Model model,
+			@SessionAttribute("member") MemberVO member) {
+		List<ProductVO> productList3 = mypList.getProducts3(searchVO);
+		model.addAttribute("productList3", productList3);
+
+		// MemberVO에서 m_idx 값을 가져와서 설정
+		int m_idx = member.getM_idx();
+		model.addAttribute("m_idx", m_idx);
+		return "Product/myplist";
+	}
+
+	// 판매중인 상품수 호출
+	@RequestMapping("/p_con.do")
+	public String p_con(Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		int p_con = pCon.p_con();
+		model.addAttribute("p_con", p_con);
+		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
+	}
+
+	// 판매중단 상품수 호출
+	@RequestMapping("/p_discon.do")
+	public String p_discon(Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		int p_discon = pDiscon.p_discon();
+		model.addAttribute("p_discon", p_discon);
+		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
+	}
+
+	
+	
+	
+	
+	
   	//장바구니 페이지 요청 처리
   	@GetMapping("/cart.do")
 	public String cart(int m_idx, Model model) {

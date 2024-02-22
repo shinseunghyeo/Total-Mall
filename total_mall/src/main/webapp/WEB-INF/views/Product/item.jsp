@@ -156,6 +156,7 @@ function continuedPost() {
 						</c:when>
 						</c:choose>
 						</c:if>
+	       
 	                </div>
 	                <div id="Productpurchase">
 	                    <span>개수</span>

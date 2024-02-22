@@ -48,6 +48,20 @@ public class ProductDAO{
 		return sqlSession.update(MAPPER + ".continued", p_idx);
 	}
 
+	//내 상품보기
+	public List<ProductVO> getProducts3(SearchVO vo) {
+		return sqlSession.selectList(MAPPER+".getProducts3", vo);
+	}
+	
+	//판매재개
+	public int p_con() {
+		return sqlSession.selectOne(MAPPER+".p_con");
+	}
+	
+	//판매중단
+	public int p_discon() {
+		return sqlSession.selectOne(MAPPER+".p_discon");
+	}
 	
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);

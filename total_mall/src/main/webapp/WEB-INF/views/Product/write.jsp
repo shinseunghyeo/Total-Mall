@@ -6,17 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>기업회원 상품등록</title>
-<link rel="stylesheet" href="../resources/css/Member/seller.css">
+
 </head>
 <body>
 
-	<section>
-		<!-- 전체 화면 wrap -->
-		<div id="wrap">
-
-			<!-- 화면 내용이 변하는 부분: inner_wrap -->
-			<div id="inner_wrap">
-				<!-- 상품등록 전체 페이지 -->
 				<div id="write_frm">
 					<form name="frm_write" method="post" action="../product/writeProcess.do"
 						enctype="multipart/form-data">
@@ -134,10 +127,7 @@
 						</div>
 					</form>
 				</div>
-			</div>
 
-		</div>
-	</section>
 
 </body>
 </html>

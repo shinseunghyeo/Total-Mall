@@ -1,6 +1,10 @@
 package human.smart.service.member;
 
+import java.util.List;
+
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.SearchVO;
 
 public interface MemberService {
 
@@ -9,5 +13,5 @@ public interface MemberService {
 	default MemberVO findId(String member_name, String email) {return null;}
 	default MemberVO findPw(String member_id, String email) {return null;}
 	default MemberVO findPwProcess(MemberVO memberVO) {return null;}
-
+	default List<ProductVO> getProducts3(SearchVO searchVO){return null;}
 }

@@ -10,6 +10,7 @@ public class SearchVO {
 	private String category;
 	private String service;
 	private String n_idx;
+	private int m_idx;
 	//보완된 SQL문으로 인해 추가함
 	private int pageNum;
 	private int pageBlock;

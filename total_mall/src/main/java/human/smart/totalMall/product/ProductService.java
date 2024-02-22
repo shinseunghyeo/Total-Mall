@@ -28,6 +28,10 @@ public interface ProductService {
 	default int modify(ProductVO vo, HttpServletRequest request){return 0;}
 	default int discontinued(int p_idx) {return 0;}
 	default int continued(int p_idx) {return 0;}
+	default List<ProductVO> getProducts3(SearchVO vo){return null;}
+	default int p_discon(){return 0;}
+	default int p_con(){return 0;}
+	
 	
 	default int cartPaymentUpdate(int m_idx) {return 1;}
 	default int orderInsert(OrderVO vo) {return 0;}
