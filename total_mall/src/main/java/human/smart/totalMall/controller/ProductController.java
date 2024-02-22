@@ -33,7 +33,7 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, 
     		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
-    		pOrderInsert, pCartInsert2;
+    		pOrderInsert, pCartInsert2, pCartCheck;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -266,19 +266,27 @@ public class ProductController {
 		return "product/cart";
 	}
   	
+  	//장바구니에 같은 상품이 있는지 확인하기
+  	
+  	
   	//장바구니에 상품 담기 요청 처리
   	@GetMapping("/cartProcess.do")
-	public String cartProcess(int p_idx,  CartVO vo, HttpServletRequest request, Model model) {
-  		String viewPage = "redirect:item.do";//장바구니등록 실패시 JSP페이지
+	public String cartProcess(int p_idx, CartVO vo, HttpServletRequest request, Model model) {
+  		String viewPage = "redirect:item.do?p_idx="+p_idx;//장바구니등록 실패시 JSP페이지
   		
-  		//글등록 요청을 BoardInsertService클래스로 처리
-  		int result = pCartInsert.cartInsert(vo,request);
+  		CartVO vo2 = pCartCheck.cartCheck(vo);
+  		if(vo2 != null) {
+  			model.addAttribute("msg2", "상품이 담겨 있습니다.");
+  		} else {
   		
-  		if(result == 1) {
-  			viewPage = "redirect:item.do?p_idx="+p_idx;//장바구니등록 성공시 JSP페이지
-  			
+  	  		int result = pCartInsert.cartInsert(vo,request);
+  	  		
+  	  		if(result == 1) {
+  	  			viewPage = "redirect:item.do?p_idx="+p_idx;//장바구니등록 성공시 JSP페이지
+  	  			
+  	  		}
   		}
-  		
+
   		return viewPage;
 	}
   	

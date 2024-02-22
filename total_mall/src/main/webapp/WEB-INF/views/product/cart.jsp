@@ -49,10 +49,10 @@
 				                        </div>
 				                        <div style="display: flex;width: 100%;">
 				                            <div class="cart_item-2">
-				                                <img src="Mallimg/고구마.jpg" alt="#">
+				                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${cartList[vs.count-1].p_idx}"><img src="../resources/uploads/${cartList[i-1].save_file_name1}" alt="#"></a>
 				                            </div>
 				                            <div class="cart_item-3">
-				                                <p><a href="">${cartList[i-1].product_name }</a></p>
+				                                <p><a href="${pageContext.request.contextPath}/product/item.do?p_idx=${cartList[vs.count-1].p_idx}">${cartList[i-1].product_name }</a></p>
 				                            </div>
 				                            <form id="cart_item-4-form" method="get" action="cartQuantityUpdate.do">
 					                            <div class="cart_item-4">
@@ -67,7 +67,7 @@
 				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }</p>
 				                                </div>
 				                                <div>
-				                                	<form id="deleteForm-${i}" method="get" action="cartDelete.do">
+				                                	<form class="deleteForm" id="deleteForm-${i}" method="get" action="cartDelete.do">
 					                                	<input type="hidden" name="m_idx" value="${member.m_idx }">
 						                            	<input type="hidden" name="p_idx2" value="${cartList[i-1].p_idx }">
 				                                    	<input type="button" value="X" onclick="deleteCart(${i})">
@@ -189,5 +189,18 @@
     <%@ include file="../Main/Footer2.jsp" %>
     
 </body>
+<script>
+/* 장바구니 아이템 삭제 스크립트 */
+function deleteCart(i) {
+const ans = confirm("정말로 삭제하겠습니까?");
+
+if (ans) {
+	console.log(`Deleting item ${i}`);
+    // 각 삭제 버튼의 인덱스를 사용하여 해당 폼을 동적으로 선택하여 제출
+    document.getElementsByClassName(`deleteForm`)[i - 1].submit();
+}
+}
+/* 장바구니 아이템 삭제 스크립트 */
+</script>
 <script type="text/javascript" src="../resources/js/Product/cart.js"></script>
 </html>

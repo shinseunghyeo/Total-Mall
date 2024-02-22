@@ -168,7 +168,7 @@
 	
 	<!-- 장바구니 상품목록 불러오기: select -->
 	<select id="getCarts" parameterType="_int" resultType="cartVO">
-		select a.c_idx, a.m_idx, a.c_quantity, b.p_idx, b.product_name, b.price, b.discount_rate
+		select a.c_idx, a.m_idx, a.c_quantity, b.p_idx, b.product_name, b.price, b.discount_rate, b.save_file_name1
 		from tb_cart a left outer join tb_product b on a.p_idx = b.p_idx 
 		where a.m_idx = #{m_idx}
 		and payment_or_not = 0
@@ -196,6 +196,12 @@
 		update tb_cart set payment_or_not=1
 			where m_idx=#{m_idx}
 	</update>
+	
+	<!-- 장바구니 상품 확인하기 -->
+	<select id="cartCheck" parameterType="CartVO" resultType="CartVO">
+		select * from tb_cart where p_idx = #{p_idx}
+							  and m_idx = #{m_idx}
+	</select>
 	
 	<!-- 주문테이블 상품 추가하기 -->
 	<insert id="orderInsert" parameterType="OrderVO">

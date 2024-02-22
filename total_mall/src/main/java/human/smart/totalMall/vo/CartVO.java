@@ -23,5 +23,5 @@ public class CartVO {
 	private String product_name;
 	private int price;
 	private int discount_rate;
-	
+	private String save_file_name1;
 }

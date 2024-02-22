@@ -1,5 +1,5 @@
 // -----------개수최대값-----------
-var prevValue = "0"; // 이전 값 저장 변수
+var prevValue = "1"; // 이전 값 저장 변수
 
 function checkInput() {
     var inputBox = document.getElementById("inputBox");
@@ -77,7 +77,10 @@ function updateLink(linkId, parameterName, parameterValue) {
     }
 }
 // 쿼리스트링 변경문 
+// -------------- 장바구니에 상품 담김 ------------------
 
+    
+// -------------- 장바구니에 상품 담김 ------------------
 
 // -----------상품정보-----------
 let linkTime = true;
