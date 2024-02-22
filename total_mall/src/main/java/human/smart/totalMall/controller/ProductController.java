@@ -52,7 +52,7 @@ public class ProductController {
     	List<ProductVO> lStarList = cList.getProducts(searchVO);
     	model.addAttribute("lStarList", lStarList);
 
-        return "Product/list";
+        return "product/list";
     }
     @GetMapping("/item.do") // 임시
 	public String item(int p_idx, Model model) {

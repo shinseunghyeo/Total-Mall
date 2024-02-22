@@ -49,7 +49,7 @@
 				                        </div>
 				                        <div style="display: flex;width: 100%;">
 				                            <div class="cart_item-2">
-				                                <img src="Mallimg/고구마.jpg" alt="">
+				                                <img src="../resources/uploads/${cartList[i-1].save_file_name1 }" alt="#">
 				                            </div>
 				                            <div class="cart_item-3">
 				                                <p><a href="">${cartList[i-1].product_name }</a></p>
@@ -67,10 +67,10 @@
 				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }</p>
 				                                </div>
 				                                <div>
-				                                	<form id="deleteForm" method="get" action="cartDelete.do">
+				                                	<form id="deleteForm-${i}" method="get" action="cartDelete.do">
 					                                	<input type="hidden" name="m_idx" value="${member.m_idx }">
 						                            	<input type="hidden" name="p_idx2" value="${cartList[i-1].p_idx }">
-				                                    	<input type="button" value="X" onclick="deleteCart()">
+				                                    	<input type="button" value="X" onclick="deleteCart(${i})">
 				                                    </form>
 				                                </div>
 				                            </div>
