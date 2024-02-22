@@ -30,35 +30,35 @@ $(function () {
 
     function checkIdValidity() {
         if (!regExp_id.test(frm_join.member_id.value)) {
-            $("#id_test").css("color", "red")
+            $("#id_test").css("color", "black")
         } else {
             $("#id_test").css("color", "white")
         }
     }
     function checkPwValidity(){
         if(!regExp_pw.test(frm_join.member_pw.value)){
-            $("#pw_test").css("color","red")
+            $("#pw_test").css("color","black")
         } else{
             $("#pw_test").css("color","white")
         }
     }
     function checkPw2Validity(){
         if($("#member_pw").val() != $("#member_pw2").val()){
-            $("#pw2_test").css("color","red")
+            $("#pw2_test").css("color","black")
         } else{
             $("#pw2_test").css("color","white")
         }
     }
     function checkNameValidity(){
         if(frm_join.member_name.value.length == 0){
-            $("#name_test").css("color","red")
+            $("#name_test").css("color","black")
         } else{
             $("#name_test").css("color","white")
         }
     }
     function checkHandphoneValidity(){
         if(!regExp_phone.test(frm_join.handphone.value)){
-            $("#handphone_test").css("color","red")
+            $("#handphone_test").css("color","black")
         } else{
             $("#handphone_test").css("color","white")
         }
@@ -92,7 +92,7 @@ $(function () {
         // 전체 유효성 검사 수행
         if (!regExp_id.test(idValue)) {
             e.preventDefault(); // 유효성 검사 실패 시 폼 제출 방지
-            idMessage.css("color", "red").text("아이디를 올바르게 입력해주세요.");
+            idMessage.css("color", "black").text("아이디를 올바르게 입력해주세요.");
         }
     });
 });

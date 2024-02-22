@@ -1,7 +1,7 @@
 $(function () {
     function checkPw2Validity(){
         if($("#input-pw").val() != $("#input-pw2").val()){
-            $("#pw2_test").css("color","red")
+            $("#pw2_test").css("color","black")
         } else{
             $("#pw2_test").css("color","white")
         }

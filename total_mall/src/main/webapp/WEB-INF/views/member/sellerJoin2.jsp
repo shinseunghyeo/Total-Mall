@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div id="button">
-                        <input type="button" value="이전">
+                        <input type="button" value="이전" onclick="historyBack()">
                         <input type="submit" value="가입" id="next-button">
                     </div>
                 </form>

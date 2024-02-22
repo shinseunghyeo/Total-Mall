@@ -53,8 +53,8 @@ public class MemberController {
 		}
 		if(rememberId) {
 			Cookie cookie = new Cookie("member_id", member_id);
+			cookie.setMaxAge(24 * 60 * 60); //쿠키기간설정 하루로
 			response.addCookie(cookie);
-			System.out.println(cookie);
 		} else {
 			Cookie cookie = new Cookie("member_id", member_id);
 			cookie.setMaxAge(0);
