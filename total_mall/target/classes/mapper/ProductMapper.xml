@@ -41,6 +41,26 @@
 			</otherwise>
 		</choose>
 	</select>
+	<select id="getReview" parameterType="map" resultType="reviewVO">
+		select* from tb_review
+		where p_idx= #{p_idx}
+		<choose>
+			<when test="orderBy  == 1">
+				ORDER BY post_date ASC;
+			</when>
+			<when test="orderBy  == 2">
+				ORDER BY post_date DESC;
+			</when>
+			<when test="orderBy  == 3">
+				ORDER BY star ASC;
+			</when>
+			<otherwise>
+				ORDER BY star DESC;
+			</otherwise>
+		</choose>
+	</select>
+	
+	
 		<!-- 총 게시물수 조회: select -->
 	<select id="getTotalCount" parameterType="searchVO" resultType="_int">
 		<!-- 검색어가 있는 경우와 없는 경우  -->
@@ -71,14 +91,14 @@
 		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
 		<choose>
 			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
-				insert into tb_review (r_idx, m_idx, member_id, member_name, content, 
+				insert into tb_review (r_idx, m_idx, p_idx, member_id, member_name, content, 
 				star, originfile_name, savefile_name)
-				values(#{r_idx},#{m_idx},#{member_id},#{member_name} ,#{content},
+				values(#{r_idx},#{m_idx},#{p_idx},#{member_id},#{member_name} ,#{content},
 				#{star}, #{originfile_name}, #{savefile_name})
 			</when>
 			<otherwise>
-				insert into tb_review (r_idx, m_idx, member_id, member_name, content, star)
-				values(#{r_idx},#{m_idx},#{member_id},#{member_name} ,#{content}, #{star})
+				insert into tb_review (r_idx, m_idx, p_idx, member_id, member_name, content, star)
+				values(#{r_idx},#{m_idx},#{p_idx},#{member_id},#{member_name} ,#{content}, #{star})
 			</otherwise>
 		</choose>
 	</insert>
@@ -136,27 +156,7 @@
 		update tb_product set p_status=0, p_last_modified_date=now()
 			   where p_idx = #{p_idx}
 	</update>
-	<!-- 내 상품조회: select -->
-	<select id="getProducts3" parameterType="_int"
-		resultType="productVO">
-		SELECT * FROM tb_product WHERE m_idx LIKE #{m_idx}
-		ORDER BY p_last_modified_date DESC
-		LIMIT 20 OFFSET 0
-	</select>
 	
-	<!-- 판매중인 상품 수: select -->
-	<select id="p_con" resultType="_int">
-        SELECT COUNT(*)
-        FROM tb_product
-        WHERE p_status = 0;
-    </select>
-    
-    <!-- 판매중단 상품 수: select -->
-	<select id="p_discon" resultType="_int">
-        SELECT COUNT(*)
-        FROM tb_product
-        WHERE p_status = 1;
-    </select>
 	
 	
 	
@@ -173,6 +173,12 @@
 		where a.m_idx = #{m_idx}
 		and payment_or_not = 0
 		
+	</select>
+	
+	<!-- 장바구니 상품 확인하기 -->
+	<select id="cartCheck" parameterType="CartVO" resultType="CartVO">
+		select * from tb_cart where p_idx = #{p_idx}
+							  and m_idx = #{m_idx}
 	</select>
 	
 	<!-- 장바구니 수량 변경하기 -->
@@ -196,12 +202,6 @@
 		update tb_cart set payment_or_not=1
 			where m_idx=#{m_idx}
 	</update>
-	
-	<!-- 장바구니 상품 확인하기 -->
-	<select id="cartCheck" parameterType="CartVO" resultType="CartVO">
-		select * from tb_cart where p_idx = #{p_idx}
-							  and m_idx = #{m_idx}
-	</select>
 	
 	<!-- 주문테이블 상품 추가하기 -->
 	<insert id="orderInsert" parameterType="OrderVO">

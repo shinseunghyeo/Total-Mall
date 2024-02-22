@@ -68,7 +68,7 @@
 								<c:if test="${not empty productList2[vs.count-1]}"><!-- boardList에 저장된 데이터가 있는 경우 출력-->
 				                    <div id="Searchproductbox">
 										<a class="productimg" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
-				                        	<img src="../resources/img/Mallimg/${productList2[vs.count-1].save_file_name1}">
+				                        	<img src="../resources/uploads/${productList2[vs.count-1].save_file_name1}">
 				                       	</a>
 				                        <div id="SearchProduct">
 				                            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
@@ -79,8 +79,6 @@
 				                            ${productList2[vs.count-1].summary}<br>
 				                        </div>
 				                        <div class="SearchProductPrice">
-				                            <button>장바구니</button>
-				                            <button><a href="T_PurchasePage.html">구매</a></button>
 				                        </div>
 				                    </div>
 								</c:if>

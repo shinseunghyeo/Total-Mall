@@ -54,10 +54,29 @@ public class ProductController {
 
         return "product/list";
     }
-    @GetMapping("/item.do") // 임시
+    @GetMapping("/item.do")
 	public String item(int p_idx, Model model) {
 		ProductVO vo = pItem.getProduct(p_idx);
 		model.addAttribute("product", vo);
+		
+	    Map<String, Object> paramMap = new HashMap<>();
+	    paramMap.put("p_idx", p_idx);
+		
+	    paramMap.put("orderBy", 1); 
+    	List<ReviewVO> hEvaluationList = pItem.getReview(paramMap);
+    	model.addAttribute("hEvaluationList", hEvaluationList);
+
+    	paramMap.put("orderBy", 2);
+    	List<ReviewVO> lEvaluationList = pItem.getReview(paramMap);
+    	model.addAttribute("lEvaluationList", lEvaluationList);
+
+	    paramMap.put("orderBy", 3); 
+    	List<ReviewVO> hStarList = pItem.getReview(paramMap);
+    	model.addAttribute("hStarList", hStarList);
+
+    	paramMap.put("orderBy", 4); 
+    	List<ReviewVO> lStarList = pItem.getReview(paramMap);
+    	model.addAttribute("lStarList", lStarList);
 		
 		return "product/item";
 	}

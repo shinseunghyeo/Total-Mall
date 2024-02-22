@@ -142,7 +142,8 @@ function continuedPost() {
 	                    <h1>${product.product_name}</h1>
 	                    <h2>★★★★★</h2><br>
 	                    <h2>${product.price}원</h2>
-	                    <h2>10% 90,000원</h2><hr>
+	                    <h2>${product.discount_rate}% 
+	                    <c:set var="discountedPrice" value="${product.price * (1 - product.discount_rate / 100)}" /></h2><hr>
 						<h3>상품내용</h3>
 						${product.summary}
 						<c:if test="${member.m_idx eq product.m_idx}">
@@ -156,16 +157,15 @@ function continuedPost() {
 						</c:when>
 						</c:choose>
 						</c:if>
-	       
 	                </div>
 	                <div id="Productpurchase">
 	                    <span>개수</span>
 	                    <div class="input-wrapper">
 	                        <button id="decrementButton" onclick="decrement()">-</button>
-	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="1" required>
+	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="0" required>
 	                        <button id="incrementButton" onclick="increment()">+</button>
 	                    </div>
-	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button onclick="showCartAlert()">장바구니</button></a>
+	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button>장바구니</button></a>
 	                    <a href="${pageContext.request.contextPath}/product/purchase.do?total_product_price=0&totalDiscount=${(product.price/(product.discount_rate)).intValue()}&totalDelivery=2500&p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="purchaseLink" onclick="updateLinks()">
 					        <button>구매</button>
 					    </a>
@@ -263,10 +263,9 @@ function continuedPost() {
             <div id="Reviewsbox">
                 <h2>상품평가</h2>
 				<form name="frm_write" method="post" action="review.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
-				<input type="hidden" name="m_idx" value="${member.m_idx}" >
-
-                <input type="submit" value="상품리뷰작성페이지">
-                
+					<input type="hidden" name="p_idx" value="${product.p_idx}">
+					<input type="hidden" name="m_idx" value="${member.m_idx}">
+	                <input type="submit" value="상품리뷰작성페이지">
                 </form>
                 
                 
@@ -275,10 +274,7 @@ function continuedPost() {
                 <button onclick="changeContent('high_rating')">높은별점순</button>
                 <button onclick="changeContent('low_rating')">낮은별점순</button>
                 
-                <div id="content">
-                    <!-- 여기에 변경될 페이지 내용을 입력하세요. -->
-                    초기 내용
-                </div>
+
                 
                 <script>
                     function changeContent(option) {
@@ -303,46 +299,34 @@ function continuedPost() {
                     }
                 </script>
             </div><hr>
-            아이디<br>
-            상품명★★★★★<br>
-            2024.00.00<br>
-            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
-            "---------------------평가내용---------------------"<br>
-            "---------------------평가내용---------------------"<br><hr>
-            아이디<br>
-            상품명★★★★★<br>
-            2024.00.00<br>
-            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
-            "---------------------평가내용---------------------"<br>
-            "---------------------평가내용---------------------"<br><hr>
-            아이디<br>
-            상품명★★★★★<br>
-            2024.00.00<br>
-            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
-            "---------------------평가내용---------------------"<br>
-            "---------------------평가내용---------------------"<br><hr>
-            아이디<br>
-            상품명★★★★★<br>
-            2024.00.00<br>
-            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
-            "---------------------평가내용---------------------"<br>
-            "---------------------평가내용---------------------"<br><hr>
-            아이디<br>
-            상품명★★★★★<br>
-            2024.00.00<br>
-            <img src="../resources/img/Mallimg/삼겹살.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살2.jpg" width="50">
-            <img src="../resources/img/Mallimg/삼겹살3.jpg" width="50"><br>
-            "---------------------평가내용---------------------"<br>
-            "---------------------평가내용---------------------"<br><hr>
+			<div id="content">
+            </div>
+			<c:choose>
+			    <c:when test="${empty hEvaluationList}">
+			        <tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+			    </c:when>
+			    <c:otherwise>
+			        <c:forEach items="${hEvaluationList}" var="review" varStatus="vs">
+			            ${review.member_id}<br>
+			            <c:forEach begin="1" end="5" varStatus="star">
+			                <c:choose>
+			                    <c:when test="${star.index < review.star}">
+			                        ★
+			                    </c:when>
+			                    <c:otherwise>
+			                        ☆
+			                    </c:otherwise>
+			                </c:choose>
+			            </c:forEach>
+			            (${review.star})<br>
+			            ${review.post_date}<br>
+		                    <c:if test="${not empty review.originfile_name}">
+								<img width="50" height="50" src="../resources/uploads/${review.originfile_name}"><br>
+		                    </c:if>
+			            ${review.content}<hr>
+			        </c:forEach>
+			    </c:otherwise>
+			</c:choose>
         </div>
         <div id="customerQuestions">
             <h2>문의사항</h2>
@@ -393,7 +377,7 @@ function continuedPost() {
                 등록된 판매 상품과 상품의 내용, 거래 정보 및 가격은 판매자가 등록한 것으로<br>
                 해당 내용에 대하여 일체의 책임을 지지 않습니다.<br>
                 결제시스템을 이용하지 않고 판매자와 직접 거래하실 경우 상품을 받지 못하거나 구매한 상품과 상이한 상품을 받는 등<br>
-                피해가 발생할 수 있으니 유의 바랍니다. 직거래로 인해 발생한 피해에 대해 TotalMall은 책임을 지지 않습니다.<br>
+                피해가 발생할 수 있으니 유의 바랍니다. 직거래로 인해 발생한 피해에 대해 G마켓은 책임을 지지 않습니다.<br>
                 <br>
             </div>
         </div>
@@ -401,21 +385,5 @@ function continuedPost() {
     <!-- ---------상품정보--------- -->
     <%@include file="../Main/Footer2.jsp" %>
 </body>
-<script>
-
-// 서버에서 전달한 메시지를 자바스크립트 변수에 저장
-var msg = "${msg2}";
-
-function showCartAlert() {
-    // 서버에서 전달한 메시지가 존재하고 비어있지 않다면
-    if (msg && msg.trim() !== "") {
-        alert(msg);
-    } else {
-        alert('장바구니에 상품이 추가되었습니다!');
-    }
-}
-
-</script>
 <script type="text/javascript" src="../resources/js/Product/item.js"></script>
-
 </html>
