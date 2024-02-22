@@ -49,7 +49,7 @@
 				                        </div>
 				                        <div style="display: flex;width: 100%;">
 				                            <div class="cart_item-2">
-				                                <img src="../resources/uploads/${cartList[i-1].save_file_name1 }" alt="#">
+				                                <img src="Mallimg/고구마.jpg" alt="#">
 				                            </div>
 				                            <div class="cart_item-3">
 				                                <p><a href="">${cartList[i-1].product_name }</a></p>
