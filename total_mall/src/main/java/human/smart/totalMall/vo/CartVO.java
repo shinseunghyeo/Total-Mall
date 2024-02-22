@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
-public class CartVO {
+public class CartVO { 
 	private int c_idx;
 	private int p_idx;
 	private int m_idx;

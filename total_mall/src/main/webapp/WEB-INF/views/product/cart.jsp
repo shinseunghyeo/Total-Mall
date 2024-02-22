@@ -156,7 +156,7 @@
 	                        <div>
 	                            <p>할인금액</p>
 	                        </div>
-	                        <div>
+	                        <div> 
 	                            <h2>${totalDiscount }원</h2>
 	                        </div>
 	                    </div>

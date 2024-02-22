@@ -281,7 +281,7 @@ public class ProductController {
   	@GetMapping("/cart.do")
 	public String cart(int m_idx, Model model) {
   		List<CartVO> cartList = pCartList.getCarts(m_idx);
-		model.addAttribute("cartList", cartList);
+		model.addAttribute("cartList", cartList); 
 		return "product/cart";
 	}
   	
