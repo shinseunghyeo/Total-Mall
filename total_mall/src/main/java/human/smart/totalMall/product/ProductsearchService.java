@@ -17,7 +17,7 @@ public class ProductsearchService implements ProductService {
 
 	@Override
 	public List<ProductVO> getProducts2(SearchVO vo){
-		vo.setStartIdx((vo.getPageNum()-1)*10);
+		vo.setStartIdx((vo.getPageNum()-1)*5);
 		return dao.getProducts2(vo);
 	}
 	

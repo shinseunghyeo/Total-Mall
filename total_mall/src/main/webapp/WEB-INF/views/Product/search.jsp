@@ -65,31 +65,37 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">
-			                    <div id="Searchproductbox">
-									<a class="productimg" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
-			                        	<img src="../resources/img/Mallimg/${productList2[vs.count-1].save_file_name1}">
-			                       	</a>
-			                        <div id="SearchProduct">
-			                            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
-			                            ${productList2[vs.count-1].summary}
-			                            </a><br>
-			                            ${productList2[vs.count-1].price}원<br>
-			                        </div>
-			                        <div class="SearchProductPrice">
-			                            <button>장바구니</button>
-			                            <button><a href="T_PurchasePage.html">구매</a></button>
-			                        </div>
-			                    </div>
+								<c:if test="${not empty productList2[vs.count-1]}"><!-- boardList에 저장된 데이터가 있는 경우 출력-->
+				                    <div id="Searchproductbox">
+										<a class="productimg" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
+				                        	<img src="../resources/img/Mallimg/${productList2[vs.count-1].save_file_name1}">
+				                       	</a>
+				                        <div id="SearchProduct">
+				                            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
+				                            ${productList2[vs.count-1].product_name}
+				                            </a><br>
+				                            ${productList2[vs.count-1].price}원<br>
+				                            상품내용<br>
+				                            ${productList2[vs.count-1].summary}<br>
+				                        </div>
+				                        <div class="SearchProductPrice">
+				                            <button>장바구니</button>
+				                            <button><a href="T_PurchasePage.html">구매</a></button>
+				                        </div>
+				                    </div>
+								</c:if>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-	<c:if test="${not empty productList2}" >
-		<tr>
-			<td colspan="6" id="td_paging">
-				<%@ include file="paging.jsp" %>
-			</td>
-		</tr>
-	</c:if>
+					<c:if test="${not empty productList2}" >
+						<table style="margin: 0 auto;">
+						    <tr>
+						        <td colspan="6" id="td_paging">
+						            <%@ include file="paging.jsp" %>
+						        </td>
+						    </tr>
+						</table>
+					</c:if>
                 </div>
             </div>
         </div>

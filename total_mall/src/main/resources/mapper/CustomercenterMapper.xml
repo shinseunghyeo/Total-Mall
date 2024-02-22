@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="human.smart.com.CustomercenterMapper">
+
+	<!-- 글 등록: insert -->
+	<insert id="vocInsert" parameterType="vocVO">
+		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
+		<choose>
+			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
+				insert into tb_voc (m_idx, writer, title, content, originfile_name, savefile_name, voc_type)
+					values(#{m_idx},#{writer},#{title},#{content},#{originfile_name}
+					,#{savefile_name},#{voc_type})
+			</when>
+			<otherwise>
+				insert into tb_voc (m_idx, writer, title, content, voc_type) 
+					values(#{m_idx},#{writer},#{title},#{content},#{voc_type})
+			</otherwise>
+		</choose>
+	</insert>
+	<!-- 글 등록: insert -->
+	<insert id="notInsert" parameterType="noticeVO">
+		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
+		<choose>
+			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
+				insert into tb_notice (m_idx, writer, title, content, originfile_name, savefile_name, service)
+					values(#{m_idx},#{writer},#{title},#{content},#{originfile_name}
+					,#{savefile_name},#{service})
+			</when>
+			<otherwise>
+				insert into tb_notice (m_idx, writer, title, content, service) 
+					values(#{m_idx},#{writer},#{title},#{content},#{service})
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<!-- 모든 게시글 조회: select -->
+	<select id="getBoards" parameterType="searchVO" resultType="noticeVO">
+		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
+		<choose>
+			<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
+				select /*+ INDEX(tb_notice tb_notice_pk) */
+				        		*
+				        		from tb_notice
+				        		where del_or_not = 1
+						<choose>
+							<when test="searchField == 'title'"><!-- 검색영역: 제목 -->
+								and title like CONCAT('%',#{searchWord},'%')
+							</when>
+							<when test="searchField == 'content'"><!-- 검색영역: 내용 -->
+								and content like CONCAT('%',#{searchWord},'%')
+							</when>
+							<otherwise><!-- 검색영역: 작성자 -->
+								and writer like CONCAT('%',#{searchWord},'%')
+							</otherwise>
+						</choose>
+						 		order by n_idx desc
+				                limit #{startIdx}, 10
+			</when>
+			<when test="service == ''">
+				select * from tb_notice
+				order by n_idx desc
+				limit #{startIdx}, 10
+			</when>
+			<when test="n_idx == null">
+				select * from tb_notice
+				where del_or_not = 1
+				and service = #{service}
+				order by n_idx desc
+				limit #{startIdx}, 10
+			</when>
+			<otherwise>
+				select * from tb_notice
+				WHERE n_idx = #{n_idx};
+			</otherwise>
+		</choose>
+	</select>
+	
+		
+	<!-- 조회수 업데이트: update  -->
+	<update id="updateReadCount" parameterType="_int">
+		update tb_notice set read_cnt = (read_cnt + 1) where n_idx = #{n_idx}
+	</update>
+	
+	<!-- 하나의 게시글 조회: select -->
+	<select id="getBoard" parameterType="_int" resultType="vocVO">
+		select * from tb_voc where m_idx = #{m_idx}
+	</select>
+	
+	<!-- 게시글 수정하기: update -->
+	<update id="update" parameterType="noticeVO">
+		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
+		<choose>
+			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
+				update tb_notice set title=#{title}, content=#{content}, originfile_name=#{originfile_name},
+						 savefile_name=#{savefile_name}, update_date=now() 
+						 where n_idx=#{n_idx}
+			</when>
+			<otherwise>
+				update tb_notice set title=#{title}, content=#{content}, update_date=now()
+					     where n_idx=#{n_idx}
+			</otherwise>
+		</choose>	
+	</update>
+	
+	<!-- 게시글 삭제 처리: update -->
+	<update id="delete" parameterType="_int">
+		update tb_notice set del_or_not=-1, update_date=now()
+				        where n_idx=#{n_idx}
+	</update>
+	
+	<!-- 총 게시물수 조회: select -->
+	<select id="getTotalCount" parameterType="searchVO" resultType="_int">
+		<!-- 검색어가 있는 경우와 없는 경우  -->
+		<choose>
+			<when test="searchWord != null">
+				select count(*)
+					from tb_notice
+					where del_or_not = 1
+					<choose>
+						<when test="searchField == 'title'"><!-- 검색영역: 제목 -->
+							and title like CONCAT('%',#{searchWord},'%')
+						</when>
+						<when test="searchField == 'content'"><!-- 검색영역: 내용 -->
+							and content like CONCAT('%',#{searchWord},'%')
+						</when>
+						<otherwise><!-- 검색영역: 작성자 -->
+							and writer like CONCAT('%',#{searchWord},'%')
+						</otherwise>
+					</choose>
+			</when>
+			<otherwise>
+				select count(*)
+					from tb_notice
+					where del_or_not = 1
+			</otherwise>
+		</choose>
+	
+	</select>
+	
+  
+</mapper>

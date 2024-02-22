@@ -17,5 +17,6 @@
     #CategoryProductLine #CategoryProductbestbox h3{color: blueviolet;}
     #CategoryProductLine .Productmain{display: flex;}
     #CategoryProductLine .CategoryProduct{display: flex;flex-direction: column;width: 20%;align-items: center;padding: 10px;}
-    #CategoryProductLine .CategoryProduct img{width: 100px;}
+    #CategoryProductLine .CategoryProduct img{width: 100px;height:100px}
     #CategoryProductLine .CategoryProduct span{align-self: flex-start; font-weight: bold;}
+    #CategoryProductLine .CategoryProduct p{font-weight: bold;}

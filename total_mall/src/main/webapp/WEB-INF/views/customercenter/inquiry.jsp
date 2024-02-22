@@ -41,7 +41,18 @@
                 <h1>문의사항</h1>
             </div>
             <div class="UserTitele">
-                <h4>최근 문의 내용이 없습니다.</h4>
+			    <c:choose>
+					<c:when test="${empty inquiry}">
+					<h4>최근 문의 내용이 없습니다.</h4>
+					제목: ${member.m_idx} <br>
+					제목: ${inquiry[0].title} <br>
+					내용: ${inquiry.content} <br>
+					</c:when>
+					<c:otherwise>
+					제목: ${inquiry.title} <br>
+					내용: ${inquiry.content} <br>
+					</c:otherwise>
+				</c:choose>
             </div>
         </div>
         <div id="InquiryContentbox">

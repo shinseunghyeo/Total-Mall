@@ -141,17 +141,20 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach begin="1" end="5" varStatus="vs">
-					                    <div class="CategoryProduct">
-					                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-					                        	<img src="../resources/img/Mallimg/${productList[vs.count-1].save_file_name1}">
-					                       	</a>
-					                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-					                        	${productList[vs.count-1].summary}
-					                        </a>
-					                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-						                        ${productList[vs.count-1].price}원
-					                        </a>
-					                    </div>
+											<c:if test="${not empty productList[vs.count-1]}">
+							                    <div class="CategoryProduct">
+							                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+							                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+							                       	</a>
+							                       	
+							                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+							                        	${productList[vs.count-1].product_name}
+							                        </a>
+							                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+								                        ${productList[vs.count-1].price}원
+							                        </a>
+							                    </div>
+											</c:if>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -166,16 +169,18 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="1" end="5" varStatus="vs">
-			                            <div class="CategoryProduct">
-			                                <span>${i}</span>
-			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-				                                <img src="../resources/img/Mallimg/${productList[vs.count-1].save_file_name1}">
-			                                </a>
-			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-				                                ${productList[i-1].summary}
-			                                </a>
-	    		                            ${productList[i-1].price}원
-	        		                    </div>
+											<c:if test="${not empty productList[i-1]}">
+					                            <div class="CategoryProduct">
+					                                <span>${i}</span>
+					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+								                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+					                                </a>
+					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+						                                ${productList[i-1].product_name}
+					                                </a>
+			    		                            ${productList[i-1].price}원
+			        		                    </div>
+											</c:if>
                                 	</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -187,16 +192,18 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="6" end="10" varStatus="vs">
-			                            <div class="CategoryProduct">
-			                                <span>${i}</span>
-			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-				                                <img src="../resources/img/Mallimg/${productList[i-1].save_file_name1}">
-			                                </a>
-			                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-				                                ${productList[i-1].summary}
-			                                </a>
-	    		                            ${productList[i].price}원
-	        		                    </div>
+											<c:if test="${not empty productList[i-1]}">
+					                            <div class="CategoryProduct">
+					                                <span>${i}</span>
+					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+								                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+					                                </a>
+					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+						                                ${productList[i-1].product_name}
+					                                </a>
+			    		                            ${productList[i].price}원
+			        		                    </div>
+											</c:if>
                                 	</c:forEach>
 								</c:otherwise>
 							</c:choose>

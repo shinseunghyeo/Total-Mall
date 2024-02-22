@@ -22,18 +22,48 @@
                 <a href="${pageContext.request.contextPath}/TotalMall.do"><img src="../resources/img/Headerimg/사이트로고.png" width="130"></a>
             </div>
             <form method="get" action="${pageContext.request.contextPath}/product/search.do">
-	            <div id="SearchContainer">
-	                <div id="SearchLine">
-	                    <select>
-	                        <option value="전체">전체</option>
-	                        <option value="의류">의류</option>
-	                        <option value="신발">신발</option>
-	                    </select><hr>
-	                    <input type="text" placeholder="검색창" name="searchWord">
-	                    <button style="border: none;background: none;" type="submit"><img src="../resources/img/Headerimg/검색.png"></button>
-	                </div>
-	            </div>
+			<!-- 검색어 없을 때 폼 서브밋 이벤트 막음 -->
+						<script>
+						document.addEventListener("DOMContentLoaded", function() {
+						    // 폼 서브밋 이벤트를 가로채고 검색어를 확인하는 함수
+						    function submitForm(event) {
+						        // 검색어 입력 필드
+						        var searchWordInput = document.querySelector("input[name='searchWord']");
+						        // 검색어 값
+						        var searchWordValue = searchWordInput.value.trim(); // 공백을 제거한 후 검색어 값
+						        // 검색어가 비어 있는지 확인
+						        if (searchWordValue === "") {
+						            // 검색어가 비어 있으면 서브밋을 막음
+						            event.preventDefault(); // 서브밋 이벤트 기본 동작을 막음
+						        }
+						    }
+						    // 폼 서브밋 이벤트를 가로채고 검색어를 확인하는 함수를 폼에 연결
+						    var form = document.querySelector("form");
+						    form.addEventListener("submit", submitForm);
+						});
+				</script>
+			<!-- 검색어 없을 때 폼 서브밋 이벤트 막음 -->
+			
+				<div id="SearchContainer">
+					<div id="SearchLine">
+						<select>
+							<option value="전체">전체</option>
+							<option value="의류">의류</option>
+							<option value="신발">신발</option>
+						</select>
+						<hr>
+			            <!-- hidden input 추가 -->
+			            <input type="hidden" name="pageNum" value="1">
+			            <input type="hidden" name="pageBlock" value="1">
+			            <!-- hidden input 추가 -->
+						<input type="text" placeholder="검색창" name="searchWord">
+						<button style="border: none; background: none;" type="submit">
+							<img src="../resources/img/Headerimg/검색.png">
+						</button>
+					</div>
+				</div>
 			</form>
+
             <div id="UserIcon">
                 				<c:choose>
 					<c:when test="${member.grade eq 9}">

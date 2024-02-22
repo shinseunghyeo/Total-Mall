@@ -46,7 +46,6 @@
 		</c:if>
 		<!-- 1. 총 페이지번호와 페이지블록을 연계하여 페이지번호 출력 --> 
 		<c:forEach var="p" begin="${(pageNav.pageBlock - 1)*pageNav.pages_pageBlock +1}" end="${pageNav.pageBlock*pageNav.pages_pageBlock}">
-		1
 			<c:if test="${p le pageNav.total_pageNum}">
 				<a href="search.do?pageNum=${p}&pageBlock=${pageNav.pageBlock}">
 					<!-- 현재 페이지를 빨간색으로 출력 -->	

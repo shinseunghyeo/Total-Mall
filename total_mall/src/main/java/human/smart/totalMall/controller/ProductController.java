@@ -19,6 +19,7 @@ import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.Setter;
 
@@ -40,6 +41,15 @@ public class ProductController {
     	List<ProductVO> productList = cList.getProducts(searchVO);
     	model.addAttribute("productList", productList);
 
+    	List<ProductVO> hEvaluationList = cList.getProducts(searchVO);
+    	model.addAttribute("hEvaluationList", hEvaluationList);
+    	List<ProductVO> lEvaluationList = cList.getProducts(searchVO);
+    	model.addAttribute("lEvaluationList",lEvaluationList);
+    	List<ProductVO> hStarList = cList.getProducts(searchVO);
+    	model.addAttribute("hStarList", hStarList);
+    	List<ProductVO> lStarList = cList.getProducts(searchVO);
+    	model.addAttribute("lStarList", lStarList);
+
         return "Product/list";
     }
     @GetMapping("/item.do") // 임시
@@ -47,7 +57,7 @@ public class ProductController {
 		ProductVO vo = pItem.getProduct(p_idx);
 		model.addAttribute("product", vo);
 		
-		return "Product/item";		
+		return "Product/item";
 	}
     @GetMapping("/purchase.do") // 임시
 	public String purchase(int p_idx, int m_idx, int c_quantity, int total_product_price,
@@ -76,7 +86,21 @@ public class ProductController {
 
         return "Product/search";
     }
-    
+	@PostMapping("/review.do")
+	public String review() {
+		return "Product/review";//views/member폴더에 대한 경로 추가
+	}
+	//글등록 요청 처리
+	@PostMapping("/reviewProcess.do")
+	public String reviewProcess(ReviewVO review, HttpServletRequest request) {
+		String viewPage = "reviewProcess/review";//글등록 실패시 JSP페이지
+		int result = pInsert.reInsert(review, request);
+		if(result == 1) {
+			viewPage = "redirect:TotalMall.do";//글등록 성공시 JSP페이지
+		}
+		return viewPage;
+	}
+
   //제품등록 페이지 요청 처리
     @GetMapping("/write.do")
 	public String write() {

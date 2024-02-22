@@ -55,8 +55,6 @@ function continuedPost() {
         });
     }
 }
-
-
 </script>
 </head>
 <body>
@@ -136,7 +134,7 @@ function continuedPost() {
         </c:choose>
         <div id="ProductdetailContainer">
             <div id="ProductMainimg">
-                <img style="width: 100%;" src="../resources/img/Mallimg/${product.save_file_name1}" >
+				<img width="100%" height="100%" src="../resources/uploads/${product.save_file_name1}">
             </div>
 	            <div id="Productdetail">
 	                <div id="ProductContent">
@@ -216,8 +214,8 @@ function continuedPost() {
         </div>
         <div id="productDetails">
             <h2>상세정보</h2>
-            <img src="Mallimg/식품1.jpg">
-            <img src="Mallimg/식품1.jpg"><br><br><br><br><br><br><hr>
+				<img src="../resources/uploads/${product.save_file_name2}">
+            <br><br><br><br><br><br><hr>
             <h3>상세내용</h3>
             <span>${product.detail}</span><br><hr>
             <h3>상품 정보 제공 고시</h3><hr>
@@ -263,15 +261,46 @@ function continuedPost() {
         <br>
             <div id="Reviewsbox">
                 <h2>상품평가</h2>
-                <input type="text">
-                <select>
-                    <option value="star" selected="selected">별점보기</option>
-                    <option value="star1">★</option>
-                    <option value="star2">★★</option>
-                    <option value="star3">★★★</option>
-                    <option value="star3">★★★★</option>
-                    <option value="star3">★★★★★</option>
-                </select>
+				<form name="frm_write" method="post" action="review.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
+				<input type="hidden" name="m_idx" value="${member.m_idx}" >
+
+                <input type="submit" value="상품리뷰작성페이지">
+                
+                </form>
+                
+                
+                <button onclick="changeContent('recent')">최근평가순</button>
+                <button onclick="changeContent('old')">오래된평가순</button>
+                <button onclick="changeContent('high_rating')">높은별점순</button>
+                <button onclick="changeContent('low_rating')">낮은별점순</button>
+                
+                <div id="content">
+                    <!-- 여기에 변경될 페이지 내용을 입력하세요. -->
+                    초기 내용
+                </div>
+                
+                <script>
+                    function changeContent(option) {
+                        // 선택된 옵션에 따라 내용을 변경합니다.
+                        var contentDiv = document.getElementById('content');
+                        switch(option) {
+                            case 'recent':
+                                contentDiv.innerHTML = '최근평가순의 내용';
+                                break;
+                            case 'old':
+                                contentDiv.innerHTML = '오래된평가순의 내용';
+                                break;
+                            case 'high_rating':
+                                contentDiv.innerHTML = '높은별점순의 내용';
+                                break;
+                            case 'low_rating':
+                                contentDiv.innerHTML = '낮은별점순의 내용';
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                </script>
             </div><hr>
             아이디<br>
             상품명★★★★★<br>

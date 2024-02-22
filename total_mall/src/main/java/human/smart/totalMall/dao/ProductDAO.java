@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.RequiredArgsConstructor;
 
@@ -57,6 +58,9 @@ public class ProductDAO{
 	//총 게시물수 조회
 	public int getTotalCount(SearchVO vo) {
 		return sqlSession.selectOne(MAPPER+".getTotalCount", vo);
+	}
+	public int reInsert(ReviewVO review) {
+		return sqlSession.insert(MAPPER + ".reInsert", review);
 	}
 	
 	//장바구니에 상품 추가하기
