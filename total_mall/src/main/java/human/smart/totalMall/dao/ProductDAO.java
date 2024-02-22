@@ -109,7 +109,7 @@ public class ProductDAO{
 	}
 	
 	//장바구니 상품 확인하기
-	public CartVO cartCheck(CartVO vo) {
+	public CartVO cartCheck(CartVO vo) { 
 		CartVO vo2 = null;
 		try {
 		    vo2 = sqlSession.selectOne(MAPPER+".cartCheck", vo);
