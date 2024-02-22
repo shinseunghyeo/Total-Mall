@@ -11,6 +11,9 @@
  		<typeAlias alias="searchVO" type="human.smart.totalMall.vo.SearchVO" />
  		<typeAlias alias="cartVO" type="human.smart.totalMall.vo.CartVO" />
  		<typeAlias alias="orderVO" type="human.smart.totalMall.vo.OrderVO" />
+ 		<typeAlias alias="noticeVO" type="human.smart.totalMall.vo.NoticeVO" />
+ 		<typeAlias alias="vocVO" type="human.smart.totalMall.vo.VocVO" />
+ 		<typeAlias alias="reviewVO" type="human.smart.totalMall.vo.ReviewVO" />
  		
  	</typeAliases>
  

@@ -6,6 +6,7 @@ import human.smart.totalMall.common.PageNav;
 
 @Service("pPage")
 public class ProductserchPageService implements ProductService {
+	
 	//페이지 네비게이션을 위한 9개의 변수에 대한 초기화
 	@Override
 	public PageNav setPageNav(PageNav pageNav, int pageNum, int pageBlock){

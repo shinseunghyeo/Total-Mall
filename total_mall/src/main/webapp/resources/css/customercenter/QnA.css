@@ -21,7 +21,7 @@
     summary::-webkit-details-marker {display: none;}
     summary:before {content: 'Q';color: blue;padding: 0 1.5em;}
     summary {display: flex;align-items: center;height: 80px;list-style: none;cursor: pointer;}
-    details p{padding-top: 20px;padding-left: 60px;}
+    details p{padding-bottom: 20px;padding-left: 60px;}
     .details-toggle::after {content: '▶';padding-right: 15px;}
     details[open] .details-toggle::after {content: '▼';}
     .details-toggle {float: right;margin-left: 10px;}

@@ -44,11 +44,37 @@
             문의량이 많아 답변은 24시간 이상 소요될 수 있습니다.
         </div>
     </div>
-    <form action="">
+    <script>
+	function validateForm() {
+	    var selectedOption = document.forms["frm_vocWrite"]["voc_type"].value;
+	    var title = document.forms["frm_vocWrite"]["title"].value;
+	    var content = document.forms["frm_vocWrite"]["content"].value;
+	
+	    if (selectedOption == "select") {
+	        alert("유형을 선택해주세요.");
+	        return false;
+	    }
+	
+	    if (title.trim() == "") {
+	        alert("문의 사항을 작성해주세요.");
+	        return false;
+	    }
+	
+	    if (content.trim() == "") {
+	        alert("의견을 작성해주세요.");
+	        return false;
+	    }
+	
+	    return true;
+	}
+	</script>
+    <form name="frm_vocWrite" method="post" action="vocProcess.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
         <div id="VocWrite">
             <div id="VocWritebox">
                 <div id="VocWritetitlebox">
-                    <select name="cars" id="cars">
+					<input type="hidden" name="m_idx" value="${member.m_idx}" >
+					<input type="hidden" name="writer" value="${member.member_name}" >
+                    <select name="voc_type" id="voc_type">
                         <option value="select">유형을 선택해주세요</option>
                         <option value="order">주문 상품 문의</option>
                         <option value="delivery">배송 관련 문의</option>
@@ -57,18 +83,18 @@
                         <option value="feedback">불편사항 전달</option>
                         <option value="error">시스템 오류</option>
                     </select>
-                    <input type="text" id="text" name="text"placeholder="문의 사항을 작성해주세요.">
+                    <input type="text" id="text" name="title"placeholder="문의 사항을 작성해주세요.">
                 </div>
                 <div id="VocWritecontentbox">
                     <div id="VocWritecontent">
-                        <input style="width: 100%;height: 350px;" type="text" name="opinion" placeholder="의견을 작성해주세요.">
+                        <input style="width: 100%;height: 350px;" type="text" name="content" placeholder="의견을 작성해주세요.">
                     </div>
                     <div id="VocWritefile">
-                        <input type="file" id="file" name="file"><br><br>
+                        <input type="file" id="file" name="uploadFile"><br><br>
                     </div>
                 </div>
             </div>
-            <button id="Vocbutton"> 보내기</button>
+            <input id="Vocbutton" type="submit" value="보내기">
         </div>
     </form>
     <!-- ---------고객센터--------- -->

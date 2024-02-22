@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="human.smart.totalMall.ProductMapper">
 	
 	<select id="getProduct" parameterType="_int" resultType="productVO">
@@ -13,7 +13,7 @@
 				LIMIT 20 OFFSET 0
 	</select>
 	<select id="getProducts2" parameterType="SearchVO" resultType="productVO">
-						<choose>
+		<choose>
 			<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
 				select /*+ INDEX(tb_product tb_product_pk) */
 				        		*
@@ -26,18 +26,18 @@
 								where content like CONCAT('%',#{searchWord},'%')
 							</when>
 							<otherwise><!-- 검색영역: 작성자 -->
-								where summary like CONCAT('%',#{searchWord},'%')
+								where product_name like CONCAT('%',#{searchWord},'%')
 							</otherwise>
 						</choose>
 						 		order by p_idx desc
-				                limit 1, 10
+				                limit #{startIdx}, 5
 			</when>
 			<otherwise><!-- 검색어가 없는 경우  -->
 				select /*+ INDEX(tb_product tb_product_pk) */
 				        		*
 				        		from tb_product
 				        		order by p_idx desc
-				       			limit 1, 10
+				       			limit #{startIdx}, 5
 			</otherwise>
 		</choose>
 	</select>
@@ -56,7 +56,7 @@
 							where content like CONCAT('%',#{searchWord},'%')
 						</when>
 						<otherwise><!-- 검색영역: 작성자 -->
-							where summary like CONCAT('%',#{searchWord},'%')
+							where product_name like CONCAT('%',#{searchWord},'%')
 						</otherwise>
 					</choose>
 			</when>
@@ -65,8 +65,23 @@
 					from tb_product
 			</otherwise>
 		</choose>
-	
 	</select>
+	<!-- 글 등록: insert -->
+	<insert id="reInsert" parameterType="reviewVO">
+		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
+		<choose>
+			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
+				insert into tb_review (r_idx, m_idx, member_id, member_name, content, 
+				star, originfile_name, savefile_name)
+				values(#{r_idx},#{m_idx},#{member_id},#{member_name} ,#{content},
+				#{star}, #{originfile_name}, #{savefile_name})
+			</when>
+			<otherwise>
+				insert into tb_review (r_idx, m_idx, member_id, member_name, content, star)
+				values(#{r_idx},#{m_idx},#{member_id},#{member_name} ,#{content}, #{star})
+			</otherwise>
+		</choose>
+	</insert>
 	<!-- 상품등록: insert -->
 	<insert id="insert" parameterType="ProductVO">
 				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,

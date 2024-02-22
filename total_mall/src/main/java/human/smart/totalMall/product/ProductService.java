@@ -8,6 +8,7 @@ import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SearchVO;
 
 public interface ProductService {
@@ -16,6 +17,7 @@ public interface ProductService {
 	default int insert(ProductVO vo, HttpServletRequest request) {return 0;}
 	default List<ProductVO> getProducts(SearchVO vo){return null;}
 	default List<ProductVO> getProducts2(SearchVO vo){return null;}
+	default int reInsert(ReviewVO review, HttpServletRequest request) {return 0;}
 	default int getTotalCount(SearchVO vo) {return 0;}
 	default int cartInsert(CartVO vo, HttpServletRequest request) {return 0;}
 	default List<CartVO> getCarts(int m_idx){return null;}

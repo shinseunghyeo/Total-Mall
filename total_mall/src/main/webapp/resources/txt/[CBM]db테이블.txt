@@ -1,59 +1,41 @@
-create table tb_member(
-	m_idx int unsigned auto_increment,
-	categorie varchar(50),
-    member_id varchar(30) not null unique,
-	member_pw varchar(30) not null,
-    member_name varchar(20) not null,
-    handphone varchar(20) not null unique,
-    email varchar(50) not null unique,
-    address1 varchar(10) not null,
-    address2 varchar(40) not null,
-    address3 varchar(30) not null,
-    representative_name varchar(40) default "홍",
-    company_number varchar(20) default "1",
-    mutual varchar(20) default "삼",
-    mail_order_number varchar(30) default "1",
-    account1 varchar(30) default "1",
-    account2 varchar(30) default "1",
-    Depositor_name varchar(20) default "홍",
-    grade decimal(1) default 0,
-    join_date datetime default now(),
-    update_date datetime default now(),
-    cancel_or_not decimal(1) default 0,
-    constraint tb_member_pk primary key(m_idx)
+//공지사항 데이터베이스
+create table tb_notice(
+n_idx int unsigned auto_increment,
+m_idx int unsigned not null, -- 회원 번호
+writer varchar(30) not null, -- 작성자
+title varchar(50) not null, -- 제목
+content varchar(1000) not null, -- 내용
+originfile_name varchar(50), -- 원본 파일명
+savefile_name varchar(50), -- 저장 파일명
+read_cnt int unsigned default 0, -- 조회수
+post_date datetime default now(), -- 등록일
+update_date datetime default now(), -- 수정일
+del_or_not decimal(1) default 1, -- 게시글 유지 여부
+service varchar(30) not null, -- 서비스
+constraint tb_notice_pk primary key (n_idx), -- 기본키
+constraint tb_notice_fk foreign key (m_idx)
+    references tb_member (m_idx) -- 외래키
 );
 
-alter table tb_member change join_date reg_date datetime;
-alter table tb_member change update_date last_modified_date datetime;
-alter table tb_member modify column member_pw varchar(100);
-alter table tb_member alter column categorie set default "3";
-ALTER TABLE tb_member MODIFY COLUMN reg_date TIMESTAMP DEFAULT NOW();
-ALTER TABLE tb_member MODIFY COLUMN last_modified_date TIMESTAMP DEFAULT NOW();
-
-select * from tb_product;
-
-create table tb_product(
-	p_idx int unsigned auto_increment,
-    category varchar(30),
-    product_name varchar(100),
-	product_code varchar(50),
-	brand varchar(30),
-	summary	varchar(50),
-	detail	varchar(1000),
-	start_date datetime,
-	end_date datetime,
-	origin_file_name1 varchar(50),
-	save_file_name1 varchar(50),
-	origin_file_name2 varchar(50),
-	save_file_name2 varchar(50),
-	price int,
-	sales_unit varchar(50),
-	discount_rate int,
-	quantity int,
-    p_reg_date datetime,
-    p_last_modified_date datetime,
-    constraint tb_product_pk primary key(p_idx)
+//문의하기 데이터베이스
+create table tb_voc(
+v_idx int unsigned auto_increment,
+m_idx int unsigned not null, -- 회원 번호
+writer varchar(30) not null, -- 작성자
+voc_type varchar(50) not null, -- 유형
+title varchar(50) not null, -- 제목
+content varchar(1000) not null, -- 내용
+originfile_name varchar(50), -- 원본 파일명
+savefile_name varchar(50), -- 저장 파일명
+post_date datetime default now(), -- 등록일
+update_date datetime default now(), -- 수정일
+del_or_not decimal(1) default 1, -- 게시글 유지 여부
+constraint tb_voc_pk primary key (v_idx), -- 기본키
+constraint tb_voc_fk foreign key (m_idx)
+references tb_member (m_idx) -- 외래키
 );
+
+
 
 insert into tb_product(p_idx, category)
 values (1, 'meat'), (2, 'vegetables'), (3, 'fruits'), (4, 'frozen'), (5, 'kitchen'), (6, 'curtain'), 
