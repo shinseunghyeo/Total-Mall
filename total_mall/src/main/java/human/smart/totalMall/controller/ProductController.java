@@ -96,7 +96,7 @@ public class ProductController {
 		String viewPage = "reviewProcess/review";//글등록 실패시 JSP페이지
 		int result = pInsert.reInsert(review, request);
 		if(result == 1) {
-			viewPage = "redirect:TotalMall.do";//글등록 성공시 JSP페이지
+			viewPage = "redirect:TotalMall";//글등록 성공시 JSP페이지
 		}
 		return viewPage;
 	}
