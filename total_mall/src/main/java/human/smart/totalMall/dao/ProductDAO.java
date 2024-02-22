@@ -1,6 +1,7 @@
 package human.smart.totalMall.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
@@ -28,6 +29,9 @@ public class ProductDAO{
 	
 	public ProductVO getProduct(int p_idx){
 		return sqlSession.selectOne(MAPPER+".getProduct", p_idx);
+	}
+	public List<ReviewVO> getReview(Map<String, Object> paramMap){
+		return sqlSession.selectList(MAPPER+".getReview", paramMap);
 	}
 	
 	// 상품 등록하기
