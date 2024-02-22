@@ -162,10 +162,10 @@ function continuedPost() {
 	                    <span>개수</span>
 	                    <div class="input-wrapper">
 	                        <button id="decrementButton" onclick="decrement()">-</button>
-	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="0" required>
+	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="1" required>
 	                        <button id="incrementButton" onclick="increment()">+</button>
 	                    </div>
-	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button>장바구니</button></a>
+	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button onclick="showCartAlert()">장바구니</button></a>
 	                    <a href="${pageContext.request.contextPath}/product/purchase.do?total_product_price=0&totalDiscount=${(product.price/(product.discount_rate)).intValue()}&totalDelivery=2500&p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="purchaseLink" onclick="updateLinks()">
 					        <button>구매</button>
 					    </a>
@@ -377,7 +377,7 @@ function continuedPost() {
                 등록된 판매 상품과 상품의 내용, 거래 정보 및 가격은 판매자가 등록한 것으로<br>
                 해당 내용에 대하여 일체의 책임을 지지 않습니다.<br>
                 결제시스템을 이용하지 않고 판매자와 직접 거래하실 경우 상품을 받지 못하거나 구매한 상품과 상이한 상품을 받는 등<br>
-                피해가 발생할 수 있으니 유의 바랍니다. 직거래로 인해 발생한 피해에 대해 G마켓은 책임을 지지 않습니다.<br>
+                피해가 발생할 수 있으니 유의 바랍니다. 직거래로 인해 발생한 피해에 대해 TotalMall은 책임을 지지 않습니다.<br>
                 <br>
             </div>
         </div>
@@ -385,5 +385,17 @@ function continuedPost() {
     <!-- ---------상품정보--------- -->
     <%@include file="../Main/Footer2.jsp" %>
 </body>
+<script>
+// 서버에서 전달한 메시지를 자바스크립트 변수에 저장
+var msg = "${msg2}";
+function showCartAlert() {
+    // 서버에서 전달한 메시지가 존재하고 비어있지 않다면
+    if (msg && msg.trim() !== "") {
+        alert(msg);
+    } else {
+        alert('장바구니에 상품이 추가되었습니다!');
+    }
+}
+</script>
 <script type="text/javascript" src="../resources/js/Product/item.js"></script>
 </html>
