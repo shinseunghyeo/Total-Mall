@@ -30,6 +30,9 @@ public class ProductDAO{
 	public ProductVO getProduct(int p_idx){
 		return sqlSession.selectOne(MAPPER+".getProduct", p_idx);
 	}
+	public ProductVO getProRev(int p_idx){
+		return sqlSession.selectOne(MAPPER+".getProRev", p_idx);
+	}
 	public List<ReviewVO> getReview(Map<String, Object> paramMap){
 		return sqlSession.selectList(MAPPER+".getReview", paramMap);
 	}

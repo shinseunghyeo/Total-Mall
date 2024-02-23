@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>상품 상세보기</title>
 <link rel="stylesheet" href="../resources/css/product/item.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 function discontinuedPost() {
@@ -267,31 +268,45 @@ function continuedPost() {
 					<input type="hidden" name="m_idx" value="${member.m_idx}">
 	                <input type="submit" value="상품리뷰작성페이지">
                 </form>
-                
-                
-                <button onclick="changeContent('recent')">최근평가순</button>
-                <button onclick="changeContent('old')">오래된평가순</button>
-                <button onclick="changeContent('high_rating')">높은별점순</button>
-                <button onclick="changeContent('low_rating')">낮은별점순</button>
-                
+                <style>
+    .rating-button {
+    	width: 110px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+        padding: 5px 5px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        margin-bottom: -9px;
+    }
 
+.rating-button:hover {
+    background-color: #ff7f00;
+    border-color: #ff7f00;
+    color: #fff;
+}
+</style>
+                <button class="rating-button" onclick="changeContent('recent')">최근평가순</button>
+                <button class="rating-button" onclick="changeContent('old')">오래된평가순</button>
+                <button class="rating-button" onclick="changeContent('high_rating')">높은별점순</button>
+                <button class="rating-button" onclick="changeContent('low_rating')">낮은별점순</button>
                 
                 <script>
                     function changeContent(option) {
-                        // 선택된 옵션에 따라 내용을 변경합니다.
                         var contentDiv = document.getElementById('content');
                         switch(option) {
                             case 'recent':
-                                contentDiv.innerHTML = '최근평가순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'old':
-                                contentDiv.innerHTML = '오래된평가순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'high_rating':
-                                contentDiv.innerHTML = '높은별점순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'low_rating':
-                                contentDiv.innerHTML = '낮은별점순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             default:
                                 break;
@@ -301,32 +316,6 @@ function continuedPost() {
             </div><hr>
 			<div id="content">
             </div>
-			<c:choose>
-			    <c:when test="${empty hEvaluationList}">
-			        <tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-			    </c:when>
-			    <c:otherwise>
-			        <c:forEach items="${hEvaluationList}" var="review" varStatus="vs">
-			            ${review.member_id}<br>
-			            <c:forEach begin="1" end="5" varStatus="star">
-			                <c:choose>
-			                    <c:when test="${star.index < review.star}">
-			                        ★
-			                    </c:when>
-			                    <c:otherwise>
-			                        ☆
-			                    </c:otherwise>
-			                </c:choose>
-			            </c:forEach>
-			            (${review.star})<br>
-			            ${review.post_date}<br>
-		                    <c:if test="${not empty review.originfile_name}">
-								<img width="50" height="50" src="../resources/uploads/${review.originfile_name}"><br>
-		                    </c:if>
-			            ${review.content}<hr>
-			        </c:forEach>
-			    </c:otherwise>
-			</c:choose>
         </div>
         <div id="customerQuestions">
             <h2>문의사항</h2>

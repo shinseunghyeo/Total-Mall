@@ -30,7 +30,7 @@ import lombok.Setter;
 public class ProductController {
 
     @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, 
+    private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview,
     		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck;
@@ -42,15 +42,6 @@ public class ProductController {
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> productList = cList.getProducts(searchVO);
     	model.addAttribute("productList", productList);
-
-    	List<ProductVO> hEvaluationList = cList.getProducts(searchVO);
-    	model.addAttribute("hEvaluationList", hEvaluationList);
-    	List<ProductVO> lEvaluationList = cList.getProducts(searchVO);
-    	model.addAttribute("lEvaluationList",lEvaluationList);
-    	List<ProductVO> hStarList = cList.getProducts(searchVO);
-    	model.addAttribute("hStarList", hStarList);
-    	List<ProductVO> lStarList = cList.getProducts(searchVO);
-    	model.addAttribute("lStarList", lStarList);
 
         return "product/list";
     }
@@ -108,7 +99,10 @@ public class ProductController {
         return "product/search";
     }
 	@PostMapping("/review.do")
-	public String review() {
+	public String review(int p_idx, Model model) {
+		ProductVO revvo = pReview.getProRev(p_idx);
+    	model.addAttribute("productReview", revvo);
+
 		return "product/review";//views/member폴더에 대한 경로 추가
 	}
 	//글등록 요청 처리
@@ -117,7 +111,7 @@ public class ProductController {
 		String viewPage = "reviewProcess/review";//글등록 실패시 JSP페이지
 		int result = pInsert.reInsert(review, request);
 		if(result == 1) {
-			viewPage = "redirect:TotalMall";//글등록 성공시 JSP페이지
+			viewPage = "redirect:/TotalMall.do";//글등록 성공시 JSP페이지
 		}
 		return viewPage;
 	}

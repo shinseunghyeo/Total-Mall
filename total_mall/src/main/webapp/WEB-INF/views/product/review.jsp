@@ -13,7 +13,7 @@
 
     <h1>제품 리뷰 작성 페이지</h1>
     <form method="post" id="reviewForm" action="reviewProcess.do" enctype="multipart/form-data">
-		<input type="hidden" name="p_idx" value="1">
+		<input type="hidden" name="p_idx" value="${productReview.p_idx}">
 	    <input type="hidden" name="m_idx" value="${member.m_idx}">
 		<input type="hidden" name="member_id" value="${member.member_id}">
 		<input type="hidden" name="member_name" value="${member.member_name}">

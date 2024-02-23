@@ -59,6 +59,9 @@
 			</otherwise>
 		</choose>
 	</select>
+	<select id="getProRev" parameterType="_int" resultType="productVO">
+		select * from tb_product where p_idx = #{p_idx}
+	</select>
 	
 	
 		<!-- 총 게시물수 조회: select -->

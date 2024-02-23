@@ -35,7 +35,24 @@ constraint tb_voc_fk foreign key (m_idx)
 references tb_member (m_idx) -- 외래키
 );
 
-
+//리뷰 데이터베이스
+CREATE TABLE tb_review(
+    r_idx INT UNSIGNED AUTO_INCREMENT,
+    m_idx INT UNSIGNED NOT NULL,
+    p_idx INT UNSIGNED NOT NULL,
+    member_id varchar(30) not null,
+    member_name varchar(20) not null,
+    content VARCHAR(1000) NOT NULL,
+    star INT,
+    originfile_name VARCHAR(50),
+    savefile_name VARCHAR(50),
+    post_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    del_or_not DECIMAL(1) DEFAULT 1,
+    PRIMARY KEY (r_idx),
+    FOREIGN KEY (m_idx) REFERENCES tb_member(m_idx),
+    FOREIGN KEY (p_idx) REFERENCES tb_product(p_idx)
+);
 
 insert into tb_product(p_idx, category)
 values (1, 'meat'), (2, 'vegetables'), (3, 'fruits'), (4, 'frozen'), (5, 'kitchen'), (6, 'curtain'), 
