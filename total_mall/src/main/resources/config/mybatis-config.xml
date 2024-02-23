@@ -14,6 +14,7 @@
  		<typeAlias alias="noticeVO" type="human.smart.totalMall.vo.NoticeVO" />
  		<typeAlias alias="vocVO" type="human.smart.totalMall.vo.VocVO" />
  		<typeAlias alias="reviewVO" type="human.smart.totalMall.vo.ReviewVO" />
+ 		<typeAlias alias="pvocVO" type="human.smart.totalMall.vo.PvocVO" />
  		
  	</typeAliases>
  

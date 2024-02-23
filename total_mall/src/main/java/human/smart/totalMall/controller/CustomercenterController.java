@@ -28,6 +28,7 @@ public class CustomercenterController {
 	cInsert, cInquiry;
 	@Setter(onMethod_={ @Autowired }) CCPageNav CCpageNav;
 	
+	//공지사항 페이지 요청 처리
 	@GetMapping("/notice.do")
 	public String notice(@ModelAttribute("sVO") SearchVO searchVO, Model model) {
 
@@ -44,31 +45,12 @@ public class CustomercenterController {
 
 		return "customercenter/notice";//views/member폴더에 대한 경로 추가
 	}
-	@GetMapping("/inquiry.do")
-	public String inquiry(MemberVO memberVO, Model model) {
-		int m_idx = memberVO.getM_idx();
-		List<VocVO> voc = cInquiry.getBoard(m_idx);
-		
-		model.addAttribute("inquiry", voc);
-		return "customercenter/inquiry";//views/member폴더에 대한 경로 추가
-		
-	}
-	//글등록 페이지 요청 처리
+	//공지사항 글쓰기 페이지 요청 처리
 	@GetMapping("/write.do")
 	public String write() {
 		return "customercenter/write";
 	}
-
-	@GetMapping("/QnA.do")
-	public String QnA() {
-		return "customercenter/QnA";//views/member폴더에 대한 경로 추가
-	}
-	@GetMapping("/voc.do")
-	public String voc() {
-		return "customercenter/voc";//views/member폴더에 대한 경로 추가
-	}
-
-	//글등록 요청 처리
+	//공지사항 글쓰기 요청 처리
 	@PostMapping("/writeProcess.do")
 	public String writeProcess(NoticeVO not, HttpServletRequest request) {
 		String viewPage = "customercenter/write";//글등록 실패시 JSP페이지
@@ -79,7 +61,31 @@ public class CustomercenterController {
 		
 		return viewPage;
 	}
-	//글등록 요청 처리
+
+	//문의내역 요청 처리
+	@GetMapping("/inquiry.do")
+	public String inquiry(MemberVO memberVO, Model model) {
+		int m_idx = memberVO.getM_idx();
+		List<VocVO> voc = cInquiry.getBoard(m_idx);
+		
+		model.addAttribute("inquiry", voc);
+		return "customercenter/inquiry";//views/member폴더에 대한 경로 추가
+		
+	}
+
+	//자주 묻는 질문 페이지 요청 처리
+	@GetMapping("/QnA.do")
+	public String QnA() {
+		return "customercenter/QnA";//views/member폴더에 대한 경로 추가
+	}
+
+	//관리자 문의하기 페이지 요청 처리
+	@GetMapping("/voc.do")
+	public String voc() {
+		return "customercenter/voc";//views/member폴더에 대한 경로 추가
+	}
+
+	//관리자문의 요청 처리
 	@PostMapping("/vocProcess.do")
 	public String vocProcess(VocVO voc, HttpServletRequest request) {
 		String viewPage = "customercenter/voc";//글등록 실패시 JSP페이지
@@ -90,10 +96,6 @@ public class CustomercenterController {
 		
 		return viewPage;
 	}
-	
-	
-
-	
 	
 //	@GetMapping("/update.do")
 //	public String update(int b_idx, Model model) {

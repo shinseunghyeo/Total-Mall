@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>상품 상세보기</title>
 <link rel="stylesheet" href="../resources/css/product/item.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 function discontinuedPost() {
@@ -259,95 +260,133 @@ function continuedPost() {
             </ol>
         </div>
         <div id="productReviews">
-        <br>
-            <div id="Reviewsbox">
-                <h2>상품평가</h2>
-				<form name="frm_write" method="post" action="review.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
+                        <!-- 리뷰 작성 버튼 -->
+				<form name="frm_write" method="post" action="review.do" enctype="multipart/form-data">
 					<input type="hidden" name="p_idx" value="${product.p_idx}">
 					<input type="hidden" name="m_idx" value="${member.m_idx}">
 	                <input type="submit" value="상품리뷰작성페이지">
                 </form>
+                <!-- 리뷰 작성 버튼 -->
+        
+        <br>
+            <div id="Reviewsbox">
+                <h2>상품평가</h2>
                 
                 
-                <button onclick="changeContent('recent')">최근평가순</button>
-                <button onclick="changeContent('old')">오래된평가순</button>
-                <button onclick="changeContent('high_rating')">높은별점순</button>
-                <button onclick="changeContent('low_rating')">낮은별점순</button>
-                
+                <style>
+    .rating-button {
+    	width: 110px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+        padding: 5px 5px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        margin-bottom: -8px;
+        font-weight: 700;
+    }
 
+.rating-button:hover {
+    background-color: #ff7f00;
+    border-color: #ff7f00;
+    color: #fff;
+}
+</style>
+                <button class="rating-button" onclick="changeContent('recent', this)">최근평가순</button>
+                <button class="rating-button" onclick="changeContent('old', this)">오래된평가순</button>
+                <button class="rating-button" onclick="changeContent('high_rating', this)">높은별점순</button>
+                <button class="rating-button" onclick="changeContent('low_rating', this)">낮은별점순</button>
+                            </div><hr>
+			<div id="content">
+            </div>
                 
                 <script>
-                    function changeContent(option) {
-                        // 선택된 옵션에 따라 내용을 변경합니다.
+                var buttons = document.getElementsByClassName("rating-button");
+                    function changeContent(option, clickedButton) {
+                        for (var i = 0; i < buttons.length; i++) {
+                            buttons[i].style.backgroundColor = "";
+                            buttons[i].style.color = "";
+                        }
+
                         var contentDiv = document.getElementById('content');
                         switch(option) {
                             case 'recent':
-                                contentDiv.innerHTML = '최근평가순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'old':
-                                contentDiv.innerHTML = '오래된평가순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'high_rating':
-                                contentDiv.innerHTML = '높은별점순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'low_rating':
-                                contentDiv.innerHTML = '낮은별점순의 내용';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             default:
                                 break;
                         }
-                    }
+                        clickedButton.style.backgroundColor = "#ff7f00";
+                        clickedButton.style.color = "#fff";
+                        }
+                    changeContent('recent', buttons[0]);
                 </script>
-            </div><hr>
-			<div id="content">
-            </div>
-			<c:choose>
-			    <c:when test="${empty hEvaluationList}">
-			        <tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-			    </c:when>
-			    <c:otherwise>
-			        <c:forEach items="${hEvaluationList}" var="review" varStatus="vs">
-			            ${review.member_id}<br>
-			            <c:forEach begin="1" end="5" varStatus="star">
-			                <c:choose>
-			                    <c:when test="${star.index < review.star}">
-			                        ★
-			                    </c:when>
-			                    <c:otherwise>
-			                        ☆
-			                    </c:otherwise>
-			                </c:choose>
-			            </c:forEach>
-			            (${review.star})<br>
-			            ${review.post_date}<br>
-		                    <c:if test="${not empty review.originfile_name}">
-								<img width="50" height="50" src="../resources/uploads/${review.originfile_name}"><br>
-		                    </c:if>
-			            ${review.content}<hr>
-			        </c:forEach>
-			    </c:otherwise>
-			</c:choose>
         </div>
-        <div id="customerQuestions">
-            <h2>문의사항</h2>
-            <table>
-                <tr>
-                    <td>상품정보</td>
-                    <td>상품 이름</td>
-                </tr>
-                <tr>
-                    <td>판매자</td>
-                    <td>판매자 이름</td>
-                </tr>
-                <tr>
-                    <td>문의 내용</td>
-                    <td>
-                        <textarea name="" id="" cols="100" rows="35"></textarea>
-                    </td>
-                </tr>
-            </table>
-            <div id="customerbtn">문의하기</div>
-        </div>
+        <!-- 문의사항 상태 여부 확인 -->
+        <script>
+		function validateForm() {
+		    var content = document.forms["frm_vocWrite"]["content"].value;
+		    var memberIdx = "${member.m_idx}";
+
+		    // 로그인 여부 확인
+		    if (memberIdx === "") {
+		        alert("문의를 작성하려면 먼저 로그인해야 합니다.");
+		        return false;
+		    }
+		    // 문의 작성 여부 확인
+		    if (content.trim() == "") {
+		        alert("문의 사항을 작성해주세요.");
+		        return false;
+		    }
+		
+		    // 문의 완료
+		    alert("문의가 성공적으로 완료되었습니다.");
+		    return true;
+		}
+		</script>
+	    <form name="frm_vocWrite" method="post" action="pvocProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
+	        <div id="customerQuestions">
+				<input type="hidden" name="p_idx" value="${product.p_idx}">
+				<input type="hidden" name="m_idx" value="${member.m_idx}">
+				<input type="hidden" name="writer" value="${member.member_name}">
+				<input type="hidden" name="voc_state" value="1">
+	            <h2>문의사항</h2>
+	            <table>
+	                <tr>
+	                    <td>상품정보</td>
+	                    <td>${product.product_name}</td>
+	                </tr>
+	                <tr>
+	                    <td>판매자</td>
+	                    <td>판매자 이름</td>
+	                </tr>
+	                <tr>
+	                    <td>문의 내용</td>
+	                    <td>
+	                        <textarea name="content" cols="100" rows="35"></textarea>
+	                    </td>
+	                </tr>
+	            </table>
+	                                <div id="VocWritefile">
+                        <input type="file" id="file" name="uploadFile"><br><br>
+                    </div>
+	            
+	            <div id="customerbtn">
+	                <input id="customerbtn" type="submit" value="문의하기">
+                </div>
+	        </div>
+        </form>
+        
         <div id="shippingInfo">
             <div>
                 <h2>배송/교환 반품 안내</h2><br>

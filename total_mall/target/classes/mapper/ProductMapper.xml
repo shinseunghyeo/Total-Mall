@@ -59,8 +59,9 @@
 			</otherwise>
 		</choose>
 	</select>
-	
-	
+	<select id="getProRev" parameterType="_int" resultType="productVO">
+		select * from tb_product where p_idx = #{p_idx}
+	</select>
 		<!-- 총 게시물수 조회: select -->
 	<select id="getTotalCount" parameterType="searchVO" resultType="_int">
 		<!-- 검색어가 있는 경우와 없는 경우  -->
@@ -86,9 +87,8 @@
 			</otherwise>
 		</choose>
 	</select>
-	<!-- 글 등록: insert -->
+	<!-- 리뷰 글 등록: insert -->
 	<insert id="reInsert" parameterType="reviewVO">
-		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
 		<choose>
 			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
 				insert into tb_review (r_idx, m_idx, p_idx, member_id, member_name, content, 
@@ -102,6 +102,21 @@
 			</otherwise>
 		</choose>
 	</insert>
+	<!-- 판매자 문의 글 등록: insert -->
+	<insert id="pvocInsert" parameterType="pvocVO">
+		<choose>
+			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
+				insert into tb_pvoc (m_idx, p_idx, writer, content, originfile_name, savefile_name, voc_state)
+					values(#{m_idx},#{p_idx},#{writer},#{content},#{originfile_name}
+					,#{savefile_name},#{voc_state})
+			</when>
+			<otherwise>
+				insert into tb_pvoc (m_idx, p_idx, writer, content, voc_state) 
+					values(#{m_idx},#{p_idx},#{writer},#{content},#{voc_state})
+			</otherwise>
+		</choose>
+	</insert>
+	
 	<!-- 상품등록: insert -->
 	<insert id="insert" parameterType="ProductVO">
 				insert into tb_product (m_idx, category, product_name, product_code, brand, summary, detail,

@@ -9,13 +9,13 @@
 		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->
 		<choose>
 			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
-				insert into tb_voc (m_idx, writer, title, content, originfile_name, savefile_name, voc_type)
+				insert into tb_voc (m_idx, writer, title, content, originfile_name, savefile_name, voc_type,voc_state)
 					values(#{m_idx},#{writer},#{title},#{content},#{originfile_name}
-					,#{savefile_name},#{voc_type})
+					,#{savefile_name},#{voc_type},#{voc_state})
 			</when>
 			<otherwise>
-				insert into tb_voc (m_idx, writer, title, content, voc_type) 
-					values(#{m_idx},#{writer},#{title},#{content},#{voc_type})
+				insert into tb_voc (m_idx, writer, title, content, voc_type, voc_state) 
+					values(#{m_idx},#{writer},#{title},#{content},#{voc_type}, #{voc_state})
 			</otherwise>
 		</choose>
 	</insert>

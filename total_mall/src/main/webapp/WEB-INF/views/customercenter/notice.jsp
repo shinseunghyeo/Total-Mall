@@ -116,18 +116,16 @@
 					</c:when>
 					<c:otherwise>
 		                <div class="Notceviews">
-	제목: ${noticeList[0].title} <br>
-	내용: ${noticeList[0].content} <br>
-	조회수: ${noticeList[0].read_cnt} <br>
-	작성일: ${noticeList[0].post_date} <br>
-	첨부파일: ${noticeList[0].originfile_name} <br><br>
-
-<!-- 수정하기, 삭제하기 버튼은 회원이면서 본인이 작성한 게시글일 때 화면에 출력되도록 함 -->
-	<input type="button" value="수정하기" onclick="location.href='update.do?n_idx=${noticeList[0].n_idx}'">
-	<input type="button" value="삭제하기" onclick="deletePost()">
-<input type="button" value="목록보기" onclick="location.href='notice.do'" >
-
-		                	
+							제목: ${noticeList[0].title} <br>
+							내용: ${noticeList[0].content} <br>
+							조회수: ${noticeList[0].read_cnt} <br>
+							작성일: ${noticeList[0].post_date} <br>
+							첨부파일: ${noticeList[0].originfile_name} <br><br>
+						
+							<!-- 수정하기, 삭제하기 버튼은 회원이면서 본인이 작성한 게시글일 때 화면에 출력되도록 함 -->
+							<input type="button" value="수정하기" onclick="location.href='update.do?n_idx=${noticeList[0].n_idx}'">
+							<input type="button" value="삭제하기" onclick="deletePost()">
+							<input type="button" value="목록보기" onclick="location.href='notice.do'" >
 		                </div>
 					</c:otherwise>
 				</c:choose>
