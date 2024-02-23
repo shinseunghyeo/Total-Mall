@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.service.member.MemberService;
 import human.smart.totalMall.product.ProductService;
@@ -26,7 +27,7 @@ public class MemberController {
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess;
 	
 	@Setter(onMethod_={ @Autowired })
-    ProductService pCon, pDiscon;
+	ProductService pCon, pDiscon, myoList;
 	
 	
 	
@@ -254,29 +255,57 @@ public String myplist(HttpSession session, Model model) {
 
 	
 /////////////////////////////// 개인회원 마이페이지 ///////////////////////////////		
-	
-	//개인회원 마이페이지 처리
-	@GetMapping("/buyermypage.do")
-	public String buyerMypage() {
-		return "member/buyermypage";
-	}
 
-	//개인회원 마이페이지 홈
-	@GetMapping("/buyermypage/member/buyerhome.do")
-	public String buyerhome() {
-		return "member/buyerhome";
-	}
-	
-	//개인회원 회원정보 설정
-	@GetMapping("/buyermypage/member/buyerupdate.do")
-	public String buyerUpdate() {
-		return "member/buyerupdate";
-	}
-	
-	@GetMapping("/buyermypage/member/buyeraddress.do")
-	public String buyerAddress() {
-		return "member/buyeraddress";
-	}
-	
-	
+//개인회원 마이페이지 처리
+@GetMapping("/buyermypage.do")
+public String buyerMypage() {
+return "member/buyermypage";
+}
+
+
+@GetMapping("buyerhome.do")
+public String buyerhome1() {
+
+return "member/buyerhome";
+}
+//개인회원 마이페이지 홈
+@GetMapping("/buyermypage/member/buyerhome.do")
+public String buyerhome() {
+
+return "member/buyerhome";
+}
+
+
+// 개인회원 전체주문 처리
+@GetMapping("/sellermypage/product/order_history.do")
+public String orderlist(Model model,@SessionAttribute("member") MemberVO member) {
+// 세션에서 m_idx 가져오기
+
+int m_idx = member.getM_idx();
+// 세션에서 m_idx가 있을 경우, m_idx를 모델에 추가
+model.addAttribute("m_idx", m_idx);
+
+// "forward:/product/order_history.do"로 리다이렉트
+return "forward:/product/order_history.do?m_idx="+m_idx;
+
+
+}
+
+
+
+
+
+//개인회원 회원정보 설정
+@GetMapping("/buyermypage/member/buyerupdate.do")
+public String buyerUpdate() {
+return "member/buyerupdate";
+}
+
+//개인회원 주소록 설정
+@GetMapping("/buyermypage/member/buyeraddress.do")
+public String buyerAddress() {
+return "member/buyeraddress";
+}
+
+
 }

@@ -68,6 +68,11 @@ public class ProductDAO{
 		return sqlSession.selectOne(MAPPER+".p_discon");
 	}
 	
+	//내 주문보기	
+	public List<CartVO> getOrders(int m_idx){
+		return sqlSession.selectList(MAPPER+".getOrders", m_idx);
+	}
+	
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);
 	}

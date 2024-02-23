@@ -31,7 +31,7 @@ public class ProductController {
 
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, 
-    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon,
+    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck;
 
@@ -271,7 +271,14 @@ public class ProductController {
 		model.addAttribute("p_discon", p_discon);
 		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
 	}
-
+	
+	//전체 주문내역
+	@GetMapping("/order_history.do")
+	public String orderlist(int m_idx, Model model) {
+  		List<CartVO> orderList = myoList.getOrders(m_idx);
+		model.addAttribute("orderList", orderList);
+		return "product/order_history";
+	}
 	
 	
 	
