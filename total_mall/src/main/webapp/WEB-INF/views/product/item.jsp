@@ -260,14 +260,19 @@ function continuedPost() {
             </ol>
         </div>
         <div id="productReviews">
-        <br>
-            <div id="Reviewsbox">
-                <h2>상품평가</h2>
-				<form name="frm_write" method="post" action="review.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
+                        <!-- 리뷰 작성 버튼 -->
+				<form name="frm_write" method="post" action="review.do" enctype="multipart/form-data">
 					<input type="hidden" name="p_idx" value="${product.p_idx}">
 					<input type="hidden" name="m_idx" value="${member.m_idx}">
 	                <input type="submit" value="상품리뷰작성페이지">
                 </form>
+                <!-- 리뷰 작성 버튼 -->
+        
+        <br>
+            <div id="Reviewsbox">
+                <h2>상품평가</h2>
+                
+                
                 <style>
     .rating-button {
     	width: 110px;
@@ -278,7 +283,8 @@ function continuedPost() {
         font-size: 13px;
         cursor: pointer;
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        margin-bottom: -9px;
+        margin-bottom: -8px;
+        font-weight: 700;
     }
 
 .rating-button:hover {
@@ -287,13 +293,22 @@ function continuedPost() {
     color: #fff;
 }
 </style>
-                <button class="rating-button" onclick="changeContent('recent')">최근평가순</button>
-                <button class="rating-button" onclick="changeContent('old')">오래된평가순</button>
-                <button class="rating-button" onclick="changeContent('high_rating')">높은별점순</button>
-                <button class="rating-button" onclick="changeContent('low_rating')">낮은별점순</button>
+                <button class="rating-button" onclick="changeContent('recent', this)">최근평가순</button>
+                <button class="rating-button" onclick="changeContent('old', this)">오래된평가순</button>
+                <button class="rating-button" onclick="changeContent('high_rating', this)">높은별점순</button>
+                <button class="rating-button" onclick="changeContent('low_rating', this)">낮은별점순</button>
+                            </div><hr>
+			<div id="content">
+            </div>
                 
                 <script>
-                    function changeContent(option) {
+                var buttons = document.getElementsByClassName("rating-button");
+                    function changeContent(option, clickedButton) {
+                        for (var i = 0; i < buttons.length; i++) {
+                            buttons[i].style.backgroundColor = "";
+                            buttons[i].style.color = "";
+                        }
+
                         var contentDiv = document.getElementById('content');
                         switch(option) {
                             case 'recent':
@@ -311,32 +326,67 @@ function continuedPost() {
                             default:
                                 break;
                         }
-                    }
+                        clickedButton.style.backgroundColor = "#ff7f00";
+                        clickedButton.style.color = "#fff";
+                        }
+                    changeContent('recent', buttons[0]);
                 </script>
-            </div><hr>
-			<div id="content">
-            </div>
         </div>
-        <div id="customerQuestions">
-            <h2>문의사항</h2>
-            <table>
-                <tr>
-                    <td>상품정보</td>
-                    <td>상품 이름</td>
-                </tr>
-                <tr>
-                    <td>판매자</td>
-                    <td>판매자 이름</td>
-                </tr>
-                <tr>
-                    <td>문의 내용</td>
-                    <td>
-                        <textarea name="" id="" cols="100" rows="35"></textarea>
-                    </td>
-                </tr>
-            </table>
-            <div id="customerbtn">문의하기</div>
-        </div>
+        <!-- 문의사항 상태 여부 확인 -->
+        <script>
+		function validateForm() {
+		    var content = document.forms["frm_vocWrite"]["content"].value;
+		    var memberIdx = "${member.m_idx}";
+
+		    // 로그인 여부 확인
+		    if (memberIdx === "") {
+		        alert("문의를 작성하려면 먼저 로그인해야 합니다.");
+		        return false;
+		    }
+		    // 문의 작성 여부 확인
+		    if (content.trim() == "") {
+		        alert("문의 사항을 작성해주세요.");
+		        return false;
+		    }
+		
+		    // 문의 완료
+		    alert("문의가 성공적으로 완료되었습니다.");
+		    return true;
+		}
+		</script>
+	    <form name="frm_vocWrite" method="post" action="pvocProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
+	        <div id="customerQuestions">
+				<input type="hidden" name="p_idx" value="${product.p_idx}">
+				<input type="hidden" name="m_idx" value="${member.m_idx}">
+				<input type="hidden" name="writer" value="${member.member_name}">
+				<input type="hidden" name="voc_state" value="1">
+	            <h2>문의사항</h2>
+	            <table>
+	                <tr>
+	                    <td>상품정보</td>
+	                    <td>${product.product_name}</td>
+	                </tr>
+	                <tr>
+	                    <td>판매자</td>
+	                    <td>판매자 이름</td>
+	                </tr>
+	                <tr>
+	                    <td>문의 내용</td>
+	                    <td>
+	                        <textarea name="content" cols="100" rows="35"></textarea>
+	                    </td>
+	                </tr>
+	            </table>
+	                                <div id="VocWritefile">
+                        <input type="file" id="file" name="uploadFile"><br><br>
+                    </div>
+	            
+	            <div id="customerbtn">
+	                <input id="customerbtn" type="submit" value="문의하기">
+                </div>
+	        </div>
+        </form>
+        
         <div id="shippingInfo">
             <div>
                 <h2>배송/교환 반품 안내</h2><br>

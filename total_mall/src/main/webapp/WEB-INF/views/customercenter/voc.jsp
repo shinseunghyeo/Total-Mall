@@ -64,7 +64,7 @@
 	        alert("의견을 작성해주세요.");
 	        return false;
 	    }
-	
+	    alert("문의가 성공적으로 완료되었습니다.");
 	    return true;
 	}
 	</script>
@@ -74,6 +74,7 @@
                 <div id="VocWritetitlebox">
 					<input type="hidden" name="m_idx" value="${member.m_idx}" >
 					<input type="hidden" name="writer" value="${member.member_name}" >
+					<input type="hidden" name="voc_state" value="1">
                     <select name="voc_type" id="voc_type">
                         <option value="select">유형을 선택해주세요</option>
                         <option value="order">주문 상품 문의</option>

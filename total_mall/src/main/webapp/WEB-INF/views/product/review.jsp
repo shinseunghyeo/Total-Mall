@@ -12,7 +12,8 @@
   	<%@ include file="../Main/Header2.jsp" %>
 
     <h1>제품 리뷰 작성 페이지</h1>
-    <form method="post" id="reviewForm" action="reviewProcess.do" enctype="multipart/form-data">
+
+    <form method="post" id="reviewForm" action="reviewProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
 		<input type="hidden" name="p_idx" value="${productReview.p_idx}">
 	    <input type="hidden" name="m_idx" value="${member.m_idx}">
 		<input type="hidden" name="member_id" value="${member.member_id}">
@@ -37,7 +38,7 @@
         </div>
         <button type="submit">리뷰 제출</button>
     </form>
-    
   	<%@ include file="../Main/Footer2.jsp" %>
 </body>
+<script type="text/javascript" src="../resources/js/Product/review.js"></script>
 </html>

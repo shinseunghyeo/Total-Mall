@@ -21,6 +21,7 @@ import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.Setter;
@@ -38,6 +39,7 @@ public class ProductController {
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
     
+    // 카테고리 페이지 요청 처리
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> productList = cList.getProducts(searchVO);
@@ -45,6 +47,8 @@ public class ProductController {
 
         return "product/list";
     }
+
+    // 상세 페이지 요청 처리
     @GetMapping("/item.do")
 	public String item(int p_idx, Model model) {
 		ProductVO vo = pItem.getProduct(p_idx);
@@ -71,7 +75,9 @@ public class ProductController {
 		
 		return "product/item";
 	}
-    @GetMapping("/purchase.do") // 임시
+
+    // 결제 페이지 요청 처리
+    @GetMapping("/purchase.do")
 	public String purchase(int p_idx, int m_idx, int c_quantity, int total_product_price,
 			int totalDelivery, int totalDiscount, Model model) {
     	ProductVO vo = pItem.getProduct(p_idx);
@@ -84,8 +90,8 @@ public class ProductController {
 		return "product/purchase";
 	}
     
-    
-    @GetMapping("/search.do") // 임시
+    // 검색 페이지 요청 처리
+    @GetMapping("/search.do")
     public String search(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> productList2 = pSearch.getProducts2(searchVO);
     	model.addAttribute("productList2", productList2);
@@ -98,21 +104,31 @@ public class ProductController {
 
         return "product/search";
     }
-	@PostMapping("/review.do")
+    // 리퓨 페이지 요청 처리
+    @PostMapping("/review.do") 
 	public String review(int p_idx, Model model) {
 		ProductVO revvo = pReview.getProRev(p_idx);
     	model.addAttribute("productReview", revvo);
 
 		return "product/review";//views/member폴더에 대한 경로 추가
 	}
-	//글등록 요청 처리
-	@PostMapping("/reviewProcess.do")
-	public String reviewProcess(ReviewVO review, HttpServletRequest request) {
+	
+	// 리뷰 프로세스 요청 처리
+	@PostMapping("/reviewProcess.do") 
+	public String reviewProcess(ReviewVO review, int p_idx, HttpServletRequest request) {
 		String viewPage = "reviewProcess/review";//글등록 실패시 JSP페이지
 		int result = pInsert.reInsert(review, request);
 		if(result == 1) {
-			viewPage = "redirect:/TotalMall.do";//글등록 성공시 JSP페이지
+			viewPage = "redirect:/product/item.do?p_idx=" + p_idx;
 		}
+		return viewPage;
+	}
+	//판매자문의 요청 처리
+	@PostMapping("/pvocProcess.do")
+	public String pvocProcess(PvocVO pvoc, int p_idx, HttpServletRequest request) {
+		String viewPage = "redirect:/product/item.do?p_idx=" + p_idx;
+		pInsert.pvocInsert(pvoc, request);
+		
 		return viewPage;
 	}
 

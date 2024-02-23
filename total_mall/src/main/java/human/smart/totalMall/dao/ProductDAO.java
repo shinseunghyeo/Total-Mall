@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SearchVO;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +37,11 @@ public class ProductDAO{
 	public List<ReviewVO> getReview(Map<String, Object> paramMap){
 		return sqlSession.selectList(MAPPER+".getReview", paramMap);
 	}
-	
+	//게시글 입력
+	public int pvocInsert(PvocVO pvoc) {
+		return sqlSession.insert(MAPPER+".pvocInsert", pvoc);
+	}
+
 	// 상품 등록하기
 	public int insert(ProductVO vo) {
 		return sqlSession.insert(MAPPER + ".insert", vo);

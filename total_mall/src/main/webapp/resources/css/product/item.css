@@ -22,6 +22,7 @@
 
     /* ---------상품정보--------- */
     #TogetherProductLine{width: 1050px;margin: auto;}
+    #TogetherProductLine img{cursor: auto;}
     #TogetherProductLine span{display: flex;}
     #TogetherProductLine span h2{margin: 0px;}
     #TogetherProductLine span h2:first-of-type{margin-right: auto;}
@@ -44,8 +45,7 @@
     #productDetails td, #productDetails ol, #productDetails span{padding-left: 17px;}
     #productReviews{display: none;padding: 40px;}
     #productReviews #Reviewsbox{display: flex;}
-    #productReviews #Reviewsbox h2{margin: 0px; width: 50%;}
-    #productReviews #Reviewsbox input{width: 35%}
+    #productReviews #Reviewsbox h2{margin: 0px; width: 70%;}
     #productReviews #Reviewsbox select{margin-left: 10px;width: 120px;}
     #customerQuestions{display: none;padding: 40px;}
     #customerQuestions table{width: 100%;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);border-collapse: collapse;margin: 20px auto;}
