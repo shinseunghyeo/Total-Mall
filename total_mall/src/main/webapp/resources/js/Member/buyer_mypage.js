@@ -54,7 +54,7 @@ $(function () {
         };
 
         if ($(this).is(".buyer_nav_ul_li:eq(1)")) {
-            loadContent("history-board.html");
+            loadContent("sellermypage/product/order_history.do");
             $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(1))").css({
                 backgroundColor: "rgba(224, 224, 224, 0.42)",
                 lightCss,
