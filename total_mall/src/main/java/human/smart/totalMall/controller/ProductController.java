@@ -34,7 +34,7 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview,
     		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
-    		pOrderInsert, pCartInsert2, pCartCheck;
+    		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -378,6 +378,9 @@ public class ProductController {
   			pCartInsert2.cartInsert2(vo2);
   			pOrderInsert.orderInsert(vo);
   		}
+  		int o_idx = vo.getO_idx();
+  		pCartOidxUpdate.cartOidxUpdate(m_idx, o_idx);
+  		
   		
   		model.addAttribute("total_product_price", total_product_price);
   		model.addAttribute("total_discount", total_discount);

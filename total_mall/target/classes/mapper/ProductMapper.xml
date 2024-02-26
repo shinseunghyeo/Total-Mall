@@ -290,12 +290,21 @@
 	<update id="cartPaymentUpdate" parameterType="_int">
 		update tb_cart set payment_or_not=1
 			where m_idx=#{m_idx}
+			and payment_or_not=0
 	</update> 
 	
 	<!-- 주문테이블 상품 추가하기 -->
 	<insert id="orderInsert" parameterType="OrderVO">
+<<<<<<< HEAD
 				insert into tb_order (o_idx, m_idx, pay, totalprice, requests )
 					   values(#{o_idx},#{m_idx}, #{pay}, #{totalprice}, #{requests})
+=======
+				insert into tb_order (o_idx, m_idx, pay_account, pay_account_bank, totalprice, requests )
+				values(#{o_idx},#{m_idx}, #{pay_account}, #{pay_account_bank}, #{totalprice}, #{requests})
+				<selectKey keyProperty="o_idx" order="AFTER" resultType="int">
+			        SELECT LAST_INSERT_ID() AS o_idx
+			    </selectKey>
+>>>>>>> branch 'master' of https://github.com/shinseunghyeo/Total-Mall.git
 	</insert>
 	
 	<!-- 직접 구매 상품 장바구니 상품등록: insert -->
@@ -304,4 +313,11 @@
 					   values(#{c_idx},#{p_idx}, #{m_idx}, #{c_quantity}, 1)
 	</insert>
 	
+	<!-- 상품 결제 후 장바구니 테이블에 o_idx 추가하기: update -->
+	<update id="cartOidxUpdate" parameterType="map">
+		update tb_cart set o_idx=#{o_idx}, payment_or_not=2
+			where m_idx=#{m_idx}
+			and o_idx is null
+			and payment_or_not=1
+	</update> 
 </mapper>
