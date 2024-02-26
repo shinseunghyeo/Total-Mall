@@ -30,6 +30,12 @@ public class ProductDAO{
 	//MyBatis를 이용한 DB 연결 및 작업을 담당할 SqlSession 객체를 필드로 정의함
 	private final SqlSession sqlSession;
 	
+	public List<ProductVO> getMcategory(int categoryId){
+		return sqlSession.selectList(MAPPER+".getMcategory", categoryId);
+	}
+	public List<ProductVO> getMchoice(String choiceId){
+		return sqlSession.selectList(MAPPER+".getMchoice", choiceId);
+	}
 	public ProductVO getProduct(int p_idx){
 		return sqlSession.selectOne(MAPPER+".getProduct", p_idx);
 	}
