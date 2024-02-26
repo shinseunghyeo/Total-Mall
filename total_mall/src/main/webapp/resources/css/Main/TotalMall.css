@@ -23,11 +23,10 @@
     #TodayMallServeLine{width: 1050px; height: 550px;margin: auto;display: flex;}
     #TodayMallServeLine img{transition: transform 0.3s;border: 2px solid black;}
     #TodayMallServeLine img:hover {transform: scale(1.02);}
-    #TodayMallServeLine #TodayMallServeLeft{width: 49%;}
-    #TodayMallServeLine #TodayMallServeLeft img{width: 100%;margin: 5px;border-radius: 5%;}
-    #TodayMallServeLine #TodayMallServeRight{display: flex;flex-direction: column;width: 50%;margin-left: 10px;}
-    #TodayMallServeLine #TodayMallServeRight img{width: 50%;margin: 5px;border-radius: 7%;}
-    #TodayMallServeLine #TodayMallServeRight div{width: 100%;display: flex;}
+    #TodayMallServeLine #TodayMallServebox{width: 1050px; height:500px;}
+    #TodayMallServeLine #TodayMallServetoday{width: 100%;display: flex;gap:10px;}
+    #TodayMallServeLine .TodayMalltoday{width: 100%; height: 250px; margin: 5px;border-radius: 5%;font-weight: bold;text-align: center;}
+    #TodayMallServeLine .TodayMalltoday img{width: 100%;height: 200px;border-radius: 5%;}
     /* ---------오늘의 상품--------- */
 
     /* ---------카테고리 추천 상품--------- */
@@ -55,6 +54,8 @@
     /* ---------마지막 상품--------- */
     #FinalMallLine{width: 1050px; height: 1420px;margin: auto;}
     #FinalMallLine div{display: flex;gap: 10px;justify-content: center;margin-top: 10px;}
-    #FinalMallLine .MallBigimg img{width: 25%;}
-    #FinalMallLine .MallSmallimg img{width: 50%;}
+    #FinalMallLine a{margin: 0;}
+    #FinalMallLine .MallBigimg img, .MallSmallimg img{width: 100%; height: 100%;}
+    #FinalMallLine .MallBigimg a{width: 25%; height: 300px;}
+    #FinalMallLine .MallSmallimg a{width: 50%; height: 300px;}
     /* ---------마지막 상품--------- */

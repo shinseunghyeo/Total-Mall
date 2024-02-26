@@ -20,7 +20,35 @@ public class HomeController {
     private ProductService Main;
 
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home(HttpSession session, Model model) {
+		//오늘의 상품
+    	List<ProductVO> mainTodaymall = Main.getMtoday();
+    	model.addAttribute("maintoday", mainTodaymall);
+
+    	//추천 카테고리 상품
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		    // 세션에 회원 정보가 있는지 확인합니다.
+	    if (member != null && member.getGrade() ==1) {
+	        // 세션에서 회원 ID를 가져옵니다.
+	        String memberId = member.getCategorie();
+			String[] memberId2 = memberId.split(",");
+	        // memberId를 사용하여 필요한 작업을 수행합니다.
+	        List<ProductVO> mainChoicemall = Main.getMchoice(memberId2[0]);
+	        model.addAttribute("mainchoice", mainChoicemall);
+	        List<ProductVO> mainChoicemall2 = Main.getMchoice(memberId2[1]);
+	        model.addAttribute("mainchoice2", mainChoicemall2);
+	        List<ProductVO> mainChoicemall3 = Main.getMchoice(memberId2[2]);
+	        model.addAttribute("mainchoice3", mainChoicemall3);
+	    } else {
+	        List<ProductVO> mainChoicemall = Main.getMchoice("food");
+	        model.addAttribute("mainchoice", mainChoicemall);
+	        List<ProductVO> mainChoicemall2 = Main.getMchoice("homeDeco");
+	        model.addAttribute("mainchoice2", mainChoicemall2);
+	        List<ProductVO> mainChoicemall3 = Main.getMchoice("hobby");
+	        model.addAttribute("mainchoice3", mainChoicemall3);
+	    }
+	    
+	    //카테고리별 상품
     	List<ProductVO> mainMeatmall = Main.getMcategory(1);
     	model.addAttribute("mainmeat", mainMeatmall);
     	List<ProductVO> mainDecorationmall = Main.getMcategory(2);
@@ -45,24 +73,38 @@ public class HomeController {
 	
 	@GetMapping("/TotalMall.do")
     public String mainproduct(HttpSession session, Model model) {
-//	    	List<ProductVO> mainTodaymall = Main.getMtoday(3);
-//	    	model.addAttribute("maintoday", mainTodaymall);
-        // 컨트롤러에서 member.m_idx 가져오기
-		MemberVO member = (MemberVO) session.getAttribute("member");
+		//오늘의 상품
+    	List<ProductVO> mainTodaymall = Main.getMtoday();
+    	model.addAttribute("maintoday", mainTodaymall);
+    	
+		//착한 상품
+    	List<ProductVO> mainKindmall = Main.getMkind();
+    	model.addAttribute("mainkind", mainKindmall);
 
-		   // 세션에 회원 정보가 있는지 확인합니다.
-	    if (member != null) {
+    	//추천 카테고리 상품
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		    // 세션에 회원 정보가 있는지 확인합니다.
+	    if (member != null && member.getGrade() ==1) {
 	        // 세션에서 회원 ID를 가져옵니다.
-	        String memberId = member.getCategorie(); 
-	        
+	        String memberId = member.getCategorie();
+			String[] memberId2 = memberId.split(",");
 	        // memberId를 사용하여 필요한 작업을 수행합니다.
-	        List<ProductVO> mainChoicemall = Main.getMchoice(memberId);
+	        List<ProductVO> mainChoicemall = Main.getMchoice(memberId2[0]);
 	        model.addAttribute("mainchoice", mainChoicemall);
+	        List<ProductVO> mainChoicemall2 = Main.getMchoice(memberId2[1]);
+	        model.addAttribute("mainchoice2", mainChoicemall2);
+	        List<ProductVO> mainChoicemall3 = Main.getMchoice(memberId2[2]);
+	        model.addAttribute("mainchoice3", mainChoicemall3);
 	    } else {
-	        List<ProductVO> mainChoicemall = Main.getMchoice("none");
+	        List<ProductVO> mainChoicemall = Main.getMchoice("food");
 	        model.addAttribute("mainchoice", mainChoicemall);
+	        List<ProductVO> mainChoicemall2 = Main.getMchoice("homeDeco");
+	        model.addAttribute("mainchoice2", mainChoicemall2);
+	        List<ProductVO> mainChoicemall3 = Main.getMchoice("hobby");
+	        model.addAttribute("mainchoice3", mainChoicemall3);
 	    }
 
+	    //카테고리별 상품
     	List<ProductVO> mainMeatmall = Main.getMcategory(1);
     	model.addAttribute("mainmeat", mainMeatmall);
     	List<ProductVO> mainDecorationmall = Main.getMcategory(2);

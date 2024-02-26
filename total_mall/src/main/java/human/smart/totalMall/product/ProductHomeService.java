@@ -15,6 +15,13 @@ public class ProductHomeService implements ProductService {
 	private ProductDAO dao;
 
 	@Override
+    public List<ProductVO> getMtoday(){
+        return dao.getMtoday();
+    }
+    public List<ProductVO> getMkind(){
+        return dao.getMkind();
+    }
+	@Override
     public List<ProductVO> getMcategory(int categoryId){
         return dao.getMcategory(categoryId);
     }
