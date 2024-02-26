@@ -268,6 +268,7 @@
 	<select id="cartCheck" parameterType="CartVO" resultType="CartVO">
 		select * from tb_cart where p_idx = #{p_idx}
 							  and m_idx = #{m_idx}
+							  and payment_or_not = 0
 	</select>
 	
 	<!-- 장바구니 수량 변경하기 -->
@@ -295,16 +296,11 @@
 	
 	<!-- 주문테이블 상품 추가하기 -->
 	<insert id="orderInsert" parameterType="OrderVO">
-<<<<<<< HEAD
-				insert into tb_order (o_idx, m_idx, pay, totalprice, requests )
-					   values(#{o_idx},#{m_idx}, #{pay}, #{totalprice}, #{requests})
-=======
 				insert into tb_order (o_idx, m_idx, pay_account, pay_account_bank, totalprice, requests )
 				values(#{o_idx},#{m_idx}, #{pay_account}, #{pay_account_bank}, #{totalprice}, #{requests})
 				<selectKey keyProperty="o_idx" order="AFTER" resultType="int">
 			        SELECT LAST_INSERT_ID() AS o_idx
 			    </selectKey>
->>>>>>> branch 'master' of https://github.com/shinseunghyeo/Total-Mall.git
 	</insert>
 	
 	<!-- 직접 구매 상품 장바구니 상품등록: insert -->
