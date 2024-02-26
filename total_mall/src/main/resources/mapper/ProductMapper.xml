@@ -4,6 +4,52 @@
 
 <mapper namespace="human.smart.totalMall.ProductMapper">
 	
+	<select id="getMchoice" parameterType="int" resultType="productVO">
+	SELECT p.* FROM tb_product p
+	CROSS JOIN (
+    SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(categorie, ',', 1 + RAND() 
+    * (LENGTH(categorie) - LENGTH(REPLACE(categorie, ',', '')))), ',', -1) 
+    AS random_category
+    FROM tb_member
+    WHERE m_idx = 20
+    LIMIT 1) AS rand_cat
+	WHERE FIND_IN_SET(rand_cat.random_category, p.category) > 0;
+	</select>
+
+
+	<!-- home 카테고리별 상품 -->
+	<select id="getMcategory" parameterType="java.lang.Integer" resultType="productVO">
+		select * from tb_product 
+		<choose>
+			<when test="_parameter == 1">
+				WHERE category IN ('meat', 'vegetable', 'fruits', 'frozen');
+			</when>
+			<when test="_parameter == 2">
+				WHERE category IN ('kitchen', 'curtain');
+			</when>
+			<when test="_parameter == 3">
+				WHERE category IN ('games', 'lego', 'petsupplies');
+			</when>
+			<when test="_parameter == 4">
+				WHERE category IN ('dailynecessities', 'bodyhair');
+			</when>
+			<when test="_parameter == 5">
+				WHERE category IN ('men', 'women');
+			</when>
+			<when test="_parameter == 6">
+				WHERE category IN ('education', 'novels', 'overseas');
+			</when>
+			<when test="_parameter == 7">
+				WHERE category IN ('living', 'bedding');
+			</when>
+			<when test="_parameter == 8">
+				WHERE category IN ('homeAppliances', 'digital');
+			</when>
+			<otherwise>
+				WHERE category IN ('soccer', 'golf');
+			</otherwise>
+		</choose>
+	</select>
 	<select id="getProduct" parameterType="_int" resultType="productVO">
 		select * from tb_product where p_idx = #{p_idx}
 	</select>
@@ -222,7 +268,6 @@
 	<select id="cartCheck" parameterType="CartVO" resultType="CartVO">
 		select * from tb_cart where p_idx = #{p_idx}
 							  and m_idx = #{m_idx}
-							  and payment_or_not = 0
 	</select>
 	
 	<!-- 장바구니 수량 변경하기 -->
@@ -249,8 +294,8 @@
 	
 	<!-- 주문테이블 상품 추가하기 -->
 	<insert id="orderInsert" parameterType="OrderVO">
-				insert into tb_order (o_idx, m_idx, pay_account, pay_account_bank, totalprice, requests )
-					   values(#{o_idx},#{m_idx}, #{pay_account}, #{pay_account_bank}, #{totalprice}, #{requests})
+				insert into tb_order (o_idx, m_idx, pay, totalprice, requests )
+					   values(#{o_idx},#{m_idx}, #{pay}, #{totalprice}, #{requests})
 	</insert>
 	
 	<!-- 직접 구매 상품 장바구니 상품등록: insert -->
