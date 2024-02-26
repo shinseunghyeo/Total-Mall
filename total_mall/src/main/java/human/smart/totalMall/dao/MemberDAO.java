@@ -2,12 +2,14 @@ package human.smart.totalMall.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.SearchVO;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -57,7 +59,12 @@ public class MemberDAO {
 	}
 	
 	//한명의 회원정보 가져오기
-	public MemberVO getMember(int m_idx) throws SQLException{
+	public MemberVO getMember(int m_idx){
 		return sqlSession.selectOne(MAPPER+".getMember", m_idx);
 	}
+	
+	//회원정보 전체 가져오기
+		public List<MemberVO> getMembers(SearchVO vo){
+			return sqlSession.selectList(MAPPER+".getMembers", vo);
+		}
 }

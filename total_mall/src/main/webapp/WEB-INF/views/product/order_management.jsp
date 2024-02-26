@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인회원 마이페이지</title>
+<title>기업회원 주문관리페이지</title>
 
 </head>
 <body>
@@ -48,19 +48,19 @@
 						<div class="new-name">
 							<p>
 								<a
-									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList[vs.count-1].p_idx}">${orderList[vs.count-1].product_name}
+									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList2[vs.count-1].p_idx}">${orderList2[vs.count-1].product_name}
 								</a>
 								
 							</p>
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList[vs.count-1].c_update_time}"
+								<fmt:formatDate value="${orderList2[vs.count-1].c_update_time}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</p>
 						</div>
 						<div class="new-quantity">
-							<p>${orderList[vs.count-1].c_quantity}</p>
+							<p>${orderList2[vs.count-1].c_quantity}</p>
 						</div>
 						<div class="new-price">
 							<p>

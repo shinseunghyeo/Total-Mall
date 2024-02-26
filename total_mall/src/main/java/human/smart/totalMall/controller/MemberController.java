@@ -1,5 +1,10 @@
 package human.smart.totalMall.controller;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,14 +14,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.service.member.MemberService;
+import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
+import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.SearchVO;
 import lombok.Setter;
 
 @Controller
@@ -24,13 +33,14 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess;
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo;
 	
 	@Setter(onMethod_={ @Autowired })
-	ProductService pCon, pDiscon, myoList;
+	ProductService pCon, pDiscon, myoList, pTotalCount,pPage;
 	
-	
-	
+	@Setter(onMethod_={ @Autowired })
+	PageNav pageNav;
+
 	
 	//로그인 페이지 요청
 	@GetMapping("/login.do")
@@ -215,12 +225,12 @@ return "forward:/member/sellerhome.do";
 
 /////////////////////////////// 기업회원 마이페이지 메뉴 ///////////////////////////////	
 //기업회원 상품등록페이지 처리
-@GetMapping("/sellermypage/Product/write.do")
+@GetMapping("/sellermypage/product/write.do")
 public String insert() {
 	return "forward:/product/write.do";
 }
 //기업회원 상품등록페이지 처리
-@GetMapping("/sellermypage/Product/item.do")
+@GetMapping("/sellermypage/product/item.do")
 public String item(HttpSession session) {
 	 ProductVO vo = (ProductVO) session.getAttribute("vo");
 	 int p_idx = vo.getP_idx();
@@ -234,7 +244,7 @@ public String sellerUpdate() {
 }
 
 //기업회원 상품관리 페이지 처리	
-@GetMapping("/sellermypage/Product/myplist.do")
+@GetMapping("/sellermypage/product/myplist.do")
 public String myplist(HttpSession session, Model model) {
     // 세션에서 MemberVO를 가져옵니다.
     MemberVO member = (MemberVO) session.getAttribute("member");
@@ -254,29 +264,37 @@ public String myplist(HttpSession session, Model model) {
 
 
 	
-/////////////////////////////// 개인회원 마이페이지 ///////////////////////////////		
+/////////////////////////////// 개인회원 마이페이지 홈 ///////////////////////////////		
 
 //개인회원 마이페이지 처리
 @GetMapping("/buyermypage.do")
-public String buyerMypage() {
+public String buyerMypage(Model model,@SessionAttribute("member") MemberVO member) {
+int m_idx = member.getM_idx();
+List<CartVO> orderList = myoList.getOrders(m_idx);
+model.addAttribute("orderList", orderList);
 return "member/buyermypage";
 }
 
-
+//개인회원 홈페이지 처리
 @GetMapping("buyerhome.do")
-public String buyerhome1() {
-
+public String orderlist(int m_idx, Model model) {
+List<CartVO> orderList = myoList.getOrders(m_idx);
+model.addAttribute("orderList", orderList);
 return "member/buyerhome";
 }
-//개인회원 마이페이지 홈
+
+//개인회원 마이페이지 홈(ajax)
 @GetMapping("/buyermypage/member/buyerhome.do")
-public String buyerhome() {
+public String buyerhome(Model model,@SessionAttribute("member") MemberVO member) {
+int m_idx = member.getM_idx();
 
-return "member/buyerhome";
+model.addAttribute("m_idx", m_idx);
+return "forward:/member/buyerhome.do?m_idx="+m_idx;
 }
+/////////////////////////////// 개인회원 마이페이지 ///////////////////////////////	
 
 
-// 개인회원 전체주문 처리
+// 개인회원 전체주문 처리(ajax)
 @GetMapping("/sellermypage/product/order_history.do")
 public String orderlist(Model model,@SessionAttribute("member") MemberVO member) {
 // 세션에서 m_idx 가져오기
@@ -306,6 +324,112 @@ return "member/buyerupdate";
 public String buyerAddress() {
 return "member/buyeraddress";
 }
+/////////////////////////////// 관리자 마이페이지 홈 ///////////////////////////////		
+//관리자 마이페이지 처리
+@GetMapping("adminmypage.do")
+public String adminMypage() {
+
+return "member/adminmypage";
+}
+
+//관리자 홈페이지 처리
+@GetMapping("adminhome.do")
+public String adminhome() {
+
+return "member/adminhome";
+}
+
+//관리자 마이페이지 홈(ajax)
+@GetMapping("/adminmypage/member/adminhome.do")
+public String adminhome2() {
+
+return "forward:/member/adminhome.do";
+}
+
+/////////////////////////////// 관리자 마이페이지 ///////////////////////////////	
+
+
+//회원관리 처리
+@GetMapping("member_management.do")
+public String member_management(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
+List<MemberVO> memberList = mManage.getMembers(searchVO);
+model.addAttribute("memberList", memberList);
+if(searchVO.getPageNum() == 0) {
+searchVO.setPageNum(1);
+}
+pageNav.setTotalRows(pTotalCount.getTotalCount(searchVO));
+pageNav = pPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+model.addAttribute("pageNav", pageNav);
+return "member/member_management";
+}
+
+
+//관리자 회원관리 처리(ajax)
+@GetMapping("/adminmypage/member/member_management.do")
+public String member_management2() {
+return "forward:/member/member_management.do";
+}
+
+//관리자 개별회원정보
+@GetMapping("/member_info.do")
+public String getMember(int m_idx,Model model) {
+
+MemberVO vo = mInfo.getMember(m_idx);
+model.addAttribute("member", vo);
+
+List<String> categorieList = vo.getCategorie() != null ? Arrays.asList(vo.getCategorie().split(",")) : null;
+model.addAttribute("categorieList", categorieList);
+
+
+return "member/member_info";
+}
+
+//회원 등급
+@ModelAttribute("gradeMap")
+public Map<String, String> getGradeMap() {
+	// 숫자값과 등급값을 매핑한 Map 생성
+	Map<String, String> gradeMap = new HashMap<>();
+	gradeMap.put("1", "개인회원 - Wellcome");
+	gradeMap.put("2", "개인회원 - Bronze");
+	gradeMap.put("3", "개인회원 - Silver");
+	gradeMap.put("4", "개인회원 - Gold");
+	gradeMap.put("5", "개인회원 - Platinum");
+	gradeMap.put("6", "미정");
+	gradeMap.put("7", "미정");
+	gradeMap.put("8", "관리자");
+	gradeMap.put("9", "기업회원");
+
+	return gradeMap;
+}
+
+//탈퇴 여부
+@ModelAttribute("c_or_nMap")
+public Map<String, String> getC_or_nMap() {
+	// 숫자값과 등급값을 매핑한 Map 생성
+	Map<String, String> c_or_nMap = new HashMap<>();
+	c_or_nMap.put("0", "등록된 회원");
+	c_or_nMap.put("1", "탈퇴한 회원");
+	return c_or_nMap;
+}
+
+//카테고리
+@ModelAttribute("categorieMap")
+public Map<String, String> getCategorieMap() {
+
+	Map<String, String> categorieMap = new HashMap<>();
+	categorieMap.put("food","식품");
+	categorieMap.put("homeDeco","홈데코");
+	categorieMap.put("hobby","취미");
+	categorieMap.put("dailyNecessity","생필품");
+	categorieMap.put("clothes","의류");
+	categorieMap.put("book","도서");
+	categorieMap.put("furniture","가구");
+	categorieMap.put("homeAppliances","가전");
+	categorieMap.put("sports","스포츠");
+
+	return categorieMap;
+}
+
 
 
 }

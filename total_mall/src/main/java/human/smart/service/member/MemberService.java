@@ -14,4 +14,6 @@ public interface MemberService {
 	default MemberVO findPw(String member_id, String email) {return null;}
 	default MemberVO findPwProcess(MemberVO memberVO) {return null;}
 	default List<ProductVO> getProducts3(SearchVO searchVO){return null;}
+	default MemberVO getMember(int m_idx){return null;}
+	default List<MemberVO> getMembers(SearchVO vo){return null;}
 }
