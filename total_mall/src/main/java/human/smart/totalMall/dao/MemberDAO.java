@@ -67,4 +67,15 @@ public class MemberDAO {
 		public List<MemberVO> getMembers(SearchVO vo){
 			return sqlSession.selectList(MAPPER+".getMembers", vo);
 		}
+		
+		
+	//회원정보 수정하기
+	public MemberVO BuyerUpdateProcess(MemberVO vo) throws SQLException{
+		MemberVO newVO = null;
+		
+		if(sqlSession.update(MAPPER+".buyerUpdateProcess", vo) == 1) {
+			newVO = getMember(vo.getM_idx());
+		}
+		return newVO;
+	}
 }

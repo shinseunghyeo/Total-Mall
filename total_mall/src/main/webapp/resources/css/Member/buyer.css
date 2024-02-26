@@ -804,7 +804,7 @@
     }
 
     #update_form .input-text2 p {
-        color: red;
+        color: white;
         font-size: 11px;
     }
 
@@ -813,10 +813,20 @@
     }
 
     #update_form #email2 {
-        width: 300px;
+        width: 200px;
     }
 
     #update_form #email-button {
+        border: none;
+        background-color: rgb(52, 152, 219);
+        color: white;
+        border-radius: 5px 5px 5px 5px;
+        height: 38px;
+        width: 94px;
+
+    }
+    
+    #update_form #email-button2 {
         border: none;
         background-color: rgb(52, 152, 219);
         color: white;

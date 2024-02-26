@@ -16,4 +16,5 @@ public interface MemberService {
 	default List<ProductVO> getProducts3(SearchVO searchVO){return null;}
 	default MemberVO getMember(int m_idx){return null;}
 	default List<MemberVO> getMembers(SearchVO vo){return null;}
+	default MemberVO buyerUpdateProcess(MemberVO memberVO) {return null;}
 }

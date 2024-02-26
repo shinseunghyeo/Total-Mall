@@ -81,4 +81,13 @@
 		</choose>
 	</select>
 	
+	<!-- 일반 회원 회원정보 수정하기: update -->
+	<update id="buyerUpdateProcess" parameterType="memberVO">
+		update tb_member set member_pw=#{member_pw}, member_name=#{member_name}, handphone=#{handphone}, address1=#{address1},
+							 address2=#{address2}, address3=#{address3}, categorie=#{categorie},
+		                     last_modified_date=now()
+				         where m_idx=#{m_idx}
+	
+	</update>
+	
 </mapper>
