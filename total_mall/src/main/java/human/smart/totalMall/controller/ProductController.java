@@ -317,6 +317,7 @@ public class ProductController {
   		CartVO vo2 = pCartCheck.cartCheck(vo);
   		if(vo2 != null) {
   			model.addAttribute("msg2", "상품이 담겨 있습니다.");
+  			System.out.println("장바구니에 삼품 없음");
   		} else {
   		
   	  		int result = pCartInsert.cartInsert(vo,request);

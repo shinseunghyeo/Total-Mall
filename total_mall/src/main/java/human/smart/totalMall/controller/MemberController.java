@@ -97,6 +97,11 @@ public class MemberController {
 		String[] categories = request.getParameterValues("categorie");
 		String categorie = String.join(",", categories);
 		//테스트용
+		String[] categorie2 = categorie.split(",");
+		System.out.println(categorie2[0]);
+		System.out.println(categorie2[1]);
+		System.out.println(categorie2[2]);
+		
 		System.out.println(categorie);
 		//카테고리를 String타입으로 변경한 것을 memberVO객체에 저장
 		model.addAttribute("categorie", memberVO);
