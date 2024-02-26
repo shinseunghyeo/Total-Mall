@@ -33,7 +33,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo;
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService pCon, pDiscon, myoList, pTotalCount,pPage;
@@ -194,6 +194,23 @@ public class MemberController {
 			viewPage = "redirect:/TotalMall.do";
 		}
 		return viewPage;
+	}
+	
+	//개인회원 회원정보 변경
+	@PostMapping("/buyerUpdateProcess.do")
+	public String buyerUpdateProcess(MemberVO memberVO, HttpServletRequest request, Model model) {
+		
+		String[] categories = request.getParameterValues("categorie");
+		String categorie = String.join(",", categories);
+		memberVO.setCategorie(categorie);
+		MemberVO newVO = mBuyerUpdateProcess.buyerUpdateProcess(memberVO);
+		
+		if(newVO != null) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("member");
+			session.setAttribute("member", newVO);
+		}
+		return "member/buyermypage";
 	}
 	
 	
