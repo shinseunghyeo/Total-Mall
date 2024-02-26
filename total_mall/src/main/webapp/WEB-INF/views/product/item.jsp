@@ -167,7 +167,7 @@ function continuedPost() {
 	                        <button id="incrementButton" onclick="increment()">+</button>
 	                    </div>
 	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button onclick="showCartAlert()">장바구니</button></a>
-	                    <a href="${pageContext.request.contextPath}/product/purchase.do?total_product_price=0&totalDiscount=${(product.price/(product.discount_rate)).intValue()}&totalDelivery=2500&p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="purchaseLink" onclick="updateLinks()">
+	                    <a href="${pageContext.request.contextPath}/product/purchase.do?total_product_price=0&totalDiscount=${((product.price/100)*(product.discount_rate)).intValue()}&totalDelivery=2500&p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="purchaseLink" onclick="updateLinks()">
 					        <button>구매</button>
 					    </a>
 	                </div>

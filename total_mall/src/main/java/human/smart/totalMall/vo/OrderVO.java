@@ -9,7 +9,8 @@ public class OrderVO {
 	private int o_idx;
 	private int m_idx;
 	private int p_idx;
-	private String pay;
+	private String pay_account;
+	private String pay_account_bank;
 	private int totalprice;
 	private String requests;
 	private Date o_start_date;

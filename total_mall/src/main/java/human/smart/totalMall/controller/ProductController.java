@@ -84,7 +84,11 @@ public class ProductController {
 		vo.setC_quantity(c_quantity);
 		vo.setTotal_product_price(total_product_price);
 		vo.setTotalDelivery(totalDelivery);
-		vo.setTotalDiscount(totalDiscount);
+		if(c_quantity == 0) {
+			vo.setTotalDiscount(totalDiscount);
+		} else {
+			vo.setTotalDiscount(totalDiscount*c_quantity);
+		}
 		model.addAttribute("product", vo);
 		
 		return "product/purchase";
@@ -360,9 +364,11 @@ public class ProductController {
   		return viewPage;
   	}
   	
-  	//결제
+  	//결제완료페이지 요청
   	@GetMapping("/payment.do")
-  	public String payment(OrderVO vo, CartVO vo2) {
+  	public String payment(OrderVO vo, CartVO vo2, Model model, int total_product_price,
+  			int total_discount, int total_delivery
+  			) {
   		int m_idx = vo.getM_idx();
   		
   		if(vo.getDirect() == 1) {
@@ -372,7 +378,11 @@ public class ProductController {
   			pCartInsert2.cartInsert2(vo2);
   			pOrderInsert.orderInsert(vo);
   		}
-  		return "product/purchase";
+  		
+  		model.addAttribute("total_product_price", total_product_price);
+  		model.addAttribute("total_discount", total_discount);
+  		model.addAttribute("total_delivery", total_delivery);
+  		return "product/payment";
   	}
   	
 }
