@@ -3,17 +3,46 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="human.smart.totalMall.ProductMapper">
+	<select id="getMtoday" resultType="productVO">
+		select * from tb_product
+		where p_status = 0;
+	</select>
+	<select id="getMkind" resultType="productVO">
+		select * from tb_product
+		where p_status = 0;
+	</select>
 	
-	<select id="getMchoice" parameterType="int" resultType="productVO">
-	SELECT p.* FROM tb_product p
-	CROSS JOIN (
-    SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(categorie, ',', 1 + RAND() 
-    * (LENGTH(categorie) - LENGTH(REPLACE(categorie, ',', '')))), ',', -1) 
-    AS random_category
-    FROM tb_member
-    WHERE m_idx = 20
-    LIMIT 1) AS rand_cat
-	WHERE FIND_IN_SET(rand_cat.random_category, p.category) > 0;
+	<select id="getMchoice" parameterType="String" resultType="productVO">
+		select * from tb_product
+		<choose>
+			<when test="_parameter == 'food'">
+				WHERE category IN ('meat', 'vegetable', 'fruits', 'frozen');
+			</when>
+			<when test="_parameter == 'homeDeco'">
+				WHERE category IN ('kitchen', 'curtain');
+			</when>
+			<when test="_parameter == 'hobby'">
+				WHERE category IN ('games', 'lego', 'petsupplies');
+			</when>
+			<when test="_parameter == 'dailyNecessity'">
+				WHERE category IN ('dailynecessities', 'bodyhair');
+			</when>
+			<when test="_parameter == 'clothes'">
+				WHERE category IN ('men', 'women');
+			</when>
+			<when test="_parameter == 'book'">
+				WHERE category IN ('education', 'novels', 'overseas');
+			</when>
+			<when test="_parameter == 'furniture'">
+				WHERE category IN ('living', 'bedding');
+			</when>
+			<when test="_parameter == 'homeAppliances'">
+				WHERE category IN ('homeAppliances', 'digital');
+			</when>
+			<otherwise>
+				WHERE category IN ('soccer', 'golf');
+			</otherwise>
+		</choose>
 	</select>
 
 

@@ -22,17 +22,30 @@
         <h2 style="margin: auto;width: 1050px;">오늘의 상품</h2><br>
     </div>
     <div id="TodayMallServeLine">
-        <div id="TodayMallServeLeft">
-            <img src="resources/img/Mallimg/세일품목.png">
-        </div>
-        <div id="TodayMallServeRight">
-            <div>
-                <img src="resources/img/Mallimg/세일품목.png">
-                <img src="resources/img/Mallimg/세일품목.png">
-            </div>
-            <div>
-                <img src="resources/img/Mallimg/세일품목.png">
-                <img src="resources/img/Mallimg/세일품목.png">
+        <div id="TodayMallServebox">
+            <div id="TodayMallServetoday">
+	   		    <c:choose>
+					<c:when test="${empty maintoday}">
+						<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+					</c:when>
+					<c:otherwise>
+	        			<c:forEach begin="1" end="8" varStatus="vs">
+		        			<div class="TodayMalltoday">
+								<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${maintoday[vs.count-1].p_idx}">
+					                <img src="resources/uploads/${maintoday[vs.count-1].save_file_name1}">
+					            </a><br>
+								<a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${maintoday[vs.count-1].p_idx}">
+					            ${maintoday[vs.count-1].product_name}
+					            </a><br>
+					            ${maintoday[vs.count-1].price}원
+							</div>				            
+							<c:if test="${vs.count%4 == 0}">
+			                </div>
+			                <div id="TodayMallServetoday">
+							</c:if>
+			            </c:forEach>
+		            </c:otherwise>
+	            </c:choose>
             </div>
         </div>
     </div>
@@ -45,112 +58,29 @@
             <div class="CategoryBestContainer">
                 <div id="FoodSlide" style="margin-left: 0px;">
                     <div class="CategoryBestbox">
-                    				    <c:choose>
-						<c:when test="${empty mainchoice}">
-							<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="6" varStatus="vs">
-								<c:if test="${not empty mainchoice[vs.count-1]}">
-				                    <div>
-				                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
-										<img src="resources/uploads/${mainchoice[vs.count-1].save_file_name1}">
-				                       	</a>
-										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
-										<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainchoice[vs.count-1].price}원</span> 
-				                    </div>
-								</c:if>
-								<c:if test="${vs.count == 3}">
-				                </div>
-				                <div class="CategoryMallbox">
-								</c:if>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
+       				    <c:choose>
+							<c:when test="${empty mainchoice}">
+								<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach begin="1" end="15" varStatus="vs">
+									<c:if test="${not empty mainchoice[vs.count-1]}">
+					                    <div>
+					                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
+											<img src="resources/uploads/${mainchoice[vs.count-1].save_file_name1}">
+					                       	</a>
+											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
+											<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
+					                        <span style="font-weight: bold">${mainchoice[vs.count-1].price}원</span> 
+					                    </div>
+									</c:if>
+									<c:if test="${vs.count%3 == 0}">
+					                </div>
+					                <div class="CategoryBestbox">
+									</c:if>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
                     </div>
                 </div>
             </div>
@@ -158,191 +88,69 @@
         </div>
     </div>
     <div class="CategoryBestLine">
-        <h2>상품 top15</h2>
         <div class="CategoryBest">
             <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide2)" src="resources/img/Mallimg/왼쪽 아이콘.png">
             <div class="CategoryBestContainer">
                 <div id="FoodSlide2" style="margin-left: 0px;">
                     <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
+       				    <c:choose>
+							<c:when test="${empty mainchoice2}">
+								<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach begin="1" end="15" varStatus="vs">
+									<c:if test="${not empty mainchoice2[vs.count-1]}">
+					                    <div>
+					                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
+											<img src="resources/uploads/${mainchoice2[vs.count-1].save_file_name1}">
+					                       	</a>
+											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
+											<span class="truncate">${mainchoice2[vs.count-1].product_name}</span></a><br>
+					                        <span style="font-weight: bold">${mainchoice2[vs.count-1].price}원</span> 
+					                    </div>
+									</c:if>
+									<c:if test="${vs.count%3 == 0}">
+					                </div>
+					                <div class="CategoryBestbox">
+									</c:if>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+	                </div>
                 </div>
             </div>
             <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/오른쪽 아이콘.png">
         </div>
     </div>        
     <div class="CategoryBestLine">
-        <h2>상품 top15</h2>
         <div class="CategoryBest">
             <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide3)" src="resources/img/Mallimg/왼쪽 아이콘.png">
             <div class="CategoryBestContainer">
                 <div id="FoodSlide3" style="margin-left: 0px;">
                     <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                    </div>
-                    <div class="CategoryBestbox">
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img style="width: 100%;height: 190px;" src="resources/img/Mallimg/고구마.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
-                        <div>
-                            <img src="resources/img/Mallimg/동원참치.jpg">
-                            <a href="">동원참치</a><br>
-                            <a href="">99,999원</a>
-                        </div>
+       				    <c:choose>
+							<c:when test="${empty mainchoice3}">
+								<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach begin="1" end="15" varStatus="vs">
+									<c:if test="${not empty mainchoice3[vs.count-1]}">
+					                    <div>
+					                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
+											<img src="resources/uploads/${mainchoice3[vs.count-1].save_file_name1}">
+					                       	</a>
+											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
+											<span class="truncate">${mainchoice3[vs.count-1].product_name}</span></a><br>
+					                        <span style="font-weight: bold">${mainchoice3[vs.count-1].price}원</span> 
+					                    </div>
+									</c:if>
+									<c:if test="${vs.count%3 == 0}">
+					                </div>
+					                <div class="CategoryBestbox">
+									</c:if>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
                     </div>
                 </div>
             </div>
@@ -367,19 +175,19 @@
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
-						<c:when test="${empty mainmeat}">
+						<c:when test="${empty mainchoice}">
 							<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach begin="1" end="6" varStatus="vs">
-								<c:if test="${not empty mainmeat[vs.count-1]}">
+								<c:if test="${not empty mainchoice[vs.count-1]}">
 				                    <div>
-				                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainmeat[vs.count-1].p_idx}">
-										<img src="resources/uploads/${mainmeat[vs.count-1].save_file_name1}">
+				                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
+										<img src="resources/uploads/${mainchoice[vs.count-1].save_file_name1}">
 				                       	</a>
-										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainmeat[vs.count-1].p_idx}">
-										<span class="truncate">${mainmeat[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainmeat[vs.count-1].price}원</span> 
+										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
+										<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
+				                        <span style="font-weight: bold">${mainchoice[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -637,26 +445,51 @@
     <!-- ---------카테고리별 상품--------- -->
     <!-- ---------마지막 상품--------- -->
     <div id="FinalMallLine">
-        <h2>마지막 상품</h2>
+        <h2>착한 상품</h2>
+
         <div class="MallSmallimg">
-            <img src="resources/img/Mallimg/탈모케어.jpg">
-            <img src="resources/img/Mallimg/탈모케어.jpg">
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[0].p_idx}">
+                <img src="resources/uploads/${mainkind[0].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[1].p_idx}">
+                <img src="resources/uploads/${mainkind[1].save_file_name1}">
+            </a>
         </div>
         <div class="MallBigimg">
-            <img src="resources/img/Mallimg/피죤.jpg">
-            <img src="resources/img/Mallimg/피죤.jpg">
-            <img src="resources/img/Mallimg/피죤.jpg">
-            <img src="resources/img/Mallimg/피죤.jpg">
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[2].p_idx}">
+                <img src="resources/uploads/${mainkind[2].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[3].p_idx}">
+                <img src="resources/uploads/${mainkind[3].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[4].p_idx}">
+                <img src="resources/uploads/${mainkind[4].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[5].p_idx}">
+                <img src="resources/uploads/${mainkind[5].save_file_name1}">
+            </a>
         </div>
         <div class="MallBigimg">
-            <img src="resources/img/Mallimg/피죤.jpg">
-            <img src="resources/img/Mallimg/피죤.jpg">
-            <img src="resources/img/Mallimg/피죤.jpg">
-            <img src="resources/img/Mallimg/피죤.jpg">
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[6].p_idx}">
+                <img src="resources/uploads/${mainkind[6].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[7].p_idx}">
+                <img src="resources/uploads/${mainkind[7].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[8].p_idx}">
+                <img src="resources/uploads/${mainkind[8].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[9].p_idx}">
+                <img src="resources/uploads/${mainkind[9].save_file_name1}">
+            </a>
         </div>
         <div class="MallSmallimg">
-            <img src="resources/img/Mallimg/탈모케어.jpg">
-            <img src="resources/img/Mallimg/탈모케어.jpg">
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[10].p_idx}">
+                <img src="resources/uploads/${mainkind[10].save_file_name1}">
+            </a>
+			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[11].p_idx}">
+                <img src="resources/uploads/${mainkind[11].save_file_name1}">
+            </a>
         </div>
     </div>
     <!-- ---------마지막 상품--------- -->

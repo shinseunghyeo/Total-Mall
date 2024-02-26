@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.vo.CartVO;
-import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.OrderVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.PvocVO;
@@ -15,6 +14,8 @@ import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SearchVO;
 
 public interface ProductService {
+	default List<ProductVO> getMtoday() {return null;}
+	default List<ProductVO> getMkind() {return null;}
 	default List<ProductVO> getMchoice(String choiceId) {return null;}
 	default List<ProductVO> getMcategory(int categoryId) {return null;}
 	default PageNav setPageNav(PageNav pageNav, int pageNum, int pageBlock){return null;}
