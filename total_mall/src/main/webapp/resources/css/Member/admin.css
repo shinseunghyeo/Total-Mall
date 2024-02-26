@@ -1,0 +1,985 @@
+
+    @font-face {
+        font-family: "G-market-Light";
+        src: url(font/GmarketSansTTFLight.ttf);
+    }
+
+    @font-face {
+        font-family: "G-market-Bold";
+        src: url(font/GmarketSansTTFBold.ttf);
+    }
+
+    p,
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    td,
+    input[type='button'] {
+        font-family: "G-market-Light";
+    }
+
+    th {
+        font-family: "G-market-Bold";
+    }
+
+    /* 글씨체 변경 */
+    /* ---------HEADER--------- */
+    header img {
+        cursor: pointer;
+    }
+
+    header body {
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    header a {
+        margin-left: 10px;
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    header a:hover {
+        color: black;
+        text-decoration: underline;
+    }
+
+
+    header input[type="text"],
+    header select {
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    #ServeMallcoloron {
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        opacity: 0;
+        z-index: -1;
+        position: fixed;
+        transition: opacity 0.3s;
+    }
+
+    header {
+        width: 100%;
+        margin: auto;
+    }
+
+    #MainLinecolor {
+        width: 100%;
+        height: 100px;
+        background-color: white;
+        position: absolute;
+        z-index: 999
+    }
+
+    #MainLine {
+        width: 1050px;
+        margin: auto;
+        display: flex;
+        height: 100px;
+        align-items: center;
+        z-index: 9999;
+        position: relative;
+    }
+
+    #MainLine #KategoryMenu {
+        width: 4%;
+        margin-left: 10px;
+        margin-bottom: -5px;
+    }
+
+    #MainLine #SiteLogo {
+        width: 12%;
+    }
+
+    #MainLine #SearchContainer {
+        width: 50%;
+        margin: auto;
+        margin-left: 30px;
+    }
+
+    #MainLine #SearchLine {
+        width: 610px;
+        height: 40px;
+        background-color: white;
+        border: 2px solid #3498db;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    #MainLine #SearchLine select {
+        width: 20%;
+        border-radius: 30px;
+    }
+
+    #MainLine #SearchLine input {
+        width: 80%;
+        border-radius: 30px;
+        outline: none;
+    }
+
+    #MainLine #SearchLine img {
+        width: 25px;
+        height: 25px;
+        z-index: 10;
+        padding-right: 10px;
+    }
+
+    #MainLine #UserIcon {
+        width: 20%;
+        text-align: end;
+        margin-right: 25px;
+    }
+
+    #MainLine #UserIcon img {
+        margin-left: 20px;
+    }
+
+    #KategoryBackgroundColor {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    #KategoryBackgroundColor2 {
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        z-index: -1;
+        opacity: 0;
+        position: fixed;
+    }
+
+    #KategoryLine {
+        width: 1050px;
+        margin: auto;
+    }
+
+    #KategoryLine #Kategory {
+        width: 1050px;
+        height: 388px;
+        margin: auto;
+        position: absolute;
+        z-index: -1;
+        background-color: white;
+        display: flex;
+        opacity: 0;
+    }
+
+    #KategoryLine #KategoryContainer_Main {
+        width: 17%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #KategoryLine #KategoryContainer_Main div {
+        width: 100%;
+        height: 100%;
+        background-color: yellowgreen;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid green;
+        color: white;
+        font-size: 13px;
+    }
+
+    #KategoryLine #KategoryContainer_Main p {
+        margin: 0;
+        margin-left: 10px;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(0.2, 0.2, 0.2, 0.2);
+    }
+
+    #KategoryLine #KategoryContainer_Serve {
+        width: 80%;
+        height: 100%;
+        border-right: 1px solid gray;
+    }
+
+    #KategoryLine #KategoryContainer_Serve .ServeKategorydisplay {
+        display: none;
+    }
+
+    #KategoryLine #KategoryContainer_Serve img {
+        height: 100%;
+    }
+
+    #KategoryLine #KategoryContainer_Serve .Kategorymain-image {
+        transition: transform 0.5s ease-in-out, opacity 0.9s ease-in-out;
+    }
+
+    #KategoryLine #KategoryContainer_Serve .image-container:hover .Kategorymain-image {
+        transform: scale(1.5);
+    }
+
+    #KategoryLine #KategoryContainer_Serve .image-container {
+        width: 100%;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #KategoryLine #KategoryContainer_Serve .normal-image {
+        width: 100%;
+    }
+
+    #KategoryLine #KategoryContainer_Serve .Kategorymain-image {
+        width: 100%;
+        position: absolute;
+        opacity: 0.5;
+    }
+
+    #KategoryLine #KategoryContainer_Serve h1 {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 90%;
+        transition: opacity 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    #KategoryLine #KategoryLine_backColor {
+        width: 20%;
+        height: 100%;
+    }
+
+    #KategoryLine #serveMenucontainer {
+        width: 83%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #KategoryLine #serveMenuimgbox {
+        width: 100%;
+        height: 37px;
+        border: 1px solid gray;
+        border-left: none;
+    }
+
+    #KategoryLine #serveMenuimgbox img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #KategoryLine #serveMenubox {
+        width: 100%;
+        height: 90%;
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+        display: flex;
+    }
+
+    #NavLine {
+        display: flex;
+        font-size: 16px;
+        height: 30px;
+        width: 1050px;
+        margin: auto;
+    }
+
+    #NavLine #ServiceLine {
+        width: 80%;
+        margin-left: -10px;
+    }
+
+    #NavLine #ServiceLine a {
+        margin: 0;
+    }
+
+    #NavLine #ServiceLine img {
+        margin-left: 10px;
+    }
+
+    #NavLine #LogLine {
+        width: 25%;
+        text-align: end;
+    }
+
+    #SearchMenu {
+        position: fixed;
+        top: 0;
+        right: -450px;
+        height: 100%;
+        transition: right 0.3s ease;
+        z-index: 999999;
+        display: flex;
+    }
+
+    #SearchMenu button {
+        width: 50px;
+        height: 50px;
+    }
+
+    #SearchMenu div {
+        width: 400px;
+        background-color: white;
+        height: 100%;
+    }
+
+    /* ---------HEADER--------- */
+
+    /* section 시작 */
+    /* /////////////관리자 네비 시작//////////// */
+    * {
+        margin: 0;
+        padding: 0 auto;
+    }
+
+    section {
+        display: flex;
+        justify-content: center;
+    }
+
+    #wrap {
+        width: 1050px;
+
+    }
+
+    #admin_nav {
+        width: 100%;
+    }
+
+    #admin_nav_ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .admin_nav_ul_li {
+        list-style: none;
+        /* font-size: 17px; */
+        height: 35px;
+        width: 16.455555555555555%;
+        /* text-align: center; */
+        /* border: 0.0625rem solid; */
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        /* font-family: "G-market-Light";
+        font-size: 16px; */
+    }
+
+
+
+    section h1::before {
+        content: "";
+        display: block;
+        height: 2rem;
+        width: 100%;
+    }
+
+    /* /////////////관리자 네비 끝//////////// */
+
+    /* //////////////////////공통부분//////////////////// */
+
+    #short_cut,
+    #member_management,
+    #product_management,
+    #event_management,
+    #statistics,
+    #cs_center {
+        background-color: rgba(224, 224, 224, 0.42);
+        padding-bottom: 2rem;
+    }
+
+    h1 {
+        margin: 0 0 0 13%;
+    }
+
+    /* //////////////////////공통부분//////////////////// */
+
+
+    /* //////////////////////관리자 마이페이지 시작//////////////////// */
+    /* 공통부분 시작 */
+
+
+    #first_div,
+    #second_div,
+    #last_div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .small_box {
+        width: 20.5rem;
+        height: 15rem;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .big_box {
+        width: 42rem;
+        height: 15rem;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+
+
+    .inner_box {
+        display: flex;
+        border: 0.0625rem solid;
+        width: 97%;
+        height: 87%;
+        margin: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: white;
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        flex-direction: column;
+        justify-content: flex-start;
+
+    }
+
+    .inner_box:hover {
+        border: solid 0.1875rem rgb(52, 152, 219);
+    }
+
+    .inner_box h2 {
+        padding: 0.75rem 0.75rem 0 0.75rem;
+    }
+
+    .inner_box p {
+        padding: 0.75rem 0.75rem 0 0.75rem;
+    }
+
+    .inner_box ul {
+        list-style: none;
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .inner_box ul li a {
+        text-decoration: none;
+        color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .title a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* 공통부분 끝 */
+    /* 시간 시작 */
+    #current_wrap{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    /* 시간 끝 */
+    /* 공지사항 시작 */
+
+    #notice_table {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #notice_btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+
+    #notice_btn input[type=button] {
+        background-color: rgb(52, 152, 219);
+        color: white;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    #notice_table table {
+        width: 80%;
+        height: 70%;
+    }
+
+    #notice_table table td,
+    #notice_table table th {
+        text-align: center;
+        border-bottom: 1px solid gray;
+        height: 1.375rem;
+    }
+
+    /* 공지사항 끝 */
+
+    /* 고객센터 시작 */
+
+    #cs_table {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #cs_btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+
+    #cs_btn input[type=button] {
+        background-color: rgb(52, 152, 219);
+        color: white;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    #cs_table table {
+        width: 80%;
+        height: 70%;
+    }
+
+    #cs_table table td,
+    #cs_table table th {
+        text-align: center;
+        border-bottom: 1px solid gray;
+        height: 1.375rem;
+    }
+
+    /* 고객센터 끝 */
+
+    /* 매출/통계 시작 */
+    #last_div .big_box a{
+        text-decoration: none;
+        color: black;
+    }
+    #chart {
+        display: flex;
+        box-sizing: border-box;
+        height: 80%;
+        width: 96%;
+        margin: 0 2%;
+    }
+
+    /* 매출/통계 끝 */
+
+    /* //////////////////////관리자 마이페이지 끝//////////////////// */
+
+
+
+
+
+
+
+
+    /*     ////////////////회원관리 시작//////////////////        */
+
+
+    #member_wrap {
+        margin: 1%;
+        padding: 2%;
+        width: 94%;
+        background-color: white;
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    #member_management #search_bar {
+        /* width: 1300px;*/
+        /* width: 84.63541666666667%; */
+        height: 3.75rem;
+        /* margin: 0 0.75rem; */
+        position: relative;
+    }
+
+    #member_management #bbs-info {
+        display: inline;
+        /* font:bold 16px Arial, sans-serif; */
+        font: bold 1rem Arial, sans-serif;
+        position: absolute;
+        top: 20px;
+        /* 화면보면서 수정 */
+    }
+
+    #member_management form {
+        display: flex;
+        justify-content: space-between;
+        /*  width: 395px; */
+        width: 35%;
+        /* 화면보면서 수정(원값:25.71614583333333%) */
+        /*  position: relative; */
+        float: right;
+        padding-top: 10px;
+        /* 화면보면서 추가 */
+    }
+
+    #member_management select,
+    input[type="search"] {
+        height: 40px;
+        /* padding-left: 10px; */
+        padding-left: 2.531645569620253%;
+        /* 10/395 */
+        /* font: 14px Arial, sans-serif; */
+        font: 0.875rem Arial, sans-serif;
+        color: gray;
+    }
+
+    #member_management select {
+        /* 추가된 속성 */
+        /* width:110px; */
+        width: 27.84810126582278%;
+    }
+
+    #member_management input[type="search"] {
+        /* width: 215px; */
+        width: 54.43037974683544%;
+        /* 215/395 */
+    }
+
+    #member_management #search_btn {
+        display: inline;
+        /* position: relative;
+        top: 13.5px; */
+        cursor: pointer;
+        /* 마우스 커서모양을 손모양으로 함 */
+    }
+
+    #member_management #search_btn>img {
+        /* 추가된 속성 */
+        /* width: 62px; */
+        width: 98%;
+        /* 화면 보면서 수정 */
+        height: 40px;
+    }
+
+    /* 테이블 관련 CSS */
+    #member_management table {
+        /* width: 1300px; */
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        /* 이중 테두리를 지움 */
+        border-spacing: 0;
+        /* 테두리 간의 간격을 없앰 */
+    }
+
+    #member_management thead {
+        border-top: 2px solid darkgray;
+        background-color: lightgray;
+    }
+
+    #member_management td,
+    #member_management th {
+        text-align: center;
+        /* padding: 17px 10px; */
+        padding: 17px 0.6510416666666667%;
+        height: 20px;
+        border-bottom: 1px solid gray;
+    }
+
+    #member_management .title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #member_management tr td:nth-child(3) {
+        text-align: left;
+    }
+
+    #member_management tbody>tr:not(#member_management tbody > tr:last-child) {
+        background-color: #f5f5f5;
+    }
+
+    #member_management .notice {
+        /*  width: 50px; */
+        width: 100%;
+        /* 화면보면서 수정(원값:3.846153846153846%) */
+        height: 27px;
+        border-radius: 15px;
+        background-color: #464545;
+        /* font: bold 14px Arial, sans-serif; */
+        font: bold 0.875rem Arial, sans-serif;
+        line-height: 27px;
+        color: white;
+    }
+
+    #member_management #td-page-nav {
+        padding-top: 20px;
+        text-align: center;
+        border-bottom-width: 0;
+    }
+
+    #member_management .page-nav {
+        /* width: 35px;*/
+        width: 2.692307692307692%;
+        height: 35px;
+        margin: 0 2px;
+        border: 1px solid gray;
+        display: inline-block;
+        text-align: center;
+        line-height: 35px;
+    }
+
+    #member_management tbody>tr:hover,
+    .page-nav:hover {
+        background-color: #ebeaf4;
+    }
+
+    #member_management tbody>tr:last-child:hover {
+        background-color: white;
+    }
+
+    #member_management a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #member_management a:hover {
+        text-decoration: underline;
+    }
+
+
+
+    /*     ////////////////회원관리 끝//////////////////        */
+
+
+    /* /////////////////상품관리 시작//////////////// */
+
+    /* ////상품관리 카테고리 시작//// */
+
+
+    #KategoryPage {
+        margin: 1%;
+        padding: 2%;
+        width: 94%;
+        background-color: white;
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    #search_wrap2 {
+        display: flex;
+        align-content: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    #KategoryServeLine {
+        display: flex;
+    }
+
+    #KategoryServemenuLine {
+        width: 20%;
+        height: 900px;
+        background-color: palegreen;
+        padding-bottom: 20px;
+        border: 2px solid gray;
+    }
+
+    #KategoryServemenuLine h2 {
+        padding: 10px;
+        margin: 0px;
+    }
+
+    #KategoryServemenuLine span {
+        color: purple;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    #KategoryProductLine {
+        width: 85%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #KategoryProductLine #KategoryProductContainer {
+        width: 820px;
+    }
+
+    #KategoryProductLine #KategoryEventbox {
+        height: 320px;
+        background-color: #3498db;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    #KategoryProductLine #KategoryEvent {
+        position: absolute;
+        padding: 10px;
+    }
+
+    #KategoryProductLine #KategoryEvent button {
+        width: 30px;
+    }
+
+    #KategoryProductLine #KategoryEventbox img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #KategoryProductLine #KategoryProductbox h3 {
+        color: deeppink;
+    }
+
+    #KategoryProductLine #KategoryProductbestbox h3 {
+        color: blueviolet;
+    }
+
+    #KategoryProductLine .Productmain {
+        display: flex;
+    }
+
+    #KategoryProductLine .KategoryProduct {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        align-items: center;
+        padding: 10px;
+    }
+
+    #KategoryProductLine .KategoryProduct img {
+        width: 100px;
+    }
+
+    #KategoryProductLine .KategoryProduct span {
+        align-self: flex-start;
+        font-weight: bold;
+    }
+
+    /* ////상품관리 카테고리 끝//// */
+
+    /* ////상품관리 검색 리스트 시작//// */
+
+    #SearchproductLine {
+        width: 85%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #SearchproductLine a {
+        margin: auto;
+    }
+
+    #SearchproductLine #SearchproductContaner {
+        width: 820px;
+    }
+
+    #SearchproductLine #Advertisementimg {
+        width: 100%;
+        height: 100px;
+    }
+
+    #SearchproductLine #Searchproductbox {
+        display: flex;
+        padding: 20px;
+        border: 1px solid gray;
+    }
+
+    #SearchproductLine #Searchproductbox img {
+        width: 20%;
+        padding-right: 20px;
+    }
+
+    #SearchproductLine #SearchProduct {
+        width: 60%;
+    }
+
+    #SearchproductLine .SearchProductPrice {
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #SearchproductLine .SearchProductPrice button {
+        width: 50px;
+        height: 50px;
+        background-color: #3498db;
+        border: none;
+        color: aliceblue;
+        font-weight: bold;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    #SearchproductLine .SearchProductPrice a {
+        margin: 0;
+    }
+
+    #SearchproductLine .SearchProductPrice a:hover {
+        text-decoration: none;
+    }
+
+    span:focus {
+        color: #3498db;
+    }
+
+    /* ////상품관리 검색 리스트 끝//// */
+
+    /* /////////////////상품관리 끝//////////////// */
+
+    /* /////////////////이벤트 시작//////////////// */
+
+    /* /////////////////이벤트 끝//////////////// */
+
+
+    /* /////////////////매출/통계 시작//////////////// */
+
+    /* /////////////////매출/통계 끝//////////////// */
+
+    /* /////////////////고객응대 시작//////////////// */
+
+    /* /////////////////고객응대 끝//////////////// */
+

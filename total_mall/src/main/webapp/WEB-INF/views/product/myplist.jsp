@@ -41,6 +41,7 @@
 			});
 		}
 	}
+
 </script>
 
 
@@ -90,9 +91,8 @@
 										<td colspan="6">
 											<div id="Searchproductbox">
 												<a class="productimg"
-													href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList3[vs.count-1].p_idx}">
-													<img
-													src="../resources/img/Mallimg/${productList3[vs.count-1].save_file_name1}">
+													href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList3[vs.count-1].p_idx}" >
+													<img width="100%" height="100%" src="../resources/uploads/${productList3[vs.count-1].save_file_name1}">
 												</a>
 												<div id="SearchProduct">
 													<a

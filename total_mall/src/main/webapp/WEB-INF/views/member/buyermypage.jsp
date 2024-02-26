@@ -17,8 +17,7 @@
 
 			<div id="buyer_nav">
 				<ul id="buyer_nav_ul">
-					<li class="buyer_nav_ul_li"><a href="#"
-						class="buyer_nav_ul_li_a"></a>MY PAGE</a></li>
+					<li class="buyer_nav_ul_li">MY PAGE</li>
 					<li class="buyer_nav_ul_li">전체주문내역</li>
 					<li class="buyer_nav_ul_li">배송조회</li>
 					<li class="buyer_nav_ul_li">회원정보설정</li>
