@@ -35,7 +35,7 @@ function EventSlide() {
                 imageSources[i].style.marginLeft = -700 + "px";
             }
         }
-        if(EventSlideCount ==200){
+        if(EventSlideCount ==400){
             for(let n = 0; n < 10; n++){
             imageSources[n].src = "resources/img/MainEventimg/이벤트" + eventnum + n + ".jpg";
             }
