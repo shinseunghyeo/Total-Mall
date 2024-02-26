@@ -17,7 +17,6 @@
     <%@ include file="../Main/Header2.jsp" %>
     <section>
         <div id="white-board">
-            
             <div id="cart-header">
                 <h1>장바구니</h1>
             </div>

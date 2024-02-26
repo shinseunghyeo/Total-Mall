@@ -48,9 +48,10 @@
                 <tr class="tr2">
                     <td class="td1">요청사항</td>
                     <td>
-                        <select name="" class="request">
-                            <option value="부재시 문 앞에 놓아주세요">부재시 문 앞에 놓아주세요</option>
-                            <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                        <select name="requests" class="request">
+                            <option value="1">부재시 문 앞에 놓아주세요</option>
+                            <option value="2">부재시 경비실에 맡겨주세요</option>
+                            <option value="3">도착시 전화나 문자를 보내주세요</option>
                         </select>
                     </td>
                 </tr>
@@ -75,9 +76,10 @@
         </c:choose>
         
         <input type="hidden" name="m_idx" value="${member.m_idx}">
+        <input type="hidden" name="total_product_price" value="${totalOrderAmount}">
+        <input type="hidden" name="total_discount" value="${product.totalDiscount}">
+        <input type="hidden" name="total_delivery" value="${product.totalDelivery}">
         
-        <input type="hidden" name="pay" value="a">
-        <input type="hidden" name="requests" value="a">
 		
 		
         <div id="Purchasepage"><br>
@@ -102,10 +104,11 @@
                 <tr class="tr2">
                     <td class="td1">결제계좌</td>
                     <td>
-                        <input type="text" name="" id="" value="23-12121-1212" class="purchase-account1">
-                        <select name="" id="" class="purchase-account2">
-                            <option value="농협">농협</option>
-                            <option value="신한">신한</option>
+                        <input type="text" name="pay_account" id="" value="" class="purchase-account1">
+                        <select name="pay_account_bank" id="" class="purchase-account2">
+                            <option value="NongHyup">농협</option>
+                            <option value="Shinhan">신한</option>
+                            <option value="Gukmin">국민</option>
                         </select>
                     </td>
                 </tr>
