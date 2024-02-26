@@ -14,27 +14,41 @@ del_or_not decimal(1) default 1, -- 게시글 유지 여부
 service varchar(30) not null, -- 서비스
 constraint tb_notice_pk primary key (n_idx), -- 기본키
 constraint tb_notice_fk foreign key (m_idx)
-    references tb_member (m_idx) -- 외래키
+references tb_member (m_idx) -- 외래키
 );
-
-//문의하기 데이터베이스
+//관리자 문의 데이터베이스
 create table tb_voc(
 v_idx int unsigned auto_increment,
 m_idx int unsigned not null, -- 회원 번호
 writer varchar(30) not null, -- 작성자
-voc_type varchar(50) not null, -- 유형
+voc_type varchar(50), -- 유형
 title varchar(50) not null, -- 제목
 content varchar(1000) not null, -- 내용
 originfile_name varchar(50), -- 원본 파일명
 savefile_name varchar(50), -- 저장 파일명
 post_date datetime default now(), -- 등록일
 update_date datetime default now(), -- 수정일
-del_or_not decimal(1) default 1, -- 게시글 유지 여부
+voc_state int not null, -- 문의 상태
 constraint tb_voc_pk primary key (v_idx), -- 기본키
 constraint tb_voc_fk foreign key (m_idx)
 references tb_member (m_idx) -- 외래키
 );
-
+//판매자 문의 데이터베이스
+create table tb_pvoc (
+    v_idx int unsigned auto_increment,
+    m_idx int unsigned not null,
+    p_idx int unsigned not null,
+    writer varchar(30) not null,
+    content varchar(1000) not null,
+    originfile_name varchar(50),
+    savefile_name varchar(50),
+    post_date datetime default now(),
+    update_date datetime default now(),
+    voc_state int not null,
+    constraint tb_voc_pk primary key (v_idx),
+    constraint fk_pvoc_member foreign key (m_idx) references tb_member (m_idx),
+    constraint fk_pvoc_product foreign key (p_idx) references tb_product (p_idx)
+);
 //리뷰 데이터베이스
 CREATE TABLE tb_review(
     r_idx INT UNSIGNED AUTO_INCREMENT,
