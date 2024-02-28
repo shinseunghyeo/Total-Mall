@@ -44,7 +44,7 @@ public class CustomercenterDAO{
 	}
 	
 	public List<VocVO> getBoard(int m_idx){
-		return sqlSession.selectOne(MAPPER+".getBoard", m_idx);
+		return sqlSession.selectList(MAPPER+".getBoard", m_idx);
 	}
 	
 	//게시글 수정하기

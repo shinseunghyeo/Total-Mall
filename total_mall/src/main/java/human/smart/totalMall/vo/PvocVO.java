@@ -11,7 +11,9 @@ public class PvocVO {
 	private int v_idx; //게시글 번호
 	private int m_idx; //회원 번호
 	private int p_idx; //상품 번호
+	private String product_name; //상품명
 	private String writer; //작성자
+	private String email; //작성자 이메일
 	private String content; //내용
 	private String originfile_name; //원본 파일명
 	private String savefile_name; //저장 파일명

@@ -3,56 +3,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글쓰기</title>
-<script>
-function validateForm() {
-    var selectedOption = document.forms["frm_write"]["service"].value;
-    var title = document.forms["frm_write"]["title"].value;
-    var content = document.forms["frm_write"]["content"].value;
+<link rel="stylesheet" href="../resources/css/customercenter/noticeWrite.css">
+<script type="text/javascript" src="../resources/js/customercenter/noticeWrite.js"></script>
 
-    if (selectedOption == "menu") {
-        alert("서비스를 선택해주세요.");
-        return false;
-    }
-
-    if (title.trim() == "") {
-        alert("제목을 입력해주세요.");
-        return false;
-    }
-
-    if (content.trim() == "") {
-        alert("내용을 입력해주세요.");
-        return false;
-    }
-
-    return true;
-}
-</script>
 </head>
 <body>
-
-<h3>글쓰기</h3>
-<hr>
-<form method="post" action="writeProcess.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
-<input type="hidden" name="m_idx" value="${member.m_idx}" >
-<input type="hidden" name="writer" value="${member.member_name}">
-서비스: 
-<select name="service">
-	<option value="menu">옵션 선택</option>
-	<option value="custoer">고객서비스</option>
-	<option value="event">이벤트당첨</option>
-	<option value="transaction">안전거래</option>
-	<option value="hazardousgoods">위해상품</option>
-</select><br>
-작성자: <input type="text" value="${member.member_name}" disabled> <br>
-제목: <input type="text" name="title"> <br>
-내용: <textarea name="content" cols="30" rows="10"></textarea> <br>
-첨부파일: <input type="file" name="uploadFile"> <br><br>
-<input type="submit" value="작성완료">
-<input type="reset" value="다시입력">
-<input type="button" value="목록보기" onclick="location.href='notice.do?service'" >
-
-</form>
-
+  	<%@ include file="../Main/Header2.jsp" %>
+    <div class="container">
+        <h1>공지사항 게시글 작성</h1>
+        <form id="frm_write" method="post" action="writeProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <input type="hidden" name="m_idx" value="${member.m_idx}">
+            <label for="writer">작성자</label>
+            <input type="text" id="writer" name="writer" value="${member.member_name}" disabled>
+            <label for="service">서비스</label>
+            <select name="service" id="service">
+                <option value="menu">옵션 선택</option>
+                <option value="customer">고객 서비스</option>
+                <option value="event">이벤트 당첨</option>
+                <option value="transaction">안전 거래</option>
+                <option value="hazardousgoods">위해 상품</option>
+            </select>
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title">
+            <label for="content">내용</label>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <label for="uploadFile">첨부 파일</label>
+            <input type="file" id="uploadFile" name="uploadFile">
+            <input type="submit" value="작성 완료">
+            <input type="button" value="목록 보기" onclick="location.href='notice.do?service'">
+        </form>
+    </div>
+  	<%@ include file="../Main/Footer2.jsp" %>
 </body>
 </html>

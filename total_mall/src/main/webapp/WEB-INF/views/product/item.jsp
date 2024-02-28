@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../resources/css/product/item.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Product/item1.js"></script>
+
 <script type="text/javascript">
 function discontinuedPost() {
     const ans = confirm("정말로 판매를 중단하겠습니까?");
@@ -141,9 +143,19 @@ function continuedPost() {
 	                <div id="ProductContent">
 	                    <br>
 	                    <h1>${product.product_name}</h1>
-	                    <h2>★★★★★</h2><br>
-	                    <h2>${product.price}원</h2>
-	                    <h2>${product.discount_rate}% 
+	                    <h2>
+	                    <span style="color:orange;">${hEvaluationListStars}</span>
+	                    (${hStarsize})
+	                    ${hEvaluationListAverage}
+	                    </h2><br>
+	                    <h2 class="price">${product.price}원</h2>
+						<c:choose>
+						    <c:when test="${product.discount_rate > 0}">
+						        <h2 style="color:red">${product.discount_rate}% <span style="color:red" class="price">${discountedPrice}</span>원</h2>
+						    </c:when>
+						    <c:otherwise>
+						    </c:otherwise>
+						</c:choose>
 	                    <c:set var="discountedPrice" value="${product.price * (1 - product.discount_rate / 100)}" /></h2><hr>
 						<h3>상품내용</h3>
 						${product.summary}
@@ -271,28 +283,6 @@ function continuedPost() {
         <br>
             <div id="Reviewsbox">
                 <h2>상품평가</h2>
-                
-                
-                <style>
-    .rating-button {
-    	width: 110px;
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        color: #495057;
-        padding: 5px 5px;
-        font-size: 13px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        margin-bottom: -8px;
-        font-weight: 700;
-    }
-
-.rating-button:hover {
-    background-color: #ff7f00;
-    border-color: #ff7f00;
-    color: #fff;
-}
-</style>
                 <button class="rating-button" onclick="changeContent('recent', this)">최근평가순</button>
                 <button class="rating-button" onclick="changeContent('old', this)">오래된평가순</button>
                 <button class="rating-button" onclick="changeContent('high_rating', this)">높은별점순</button>
@@ -357,8 +347,10 @@ function continuedPost() {
 	    <form name="frm_vocWrite" method="post" action="pvocProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
 	        <div id="customerQuestions">
 				<input type="hidden" name="p_idx" value="${product.p_idx}">
-				<input type="hidden" name="m_idx" value="${member.m_idx}">
+				<input type="hidden" name="product_name" value="${product.product_name}">
+				<input type="hidden" name="m_idx" value="${product.m_idx}">
 				<input type="hidden" name="writer" value="${member.member_name}">
+				<input type="hidden" name="email" value="${member.email}">
 				<input type="hidden" name="voc_state" value="1">
 	            <h2>문의사항</h2>
 	            <table>
@@ -424,17 +416,6 @@ function continuedPost() {
     <!-- ---------상품정보--------- -->
     <%@include file="../Main/Footer2.jsp" %>
 </body>
-<script>
-// 서버에서 전달한 메시지를 자바스크립트 변수에 저장
-var msg = "${msg2}";
-function showCartAlert() {
-    // 서버에서 전달한 메시지가 존재하고 비어있지 않다면
-    if (msg && msg.trim() !== "") {
-        alert(msg);
-    } else {
-        alert('장바구니에 상품이 추가되었습니다!');
-    }
-}
-</script>
+<script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 <script type="text/javascript" src="../resources/js/Product/item.js"></script>
 </html>

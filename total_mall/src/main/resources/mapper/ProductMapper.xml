@@ -116,6 +116,11 @@
 			</otherwise>
 		</choose>
 	</select>
+		<!-- 조회수 업데이트: update  -->
+	<update id="updateReadCount" parameterType="_int">
+		update tb_product set read_cnt = (read_cnt + 1) where p_idx = #{p_idx}
+	</update>
+	
 	<select id="getReview" parameterType="map" resultType="reviewVO">
 		select* from tb_review
 		where p_idx= #{p_idx}
@@ -181,13 +186,13 @@
 	<insert id="pvocInsert" parameterType="pvocVO">
 		<choose>
 			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
-				insert into tb_pvoc (m_idx, p_idx, writer, content, originfile_name, savefile_name, voc_state)
-					values(#{m_idx},#{p_idx},#{writer},#{content},#{originfile_name}
+				insert into tb_pvoc (m_idx, p_idx, product_name, writer, email, content, originfile_name, savefile_name, voc_state)
+					values(#{m_idx},#{p_idx},#{product_name},#{writer},#{email},#{content},#{originfile_name}
 					,#{savefile_name},#{voc_state})
 			</when>
 			<otherwise>
-				insert into tb_pvoc (m_idx, p_idx, writer, content, voc_state) 
-					values(#{m_idx},#{p_idx},#{writer},#{content},#{voc_state})
+				insert into tb_pvoc (m_idx, p_idx, product_name, writer, email, content, voc_state) 
+					values(#{m_idx},#{p_idx},#{product_name},#{writer},#{email},#{content},#{voc_state})
 			</otherwise>
 		</choose>
 	</insert>

@@ -3,6 +3,7 @@ package human.smart.totalMall.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.service.customercenter.CustomercenterService;
 import human.smart.totalMall.common.CCPageNav;
@@ -64,8 +66,8 @@ public class CustomercenterController {
 
 	//문의내역 요청 처리
 	@GetMapping("/inquiry.do")
-	public String inquiry(MemberVO memberVO, Model model) {
-		int m_idx = memberVO.getM_idx();
+	public String inquiry(@SessionAttribute("member") MemberVO member, Model model) {
+		int m_idx = member.getM_idx();
 		List<VocVO> voc = cInquiry.getBoard(m_idx);
 		
 		model.addAttribute("inquiry", voc);

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import human.smart.totalMall.common.CCPageNav;
-import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;

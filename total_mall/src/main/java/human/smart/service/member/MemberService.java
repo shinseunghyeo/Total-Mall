@@ -5,6 +5,7 @@ import java.util.List;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
+import human.smart.totalMall.vo.VocVO;
 
 public interface MemberService {
 
@@ -18,4 +19,6 @@ public interface MemberService {
 	default List<MemberVO> getMembers(SearchVO vo){return null;}
 	default MemberVO buyerUpdateProcess(MemberVO memberVO) {return null;}
 	default int cancel(int m_idx) {return 0;}
+	default List<VocVO> getInquirylist(){return null;}
+	default List<VocVO> getInquirylistp(){return null;}
 }

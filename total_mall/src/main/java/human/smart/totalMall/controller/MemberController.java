@@ -26,6 +26,7 @@ import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
+import human.smart.totalMall.vo.VocVO;
 import lombok.Setter;
 
 @Controller
@@ -33,7 +34,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mCancel;
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mCancel, Inquiry;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService pCon, pDiscon, myoList, pTotalCount,pPage;
@@ -469,6 +470,16 @@ public Map<String, String> getCategorieMap() {
 	return categorieMap;
 }
 
+//문의사항 리스트
+@GetMapping("/inquirylist.do")
+public String getInquirylist(Model model) {
+	List<VocVO> voclist = Inquiry.getInquirylist();
+	model.addAttribute("inquirylist", voclist);
+	List<VocVO> pvoclist = Inquiry.getInquirylistp();
+	model.addAttribute("pinquirylist", pvoclist);
+	
+	return "member/inquirylist";
+}
 
 
 }
