@@ -81,6 +81,13 @@
 		</choose>
 	</select>
 	
+	
+	<!-- 회원등급 변경 -->
+	<update id="gradeUpdate" parameterType="memberVO">
+		update tb_member set grade=#{grade}, last_modified_date=now()
+				         where m_idx=#{m_idx}
+	</update>
+	
 	<!-- 일반 회원 회원정보 수정하기: update -->
 	<update id="buyerUpdateProcess" parameterType="memberVO">
 		update tb_member set member_pw=#{member_pw}, member_name=#{member_name}, handphone=#{handphone}, address1=#{address1},

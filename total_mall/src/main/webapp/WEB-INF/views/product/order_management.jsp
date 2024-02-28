@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,12 @@
 </head>
 <body>
 <body>
-	<div id="nav_back"></div>
-	<div id="buyer_home">
-		<div id="home_wrap">
+	
+	<div id="order_management">
+				<h1>전체 주문내역</h1>
+		<div id="order_wrap">
 
-			<h1>전체 주문내역</h1>
+
 
 
 
@@ -42,8 +44,10 @@
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
+					${orderList2[vs.count-1].o_idx}
 						<div class="new-img-div">
-							<img src="Mallimg/냉동.png" alt="" class="new-img">
+						
+							<img src="../resources/uploads/${orderList2[vs.count-1].save_file_name1}">
 						</div>
 						<div class="new-name">
 							<p>
@@ -55,7 +59,7 @@
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList2[vs.count-1].c_update_time}"
+								<fmt:formatDate value="${orderList2[vs.count-1].o_update_time}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</p>
 						</div>
@@ -64,17 +68,19 @@
 						</div>
 						<div class="new-price">
 							<p>
-								<c:if test="${not empty orderList[vs.count-1].price}">
-									<fmt:formatNumber value="${orderList[vs.count-1].price}"
+								<c:if test="${not empty orderList2[vs.count-1].price}">
+									<fmt:formatNumber value="${orderList2[vs.count-1].price * orderList2[vs.count-1].c_quantity}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
 							</p>
 						</div>
 						<div class="new-another">
-							<input type="button" value="리뷰 작성" class="new-another-button">
-							<input type="button" value="문의 하기" class="new-another-button">
+						<c:if test="${not empty orderList2[vs.count-1].o_idx}">
+							<input type="button" value="주문상태 변경" class="new-another-button">
+							<input type="button" value="송장번호 입력" class="new-another-button">
 							<input type="button" value="주문 상세보기" class="new-another-button">
+						</c:if>
 						</div>
 					</div>
 				</c:forEach>

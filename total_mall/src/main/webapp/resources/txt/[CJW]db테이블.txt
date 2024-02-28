@@ -23,3 +23,12 @@ CREATE TABLE tb_product (
     KEY tb_product_fk (m_idx),
     CONSTRAINT tb_product_fk FOREIGN KEY (m_idx) REFERENCES tb_member (m_idx)
   );
+
+  
+CREATE VIEW orderList AS
+SELECT c.c_idx, p.p_idx, p.m_idx, c.o_idx, c.c_quantity, o.o_update_time, 
+	o.totalprice, c.payment_or_not, p.product_name, p.price, p.discount_rate, p.save_file_name1, c.m_idx AS mMIdx
+FROM 
+    tb_cart c 
+    LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
+    LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx;

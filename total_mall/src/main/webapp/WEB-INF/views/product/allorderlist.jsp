@@ -2,20 +2,22 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인회원 마이페이지</title>
+<title>관리자 주문조회페이지</title>
 
 </head>
 <body>
 <body>
-	<div id="nav_back"></div>
-	<div id="buyer_home">
-		<div id="home_wrap">
+	
+	<div id="order_management">
+				<h1>전체 주문내역</h1>
+		<div id="order_wrap">
 
-			<h1>전체 주문내역</h1>
+
 
 
 
@@ -42,41 +44,40 @@
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
+					${allorderList[vs.count-1].o_idx}
 						<div class="new-img-div">
-						<p>${orderList[vs.count-1].o_idx}</p>
-						<c:if test="${not empty orderList[vs.count-1].save_file_name1}">
-							<img src="../resources/uploads/${orderList[vs.count-1].save_file_name1}" alt="${orderList[vs.count-1].product_name}" class="new-img">
-						</c:if>
+						
+							<img src="../resources/uploads/${allorderList[vs.count-1].save_file_name1}" alt="${allorderList[vs.count-1].product_name}">
 						</div>
 						<div class="new-name">
 							<p>
 								<a
-									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList[vs.count-1].p_idx}">${orderList[vs.count-1].product_name}
+									href="${pageContext.request.contextPath}/product/item.do?p_idx=${allorderList[vs.count-1].p_idx}">${allorderList[vs.count-1].product_name}
 								</a>
+								
 							</p>
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList[vs.count-1].c_update_time}"
+								<fmt:formatDate value="${allorderList[vs.count-1].o_update_time}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</p>
 						</div>
 						<div class="new-quantity">
-							<p>${orderList[vs.count-1].c_quantity}</p>
+							<p>${allorderList[vs.count-1].c_quantity}</p>
 						</div>
 						<div class="new-price">
 							<p>
-								<c:if test="${not empty orderList[vs.count-1].price}">
-									<fmt:formatNumber value="${orderList[vs.count-1].price}"
+								<c:if test="${not empty allorderList[vs.count-1].price}">
+									<fmt:formatNumber value="${allorderList[vs.count-1].price * allorderList[vs.count-1].c_quantity}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
 							</p>
 						</div>
 						<div class="new-another">
-						<c:if test="${not empty orderList[vs.count-1].m_idx}">
-							<input type="button" value="리뷰 작성" class="new-another-button">
-							<input type="button" value="문의 하기" class="new-another-button">
+						<c:if test="${not empty allorderList[vs.count-1].o_idx}">
+							<input type="button" value="주문상태 변경" class="new-another-button">
 							<input type="button" value="주문 상세보기" class="new-another-button">
 						</c:if>
 						</div>

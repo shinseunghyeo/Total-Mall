@@ -41,7 +41,12 @@ public interface ProductService {
 	default List<ProductVO> getProducts3(SearchVO vo){return null;}
 	default int p_discon(){return 0;}
 	default int p_con(){return 0;}
-	 
+	default List<CartVO> getOrders2(int m_idx){return null;}
+	default List<ProductVO> getProducts4(){return null;}
+	default List<CartVO> getOrders3(){return null;}
+	default List<CartVO> getOrders_1(int m_idx){return null;} 
+	
+	
 	
 	default int cartPaymentUpdate(int m_idx) {return 1;}
 	default int orderInsert(OrderVO vo) {return 0;}

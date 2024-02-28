@@ -161,6 +161,8 @@ function continuedPost() {
 						${product.summary}
 						<c:if test="${member.m_idx eq product.m_idx}">
 						<a href="modify.do?p_idx=${product.p_idx}"><input type="button" value="상품수정"></a>
+						</c:if>
+						<c:if test="${member.m_idx eq product.m_idx || member.grade eq 8}">
 						<c:choose>
 						<c:when test="${product.p_status eq 0}">
 							<input type="button" value="판매중단" onclick="discontinuedPost()" >

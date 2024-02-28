@@ -33,7 +33,9 @@ public class ProductController {
 
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview,
-    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,bUpdateCount,
+    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,myoList2,
+    		allpList, alloList, myoList_1,
+    		bUpdateCount,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
 
@@ -345,7 +347,9 @@ public class ProductController {
 		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
 	}
 	
-	//전체 주문내역
+
+	
+	//개인회원 전체 주문내역
 	@GetMapping("/order_history.do")
 	public String orderlist(int m_idx, Model model) {
   		List<CartVO> orderList = myoList.getOrders(m_idx);
@@ -354,6 +358,47 @@ public class ProductController {
 	}
 	
 	
+	// 기업회원 전체 주문내역
+	@GetMapping("/order_management.do")
+	public String orderlist2(@SessionAttribute("member") MemberVO member, Model model) {
+	    // 세션에서 가져온 member가 null이면 로그인 페이지로 이동
+	    if (member == null || member.getM_idx() == 0) {
+	        return "redirect:/member/login.do";
+	    }
+
+	    // m_idx를 이용하여 주문내역 조회
+	    int m_idx = member.getM_idx();
+	    List<CartVO> orderList2 = myoList2.getOrders2(m_idx);
+
+	    // 모델에 데이터 추가
+	    model.addAttribute("m_idx", m_idx);
+	    model.addAttribute("orderList2", orderList2);
+
+	    // 주문내역 페이지로 이동
+	    return "product/order_management";
+	}
+
+	//관리자 전체 상품내역
+	@GetMapping("/allplist.do")
+	public String allpList(Model model) {
+  		List<ProductVO> allList = allpList.getProducts4();
+		model.addAttribute("allList", allList);
+		return "product/allplist";
+	}
+
+	// 기업회원 전체 주문내역
+	@GetMapping("/allorderlist.do")
+	public String allolist(Model model) {
+	   
+	    List<CartVO> allorderList = alloList.getOrders3();
+	    model.addAttribute("allorderList", allorderList);
+
+	    // 주문내역 페이지로 이동
+	    return "product/allorderlist";
+	}
+
+
+
 	
 	
 	

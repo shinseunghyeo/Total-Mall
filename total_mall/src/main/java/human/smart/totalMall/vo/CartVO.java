@@ -2,9 +2,6 @@ package human.smart.totalMall.vo;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
 
 @Data
@@ -16,6 +13,8 @@ public class CartVO {
 	private int c_quantity;
 	private Date c_start_date;
 	private Date c_update_time;
+	private Date o_update_time;
+	private int totalprice;
 	
 	//결제여부
 	private int payment_or_not;
@@ -25,4 +24,7 @@ public class CartVO {
 	private int price;
 	private int discount_rate;
 	private String save_file_name1;
+	
+	 // 추가: mMIdx 필드
+    private int mMIdx;
 }

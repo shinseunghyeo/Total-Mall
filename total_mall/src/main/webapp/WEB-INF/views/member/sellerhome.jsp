@@ -51,8 +51,8 @@
 							<div class="inner_box">
 								<h2>상품관리</h2>
 								<ul>
-									<li><a href="../product/p_con.do">판매중인 상품 수 <b>${p_con} &gt;</b></a></li>
-									<li><a href="../product/p_discon.do">판매중단 상품 수 <b>${p_discon} &gt;</b></a></li>
+									<li><a href="#">판매중인 상품 수 <b>${p_con} &gt;</b></a></li>
+									<li><a href="#">판매중단 상품 수 <b>${p_discon} &gt;</b></a></li>
 									<li><a href="#">품절/기한 만료 상품 수 <b>10 &gt;</b></a></li>
 								</ul>
 							</div>

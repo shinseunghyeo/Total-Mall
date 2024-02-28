@@ -4,6 +4,7 @@ create table tb_cart (
 	c_idx int unsigned not null auto_increment,
     p_idx int unsigned not null, -- 상품 번호
     m_idx int unsigned not null,
+    o_idx int,
     c_quantity int,
     c_start_date datetime default now(),
     c_update_time datetime default now(),

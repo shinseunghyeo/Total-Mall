@@ -68,8 +68,16 @@ $(function () {
         };
 
         if ($(this).is(".admin_nav_ul_li:eq(2)")) {
-            loadContent("adminmypage/product/totalplist.do");
+            loadContent("adminmypage/product/allplist.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(2))").css({
+                backgroundColor: "rgb(158, 158, 158)",
+                lightCss
+            });
+        };
+        
+        if ($(this).is(".admin_nav_ul_li:eq(3)")) {
+            loadContent("adminmypage/product/allorderlist.do");
+            $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(3))").css({
                 backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
