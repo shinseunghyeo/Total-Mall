@@ -40,13 +40,6 @@
 		<a href="${pageContext.request.contextPath}/customercenter/write.do" style="text-decoration: none;"><input type="button" value="글등록"style="margin-left: auto;width:150px;height:50px;font-weight:bold"></a>
     </div>
     <div id="NoticeLine">
-    <style>
-    #NoticeMenu a.active {
-    color: red; /* 활성 링크의 색상을 변경합니다. */
-    text-decoration: underline; /* 활성 링크에 밑줄을 추가합니다. */
-}
-    </style>
-
         <div id="NoticeMenubox">
             <div id="NoticeMenu">
                 <a href="${pageContext.request.contextPath}/customercenter/notice.do?service">전체</a>
@@ -56,29 +49,6 @@
                 <a href="${pageContext.request.contextPath}/customercenter/notice.do?service=hazardousgoods">위해상품</a>
             </div>
         </div>
-<script>
-    // 페이지가 로드될 때 실행되는 함수
-    window.onload = function() {
-        // 현재 URL에서 'service' 매개변수 값을 가져옴
-        var urlParams = new URLSearchParams(window.location.search);
-        var service = urlParams.get('service');
-
-        // 모든 링크 요소를 가져옴
-        var links = document.querySelectorAll('#NoticeMenu a');
-
-        // 각 링크 요소에 대해 반복
-        links.forEach(function(link) {
-            // href 속성에서 'service' 매개변수 값을 가져옴
-            var linkService = new URL(link.href).searchParams.get('service');
-
-            // 만약 'service' 값이 현재 서비스와 같다면 색상을 변경
-            if (linkService === service) {
-                link.style.color = '#ff0000'; // 원하는 색상으로 변경
-                link.style.textDecoration = 'underline'; // 원하는 텍스트 꾸밈 설정
-            }
-        });
-    };
-</script>
         <div id="NoticeContentbox">
             <c:choose>
 				<c:when test="${param.service == ''}">
@@ -136,4 +106,5 @@
     <!-- ---------고객센터--------- -->
   	<%@ include file="../Main/Footer2.jsp" %>
 </body>
+<script type="text/javascript" src="../resources/js/customercenter/notice.js"></script>
 </html>
