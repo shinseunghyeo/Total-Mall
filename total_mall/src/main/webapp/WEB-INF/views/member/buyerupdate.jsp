@@ -84,16 +84,6 @@
                     </div>
                     <div class="input-text">
                         <div class="input-text1">
-                            <p>이메일 인증 번호</p>
-                        </div>
-                        <div class="input-text2">
-                            <input type="text" name="" id="email2">
-                            <input type="button" value="인증번호 확인" id="email-button2">
-                            <p id="email2_test">이메일 번호가 맞지 않습니다.</p>
-                        </div>
-                    </div>
-                    <div class="input-text">
-                        <div class="input-text1">
                             <p>주소</p>
                         </div>
                         <div class="input-text2">

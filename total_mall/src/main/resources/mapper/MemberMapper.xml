@@ -96,6 +96,16 @@
 				         where m_idx=#{m_idx}
 	
 	</update>
+	<!-- 기업 회원 회원정보 수정하기: update -->
+	<update id="sellerUpdateProcess" parameterType="memberVO">
+		update tb_member set member_pw=#{member_pw}, member_name=#{member_name}, handphone=#{handphone}, address1=#{address1},
+							 address2=#{address2}, address3=#{address3}, representative_name=#{representative_name},
+							 company_number=#{company_number}, mutual=#{mutual}, mail_order_number=#{mail_order_number},
+							 account1=#{account1}, account2=#{account2}, depositor_name=#{depositor_name},
+		                     last_modified_date=now()
+				         where m_idx=#{m_idx}
+	
+	</update>
 	
 	<!-- 일반 회원 회원탈퇴하기: update -->
 	<update id="cancel" parameterType="_int">

@@ -22,4 +22,5 @@ public interface MemberService {
 	default List<VocVO> getInquirylist(){return null;}
 	default List<VocVO> getInquirylistp(){return null;}
 	default int gradeUpdate(MemberVO vo){return 0;}
+	default MemberVO sellerUpdateProcess(MemberVO memberVO) {return null;}
 }
