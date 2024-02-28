@@ -190,37 +190,6 @@ function continuedPost() {
     </div>
     <!-- ---------상품상세보기--------- -->
     <!-- ---------상품정보--------- -->
-    <div id="TogetherProductLine">
-        <span>
-            <h2>함께보기 연관 상품</h2>
-            <h2>1/3</h2>
-        </span>
-        <hr>
-        <div id="TogetherProductcontainer">
-            <img onclick="totallink_Left()" style="width: 5%;" src="../resources/img/Mallimg/왼쪽 아이콘.png">
-            <div id="TogetherProductbox">
-                <div id="a1" style="margin-left: -1000px;">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                </div>
-                <div id="a2" style="margin-left: 0px;">
-                    <img src="../resources/img/Mallimg/삼겹살3.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                </div>
-                <div id="a3" style="margin-left: 1000px;">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살2.jpg">
-                    <img src="../resources/img/Mallimg/삼겹살3.jpg">
-                </div>
-            </div>
-            <img onclick="totallink_Right()" style="width: 5%;" src="../resources/img/Mallimg/오른쪽 아이콘.png">
-        </div>
-    </div><br><br>
     <div id="DetailsLine">
         <div id="DetailsBtnLine">
             <div class="pageColor pageColor_on" onclick="product_On('productDetails')">상세정보</div>
