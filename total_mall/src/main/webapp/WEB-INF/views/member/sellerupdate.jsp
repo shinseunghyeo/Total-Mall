@@ -158,10 +158,10 @@
                         </div>
                         <div class="input-text2">
                             <input type="text" name="account1" id="account" value="${member.account1}">
-                            <select name="" id="account_select">
-                                <option value="">농협</option>
-                                <option value="">국민</option>
-                                <option value="">신한은행</option>
+                            <select name="account2" id="account_select">
+                                <option value="nonghyup">농협</option>
+                                <option value="kbstar">국민</option>
+                                <option value="shinhan">신한은행</option>
                             </select>
                             <p>계좌가 올바르지 않습니다.</p>
                         </div>
