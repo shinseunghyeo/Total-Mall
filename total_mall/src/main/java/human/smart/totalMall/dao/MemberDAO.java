@@ -74,11 +74,20 @@ public class MemberDAO {
 		return sqlSession.update(MAPPER+".gradeUpdate", vo);
 	}
 	
-	//회원정보 수정하기
+	//개인회원 회원정보 수정하기
 	public MemberVO BuyerUpdateProcess(MemberVO vo) throws SQLException{
 		MemberVO newVO = null;
 		
 		if(sqlSession.update(MAPPER+".buyerUpdateProcess", vo) == 1) {
+			newVO = getMember(vo.getM_idx());
+		}
+		return newVO;
+	}
+	//기업회원 회원정보 수정하기
+	public MemberVO SellerUpdateProcess(MemberVO vo) throws SQLException{
+		MemberVO newVO = null;
+		
+		if(sqlSession.update(MAPPER+".sellerUpdateProcess", vo) == 1) {
 			newVO = getMember(vo.getM_idx());
 		}
 		return newVO;

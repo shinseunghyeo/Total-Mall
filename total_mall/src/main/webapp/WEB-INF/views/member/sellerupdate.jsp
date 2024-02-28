@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>기업회원 회원정보변경</title>
+<script src="../resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Member/sellerupdate.js"></script>
 </head>
 <body>
     <div id="update_info">
-        <form action="">
+        <form name="frm_join" method="post" action="sellerUpdateProcess.do">
             <div id="section-header">
                 <div id="section-header1">
                     <h1>회원 정보 수정</h1>
@@ -58,7 +60,7 @@
                             <p>이름</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="member_name" id="" value="${member.member_name }" placeholder="이름을 적어주세요">
+                            <input type="text" name="member_name" value="${member.member_name }" placeholder="이름을 적어주세요">
                             <p id="name_test">이름을 적어주세요</p>
                         </div>
                     </div>
@@ -67,7 +69,7 @@
                             <p>휴대폰</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="handphone" id="" value="${member.handphone}" placeholder="010-숫자4자리-숫자4자리로 입력해야 합니다">
+                            <input type="text" name="handphone" value="${member.handphone}" placeholder="010-숫자4자리-숫자4자리로 입력해야 합니다">
                             <p id="handphone_test">010-숫자4자리-숫자4자리로 입력해야 합니다</p>
                         </div>
                     </div>
@@ -79,16 +81,6 @@
                             <input type="text" name="email" id="email" value="${member.email}" placeholder="이메일 형식에 맞춰서 적어주세요" disabled>
                             <input type="button" value="이메일 인증" id="email-button">
                             <p id="email_test">이메일 형식이 맞지 않습니다.</p>
-                        </div>
-                    </div>
-                    <div class="input-text">
-                        <div class="input-text1">
-                            <p>이메일 인증 번호</p>
-                        </div>
-                        <div class="input-text2">
-                            <input type="text" name="" id="email2">
-                            <input type="button" value="인증번호 확인" id="email-button2">
-                            <p id="email2_test">이메일 번호가 맞지 않습니다.</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -121,7 +113,7 @@
                             <p>대표자 명</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="representative_name" id="" value="${member.representative_name}" placeholder="">
+                            <input type="text" name="representative_name" value="${member.representative_name}" placeholder="">
                             <p>대표자명이 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -130,7 +122,7 @@
                             <p>사업자 등록번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="company_number" id=""  value="${member.company_number}" placeholder="" disabled>
+                            <input type="text" name="company_number" value="${member.company_number}" placeholder="">
                             <p>사업자 등록번호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -139,7 +131,7 @@
                             <p>상호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="mutual" id="" value="${member.mutual}" disabled>
+                            <input type="text" name="mutual" value="${member.mutual}">
                             <p>상호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -148,7 +140,7 @@
                             <p>통신판매번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="mail_order_number" id="" value="${member.mail_order_number}" disabled>
+                            <input type="text" name="mail_order_number" value="${member.mail_order_number}">
                             <p>통신판매번호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -171,7 +163,7 @@
                             <p>예금주명</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="">
+                            <input type="text" name="depositor_name" value="${member.depositor_name}">
                             <p>예금주명이 맞지 않습니다</p>
                         </div>
                     </div>
@@ -185,5 +177,5 @@
     </div>
 
 </body>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

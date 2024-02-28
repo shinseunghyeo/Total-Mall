@@ -63,7 +63,7 @@
 				                            </form>
 				                            <div class="cart_item-5">
 				                                <div>
-				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }</p>
+				                                    <p class="price">${cartList[i-1].price*cartList[i-1].c_quantity }</p>
 				                                </div>
 				                                <div>
 				                                	<form class="deleteForm" id="deleteForm-${i}" method="get" action="cartDelete.do">
@@ -201,5 +201,6 @@ if (ans) {
 }
 /* 장바구니 아이템 삭제 스크립트 */
 </script>
+<script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 <script type="text/javascript" src="../resources/js/Product/cart.js"></script>
 </html> 

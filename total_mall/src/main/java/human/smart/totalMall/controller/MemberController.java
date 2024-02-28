@@ -34,7 +34,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mCancel, Inquiry,
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
 				  mGrade;
 	
 	@Setter(onMethod_={ @Autowired })
@@ -232,6 +232,19 @@ public class MemberController {
 		}
 		
 		return viewPage;//views/member폴더에 대한 경로 추가
+	}
+	//기업회원 회원정보 변경
+	@PostMapping("/sellerUpdateProcess.do")
+	public String sellerUpdateProcess(MemberVO memberVO, HttpServletRequest request, Model model) {
+		
+		MemberVO newVO = mSellerUpdateProcess.sellerUpdateProcess(memberVO);
+		
+		if(newVO != null) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("member");
+			session.setAttribute("member", newVO);
+		}
+		return "member/sellermypage";
 	}
 	
 /////////////////////////////// 기업회원 마이페이지 홈 ///////////////////////////////	
