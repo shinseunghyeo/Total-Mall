@@ -25,7 +25,7 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form name="frm_join" method="post" action="sellerJoinProcess3.do">
+                <form name="frm_join" method="post" action="sellerJoinProcess3.do" onsubmit="return validateForm()">
                 	<input type="hidden" name="member_id" value="${memberVO.member_id}" />
                 	<input type="hidden" name="member_pw" value="${memberVO.member_pw}" />
                 	<input type="hidden" name="member_name" value="${memberVO.member_name}" />

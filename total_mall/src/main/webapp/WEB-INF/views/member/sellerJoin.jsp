@@ -25,7 +25,7 @@
                         <p>2 정보입력</p>
                     </div>
                 </div>
-                <form name="frm_join" method="post" action="sellerJoinProcess2.do">
+                <form name="frm_join" method="post" action="sellerJoinProcess2.do" onsubmit="return validateForm()">
                 	<input type="hidden" name="categorie" value="${categorie.categorie}" />
                     <div id="white-board">
                         <div id="white-board-header">
