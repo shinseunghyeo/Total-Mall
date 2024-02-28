@@ -93,8 +93,22 @@
 				</c:choose>
 				<a href="${pageContext.request.contextPath}/product/cart.do?m_idx=${member.m_idx}"> <img
 					src="resources/img/Headerimg/장바구니 아이콘.png" width="40">
-				</a> <img onclick="ServeMall()" src="resources/img/Headerimg/서브 아이콘.png"
-					width="40">
+				</a> 
+                <div>
+		            <c:choose>
+		            	<c:when test="${not empty member }">
+		            		<a href="">${member.member_name }님</a><br>
+			                <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a><br>
+			                <a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
+		            	</c:when>
+		            	<c:otherwise>
+		            		<a href="${pageContext.request.contextPath}/member/login.do">로그인</a><br>
+			                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a><br>
+			                <a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
+		            	</c:otherwise>
+		            </c:choose>
+	            </div>
+					
 			</div>
 		</div>
 		<!-- 사이트 높이 -->
@@ -378,44 +392,7 @@
 			</div>
 		</div>
 		<!-- ---------HEADER CENTER--------- -->
-		<nav id="NavLine">
-			<div id="ServiceLine">
-				<img src="resources/img/Headerimg/겨울.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/WinterPage.do">겨울축제</a>
-				<img src="resources/img/Headerimg/드론.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/DronPage.do">드론배송</a>
-				<img src="resources/img/Headerimg/폭탄.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/TotalboomPage.do">토탈붐</a>
-				<img src="resources/img/Headerimg/곰인형.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/DrowingPage.do">드로윙</a>
-				<img src="resources/img/Headerimg/지폐.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/ThousandPage.do">1000상품</a>
-				<img src="resources/img/Headerimg/시계.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/Timemall.do">타임몰</a> <img
-					src="resources/img/Headerimg/달력.png" width="20"><a
-					href="${pageContext.request.contextPath}/nav/Attendance.do">출석체크</a>
-			</div>
-			<div id="LogLine">
-				<c:choose>
-					<c:when test="${not empty member }">
-						<a href="">${member.member_name }님</a>
-						<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-						<a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
-					</c:when>
-					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
-						<a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-						<a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</nav>
-		<div id="SearchMenu">
-			<button onclick="ServeMallcolorOff()">닫기</button>
-			<div>
-				<h2>최근 본 상품</h2>
-			</div>
-		</div>
+
 	</header>
 	<!-- ---------HEADER--------- -->
 </body>
