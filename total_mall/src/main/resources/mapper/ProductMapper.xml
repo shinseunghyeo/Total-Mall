@@ -16,33 +16,34 @@
 		select * from tb_product
 		<choose>
 			<when test="_parameter == 'food'">
-				WHERE category IN ('meat', 'vegetable', 'fruits', 'frozen');
+				WHERE category IN ('meat', 'vegetable', 'fruits', 'frozen')
 			</when>
 			<when test="_parameter == 'homeDeco'">
-				WHERE category IN ('kitchen', 'curtain');
+				WHERE category IN ('kitchen', 'curtain')
 			</when>
 			<when test="_parameter == 'hobby'">
-				WHERE category IN ('games', 'lego', 'petsupplies');
+				WHERE category IN ('games', 'lego', 'petsupplies')
 			</when>
 			<when test="_parameter == 'dailyNecessity'">
-				WHERE category IN ('dailynecessities', 'bodyhair');
+				WHERE category IN ('dailynecessities', 'bodyhair')
 			</when>
 			<when test="_parameter == 'clothes'">
-				WHERE category IN ('men', 'women');
+				WHERE category IN ('men', 'women')
 			</when>
 			<when test="_parameter == 'book'">
-				WHERE category IN ('education', 'novels', 'overseas');
+				WHERE category IN ('education', 'novels', 'overseas')
 			</when>
 			<when test="_parameter == 'furniture'">
-				WHERE category IN ('living', 'bedding');
+				WHERE category IN ('living', 'bedding')
 			</when>
 			<when test="_parameter == 'homeAppliances'">
-				WHERE category IN ('homeAppliances', 'digital');
+				WHERE category IN ('homeAppliances', 'digital')
 			</when>
 			<otherwise>
-				WHERE category IN ('soccer', 'golf');
+				WHERE category IN ('soccer', 'golf')
 			</otherwise>
 		</choose>
+				and p_status = 0;
 	</select>
 
 
@@ -51,31 +52,31 @@
 		select * from tb_product 
 		<choose>
 			<when test="_parameter == 1">
-				WHERE category IN ('meat', 'vegetable', 'fruits', 'frozen');
+				WHERE category IN ('meat', 'vegetable', 'fruits', 'frozen')
 			</when>
 			<when test="_parameter == 2">
-				WHERE category IN ('kitchen', 'curtain');
+				WHERE category IN ('kitchen', 'curtain')
 			</when>
 			<when test="_parameter == 3">
-				WHERE category IN ('games', 'lego', 'petsupplies');
+				WHERE category IN ('games', 'lego', 'petsupplies')
 			</when>
 			<when test="_parameter == 4">
-				WHERE category IN ('dailynecessities', 'bodyhair');
+				WHERE category IN ('dailynecessities', 'bodyhair')
 			</when>
 			<when test="_parameter == 5">
-				WHERE category IN ('men', 'women');
+				WHERE category IN ('men', 'women')
 			</when>
 			<when test="_parameter == 6">
-				WHERE category IN ('education', 'novels', 'overseas');
+				WHERE category IN ('education', 'novels', 'overseas')
 			</when>
 			<when test="_parameter == 7">
-				WHERE category IN ('living', 'bedding');
+				WHERE category IN ('living', 'bedding')
 			</when>
 			<when test="_parameter == 8">
-				WHERE category IN ('homeAppliances', 'digital');
+				WHERE category IN ('homeAppliances', 'digital')
 			</when>
 			<otherwise>
-				WHERE category IN ('soccer', 'golf');
+				WHERE category IN ('soccer', 'golf')
 			</otherwise>
 		</choose>
 	</select>

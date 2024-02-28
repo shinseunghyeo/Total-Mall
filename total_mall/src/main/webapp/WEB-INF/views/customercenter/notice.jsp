@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
         <div id="NoticeMenubox">
             <div id="NoticeMenu">
                 <a href="${pageContext.request.contextPath}/customercenter/notice.do?service">전체</a>
-                <a href="${pageContext.request.contextPath}/customercenter/notice.do?service=custoer">고객서비스</a>
+                <a href="${pageContext.request.contextPath}/customercenter/notice.do?service=customer">고객서비스</a>
                 <a href="${pageContext.request.contextPath}/customercenter/notice.do?service=event">이벤트당첨</a>
                 <a href="${pageContext.request.contextPath}/customercenter/notice.do?service=transaction">안전거래</a>
                 <a href="${pageContext.request.contextPath}/customercenter/notice.do?service=hazardousgoods">위해상품</a>
@@ -54,7 +55,7 @@
 				<c:when test="${param.service == ''}">
 	            <h3 id="NoticeContenttitle">전체</h3>
 	       		</c:when>
-				<c:when test="${param.service == 'custoer'}">
+				<c:when test="${param.service == 'customer'}">
 	            <h3 id="NoticeContenttitle">고객서비스</h3>
 	       		</c:when>
 				<c:when test="${param.service == 'event'}">
@@ -85,20 +86,32 @@
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-		                <div class="Notceviews">
-							제목: ${noticeList[0].title} <br>
-							내용: ${noticeList[0].content} <br>
-							조회수: ${noticeList[0].read_cnt} <br>
-							작성일: ${noticeList[0].post_date} <br>
-							첨부파일: ${noticeList[0].originfile_name} <br><br>
-						
-							<!-- 수정하기, 삭제하기 버튼은 회원이면서 본인이 작성한 게시글일 때 화면에 출력되도록 함 -->
+		                <div class="Notceviews" style="height:600px"><br>
+							<h1 style="margin:0">${noticeList[0].title}</h1>
+						<fmt:formatDate value="${noticeList[0].post_date}"
+                                    pattern="yyyy-MM-dd HH:mm:ss" /><br><br>
+                                    <c:if test="${not empty noticeList[0].savefile_name}">
+                                    <img style="width: 400px; height: 200px" src="../resources/uploads/${noticeList[0].savefile_name}">
+                                    </c:if><br>
+							${noticeList[0].content} <br>
+		                </div>
+		                <div style="text-align: right;">
+		                							<!-- 수정하기, 삭제하기 버튼은 회원이면서 본인이 작성한 게시글일 때 화면에 출력되도록 함 -->
 							<input type="button" value="수정하기" onclick="location.href='update.do?n_idx=${noticeList[0].n_idx}'">
 							<input type="button" value="삭제하기" onclick="deletePost()">
 							<input type="button" value="목록보기" onclick="location.href='notice.do'" >
-		                </div>
+						</div>
 					</c:otherwise>
 				</c:choose>
+				<c:if test="${not empty noticeList}" >
+					<table style="margin: 0 auto;">
+					    <tr>
+					        <td colspan="6" id="td_paging">
+					            <%@ include file="CCpaging.jsp" %>
+					        </td>
+					    </tr>
+					</table>
+				</c:if><br>
             </div>
         </div>
     </div>
