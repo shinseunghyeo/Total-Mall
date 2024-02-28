@@ -21,8 +21,6 @@ create table tb_cart (
 create table tb_order (
 	o_idx int unsigned not null auto_increment,
     m_idx int unsigned,
-    pay_account varchar(255),
-    pay_account_bank varchar(255),
     totalprice int,
     requests varchar(255),
     o_start_date datetime default now(),

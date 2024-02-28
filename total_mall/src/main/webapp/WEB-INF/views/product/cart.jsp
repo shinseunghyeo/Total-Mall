@@ -80,7 +80,7 @@
 				                                    <p>상품금액</p>
 				                                </div>
 				                                <div style="text-align: center;">
-				                                    <p>${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
+				                                    <p class="price">${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -88,10 +88,10 @@
 				                            </div>
 				                            <div class="cart_item_price-1">
 				                                <div>
-				                                    <p>할인금액</p>
+				                                    <p class="price">할인금액</p>
 				                                </div>
 				                                <div class="discount-div">
-				                                    <p>${(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue() }원</p>
+				                                    <p class="price">${(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue() }원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -113,7 +113,7 @@
 				                                    <p>주문금액</p>
 				                                </div>
 				                                <div>
-				                                    <p>${(cartList[i-1].price*cartList[i-1].c_quantity)-(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()+2500 }원</p>
+				                                    <p class="price">${(cartList[i-1].price*cartList[i-1].c_quantity)-(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()+2500 }원</p>
 				                                </div>
 				                            </div>
 				                            
@@ -148,7 +148,7 @@
 	                            <p>상품금액</p>
 	                        </div>
 	                        <div>
-	                            <h2>${totalOrderAmount }원</h2>
+	                            <h2 class="price">${totalOrderAmount }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_second_div">
@@ -156,7 +156,7 @@
 	                            <p>할인금액</p>
 	                        </div>
 	                        <div> 
-	                            <h2>${totalDiscount }원</h2>
+	                            <h2 class="price">${totalDiscount }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_third_div">
@@ -164,7 +164,7 @@
 	                            <p>배송비</p>
 	                        </div>
 	                        <div>
-	                            <h2>${totalDelivery}원</h2>
+	                            <h2 class="price">${totalDelivery}원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_fourth_div">
@@ -172,7 +172,7 @@
 	                            <p>합계</p>
 	                        </div>
 	                        <div>
-	                            <h2>${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
+	                            <h2 class="price">${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_fifth_div">

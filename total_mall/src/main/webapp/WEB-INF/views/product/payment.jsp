@@ -50,19 +50,19 @@
                     <table>
                         <tr>
                             <td class="purchase-table-div-td1">상품금액</td>
-                            <td>${total_product_price}원</td>
+                            <td class="price">${total_product_price}원</td>
                         </tr>
                         <tr>
                             <td>할인금액</td>
-                            <td>${total_discount}원</td>
+                            <td class="price">${total_discount}원</td>
                         </tr>
                         <tr>
                             <td>배송비</td>
-                            <td>${total_delivery }원</td>
+                            <td class="price">${total_delivery }원</td>
                         </tr>
                         <tr>
                             <td class="purchase-table-td2">총 결제금액</td>
-                            <td class="purchase-table-td2">${total_product_price-total_discount+total_delivery}원</td>
+                            <td class="purchase-table-td2 price">${total_product_price-total_discount+total_delivery}원</td>
                         </tr>
                     </table>
                 </div>
@@ -73,4 +73,5 @@
     <!-- ---------결제페이지--------- -->
 	<%@ include file="../Main/Footer2.jsp" %>
 </body>
+<script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 </html>
