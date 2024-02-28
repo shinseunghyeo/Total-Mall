@@ -377,8 +377,8 @@
 	
 	<!-- 주문테이블 상품 추가하기 -->
 	<insert id="orderInsert" parameterType="OrderVO">
-				insert into tb_order (o_idx, m_idx, pay_account, pay_account_bank, totalprice, requests )
-				values(#{o_idx},#{m_idx}, #{pay_account}, #{pay_account_bank}, #{totalprice}, #{requests})
+				insert into tb_order (o_idx, m_idx, totalprice, requests )
+				values(#{o_idx},#{m_idx}, #{totalprice}, #{requests})
 				<selectKey keyProperty="o_idx" order="AFTER" resultType="int">
 			        SELECT LAST_INSERT_ID() AS o_idx
 			    </selectKey>
