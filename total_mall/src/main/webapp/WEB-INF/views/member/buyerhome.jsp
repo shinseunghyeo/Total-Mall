@@ -16,174 +16,32 @@
 			<img src="../resources/img/Mallimg/마이페이지 광고.png" alt="마이페이지 광고">
 
 			<div id="grade_wrap">
-				<h3>${member.member_name}회원님의 등급은 ${member.grade} 입니다</h3>
+				<h3>${member.member_name}회원님의 등급은 <c:out value="${gradeMap[member.grade.toString()]}" /> 입니다</h3>
 				<br>
 				<div id="bar">
-					<c:choose>
-						<c:when test="${member.grade eq 1}">
-							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
-								width="1.5rem" height="1.5rem" fill="#3498DB"
-								class="bi bi-circle-fill" viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-						</c:when>
-						<c:when test="${member.grade eq 2}">
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
-								width="1.5rem" height="1.5rem" fill="#3498DB"
-								class="bi bi-circle-fill" viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-						</c:when>
-						<c:when test="${member.grade eq 3}">
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
-								width="1.5rem" height="1.5rem" fill="#3498DB"
-								class="bi bi-circle-fill" viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-						</c:when>
-						<c:when test="${member.grade eq 4}">
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
-								width="1.5rem" height="1.5rem" fill="#3498DB"
-								class="bi bi-circle-fill" viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-						</c:when>
-						<c:when test="${member.grade eq 5}">
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg style="opacity: 0" class="svg"
-								xmlns="http://www.w3.org/2000/svg" width="1.5rem"
-								height="1.5rem" fill="#3498DB" class="bi bi-circle-fill"
-								viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
-								width="1.5rem" height="1.5rem" fill="#3498DB"
-								class="bi bi-circle-fill" viewBox="0 0 16 16">
-	                        <circle cx="8" cy="8" r="8" />
-	                    </svg>
-						</c:when>
-					</c:choose>
+<c:forEach var="i" begin="1" end="5">
+    <div style="width: 1.5rem; height: 1.5rem;">
+        <c:choose>
+            <c:when test="${member.grade eq i}">
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#3498DB"
+                    class="bi bi-circle-fill" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" />
+                </svg>
+            </c:when>
+            <c:otherwise>
+                <!-- 등급에 맞지 않는 경우 아무 내용도 표시하지 않음 -->
+            </c:otherwise>
+        </c:choose>
+    </div>
+</c:forEach>
 
 				</div>
 				<ul id="grade">
-					<li>등급1</li>
-					<li>등급2</li>
-					<li>등급3</li>
-					<li>등급4</li>
-					<li>등급5</li>
+					<li>Wellcome</li>
+					<li>Bronze</li>
+					<li>Silver</li>
+					<li>Gold</li>
+					<li>Platinum</li>
 				</ul>
 
 			</div>
@@ -221,37 +79,42 @@
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
 						<div class="new-img-div">
-							<img src="Mallimg/냉동.png" alt="" class="new-img">
+						<p>${orderList_1[vs.count-1].o_idx}</p>
+						<c:if test="${not empty orderList_1[vs.count-1].save_file_name1}">
+							<img src="../resources/uploads/${orderList_1[vs.count-1].save_file_name1}" alt="${orderList_1[vs.count-1].product_name}" class="new-img">
+						</c:if>
 						</div>
 						<div class="new-name">
 							<p>
 								<a
-									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList[vs.count-1].p_idx}">${orderList[vs.count-1].product_name}
+									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList_1[vs.count-1].p_idx}">${orderList_1[vs.count-1].product_name}
 								</a>
 							</p>
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList[vs.count-1].c_update_time}"
+								<fmt:formatDate value="${orderList_1[vs.count-1].c_update_time}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</p>
 						</div>
 						<div class="new-quantity">
-							<p>${orderList[vs.count-1].c_quantity}</p>
+							<p>${orderList_1[vs.count-1].c_quantity}</p>
 						</div>
 						<div class="new-price">
 							<p>
-								<c:if test="${not empty orderList[vs.count-1].price}">
-									<fmt:formatNumber value="${orderList[vs.count-1].price}"
+								<c:if test="${not empty orderList_1[vs.count-1].price}">
+									<fmt:formatNumber value="${orderList_1[vs.count-1].price}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
 							</p>
 						</div>
 						<div class="new-another">
+						<c:if test="${not empty orderList_1[vs.count-1].m_idx}">
 							<input type="button" value="리뷰 작성" class="new-another-button">
 							<input type="button" value="문의 하기" class="new-another-button">
 							<input type="button" value="주문 상세보기" class="new-another-button">
+						</c:if>
 						</div>
 					</div>
 				</c:forEach>

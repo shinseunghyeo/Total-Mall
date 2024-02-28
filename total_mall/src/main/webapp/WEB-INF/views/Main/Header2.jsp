@@ -72,7 +72,7 @@
 							<img src="../resources/img/Headerimg/사용자 아이콘.png" width="40">
 						</a>
 					</c:when>
-					<c:when test="${member.grade eq 1}">
+					<c:when test="${member.grade == 1 || member.grade == 2 || member.grade == 3 || member.grade == 4 || member.grade == 5}">
 						<a href="${pageContext.request.contextPath}/member/buyermypage.do">
 							<img src="../resources/img/Headerimg/사용자 아이콘.png" width="40">
 						</a>

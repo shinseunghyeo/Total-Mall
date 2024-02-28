@@ -34,10 +34,12 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mCancel, Inquiry;
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mCancel, Inquiry,
+				  mGrade;
 	
 	@Setter(onMethod_={ @Autowired })
-	ProductService pCon, pDiscon, myoList, pTotalCount,pPage;
+	ProductService pCon, pDiscon, myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
+	myoList_1;
 	
 	@Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
@@ -300,6 +302,25 @@ public String myplist(HttpSession session, Model model) {
     }
 }
 
+//기업회원 주문관리 페이지 처리	
+@GetMapping("/sellermypage/product/order_management.do")
+public String orderlist2(@SessionAttribute("member") MemberVO member, Model model) {
+	// 세션에서 가져온 member가 null이면 로그인 페이지로 이동
+if (member == null || member.getM_idx() == 0) {
+    return "redirect:/member/login.do";
+}
+
+// m_idx를 이용하여 주문내역 조회
+int m_idx = member.getM_idx();
+List<CartVO> orderList2 = myoList2.getOrders2(m_idx);
+
+// 모델에 데이터 추가
+model.addAttribute("m_idx", m_idx);
+model.addAttribute("orderList2", orderList2);
+
+	return "forward:/product/order_management.do?m_idx=" + m_idx;
+}
+
 
 
 
@@ -403,6 +424,16 @@ model.addAttribute("pageNav", pageNav);
 return "member/member_management";
 }
 
+//회원 등급 변경
+@PostMapping("gradeUpdate.do")
+public String gradeUpdate(@ModelAttribute("memberVO")MemberVO vo, Model model) {
+	int gradeUpdate = mGrade.gradeUpdate(vo);
+	int m_idx = vo.getM_idx();
+	String viewPage = (gradeUpdate == 1) ? "redirect:/member/member_management.do" : "redirect:/member/member_management.do";
+
+	return viewPage;// views/member폴더에 대한 경로 추가
+}
+
 
 //관리자 회원관리 처리(ajax)
 @GetMapping("/adminmypage/member/member_management.do")
@@ -469,6 +500,26 @@ public Map<String, String> getCategorieMap() {
 
 	return categorieMap;
 }
+
+//관리자 전체 상품내역 처리(ajax)
+@GetMapping("adminmypage/product/allplist.do")
+public String allpList(Model model) {
+		List<ProductVO> allList = allpList.getProducts4();
+	model.addAttribute("allList", allList);
+	return "product/allplist";
+}
+
+//기업회원 전체 주문내역
+@GetMapping("adminmypage/product/allorderlist.do")
+public String allolist(Model model) {
+
+List<CartVO> allorderList = alloList.getOrders3();
+model.addAttribute("allorderList", allorderList);
+
+// 주문내역 페이지로 이동
+return "product/allorderlist";
+}
+
 
 //문의사항 리스트
 @GetMapping("/inquirylist.do")

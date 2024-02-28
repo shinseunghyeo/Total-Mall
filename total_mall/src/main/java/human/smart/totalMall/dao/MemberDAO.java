@@ -65,11 +65,15 @@ public class MemberDAO {
 	}
 	
 	//회원정보 전체 가져오기
-		public List<MemberVO> getMembers(SearchVO vo){
-			return sqlSession.selectList(MAPPER+".getMembers", vo);
-		}
+	public List<MemberVO> getMembers(SearchVO vo){
+		return sqlSession.selectList(MAPPER+".getMembers", vo);
+	}
 		
-		
+	//회원등급 변경
+	public int gradeUpdate(MemberVO vo) {
+		return sqlSession.update(MAPPER+".gradeUpdate", vo);
+	}
+	
 	//회원정보 수정하기
 	public MemberVO BuyerUpdateProcess(MemberVO vo) throws SQLException{
 		MemberVO newVO = null;
