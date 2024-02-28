@@ -78,4 +78,9 @@ public class MemberDAO {
 		}
 		return newVO;
 	}
+	//회원 탈퇴하기
+	public int cancel(int m_idx) throws SQLException {
+		return sqlSession.update(MAPPER+".cancel", m_idx);
+	}
+	
 }

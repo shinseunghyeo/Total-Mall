@@ -1,5 +1,7 @@
 package human.smart.totalMall.dao;
 
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -155,5 +157,12 @@ public class ProductDAO{
 		return sqlSession.insert(MAPPER + ".cartInsert2", vo);
 	}
 	
+	//주문 테이블 상품 추가 후 장바구니에 O_idx 업데이트 하기
+	public int cartOidxUpdate(int m_idx, int o_idx) throws SQLException{
+		Map<String, Object> map = new HashMap<>();
+		map.put("m_idx", m_idx);
+		map.put("o_idx", o_idx);
+		return sqlSession.update(MAPPER+".cartOidxUpdate", map);
+	}
 
 }

@@ -33,7 +33,7 @@ import lombok.Setter;
 public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
-	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess;
+	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mCancel;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService pCon, pDiscon, myoList, pTotalCount,pPage;
@@ -213,6 +213,23 @@ public class MemberController {
 		return "member/buyermypage";
 	}
 	
+	//개인회원 회원탈퇴
+	@GetMapping("/cancelProcess.do")
+	public String cancelProcess(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("member");
+		int m_idx = vo.getM_idx();
+		
+		String viewPage = "member/buyermypage";//계정삭제 실패시 JSP페이지
+		
+		//MemberCancelService클래스를 이용한 계정삭제 처리
+		if(mCancel.cancel(m_idx) == 1) {
+			session.invalidate(); //세션 초기화
+			viewPage = "redirect:/TotalMall.do";
+		}
+		
+		return viewPage;//views/member폴더에 대한 경로 추가
+	}
 	
 /////////////////////////////// 기업회원 마이페이지 홈 ///////////////////////////////	
 	

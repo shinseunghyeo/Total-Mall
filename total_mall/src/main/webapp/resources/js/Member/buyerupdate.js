@@ -114,5 +114,18 @@ $(function () {
         });
         
     /* 카테고리 3개만 클릭하기 스크립트 */
+    
+    
 });
 /* 유효성 검사 */
+/* 회원탈퇴 스크립트 */
+function cancelMember(){
+	const confirmAns = confirm("정말 회원 탈퇴하시겠습니까?");
+	
+	if(confirmAns){
+		location.href = "cancelProcess.do";
+	}else{
+		history.back();
+	}
+}
+/* 회원탈퇴 스크립트 */

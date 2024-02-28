@@ -17,4 +17,5 @@ public interface MemberService {
 	default MemberVO getMember(int m_idx){return null;}
 	default List<MemberVO> getMembers(SearchVO vo){return null;}
 	default MemberVO buyerUpdateProcess(MemberVO memberVO) {return null;}
+	default int cancel(int m_idx) {return 0;}
 }

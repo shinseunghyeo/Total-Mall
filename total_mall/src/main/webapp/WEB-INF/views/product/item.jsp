@@ -163,7 +163,7 @@ function continuedPost() {
 	                    <span>개수</span>
 	                    <div class="input-wrapper">
 	                        <button id="decrementButton" onclick="decrement()">-</button>
-	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="1" required>
+	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="0" required>
 	                        <button id="incrementButton" onclick="increment()">+</button>
 	                    </div>
 	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button onclick="showCartAlert()">장바구니</button></a>
