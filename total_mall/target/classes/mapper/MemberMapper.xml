@@ -90,4 +90,10 @@
 	
 	</update>
 	
+	<!-- 일반 회원 회원탈퇴하기: update -->
+	<update id="cancel" parameterType="_int">
+		update tb_member set cancel_or_not=1, last_modified_date=now() 
+		                 where m_idx=#{m_idx}
+	</update>
+	
 </mapper>

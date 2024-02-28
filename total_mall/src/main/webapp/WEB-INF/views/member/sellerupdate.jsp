@@ -29,7 +29,9 @@
                             <p>아이디</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" placeholder="" disabled>
+                        	<input type="hidden" name="m_idx" value="${member.m_idx}">
+                        	<input type="hidden" name="member_id" value="${member.member_id}">
+                            <input type="text" name="member_id" id="" value="${member.member_id}" placeholder="" disabled>
                             <p>아이디는 8~12자로 영어,특수문자,숫자를 포함</p>
                         </div>
                     </div>
@@ -38,8 +40,8 @@
                             <p>비밀번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" placeholder="비밀번호는 8~12자">
-                            <p>비밀번호는 8~12자로 영어,특수문자,숫자를 포함</p>
+                            <input type="password" name="member_pw" id="member_pw" placeholder="비밀번호는 8~16자로 영어,특수문자,숫자를 포함">
+                            <p id="pw_test">비밀번호는 8~16자로 영어,특수문자,숫자를 포함</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -47,8 +49,8 @@
                             <p>비밀번호 확인</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="">
-                            <p>비밀번호가 맞지 않습니다.</p>
+                            <input type="password" name="member_pw2" id="member_pw2" placeholder="위 비밀번호와 동일하게 적어주세요">
+                            <p id="pw2_test">비밀번호가 맞지 않습니다.</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -56,8 +58,8 @@
                             <p>이름</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="">
-                            <p>이름을 적어주세요</p>
+                            <input type="text" name="member_name" id="" value="${member.member_name }" placeholder="이름을 적어주세요">
+                            <p id="name_test">이름을 적어주세요</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -65,8 +67,8 @@
                             <p>휴대폰</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="">
-                            <p>알맞은 형식이 아닙니다.</p>
+                            <input type="text" name="handphone" id="" value="${member.handphone}" placeholder="010-숫자4자리-숫자4자리로 입력해야 합니다">
+                            <p id="handphone_test">010-숫자4자리-숫자4자리로 입력해야 합니다</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -74,9 +76,9 @@
                             <p>이메일</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="email">
+                            <input type="text" name="email" id="email" value="${member.email}" placeholder="이메일 형식에 맞춰서 적어주세요" disabled>
                             <input type="button" value="이메일 인증" id="email-button">
-                            <p>이메일 형식이 맞지 않습니다.</p>
+                            <p id="email_test">이메일 형식이 맞지 않습니다.</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -85,7 +87,8 @@
                         </div>
                         <div class="input-text2">
                             <input type="text" name="" id="email2">
-                            <p>이메일 번호가 맞지 않습니다.</p>
+                            <input type="button" value="인증번호 확인" id="email-button2">
+                            <p id="email2_test">이메일 번호가 맞지 않습니다.</p>
                         </div>
                     </div>
                     <div class="input-text">
@@ -93,21 +96,21 @@
                             <p>주소</p>
                         </div>
                         <div class="input-text2">
-                            <input type="button" value="우편번호 찾기" id="address-button">
-                            <input type="text" name="" id="address1">
+                            <input type="button" value="우편번호 찾기" id="address-button" onclick="daumPost();">
+                            <input type="text" name="address1" id="address1" value="${member.address1}" placeholder="우편번호">
                         </div>
                     </div>
                     <div class="input-text">
                         <div class="input-text1"></div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" placeholder="주소">
+                            <input type="text" name="address2" id="address2" value="${member.address2}" placeholder="주소">
                         </div>
                     </div>
                     <div class="input-text">
                         <div class="input-text1"></div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" placeholder="상세주소">
-                            <p>주소 형식이 맞지 않습니다.</p>
+                            <input type="text" name="address3" id="address3" value="${member.address3}" placeholder="상세주소">
+                            <p id="address_test">상세주소를 적어주세요.</p>
                         </div>
                     </div>
                     <div class="input-text"></div>
@@ -118,7 +121,7 @@
                             <p>대표자 명</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" placeholder="" disabled>
+                            <input type="text" name="representative_name" id="" value="${member.representative_name}" placeholder="">
                             <p>대표자명이 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -127,7 +130,7 @@
                             <p>사업자 등록번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" placeholder="" disabled>
+                            <input type="text" name="company_number" id=""  value="${member.company_number}" placeholder="" disabled>
                             <p>사업자 등록번호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -136,7 +139,7 @@
                             <p>상호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" disabled>
+                            <input type="text" name="mutual" id="" value="${member.mutual}" disabled>
                             <p>상호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -145,7 +148,7 @@
                             <p>통신판매번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="" disabled>
+                            <input type="text" name="mail_order_number" id="" value="${member.mail_order_number}" disabled>
                             <p>통신판매번호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -154,7 +157,7 @@
                             <p>계좌</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="" id="account">
+                            <input type="text" name="account1" id="account" value="${member.account1}">
                             <select name="" id="account_select">
                                 <option value="">농협</option>
                                 <option value="">국민</option>

@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div id="button">
-                    <a href="">회원 탈퇴</a>
+                    <a href="javascript:cancelMember();">회원 탈퇴</a>
                     <input type="submit" value="수정">
                 </div>
             </form>

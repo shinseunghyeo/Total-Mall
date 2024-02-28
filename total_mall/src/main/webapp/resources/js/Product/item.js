@@ -1,5 +1,5 @@
 // -----------개수최대값-----------
-var prevValue = "1"; // 이전 값 저장 변수
+var prevValue = "0"; // 이전 값 저장 변수
 
 function checkInput() {
     var inputBox = document.getElementById("inputBox");
