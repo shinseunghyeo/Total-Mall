@@ -84,16 +84,67 @@ $(function () {
     $('input[name="handphone"]').on('focusout', function () {
         checkHandphoneValidity();
     });
-    // submit 이벤트에 전체 유효성 검사 함수 연결
-    frm_join.addEventListener("submit", function (e) {
-        const idValue = frm_join.member_id.value;
-        const idMessage = $("#id_test");
+    
 
-        // 전체 유효성 검사 수행
-        if (!regExp_id.test(idValue)) {
-            e.preventDefault(); // 유효성 검사 실패 시 폼 제출 방지
-            idMessage.css("color", "black").text("아이디를 올바르게 입력해주세요.");
-        }
-    });
+	
 });
 /* 유효성 검사 */
+
+//submit시 전체 유효성 검사 순서대로
+function validateForm() {
+	const regExp_id = /^[A-Za-z0-9~!@#$%^()+|=]{8,12}$/;
+    const regExp_pw = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[~!@#$%^()+|=])[A-Za-z0-9~!@#$%^()+|=]{8,16}$/;
+    const regExp_phone =/^010-\d{4}-\d{4}$/;
+    var memberId = document.forms["frm_join"]["member_id"].value;
+    var memberPw = document.forms["frm_join"]["member_pw"].value;
+    var memberPw2 = document.forms["frm_join"]["member_pw2"].value;
+    var memberName = document.forms["frm_join"]["member_name"].value;
+    var handphone = document.forms["frm_join"]["handphone"].value;
+    var email = document.forms["frm_join"]["email"].value;
+    var address3 = document.forms["frm_join"]["address3"].value;
+	
+	if(memberId.trim() == ""){
+		alert("아이디를 작성해 주세요");
+		return false;
+	}
+    if (!regExp_id.test(memberId)) {
+        alert("아이디는 8~12자로 영어,숫자를 포함해 주세요.");
+        return false;
+    }
+    if(memberPw.trim() == ""){
+		alert("비밀번호를 작성해 주세요");
+		return false;
+	}
+    if (!regExp_pw.test(memberPw)) {
+        alert("비밀번호는 8~16자로 영어,특수문자,숫자를 포함해 주세요.");
+        return false;
+    }
+    if ($("#member_pw").val() != $("#member_pw2").val()) {
+        alert("비밀번호가 맞지 않습니다.");
+        return false;
+    }
+    if (frm_join.member_name.value.length == 0) {
+        alert("이름을 적어주세요.");
+        return false;
+    }
+    if(handphone.trim() == ""){
+		alert("핸드폰 번호를 작성해 주세요");
+		return false;
+	}
+    if (!regExp_phone.test(frm_join.handphone.value)) {
+        alert("010-숫자4자리-숫자4자리로 입력해야 합니다.");
+        return false;
+    }
+    if(email.trim() == ""){
+		alert("이메일을 작성해 주세요");
+		return false;
+	}
+	if(address3.trim() == ""){
+		alert("상세주소를 작성해 주세요");
+		return false;
+	}
+    alert("회원가입이 완료되었습니다.");
+    return true;
+}
+//submit시 전체 유효성 검사 순서대로 끝
+

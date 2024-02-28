@@ -69,17 +69,6 @@ $(function () {
     $('input[name="depositor_name"]').on('focusout', function () {
     	checkDepositorNameValidity();
     });
-    // submit 이벤트에 전체 유효성 검사 함수 연결
-    frm_join.addEventListener("submit", function (e) {
-        const idValue = frm_join.member_id.value;
-        const idMessage = $("#id_test");
-
-        // 전체 유효성 검사 수행
-        if (!regExp_id.test(idValue)) {
-            e.preventDefault(); // 유효성 검사 실패 시 폼 제출 방지
-            idMessage.css("color", "black").text("아이디를 올바르게 입력해주세요.");
-        }
-    });
     /* 유효성 검사 */
     
     window.historyBack = function () {
@@ -88,3 +77,40 @@ $(function () {
 
 });
 
+//submit시 전체 유효성 검사 순서대로
+function validateForm() {
+	var representativeName = document.forms["frm_join"]["representative_name"].value;
+	var companyNumber = document.forms["frm_join"]["company_number"].value;
+	var mutual = document.forms["frm_join"]["mutual"].value;
+	var mailOrderNumber = document.forms["frm_join"]["mail_order_number"].value;
+	var account1 = document.forms["frm_join"]["account1"].value;
+	var depositorName = document.forms["frm_join"]["depositor_name"].value;
+	
+	if(representativeName.trim() == ""){
+		alert("대표자명을 작성해 주세요");
+		return false;
+	}
+	if(companyNumber.trim() == ""){
+		alert("사업자 등록번호를 작성해 주세요");
+		return false;
+	}
+	if(mutual.trim() == ""){
+		alert("상호를 작성해 주세요");
+		return false;
+	}
+	if(mailOrderNumber.trim() == ""){
+		alert("통신판매번호를 작성해 주세요");
+		return false;
+	}
+	if(account1.trim() == ""){
+		alert("계좌를 작성해 주세요");
+		return false;
+	}
+	if(depositorName.trim() == ""){
+		alert("예금주명을 작성해 주세요");
+		return false;
+	}
+	alert("회원가입이 완료되었습니다.");
+    return true;
+}
+//submit시 전체 유효성 검사 순서대로

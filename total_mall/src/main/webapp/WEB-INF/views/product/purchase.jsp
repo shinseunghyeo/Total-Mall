@@ -37,7 +37,7 @@
             <table>
                 <tr class="tr1">
                     <td class="td1">이름</td>
-                    <td>${member.member_name}</td>
+                    <td id="buyerName">${member.member_name}</td>
                 </tr>
                 <tr class="tr2">
                     <td class="td1">배송주소</td>
@@ -120,6 +120,7 @@ $('#button').click(function() {
 	var totalPaymentAmountText = $('#totalPaymentAmount').text();
 	var totalPaymentAmount = parseInt(totalPaymentAmountText.replace(/[^\d]/g, ''), 10);
 	var IMP = window.IMP;
+	var buyerName = $('#buyerName').text();
 	IMP.init("imp35756724");   /* imp~ : 가맹점 식별코드*/
 	IMP.request_pay({
 		pg: 'html5_inicis',
@@ -129,7 +130,7 @@ $('#button').click(function() {
 		name: '여러 상품',
 		amount: totalPaymentAmount,  // 총결제금액을 여기에 사용
 		buyer_email: "",  /*필수 항목이라 "" 로 남겨둠*/
-		buyer_name: '5',
+		buyer_name: buyerName,
 	}, function(rsp) {
 		console.log(rsp);
 		
