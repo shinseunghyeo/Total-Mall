@@ -48,18 +48,12 @@
 			
 				<div id="SearchContainer">
 					<div id="SearchLine">
-						<select>
-							<option value="전체">전체</option>
-							<option value="의류">의류</option>
-							<option value="신발">신발</option>
-						</select>
-						<hr>
 			            <!-- hidden input 추가 -->
 			            <input type="hidden" name="pageNum" value="1">
 			            <input type="hidden" name="pageBlock" value="1">
 			            <!-- hidden input 추가 -->
-						<input type="text" placeholder="검색창" name="searchWord">
-						<button style="border: none; background: none;" type="submit">
+						<input style="margin-left: 10px" type="text" placeholder="원하시는 상품을 검색해 주세요." name="searchWord">
+						<button style="border: none; background: none;margin-left: 45px" type="submit">
 							<img src="resources/img/Headerimg/검색.png">
 						</button>
 					</div>
