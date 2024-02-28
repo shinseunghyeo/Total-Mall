@@ -16,7 +16,8 @@
         <form id="frm_write" method="post" action="writeProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
             <input type="hidden" name="m_idx" value="${member.m_idx}">
             <label for="writer">작성자</label>
-            <input type="text" id="writer" name="writer" value="${member.member_name}" disabled>
+            <input type="text" value="${member.member_name}" disabled>
+            <input type="hidden" name="writer" value="${member.member_name}">
             <label for="service">서비스</label>
             <select name="service" id="service">
                 <option value="menu">옵션 선택</option>
@@ -32,7 +33,6 @@
             <label for="uploadFile">첨부 파일</label>
             <input type="file" id="uploadFile" name="uploadFile">
             <input type="submit" value="작성 완료">
-            <input type="button" value="목록 보기" onclick="location.href='notice.do?service'">
         </form>
     </div>
   	<%@ include file="../Main/Footer2.jsp" %>
