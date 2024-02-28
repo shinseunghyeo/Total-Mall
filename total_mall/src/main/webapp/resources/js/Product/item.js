@@ -166,3 +166,15 @@ function PakgeImg(foodnum, Food){
 // -----------상품정보-----------
 
 /* 즉시 구매 스크립트 */
+
+
+// 서버에서 전달한 메시지를 자바스크립트 변수에 저장
+var msg = "${msg2}";
+function showCartAlert() {
+    // 서버에서 전달한 메시지가 존재하고 비어있지 않다면
+    if (msg && msg.trim() !== "") {
+        alert(msg);
+    } else {
+        alert('장바구니에 상품이 추가되었습니다!');
+    }
+}

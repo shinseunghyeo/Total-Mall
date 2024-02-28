@@ -11,6 +11,7 @@ public class VocVO {
 	private int v_idx; //게시글 번호
 	private int m_idx; //회원 번호
 	private String writer; //작성자
+	private String email; //작성자 이메일
 	private String voc_type; //작성자
 	private String title; //제목
 	private String content; //내용

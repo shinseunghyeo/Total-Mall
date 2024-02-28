@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+        .container {max-width: 600px;margin: 20px auto;background-color: #fff;padding: 30px;
+        border-radius: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);font-family: 'Garamond', serif;}
+        .container h1 {text-align: center;color: #04630798;}
+        .container form {display: flex;flex-direction: column;}
+        .container label {margin-bottom: 10px;font-weight: bold;}
+        .container input[type="text"], .container textarea, .container select 
+        {padding: 10px;margin-bottom: 20px;border: 1px solid #ccc;border-radius: 5px;}
+        .container input[type="file"] {margin-bottom: 20px;}
+        .container select {cursor: pointer;}
+        .container input[type="submit"], .container input[type="button"] 
+        {padding: 10px 20px;background-color: #4CAF50;color: #fff;border: none;border-radius: 5px;cursor: pointer;margin-right: 10px;}
+        .container input[type="submit"]:hover, .container input[type="button"]:hover 
+        {background-color: #45a049;}

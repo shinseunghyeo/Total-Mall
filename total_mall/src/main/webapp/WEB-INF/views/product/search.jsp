@@ -74,7 +74,7 @@
 				                            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}">
 				                            ${productList2[vs.count-1].product_name}
 				                            </a><br>
-				                            ${productList2[vs.count-1].price}원<br>
+				                            <span class="price">${productList2[vs.count-1].price}원</span><br>
 				                            상품내용<br>
 				                            ${productList2[vs.count-1].summary}<br>
 				                        </div>
@@ -100,5 +100,6 @@
     </div>
     <%@include file="../Main/Footer2.jsp" %>
 </body>
+<script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 <script type="text/javascript" src="../resources/js/Product/Search.js"></script>
 </html>

@@ -68,22 +68,25 @@
 	    return true;
 	}
 	</script>
+	
     <form name="frm_vocWrite" method="post" action="vocProcess.do" enctype="multipart/form-data"  onsubmit="return validateForm()">
         <div id="VocWrite">
             <div id="VocWritebox">
                 <div id="VocWritetitlebox">
 					<input type="hidden" name="m_idx" value="${member.m_idx}" >
 					<input type="hidden" name="writer" value="${member.member_name}" >
+					<input type="hidden" name="email" value="${member.email}" >
 					<input type="hidden" name="voc_state" value="1">
                     <select name="voc_type" id="voc_type">
-                        <option value="select">유형을 선택해주세요</option>
-                        <option value="order">주문 상품 문의</option>
-                        <option value="delivery">배송 관련 문의</option>
-                        <option value="payment">결제 관련 문의</option>
-                        <option value="improvement">시스템 개선 의견</option>
-                        <option value="feedback">불편사항 전달</option>
-                        <option value="error">시스템 오류</option>
+                        <option value="유형을 선택해주세요">유형을 선택해주세요</option>
+                        <option value="주문 상품 문의">주문 상품 문의</option>
+                        <option value="배송 관련 문의">배송 관련 문의</option>
+                        <option value="결제 관련 문의">결제 관련 문의</option>
+                        <option value="시스템 개선 의견">시스템 개선 의견</option>
+                        <option value="불편사항 전달">불편사항 전달</option>
+                        <option value="시스템 오류">시스템 오류</option>
                     </select>
+                    
                     <input type="text" id="text" name="title"placeholder="문의 사항을 작성해주세요.">
                 </div>
                 <div id="VocWritecontentbox">

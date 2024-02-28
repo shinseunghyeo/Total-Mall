@@ -95,5 +95,11 @@
 		update tb_member set cancel_or_not=1, last_modified_date=now() 
 		                 where m_idx=#{m_idx}
 	</update>
+ 	<select id="getInquirylist" resultType="VocVO">
+ 		select * from tb_voc
+ 	</select>
+ 	<select id="getInquirylistp" resultType="PvocVO">
+ 		select * from tb_pvoc
+ 	</select>
 	
 </mapper>

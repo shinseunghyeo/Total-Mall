@@ -43,14 +43,14 @@
             <div class="UserTitele">
 			    <c:choose>
 					<c:when test="${empty inquiry}">
-					<h4>최근 문의 내용이 없습니다.</h4>
-					제목: ${member.m_idx} <br>
-					제목: ${inquiry[0].title} <br>
-					내용: ${inquiry.content} <br>
+						<h4>최근 문의 내용이 없습니다.</h4>
 					</c:when>
 					<c:otherwise>
-					제목: ${inquiry.title} <br>
-					내용: ${inquiry.content} <br>
+						<c:forEach var="i" begin="1" end="5">
+						<c:if test="${not empty inquiry[i-1]}">
+						<h2>${inquiry[i-1].voc_type}</h2><hr>
+						</c:if>
+						</c:forEach>
 					</c:otherwise>
 				</c:choose>
             </div>
@@ -59,8 +59,19 @@
             <div id="InquiryContent">
                 <h1>문의내용</h1>
             </div>
-            <div class="UserContent">
-                <h4>최근 문의 내용이 없습니다.</h4>
+            <div class="UserTitele">
+			    <c:choose>
+					<c:when test="${empty inquiry}">
+					<h4>최근 문의 내용이 없습니다.</h4>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="i" begin="1" end="5">
+							<c:if test="${not empty inquiry[i-1]}">
+								<h2>${inquiry[i-1].title}</h2><hr>
+							</c:if>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
             </div>
         </div>
     </div>

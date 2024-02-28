@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.SearchVO;
+import human.smart.totalMall.vo.VocVO;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -82,5 +83,13 @@ public class MemberDAO {
 	public int cancel(int m_idx) throws SQLException {
 		return sqlSession.update(MAPPER+".cancel", m_idx);
 	}
-	
+
+	//문의 사항 리스트
+	public List<VocVO> getInquirylist(){
+		return sqlSession.selectList(MAPPER+".getInquirylist");
+	}
+	public List<VocVO> getInquirylistp(){
+		return sqlSession.selectList(MAPPER+".getInquirylistp");
+	}
+
 }

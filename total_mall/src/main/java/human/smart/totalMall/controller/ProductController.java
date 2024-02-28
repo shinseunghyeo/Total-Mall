@@ -1,5 +1,6 @@
 package human.smart.totalMall.controller;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class ProductController {
 
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview,
-    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,
+    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,bUpdateCount,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
 
@@ -53,13 +54,68 @@ public class ProductController {
 	public String item(int p_idx, Model model) {
 		ProductVO vo = pItem.getProduct(p_idx);
 		model.addAttribute("product", vo);
+		bUpdateCount.updateReadCount(p_idx);
 		
+	    // 할인율이 존재할 경우에만 할인된 가격을 계산하여 모델에 추가
+	    if (vo.getDiscount_rate() > 0) {
+	        // 상품의 가격과 할인율을 가져와서 할인된 가격을 계산합니다.
+	        double discountedPrice = calculateDiscountedPrice(vo.getPrice(), vo.getDiscount_rate());
+	        // 계산된 할인된 가격을 모델에 추가합니다.
+	        model.addAttribute("discountedPrice", (int) discountedPrice);
+	    }
+	    
 	    Map<String, Object> paramMap = new HashMap<>();
 	    paramMap.put("p_idx", p_idx);
 		
 	    paramMap.put("orderBy", 1); 
     	List<ReviewVO> hEvaluationList = pItem.getReview(paramMap);
     	model.addAttribute("hEvaluationList", hEvaluationList);
+    	// hEvaluationList의 크기를 구합니다.
+    	int hStarsize = hEvaluationList.size();
+
+    	// 모델에 hStarsize를 추가합니다.
+    	model.addAttribute("hStarsize", hStarsize);    	// hEvaluationList의 평균을 계산할 변수를 선언합니다.
+    	double hEvaluationListAverage = 0.0;
+
+    	// hEvaluationList의 요소에서 star 속성 값을 합산합니다.
+    	int sumOfStars = 0;
+    	for (ReviewVO review : hEvaluationList) {
+    	    sumOfStars += review.getStar();
+    	}
+
+    	// hEvaluationList의 크기로 나누어 평균을 계산합니다.
+    	if (!hEvaluationList.isEmpty()) {
+    	    hEvaluationListAverage = (double) sumOfStars / hEvaluationList.size();
+    	}
+
+    	// 소수점 한 자리까지만 표시하기 위해 DecimalFormat을 사용합니다.
+    	DecimalFormat df = new DecimalFormat("#.#");
+    	hEvaluationListAverage = Double.parseDouble(df.format(hEvaluationListAverage));
+
+    	// 모델에 평균 값을 추가합니다.
+    	model.addAttribute("hEvaluationListAverage", hEvaluationListAverage);
+    	
+    	int averageScore = (int) Math.round(hEvaluationListAverage);
+
+    	// 별표 문자열을 생성합니다.
+    	String stars = "";
+    	for (int i = 0; i < 5; i++) {
+    	    // 현재 별의 점수를 계산합니다.
+    	    double currentScore = (i + 1) - averageScore;
+    	    if (currentScore <= -0.5) {
+    	        // 현재 별이 비어있는 경우
+    	        stars += "★"; // 빈 별 추가
+    	    } else if (currentScore <= 0) {
+    	        // 현재 별이 반 별인 경우
+    	        stars += "★"; // 반 별 추가
+    	    } else {
+    	        // 현재 별이 가득 찬 경우
+    	        stars += "☆"; // 별 추가
+    	    }
+    	}
+
+    	// 모델에 별표 문자열을 추가합니다.
+    	model.addAttribute("hEvaluationListStars", stars);
 
     	paramMap.put("orderBy", 2);
     	List<ReviewVO> lEvaluationList = pItem.getReview(paramMap);
@@ -75,7 +131,10 @@ public class ProductController {
 		
 		return "product/item";
 	}
-
+ // 할인된 가격을 계산하는 메소드
+    private double calculateDiscountedPrice(double price, double discountRate) {
+        return price * (1 - (discountRate / 100));
+    }
     // 결제 페이지 요청 처리
     @GetMapping("/purchase.do")
 	public String purchase(int p_idx, int m_idx, int c_quantity, int total_product_price,

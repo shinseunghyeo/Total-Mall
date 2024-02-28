@@ -24,6 +24,7 @@ public interface ProductService {
 	default int pvocInsert(PvocVO voc, HttpServletRequest request) {return 0;}
 	default List<ReviewVO> getReview(Map<String, Object> paramMap) {return null;}
 	default int insert(ProductVO vo, HttpServletRequest request) {return 0;}
+	default int updateReadCount(int p_idx) {return 0;}
 	default List<ProductVO> getProducts(SearchVO vo){return null;}
 	default List<ProductVO> getProducts2(SearchVO vo){return null;}
 	default int reInsert(ReviewVO review, HttpServletRequest request) {return 0;}
@@ -47,5 +48,4 @@ public interface ProductService {
 	default int cartInsert2(CartVO vo) {return 0;}
 	default CartVO cartCheck(CartVO vo) {return null;}
 	default int cartOidxUpdate(int m_idx, int o_idx) {return 0;}
-	
 }

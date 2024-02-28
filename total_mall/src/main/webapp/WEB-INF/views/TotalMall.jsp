@@ -20,6 +20,7 @@
     <!-- ---------오늘의 상품--------- -->
     <div style="width: 100%;">
         <h2 style="margin: auto;width: 1050px;">오늘의 상품</h2><br>
+        <a href="${pageContext.request.contextPath}/member/inquirylist.do">문의사항 목록</a>
     </div>
     <div id="TodayMallServeLine">
         <div id="TodayMallServebox">
@@ -37,8 +38,8 @@
 								<a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${maintoday[vs.count-1].p_idx}">
 					            ${maintoday[vs.count-1].product_name}
 					            </a><br>
-					            ${maintoday[vs.count-1].price}원
-							</div>				            
+					            <span class="price">${maintoday[vs.count-1].price}원</span>
+							</div>
 							<c:if test="${vs.count%4 == 0}">
 			                </div>
 			                <div id="TodayMallServetoday">
@@ -71,7 +72,7 @@
 					                       	</a>
 											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
 											<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
-					                        <span style="font-weight: bold">${mainchoice[vs.count-1].price}원</span> 
+					                        <span class="price" style="font-weight: bold">${mainchoice[vs.count-1].price}원</span>
 					                    </div>
 									</c:if>
 									<c:if test="${vs.count%3 == 0}">
@@ -106,7 +107,7 @@
 					                       	</a>
 											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
 											<span class="truncate">${mainchoice2[vs.count-1].product_name}</span></a><br>
-					                        <span style="font-weight: bold">${mainchoice2[vs.count-1].price}원</span> 
+					                        <span class="price" style="font-weight: bold">${mainchoice2[vs.count-1].price}원</span> 
 					                    </div>
 									</c:if>
 									<c:if test="${vs.count%3 == 0}">
@@ -141,7 +142,7 @@
 					                       	</a>
 											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
 											<span class="truncate">${mainchoice3[vs.count-1].product_name}</span></a><br>
-					                        <span style="font-weight: bold">${mainchoice3[vs.count-1].price}원</span> 
+					                        <span class="price" style="font-weight: bold">${mainchoice3[vs.count-1].price}원</span> 
 					                    </div>
 									</c:if>
 									<c:if test="${vs.count%3 == 0}">
@@ -187,7 +188,7 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
 										<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainchoice[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainchoice[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -217,7 +218,7 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainDecoration[vs.count-1].p_idx}">
 										<span class="truncate">${mainDecoration[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainDecoration[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainDecoration[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -247,7 +248,7 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainHobby[vs.count-1].p_idx}">
 										<span class="truncate">${mainHobby[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainHobby[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainHobby[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -277,7 +278,7 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainDailynecessities[vs.count-1].p_idx}">
 										<span class="truncate">${mainDailynecessities[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainDailynecessities[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainDailynecessities[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -307,7 +308,7 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainClothing[vs.count-1].p_idx}">
 										<span class="truncate">${mainClothing[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainClothing[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainClothing[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -337,7 +338,7 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainBooks[vs.count-1].p_idx}">
 										<span class="truncate">${mainBooks[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainBooks[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainBooks[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -367,12 +368,12 @@
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainFurniture[vs.count-1].p_idx}">
 										<span class="truncate">${mainFurniture[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainFurniture[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainFurniture[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
-				                </div>
-				                <div class="CategoryMallbox">
+					                </div>
+					                <div class="CategoryMallbox">
 								</c:if>
 							</c:forEach>
 						</c:otherwise>
@@ -393,11 +394,11 @@
 								<c:if test="${not empty mainHomeappliance[vs.count-1]}">
 				                    <div>
 				                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainHomeappliance[vs.count-1].p_idx}">
-										<img src="resources/uploads/${mainHomeappliance[vs.count-1].save_file_name1}">
+											<img src="resources/uploads/${mainHomeappliance[vs.count-1].save_file_name1}">
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainHomeappliance[vs.count-1].p_idx}">
 										<span class="truncate">${mainHomeappliance[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainHomeappliance[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainHomeappliance[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -423,11 +424,11 @@
 								<c:if test="${not empty mainSports[vs.count-1]}">
 				                    <div>
 				                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainSports[vs.count-1].p_idx}">
-										<img src="resources/uploads/${mainSports[vs.count-1].save_file_name1}">
+											<img src="resources/uploads/${mainSports[vs.count-1].save_file_name1}">
 				                       	</a>
 										<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainSports[vs.count-1].p_idx}">
 										<span class="truncate">${mainSports[vs.count-1].product_name}</span></a><br>
-				                        <span style="font-weight: bold">${mainSports[vs.count-1].price}원</span> 
+				                        <span class="price" style="font-weight: bold">${mainSports[vs.count-1].price}원</span> 
 				                    </div>
 								</c:if>
 								<c:if test="${vs.count == 3}">
@@ -492,8 +493,10 @@
             </a>
         </div>
     </div>
+
     <!-- ---------마지막 상품--------- -->
   	<%@ include file="Main/MainFooter.jsp" %>
 </body>
+<script type="text/javascript" src="resources/js/Main/pricenum.js"></script>
 <script type="text/javascript" src="resources/js/Main/TotalMall.js"></script>
 </html>

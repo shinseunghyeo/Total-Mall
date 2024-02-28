@@ -140,21 +140,19 @@
 									<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
 								</c:when>
 								<c:otherwise>
-									<c:forEach begin="1" end="5" varStatus="vs">
-											<c:if test="${not empty productList[vs.count-1]}">
-							                    <div class="CategoryProduct">
-							                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-							                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
-							                       	</a>
-							                       	
-							                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-							                        	${productList[vs.count-1].product_name}
-							                        </a>
-							                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-								                        ${productList[vs.count-1].price}원
-							                        </a>
-							                    </div>
-											</c:if>
+									<c:forEach var="i" begin="1" end="5" varStatus="vs">
+										<c:if test="${not empty productList[vs.count-1]}">
+						                    <div class="CategoryProduct">
+						                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+						                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+						                       	</a>
+						                       	
+						                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+						                        	${productList[vs.count-1].product_name}
+						                        </a>
+							                        <span class="price" style="width:100%; text-align: center;">${productList[i-1].price}원</span>
+						                    </div>
+										</c:if>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -178,7 +176,7 @@
 					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
 						                                ${productList[i-1].product_name}
 					                                </a>
-			    		                            ${productList[i-1].price}원
+										            <span class="price" style="width:100%; text-align: center;" class="productPrice" id="productPrice2${i}">${productList[i-1].price}원</span>
 			        		                    </div>
 											</c:if>
                                 	</c:forEach>
@@ -192,18 +190,18 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="6" end="10" varStatus="vs">
-											<c:if test="${not empty productList[i-1]}">
-					                            <div class="CategoryProduct">
-					                                <span>${i}</span>
-					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-								                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
-					                                </a>
-					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-						                                ${productList[i-1].product_name}
-					                                </a>
-			    		                            ${productList[i].price}원
-			        		                    </div>
-											</c:if>
+										<c:if test="${not empty productList[i-1]}">
+									        <div class="CategoryProduct">
+									            <span>${i}</span>
+									            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+									                <img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+									            </a>
+									            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+									                ${productList[i-1].product_name}
+									            </a>
+									            <span class="price" style="width:100%; text-align: center;">${productList[i-1].price}원</span>
+									        </div>
+										</c:if>
                                 	</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -213,7 +211,9 @@
             </div>
         </div>
     </div>
+    
   	<%@ include file="../Main/Footer2.jsp" %>
 </body>
+<script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 <script type="text/javascript" src="../resources/js/Product/list.js"></script>
 </html>
