@@ -344,16 +344,16 @@ model.addAttribute("orderList2", orderList2);
 @GetMapping("/buyermypage.do")
 public String buyerMypage(Model model,@SessionAttribute("member") MemberVO member) {
 int m_idx = member.getM_idx();
-List<CartVO> orderList = myoList.getOrders(m_idx);
-model.addAttribute("orderList", orderList);
+List<CartVO> orderList_1 = myoList_1.getOrders_1(m_idx);
+model.addAttribute("orderList_1", orderList_1);
 return "member/buyermypage";
 }
 
-//개인회원 홈페이지 처리
+//개인회원 홈 주문내역
 @GetMapping("buyerhome.do")
-public String orderlist(int m_idx, Model model) {
-List<CartVO> orderList = myoList.getOrders(m_idx);
-model.addAttribute("orderList", orderList);
+public String orderlist_1(int m_idx, Model model) {
+List<CartVO> orderList_1 = myoList_1.getOrders_1(m_idx);
+model.addAttribute("orderList_1", orderList_1);
 return "member/buyerhome";
 }
 
@@ -369,7 +369,7 @@ return "forward:/member/buyerhome.do?m_idx="+m_idx;
 
 
 // 개인회원 전체주문 처리(ajax)
-@GetMapping("/sellermypage/product/order_history.do")
+@GetMapping("/buyermypage/product/order_history.do")
 public String orderlist(Model model,@SessionAttribute("member") MemberVO member) {
 // 세션에서 m_idx 가져오기
 

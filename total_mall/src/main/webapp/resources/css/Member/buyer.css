@@ -239,14 +239,17 @@
     }
 
     .new-item {
-        background-color: white;
-        border-radius: 5px;
-        margin: 15px 0;
-        width: 100%;
-        height: 100px;
-        border: 1px solid black;
-        display: flex;
-    }
+	    background-color: white;
+	    border-radius: 5px;
+	    margin: 15px 0;
+	    width: 100%;
+	    height: 100px;
+	    border: 1px solid black;
+	    display: flex;
+	    align-content: center;
+	    align-items: center;
+	    flex-direction: row;
+	}
 
     .new-img-div {
         width: 10%;
