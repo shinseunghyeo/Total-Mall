@@ -87,36 +87,36 @@
             <div id="CategoryServemenuLine">
                 <h2>카테고리</h2>
                 <span>식품</span><br>
-                <a href="list.do?category=meat">>고기</a><br>
-                <a href="list.do?category=vegetables">>야채</a><br>
-                <a href="list.do?category=fruits">>과일</a><br>
-                <a href="list.do?category=frozen">>냉동</a><br><br>
+                <a href="list.do?category=meat"><p>>고기</p></a><br>
+                <a href="list.do?category=vegetables"><p>>야채</p></a><br>
+                <a href="list.do?category=fruits"><p>>과일</p></a><br>
+                <a href="list.do?category=frozen"><p>>냉동</p></a><br><br>
                 <span>홈데코</span><br>
-                <a href="list.do?category=kitchen">>주방</a><br>
-                <a href="list.do?category=curtain">>커튼</a><br><br>
+                <a href="list.do?category=kitchen"><p>>주방</p></a><br>
+                <a href="list.do?category=curtain"><p>>커튼</p></a><br><br>
                 <span>취미</span><br>
-                <a href="list.do?category=games">>게임</a><br>
-                <a href="list.do?category=lego">>레고</a><br>
-                <a href="list.do?category=petsupplies">>펫용품</a><br><br>
+                <a href="list.do?category=games"><p>>게임</p></a><br>
+                <a href="list.do?category=lego"><p>>레고</p></a><br>
+                <a href="list.do?category=petsupplies"><p>>펫용품</p></a><br><br>
                 <span>생필품</span><br>
-                <a href="list.do?category=dailynecessities">>생필품</a><br>
-                <a href="list.do?category=bodyhair">>바디헤어</a><br><br>
+                <a href="list.do?category=dailynecessities"><p>>생필품</p></a><br>
+                <a href="list.do?category=bodyhair"><p>>바디헤어</p></a><br><br>
                 <span>의류</span><br>
-                <a href="list.do?category=men">>남성</a><br>
-                <a href="list.do?category=women">>여성</a><br><br>
+                <a href="list.do?category=men"><p>>남성</p></a><br>
+                <a href="list.do?category=women"><p>>여성</p></a><br><br>
                 <span>도서</span><br>
-                <a href="list.do?category=education">>교육</a><br>
-                <a href="list.do?category=novels">>소설</a><br>
-                <a href="list.do?category=overseas">>해외</a><br><br>
+                <a href="list.do?category=education"><p>>교육</p></a><br>
+                <a href="list.do?category=novels"><p>>소설</p></a><br>
+                <a href="list.do?category=overseas"><p>>해외</p></a><br><br>
                 <span>가구</span><br>
-                <a href="list.do?category=living">>생활</a><br>
-                <a href="list.do?category=bedding">>침상</a><br><br>
+                <a href="list.do?category=living"><p>>생활</p></a><br>
+                <a href="list.do?category=bedding"><p>>침상</p></a><br><br>
                 <span>가전</span><br>
-                <a href="list.do?category=homeAppliances">>가전</a><br>
-                <a href="list.do?category=digital">>디지털</a><br><br>
+                <a href="list.do?category=homeAppliances"><p>>가전</p></a><br>
+                <a href="list.do?category=digital"><p>>디지털</p></a><br><br>
                 <span>스포츠</span><br>
-                <a href="list.do?category=soccer">>축구</a><br>
-                <a href="list.do?category=golf">>골프</a>
+                <a href="list.do?category=soccer"><p>>축구</p></a><br>
+                <a href="list.do?category=golf"><p>>골프</p></a>
             </div>
             <div id="CategoryProductLine">
                 <div id="CategoryProductContainer">
