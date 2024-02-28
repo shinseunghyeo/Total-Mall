@@ -19,8 +19,7 @@
     #MainLine #SearchLine select{width: 20%;border-radius: 30px;}
     #MainLine #SearchLine input[type="text"]{width: 80%;border-radius: 30px; outline: none;}
     #MainLine #SearchLine img{width: 25px;height: 25px;z-index: 10;padding-right: 10px;}
-    #MainLine #UserIcon{width: 20%;text-align: end;margin-right: 25px;}
-    #MainLine #UserIcon img{margin-left: 20px;}
+    #MainLine #UserIcon{width: 20%;text-align: end;margin-left: 25px;display: flex; gap:20px;}
 
     #CategoryBackgroundColor{width: 100%; height: 100%;position: absolute;z-index: -1;}
     #CategoryBackgroundColor2{width: 100%;height: 100%;background-color: gray;z-index: -1;opacity: 0;position: fixed;}
