@@ -79,12 +79,13 @@
 				WHERE category IN ('soccer', 'golf')
 			</otherwise>
 		</choose>
+				and p_status = 0;
 	</select>
 	<select id="getProduct" parameterType="_int" resultType="productVO">
-		select * from tb_product where p_idx = #{p_idx}
+		select * from tb_product where p_idx = #{p_idx} and p_status = 0;
 	</select>
 	<select id="getProducts" parameterType="string" resultType="productVO">
-				SELECT * FROM tb_product WHERE category LIKE #{category}
+				SELECT * FROM tb_product WHERE category LIKE #{category} and p_status = 0
 				ORDER BY p_idx DESC
 				LIMIT 20 OFFSET 0
 	</select>
@@ -105,6 +106,7 @@
 								where product_name like CONCAT('%',#{searchWord},'%')
 							</otherwise>
 						</choose>
+				        		and p_status = 0
 						 		order by p_idx desc
 				                limit #{startIdx}, 5
 			</when>
@@ -112,6 +114,7 @@
 				select /*+ INDEX(tb_product tb_product_pk) */
 				        		*
 				        		from tb_product
+				        		where p_status = 0
 				        		order by p_idx desc
 				       			limit #{startIdx}, 5
 			</otherwise>
@@ -141,7 +144,7 @@
 		</choose>
 	</select>
 	<select id="getProRev" parameterType="_int" resultType="productVO">
-		select * from tb_product where p_idx = #{p_idx}
+		select * from tb_product where p_idx = #{p_idx} and p_status = 0
 	</select>
 		<!-- 총 게시물수 조회: select -->
 	<select id="getTotalCount" parameterType="searchVO" resultType="_int">
@@ -161,10 +164,12 @@
 							where product_name like CONCAT('%',#{searchWord},'%')
 						</otherwise>
 					</choose>
+					and p_status = 0
 			</when>
 			<otherwise>
 				select count(*)
-					from tb_product
+					from tb_product	where p_status = 0
+					
 			</otherwise>
 		</choose>
 	</select>
