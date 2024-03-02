@@ -27,7 +27,7 @@ import lombok.Setter;
 public class CustomercenterController {
 
 	@Setter(onMethod_={ @Autowired }) CustomercenterService cPage,cNotice, cTotalCount, 
-	cInsert, cInquiry;
+	cInsert, cInquiry, homeNotice, homeVoc;
 	@Setter(onMethod_={ @Autowired }) CCPageNav CCpageNav;
 	
 	//공지사항 페이지 요청 처리
@@ -164,5 +164,20 @@ public class CustomercenterController {
 //		bDownload.download(originfile_name, savefile_name,request, response);
 //	}
 	
+	//관리자 홈 공지사항
+	@RequestMapping("/homeNotice.do")
+	public String homeNotice(Model model) {
+		List<NoticeVO> homeNList = homeNotice.homeNotice();
+		model.addAttribute("homeNList", homeNList);
+		return "forward:/member/adminhome.do";
+	}
+	
+	//관리자 홈 문의사항
+	@RequestMapping("/homeVoc.do")
+	public String homeVoc(Model model) {
+		List<VocVO> homeVList = homeVoc.homeVoc();
+		model.addAttribute("homeVList", homeVList);
+		return "forward:/member/adminhome.do";
+	}
 
 }

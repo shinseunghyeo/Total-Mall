@@ -1,12 +1,13 @@
-
+@charset "UTF-8";
+    /* 글씨체 변경 */
     @font-face {
         font-family: "G-market-Light";
-        src: url(font/GmarketSansTTFLight.ttf);
+		src: url(fonts/GmarketSansTTFLight.ttf) format('truetype');
     }
 
     @font-face {
         font-family: "G-market-Bold";
-        src: url(font/GmarketSansTTFBold.ttf);
+        src: url(fonts/GmarketSansTTFBold.ttf) format('truetype');
     }
 
     p,
@@ -97,7 +98,7 @@
     #event_management,
     #statistics,
     #cs_center,
-    #CategoryPage,
+    #p_management,
     #order_management {
         background-color: rgba(224, 224, 224, 0.42);
         padding-bottom: 2rem;
@@ -106,6 +107,10 @@
     h1 {
         margin: 0 0 0 13%;
     }
+    
+    table {
+	    white-space: nowrap;
+	}
 
     /* //////////////////////공통부분//////////////////// */
 
@@ -233,7 +238,7 @@
     #notice_btn input[type=button] {
         background-color: rgb(52, 152, 219);
         color: white;
-        padding: 0.5rem;
+        padding: 0.5rem 0.25rem;
         border: none;
         border-radius: 0.25rem;
         cursor: pointer;
@@ -274,7 +279,7 @@
     #cs_btn input[type=button] {
         background-color: rgb(52, 152, 219);
         color: white;
-        padding: 0.5rem;
+        padding: 0.5rem 0.25rem;
         border: none;
         border-radius: 0.25rem;
         cursor: pointer;
@@ -504,61 +509,53 @@
 /* ////////////////////// 상품관리 시작 ////////////////////// */
 
 
-#CategoryServeLine {
-	-webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
-	box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
-	margin: 1rem 13% 0 13%;
+#BorderLine {
+	margin: 1%;
+    padding: 2%;
+    width: 94%;
+    -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    background-color: white;
 }
 
-#SearchproductLine {
-	background-color: white;
-}
-
-#SearchproductLine a {
+#BorderLine a {
 	margin: auto;
 }
 
-#SearchproductLine #SearchproductContaner {
-	width: 96%;
-	padding: 2%;
-}
 
-#tb_myplist {
+#tb_plist {
 	width: 100%;
 }
 
-#SearchproductLine #Advertisementimg {
-	width: 100%;
-	height: 100px;
+#BorderLine .all_p_list {
+    display: flex;
+    padding: 0.5rem;
+    border: 1px solid gray;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.p_idx{width: 5%;text-align: center;}
+.p_img{width: 11%;text-align: center;}
+.p_info{width: 22%;text-align: center;}
+.p_price{width: 24%;text-align: center;}
+.p_quantity{width: 8%;text-align: center;}
+.p_period{width: 13%;text-align: center;}
+.p_status{width: 17%;text-align: center;}
+
+#non_DCprice {
+  text-decoration: line-through;
 }
 
-#SearchproductLine #Searchproductbox {
-	display: flex;
-	padding: 20px;
-	border: 1px solid gray;
+#BorderLine .all_p_list img {
+	width: 4rem;
+    height: 4rem;
 }
 
-#SearchproductLine #Searchproductbox .productimg {
-	width: 20%;
-	padding-right: 20px;
-}
 
-#SearchproductLine #Searchproductbox img {
-	width: 90%;
-	height: 100%;
-}
-
-#SearchproductLine #SearchProduct {
-	width: 60%;
-}
-
-#SearchproductLine .SearchProductPrice {
-	width: 20%;
-	display: flex;
-	justify-content: flex-end;
-}
-
-#SearchproductLine .SearchProductPrice button {
+#BorderLine .p_status button {
 	width: 50px;
 	height: 50px;
 	background-color: #3498db;
@@ -569,17 +566,11 @@
 	cursor: pointer;
 }
 
-#SearchproductLine .SearchProductPrice a {
-	margin: 0;
-}
 
-#SearchproductLine .SearchProductPrice a:hover {
+#BorderLine .SearchProductPrice a:hover {
 	text-decoration: none;
 }
 
-span:focus {
-	color: #3498db;
-}
 
 /* ////////////////////// 상품관리 끝 ////////////////////// */
 

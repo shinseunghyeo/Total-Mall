@@ -139,5 +139,24 @@
 	
 	</select>
 	
+	<!-- 관리자 홈 공지사항 -->
+	<select id="homeNotice" resultType="NoticeVO">
+		SELECT *
+		FROM tb_notice
+		WHERE del_or_not=1
+		ORDER BY update_date DESC
+		LIMIT 5
+	</select>
+	
+	<!-- 관리자 홈 문의사항 -->
+	<select id="homeVoc" resultType="VocVO">
+		SELECT *
+		FROM tb_voc
+		JOIN tb_member ON tb_voc.m_idx = tb_member.m_idx
+		WHERE tb_voc.voc_state = 1
+		ORDER BY tb_voc.update_date DESC
+		LIMIT 5
+	</select>
+	
   
 </mapper>

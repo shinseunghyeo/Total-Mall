@@ -257,7 +257,7 @@
 		update tb_product set p_status=0, p_last_modified_date=now()
 			   where p_idx = #{p_idx}
 	</update>
-	<!-- 내 상품조회: select -->
+	<!-- 기업회원 상품조회: select -->
 	<select id="getProducts3" parameterType="_int"
 		resultType="productVO">
 		SELECT * FROM tb_product WHERE m_idx LIKE #{m_idx}
@@ -333,6 +333,12 @@
 		ORDER BY o_update_time desc
 	</select>
 	
+		<!-- 오늘 등록된 상품수: select -->
+	<select id="todayProduct" resultType="_int">
+	SELECT COUNT(*)
+		FROM tb_product
+		WHERE DATE(p_reg_date) = CURDATE();
+	</select>
 	
 	
 	

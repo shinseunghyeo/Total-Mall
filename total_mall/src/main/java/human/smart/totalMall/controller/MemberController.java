@@ -19,11 +19,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import human.smart.service.customercenter.CustomercenterService;
 import human.smart.service.member.MemberService;
+import human.smart.totalMall.common.CCPageNav;
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
@@ -39,11 +42,13 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService pCon, pDiscon, myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1;
+	myoList_1, todayProduct;
+	
 	
 	@Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
 
+	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc;
 	
 	//로그인 페이지 요청
 	@GetMapping("/login.do")
@@ -401,21 +406,33 @@ return "member/buyeraddress";
 /////////////////////////////// 관리자 마이페이지 홈 ///////////////////////////////		
 //관리자 마이페이지 처리
 @GetMapping("adminmypage.do")
-public String adminMypage() {
-
+public String adminMypage(Model model) {
+	int toProduct = todayProduct.todayProduct();
+	List<NoticeVO> homeNList = homeNotice.homeNotice();
+	List<VocVO> homeVList = homeVoc.homeVoc();
+	
+	model.addAttribute("todayProduct", toProduct);
+	model.addAttribute("homeNList", homeNList);
+	model.addAttribute("homeVList", homeVList);
 return "member/adminmypage";
 }
 
 //관리자 홈페이지 처리
 @GetMapping("adminhome.do")
-public String adminhome() {
-
+public String adminhome(Model model) {
+	int toProduct = todayProduct.todayProduct();
+	List<NoticeVO> homeNList = homeNotice.homeNotice();
+	List<VocVO> homeVList = homeVoc.homeVoc();
+	
+	model.addAttribute("todayProduct", toProduct);	
+	model.addAttribute("homeNList", homeNList);
+	model.addAttribute("homeVList", homeVList);
 return "member/adminhome";
 }
 
 //관리자 마이페이지 홈(ajax)
 @GetMapping("/adminmypage/member/adminhome.do")
-public String adminhome2() {
+public String adminhome2(Model model) {
 
 return "forward:/member/adminhome.do";
 }

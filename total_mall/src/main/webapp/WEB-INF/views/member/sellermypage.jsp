@@ -8,8 +8,8 @@
 <title>기업회원 마이페이지</title>
 	<link rel="stylesheet" href="../resources/css/Member/seller.css">
 	<script src="../resources/js/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="../resources/js/Member/seller_mypage.js"></script>
+  
 </head>
 <body>
     <%@ include file="../Main/Header2.jsp" %>
@@ -33,7 +33,6 @@
 				<!-- 기업회원 홈 -->
 
 				<%@ include file="sellerhome.jsp" %>
-
 
 				<!-- 상품등록 전체 페이지 -->
 

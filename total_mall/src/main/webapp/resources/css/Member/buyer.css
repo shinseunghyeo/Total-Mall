@@ -1,13 +1,13 @@
-
+@charset "UTF-8";
     /* 글씨체 변경 */
     @font-face {
         font-family: "G-market-Light";
-		src: url(../resources/font/GmarketSansTTFLight.ttf);
+		src: url(fonts/GmarketSansTTFLight.ttf) format('truetype');
     }
 
     @font-face {
         font-family: "G-market-Bold";
-        src: url(../resources/font/GmarketSansTTFBold.ttf);
+        src: url(fonts/GmarketSansTTFBold.ttf) format('truetype');
     }
 
     p,

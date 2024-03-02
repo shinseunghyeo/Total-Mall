@@ -34,7 +34,7 @@ public class ProductController {
     @Autowired
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview,
     		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,myoList2,
-    		allpList, alloList, myoList_1,
+    		allpList, alloList,todayProduct,
     		bUpdateCount,
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -397,6 +397,14 @@ public class ProductController {
 	    return "product/allorderlist";
 	}
 
+	//오늘 등록된 상품수 호출
+	@RequestMapping("/todayProduct")
+	public String todayProduct(Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		int toProduct = todayProduct.todayProduct();
+		model.addAttribute("todayProduct", toProduct);
+		return "forward:/member/adminhome.do"; // JSP 페이지 이름
+	}
 
 
 	

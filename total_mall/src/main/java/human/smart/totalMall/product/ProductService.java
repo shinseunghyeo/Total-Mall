@@ -45,7 +45,7 @@ public interface ProductService {
 	default List<ProductVO> getProducts4(){return null;}
 	default List<CartVO> getOrders3(){return null;}
 	default List<CartVO> getOrders_1(int m_idx){return null;} 
-	
+	default int todayProduct(){return 0;}
 	
 	
 	default int cartPaymentUpdate(int m_idx) {return 1;}
@@ -53,4 +53,5 @@ public interface ProductService {
 	default int cartInsert2(CartVO vo) {return 0;}
 	default CartVO cartCheck(CartVO vo) {return null;}
 	default int cartOidxUpdate(int m_idx, int o_idx) {return 0;}
+
 }

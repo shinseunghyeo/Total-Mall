@@ -116,6 +116,12 @@ public class ProductDAO{
 	public List<CartVO> getOrders3(){
 		return sqlSession.selectList(MAPPER+".getOrders3");
 	}
+	//오늘 등록된 상품수
+	public int todayProduct() {
+		return sqlSession.selectOne(MAPPER+".todayProduct");
+	}
+	
+	
 	
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);

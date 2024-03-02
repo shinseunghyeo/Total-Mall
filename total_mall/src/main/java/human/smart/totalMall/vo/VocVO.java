@@ -24,4 +24,5 @@ public class VocVO {
 	//첨부파일을 MultipartFile 타입으로 추가 정의함
 	private MultipartFile uploadFile;
 
+	private int grade;//회원등급
 }
