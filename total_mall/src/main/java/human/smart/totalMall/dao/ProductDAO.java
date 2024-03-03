@@ -83,16 +83,7 @@ public class ProductDAO{
 	public List<ProductVO> getProducts3(SearchVO vo) {
 		return sqlSession.selectList(MAPPER+".getProducts3", vo);
 	}
-	
-	//판매재개
-	public int p_con() {
-		return sqlSession.selectOne(MAPPER+".p_con");
-	}
-	
-	//판매중단
-	public int p_discon() {
-		return sqlSession.selectOne(MAPPER+".p_discon");
-	}
+
 	
 	//개인회원 전체주문보기	
 	public List<CartVO> getOrders(int m_idx){
@@ -121,6 +112,10 @@ public class ProductDAO{
 		return sqlSession.selectOne(MAPPER+".todayProduct");
 	}
 	
+	//상품 상태에 따른 합계 조회
+	public List<ProductVO> statusP(int m_idx){
+		return sqlSession.selectList(MAPPER+".statusP", m_idx);
+	}
 	
 	
 	public List<ProductVO> getProducts(SearchVO vo){

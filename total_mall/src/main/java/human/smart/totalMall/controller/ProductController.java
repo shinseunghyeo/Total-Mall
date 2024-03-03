@@ -31,11 +31,11 @@ import lombok.Setter;
 @RequestMapping("/product") // 모든 메서드에 대한 공통 경로 설정
 public class ProductController {
 
-    @Autowired
-    private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview,
-    		pModify, pDiscontinued, pContinued, mypList, pCon, pDiscon, myoList,myoList2,
-    		allpList, alloList,todayProduct,
-    		bUpdateCount,
+	@Setter(onMethod_={ @Autowired })
+    private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
+    		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
+    		allpList, alloList,todayProduct, statusP,
+    		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
 
@@ -329,23 +329,6 @@ public class ProductController {
 		return "product/myplist";
 	}
 
-	// 판매중인 상품수 호출
-	@RequestMapping("/p_con.do")
-	public String p_con(Model model) {
-		// 메서드1에서 사용할 데이터를 모델에 담음
-		int p_con = pCon.p_con();
-		model.addAttribute("p_con", p_con);
-		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
-	}
-
-	// 판매중단 상품수 호출
-	@RequestMapping("/p_discon.do")
-	public String p_discon(Model model) {
-		// 메서드1에서 사용할 데이터를 모델에 담음
-		int p_discon = pDiscon.p_discon();
-		model.addAttribute("p_discon", p_discon);
-		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
-	}
 	
 
 	
@@ -404,6 +387,19 @@ public class ProductController {
 		int toProduct = todayProduct.todayProduct();
 		model.addAttribute("todayProduct", toProduct);
 		return "forward:/member/adminhome.do"; // JSP 페이지 이름
+	}
+
+	//상품 상태에 따른 합계 조회
+	@RequestMapping("/statusP.do")
+	public String statusP(@SessionAttribute("member") MemberVO member, Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		if (member == null || member.getM_idx() == 0) {
+		    return "redirect:/member/login.do";
+		}
+		int m_idx = member.getM_idx();
+		 List<ProductVO> statusPlist = statusP.statusP(m_idx);
+		 model.addAttribute("statusPlist", statusPlist);
+		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
 	}
 
 

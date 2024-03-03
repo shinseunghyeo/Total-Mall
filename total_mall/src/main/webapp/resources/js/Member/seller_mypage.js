@@ -92,7 +92,7 @@ $(function () {
         }; 
         
 		if ($(this).is(".seller_nav_ul_li:eq(5)")) {
-            loadContent("#");
+            loadContent("sellermypage/member/inquirylist.do");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(5))").css({
                 backgroundColor: "rgb(158, 158, 158)",
                 lightCss

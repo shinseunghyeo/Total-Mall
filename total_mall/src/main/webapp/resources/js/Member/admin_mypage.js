@@ -82,6 +82,14 @@ $(function () {
                 lightCss
             });
         };
+        
+        if ($(this).is(".admin_nav_ul_li:eq(6)")) {
+            loadContent("adminmypage/member/inquirylist.do");
+            $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(6))").css({
+                backgroundColor: "rgb(158, 158, 158)",
+                lightCss
+            });
+        };
 
        
 

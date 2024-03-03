@@ -134,7 +134,8 @@
 					<ul>
 						<li><a href="#">오늘 등록된 상품 <b>${todayProduct} &gt;</b></a></li>
 						<li><a href="#">별점 낮은 상품 <b>10 &gt;</b></a></li>
-						<li><a href="#">품절/기한 만료 상품 <b>10 &gt;</b></a></li>
+						<li><a href="#">품절 상품 <b>10 &gt;</b></a></li>
+						<li><a href="#">기한 만료 상품 <b>10 &gt;</b></a></li>
 					</ul>
 				</div>
 			</div>

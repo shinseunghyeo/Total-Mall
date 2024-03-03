@@ -32,3 +32,46 @@ FROM
     tb_cart c 
     LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
     LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx;
+    
+    
+    
+CREATE VIEW p_status_count_view AS-- 상품 상태에 따른 합계 조회 뷰
+SELECT m_idx, p_status, COUNT(*) as count
+FROM tb_product
+WHERE p_idx IN (
+    SELECT DISTINCT p_idx
+    FROM tb_product
+    WHERE m_idx IS NOT NULL
+)
+GROUP BY m_idx, p_status
+ORDER BY p_status ASC;
+
+
+
+
+
+
+DELIMITER //
+
+CREATE TRIGGER update_p_status-- 트리거 설정 재고가 0이 되면 품절 상태로 바뀜
+BEFORE UPDATE ON tb_product
+FOR EACH ROW
+BEGIN
+    IF NEW.quantity = 0 THEN
+        SET NEW.p_status = 2;
+    END IF;
+END;
+//
+
+-- 트리거 설정 판매 종료일이 오늘을 지나면 기한만료 상태로 바뀜
+CREATE TRIGGER update_p_status_trigger
+BEFORE UPDATE ON tb_product
+FOR EACH ROW
+BEGIN
+    IF NEW.end_date < CURDATE() THEN
+        SET NEW.p_status = 3;
+    END IF;
+END;
+//
+
+DELIMITER ;

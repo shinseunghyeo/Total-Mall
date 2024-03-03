@@ -82,7 +82,7 @@
 				and p_status = 0;
 	</select>
 	<select id="getProduct" parameterType="_int" resultType="productVO">
-		select * from tb_product where p_idx = #{p_idx} and p_status = 0;
+		select * from tb_product where p_idx = #{p_idx};
 	</select>
 	<select id="getProducts" parameterType="string" resultType="productVO">
 				SELECT * FROM tb_product WHERE category LIKE #{category} and p_status = 0
@@ -265,19 +265,7 @@
 		LIMIT 20 OFFSET 0
 	</select>
 	
-	<!-- 판매중인 상품 수: select -->
-	<select id="p_con" resultType="_int">
-        SELECT COUNT(*)
-        FROM tb_product
-        WHERE p_status = 0;
-    </select>
-    
-    <!-- 판매중단 상품 수: select -->
-	<select id="p_discon" resultType="_int">
-        SELECT COUNT(*)
-        FROM tb_product
-        WHERE p_status = 1;
-    </select>
+
 	<!-- 개인회원 전체 주문조회: select -->
 	<select id="getOrders" parameterType="_int" resultType="cartVO">
 		SELECT
@@ -333,11 +321,18 @@
 		ORDER BY o_update_time desc
 	</select>
 	
-		<!-- 오늘 등록된 상품수: select -->
+	<!-- 오늘 등록된 상품수: select -->
 	<select id="todayProduct" resultType="_int">
 	SELECT COUNT(*)
 		FROM tb_product
-		WHERE DATE(p_reg_date) = CURDATE();
+		WHERE DATE(p_reg_date) = CURDATE()
+	</select>
+	
+	<!-- 상품 상태에 따른 합계 조회 -->
+	<select id="statusP" parameterType="_int" resultType="ProductVO">
+	SELECT * 
+	FROM p_status_count_view
+	 WHERE m_idx = #{m_idx}
 	</select>
 	
 	

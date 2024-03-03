@@ -55,7 +55,7 @@
 			        		*
 			        		from tb_member
 					<choose>
-					<when test="searchField == 'grade'"><!-- 검색영역: 아이디 -->
+					<when test="searchField == 'grade'"><!-- 검색영역: 등급 -->
 							where grade like CONCAT('%',#{searchWord},'%')
 						</when>
 						<when test="searchField == 'member_id'"><!-- 검색영역: 아이디 -->
@@ -107,20 +107,35 @@
 	
 	</update>
 	
+	<!-- 회원탈퇴여부 변경 -->
+	<update id="cancelUpdate" parameterType="memberVO">
+		update tb_member set cancel_or_not=#{cancel_or_not}, last_modified_date=now()
+				         where m_idx=#{m_idx}
+	</update>
+	
+	
 	<!-- 일반 회원 회원탈퇴하기: update -->
 	<update id="cancel" parameterType="_int">
 		update tb_member set cancel_or_not=1, last_modified_date=now() 
 		                 where m_idx=#{m_idx}
 	</update>
 	
-	
+	<!-- 관리자가 받는 문의사항 전체 불러오기 -->
  	<select id="getInquirylist" resultType="VocVO">
  		select * from tb_voc
+ 		order by post_date desc
  	</select>
  	
- 	
- 	<select id="getInquirylistp" resultType="PvocVO">
- 		select * from tb_pvoc
+ 	<!-- 기업회원이 받는 문의사항 불러오기 -->
+ 	<select id="getInquirylistp" parameterType="_int" resultType="PvocVO">
+ 		SELECT * FROM tb_pvoc
+		WHERE p_idx IN (
+		    SELECT DISTINCT p_idx
+		    FROM tb_pvoc
+		    WHERE m_idx = #{m_idx}
+		)
+		ORDER BY post_date DESC;
+
  	</select>
 	
 </mapper>

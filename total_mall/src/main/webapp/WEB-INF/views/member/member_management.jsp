@@ -13,7 +13,7 @@
 	function openMemberInfoWindow(url) {
 		// 새 창의 크기 및 위치 설정
 		var width = 400;
-		var height = 480;
+		var height = 500;
 		var left = (window.innerWidth - width) / 2;
 		var top = (window.innerHeight - height) / 2;
 
@@ -113,9 +113,32 @@
 													value="(${member_name})" />
 											</a>
 										</c:if></td>
-									<td><a href="#" class="cancel_or_not"> <c:out
+									<td><c:if
+											test="${not empty memberList[vs.count-1].cancel_or_not}">
+											<c:out
 												value="${c_or_nMap[memberList[vs.count-1].cancel_or_not.toString()]}" />
-									</a></td>
+
+
+											<form id="cancelUpdateForm" method="post"
+												action="cancelUpdate.do">
+												<input type="hidden" name="m_idx"
+													value="${memberList[vs.count-1].m_idx}">
+
+
+												<div>
+													<input type="radio" id="cancel_or_not" name="cancel_or_not"
+														value="1" checked /> <label for="huey">탈퇴</label>
+												</div>
+
+												<div>
+													<input type="radio" id="cancel_or_not" name="cancel_or_not"
+														value="0" /> <label for="dewey">복구</label>
+												</div>
+												<input type="submit">
+
+
+											</form>
+										</c:if></td>
 									<td><small> <fmt:formatDate
 												value="${memberList[vs.count-1].reg_date}"
 												pattern="yyyy-MM-dd HH:mm:ss /" />
@@ -129,10 +152,10 @@
 					</c:choose>
 				</tbody>
 				<tfoot>
-				<tr>
-					<td colspan="5" id="td-page-nav"><%@ include
-							file="../product/paging.jsp"%></td>
-				</tr>
+					<tr>
+						<td colspan="5" id="td-page-nav"><%@ include
+								file="../product/paging.jsp"%></td>
+					</tr>
 				</tfoot>
 			</table>
 		</div>
