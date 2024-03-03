@@ -22,4 +22,7 @@ public interface CustomercenterService {
 	default void download(String originfile_name, String savefile_name, HttpServletRequest request,
 			HttpServletResponse response) {}
 	default int getTotalCount(SearchVO vo) {return 0;}
+	
+	default List<NoticeVO> homeNotice(){return null;}
+	default List<VocVO> homeVoc(){return null;}
 }

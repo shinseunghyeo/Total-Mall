@@ -47,39 +47,39 @@
 	</select> 
 	
 	
-		<!-- 회원정보 전체 가져오기 -->
-		<select id="getMembers" parameterType="SearchVO" resultType="memberVO">
-		<choose>
-			<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
-				select /*+ INDEX(tb_member tb_member_pk) */
-				        		*
-				        		from tb_member
-						<choose>
-						<when test="searchField == 'grade"><!-- 검색영역: 아이디 -->
-								where grade like CONCAT('%',#{searchWord},'%')
-							</when>
-							<when test="searchField == 'member_id'"><!-- 검색영역: 아이디 -->
-								where member_id like CONCAT('%',#{searchWord},'%')
-							</when>
-							<when test="searchField == 'member_name'"><!-- 검색영역: 이름 -->
-								where member_name like CONCAT('%',#{searchWord},'%')
-							</when>
-							<otherwise><!-- 검색영역: 핸드폰 -->
-								where handphone like CONCAT('%',#{searchWord},'%')
-							</otherwise>
-						</choose>
-						 		order by m_idx desc
-				                limit 0, 5
-			</when>
-			<otherwise><!-- 검색어가 없는 경우  -->
-				select /*+ INDEX(tb_member tb_member_pk) */
-				        		*
-				        		from tb_member
-				        		order by m_idx desc
-				       			limit 0, 10
-			</otherwise>
-		</choose>
-	</select>
+	<!-- 회원정보 전체 가져오기 -->
+	<select id="getMembers" parameterType="SearchVO" resultType="memberVO">
+	<choose>
+		<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
+			select /*+ INDEX(tb_member tb_member_pk) */
+			        		*
+			        		from tb_member
+					<choose>
+					<when test="searchField == 'grade'"><!-- 검색영역: 등급 -->
+							where grade like CONCAT('%',#{searchWord},'%')
+						</when>
+						<when test="searchField == 'member_id'"><!-- 검색영역: 아이디 -->
+							where member_id like CONCAT('%',#{searchWord},'%')
+						</when>
+						<when test="searchField == 'member_name'"><!-- 검색영역: 이름 -->
+							where member_name like CONCAT('%',#{searchWord},'%')
+						</when>
+						<otherwise><!-- 검색영역: 핸드폰 -->
+							where handphone like CONCAT('%',#{searchWord},'%')
+						</otherwise>
+					</choose>
+					 		order by m_idx desc
+			                limit 0, 5
+		</when>
+		<otherwise><!-- 검색어가 없는 경우  -->
+			select /*+ INDEX(tb_member tb_member_pk) */
+			        		*
+			        		from tb_member
+			        		order by m_idx desc
+			       			limit 0, 10
+		</otherwise>
+	</choose>
+</select>
 	
 	
 	<!-- 회원등급 변경 -->
@@ -107,16 +107,35 @@
 	
 	</update>
 	
+	<!-- 회원탈퇴여부 변경 -->
+	<update id="cancelUpdate" parameterType="memberVO">
+		update tb_member set cancel_or_not=#{cancel_or_not}, last_modified_date=now()
+				         where m_idx=#{m_idx}
+	</update>
+	
+	
 	<!-- 일반 회원 회원탈퇴하기: update -->
 	<update id="cancel" parameterType="_int">
 		update tb_member set cancel_or_not=1, last_modified_date=now() 
 		                 where m_idx=#{m_idx}
 	</update>
+	
+	<!-- 관리자가 받는 문의사항 전체 불러오기 -->
  	<select id="getInquirylist" resultType="VocVO">
  		select * from tb_voc
+ 		order by post_date desc
  	</select>
- 	<select id="getInquirylistp" resultType="PvocVO">
- 		select * from tb_pvoc
+ 	
+ 	<!-- 기업회원이 받는 문의사항 불러오기 -->
+ 	<select id="getInquirylistp" parameterType="_int" resultType="PvocVO">
+ 		SELECT * FROM tb_pvoc
+		WHERE p_idx IN (
+		    SELECT DISTINCT p_idx
+		    FROM tb_pvoc
+		    WHERE m_idx = #{m_idx}
+		)
+		ORDER BY post_date DESC;
+
  	</select>
 	
 </mapper>

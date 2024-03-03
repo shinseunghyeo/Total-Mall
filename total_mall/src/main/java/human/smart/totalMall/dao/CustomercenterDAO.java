@@ -61,4 +61,14 @@ public class CustomercenterDAO{
 	public int getTotalCount(SearchVO vo) {
 		return sqlSession.selectOne(MAPPER+".getTotalCount", vo);
 	}
+	
+	//관리자 홈 공지사항
+	public List<NoticeVO> homeNotice(){
+		return sqlSession.selectList(MAPPER+".homeNotice");
+	}
+	
+	//관리자 홈 문의사항
+	public List<VocVO> homeVoc(){
+		return sqlSession.selectList(MAPPER+".homeVoc");
+	}
 }

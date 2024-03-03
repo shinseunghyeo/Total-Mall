@@ -20,7 +20,9 @@ public interface MemberService {
 	default MemberVO buyerUpdateProcess(MemberVO memberVO) {return null;}
 	default int cancel(int m_idx) {return 0;}
 	default List<VocVO> getInquirylist(){return null;}
-	default List<VocVO> getInquirylistp(){return null;}
+	default List<VocVO> getInquirylistp(int m_idx){return null;}
 	default int gradeUpdate(MemberVO vo){return 0;}
 	default MemberVO sellerUpdateProcess(MemberVO memberVO) {return null;}
+	default int cancelUpdate(MemberVO vo){return 0;}
+
 }

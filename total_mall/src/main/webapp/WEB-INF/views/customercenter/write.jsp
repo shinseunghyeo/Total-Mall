@@ -10,10 +10,10 @@
 
 </head>
 <body>
-  	<%@ include file="../Main/Header2.jsp" %>
-    <div class="container">
+
+    <div class="container" id="contentDiv">
         <h1>공지사항 게시글 작성</h1>
-        <form id="frm_write" method="post" action="writeProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form id="frm_write" method="post" action="../customercenter/writeProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
             <input type="hidden" name="m_idx" value="${member.m_idx}">
             <label for="writer">작성자</label>
             <input type="text" value="${member.member_name}" disabled>
@@ -35,6 +35,6 @@
             <input type="submit" value="작성 완료">
         </form>
     </div>
-  	<%@ include file="../Main/Footer2.jsp" %>
+
 </body>
 </html>

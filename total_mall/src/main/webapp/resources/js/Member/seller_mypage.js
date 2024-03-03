@@ -92,7 +92,7 @@ $(function () {
         }; 
         
 		if ($(this).is(".seller_nav_ul_li:eq(5)")) {
-            loadContent("#");
+            loadContent("sellermypage/member/inquirylist.do");
             $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(5))").css({
                 backgroundColor: "rgb(158, 158, 158)",
                 lightCss
@@ -129,43 +129,7 @@ $(function () {
 
 
 
-//이 코드는 무작위 데이터를 생성하여 꺾은선 그래프를 그리는 예시입니다. 
-//만약 실제 데이터를 사용하려면 dataValues 배열에 실제 데이터를 할당하면 됩니다. 
-//코드의 일부를 수정하여 프로젝트에 통합하세요.
-$("div").ready(function () {
-// 12개의 임의의 데이터 생성 (예시)
-var dataValues = [];
-for (var i = 0; i < 12; i++) {
-    dataValues.push(Math.floor(Math.random() * 50) + 10);
-}
 
-// Chart.js를 사용하여 꺾은선 그래프 그리기
-var ctx = document.getElementById('myLineChart').getContext('2d');
-var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: Array.from({
-            length: 12
-        }, (_, i) => (i + 1).toString()), // 1부터 12까지 레이블 생성
-        datasets: [{
-            label: 'My Line Chart',
-            data: dataValues,
-            borderColor: 'rgb(75, 192, 192)',
-            borderWidth: 2,
-            fill: false
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-});
 });
 
 

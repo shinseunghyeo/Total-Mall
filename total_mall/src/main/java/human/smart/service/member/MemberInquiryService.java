@@ -18,8 +18,8 @@ public class MemberInquiryService implements MemberService {
 		return dao.getInquirylist();
 	}
 	@Override
-	public List<VocVO> getInquirylistp() {
-		return dao.getInquirylistp();
+	public List<VocVO> getInquirylistp(int m_idx) {
+		return dao.getInquirylistp(m_idx);
 	}
 
 }

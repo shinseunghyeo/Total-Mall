@@ -19,11 +19,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import human.smart.service.customercenter.CustomercenterService;
 import human.smart.service.member.MemberService;
+import human.smart.totalMall.common.CCPageNav;
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
@@ -35,15 +38,17 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade;
+				  mGrade, cancelUpdate;
 	
 	@Setter(onMethod_={ @Autowired })
-	ProductService pCon, pDiscon, myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1;
+	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
+	myoList_1, todayProduct, statusP;
+	
 	
 	@Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
 
+	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc;
 	
 	//로그인 페이지 요청
 	@GetMapping("/login.do")
@@ -247,27 +252,33 @@ public class MemberController {
 		return "member/sellermypage";
 	}
 	
+
+	
 /////////////////////////////// 기업회원 마이페이지 홈 ///////////////////////////////	
 	
 //기업회원 마이페이지 처리
 @GetMapping("/sellermypage.do")
-public String sellerMypage(Model model) {
-int p_con = pCon.p_con();//판매중인 상품
-int p_discon = pDiscon.p_discon();////판매중단 상품
-
-model.addAttribute("p_con", p_con);
-model.addAttribute("p_discon", p_discon);
+public String sellerMypage(@SessionAttribute("member") MemberVO member, Model model) {
+	
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 합계 조회
+model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
 return "member/sellermypage";
 }
 
 //기업회원 마이페이지 홈
 @GetMapping("sellerhome.do")
-public String sellerHome(Model model) {
-int p_con = pCon.p_con();
-int p_discon = pDiscon.p_discon();
-
-model.addAttribute("p_con", p_con);
-model.addAttribute("p_discon", p_discon);
+public String sellerHome(@SessionAttribute("member") MemberVO member, Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	
+List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 합계 조회
+model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
 return "member/sellerhome";
 }
 
@@ -277,6 +288,17 @@ public String sellerHome() {
 return "forward:/member/sellerhome.do";
 }
 
+//상품 상태에 따른 합계 조회 맵
+@ModelAttribute("statusPMap")
+public Map<String, String> statusPMap() {
+	// 숫자값과 등급값을 매핑한 Map 생성
+	Map<String, String> statusPMap = new HashMap<>();
+	statusPMap.put("0", "판매중인 상품");
+	statusPMap.put("1", "판매중단 상품");
+	statusPMap.put("2", "품절 상품");
+	statusPMap.put("3", "기한만료 상품");
+	return statusPMap;
+}
 
 /////////////////////////////// 기업회원 마이페이지 메뉴 ///////////////////////////////	
 //기업회원 상품등록페이지 처리
@@ -335,6 +357,41 @@ model.addAttribute("orderList2", orderList2);
 }
 
 
+
+
+//문의사항 리스트(관리자, 기업회원 공통)
+@GetMapping("/inquirylist.do")
+public String getInquirylist(@SessionAttribute("member") MemberVO member, Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	model.addAttribute("m_idx", m_idx);
+	
+	List<VocVO> voclist = Inquiry.getInquirylist();
+	model.addAttribute("inquirylist", voclist);
+	List<VocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
+	model.addAttribute("pinquirylist", pvoclist);
+	
+	return "member/inquirylist";
+}
+
+
+
+//기업회원 문의사항 리스트 처리(ajax)
+@GetMapping("sellermypage/member/inquirylist.do")
+public String getInquirylist2(@SessionAttribute("member") MemberVO member,Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	model.addAttribute("m_idx", m_idx);
+	
+	List<VocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
+	model.addAttribute("pinquirylist", pvoclist);
+	
+	return "member/inquirylist";
+}
 
 
 	
@@ -401,21 +458,33 @@ return "member/buyeraddress";
 /////////////////////////////// 관리자 마이페이지 홈 ///////////////////////////////		
 //관리자 마이페이지 처리
 @GetMapping("adminmypage.do")
-public String adminMypage() {
-
+public String adminMypage(Model model) {
+	int toProduct = todayProduct.todayProduct();
+	List<NoticeVO> homeNList = homeNotice.homeNotice();
+	List<VocVO> homeVList = homeVoc.homeVoc();
+	
+	model.addAttribute("todayProduct", toProduct);
+	model.addAttribute("homeNList", homeNList);
+	model.addAttribute("homeVList", homeVList);
 return "member/adminmypage";
 }
 
 //관리자 홈페이지 처리
 @GetMapping("adminhome.do")
-public String adminhome() {
-
+public String adminhome(Model model) {
+	int toProduct = todayProduct.todayProduct();
+	List<NoticeVO> homeNList = homeNotice.homeNotice();
+	List<VocVO> homeVList = homeVoc.homeVoc();
+	
+	model.addAttribute("todayProduct", toProduct);	
+	model.addAttribute("homeNList", homeNList);
+	model.addAttribute("homeVList", homeVList);
 return "member/adminhome";
 }
 
 //관리자 마이페이지 홈(ajax)
 @GetMapping("/adminmypage/member/adminhome.do")
-public String adminhome2() {
+public String adminhome2(Model model) {
 
 return "forward:/member/adminhome.do";
 }
@@ -443,6 +512,16 @@ public String gradeUpdate(@ModelAttribute("memberVO")MemberVO vo, Model model) {
 	int gradeUpdate = mGrade.gradeUpdate(vo);
 	int m_idx = vo.getM_idx();
 	String viewPage = (gradeUpdate == 1) ? "redirect:/member/member_management.do" : "redirect:/member/member_management.do";
+
+	return viewPage;// views/member폴더에 대한 경로 추가
+}
+
+//회원 탈퇴/복구 변경
+@PostMapping("cancelUpdate.do")
+public String cancelUpdate(@ModelAttribute("memberVO")MemberVO vo, Model model) {
+	int cUpdate = cancelUpdate.cancelUpdate(vo);
+	int m_idx = vo.getM_idx();
+	String viewPage = (cUpdate == 1) ? "redirect:/member/member_management.do" : "redirect:/member/member_management.do";
 
 	return viewPage;// views/member폴더에 대한 경로 추가
 }
@@ -522,7 +601,7 @@ public String allpList(Model model) {
 	return "product/allplist";
 }
 
-//기업회원 전체 주문내역
+//관리자 전체 주문내역 처리(ajax)
 @GetMapping("adminmypage/product/allorderlist.do")
 public String allolist(Model model) {
 
@@ -534,13 +613,11 @@ return "product/allorderlist";
 }
 
 
-//문의사항 리스트
-@GetMapping("/inquirylist.do")
-public String getInquirylist(Model model) {
+//관리자 문의사항 리스트 처리(ajax)
+@GetMapping("adminmypage/member/inquirylist.do")
+public String getInquirylist1(Model model) {
 	List<VocVO> voclist = Inquiry.getInquirylist();
 	model.addAttribute("inquirylist", voclist);
-	List<VocVO> pvoclist = Inquiry.getInquirylistp();
-	model.addAttribute("pinquirylist", pvoclist);
 	
 	return "member/inquirylist";
 }

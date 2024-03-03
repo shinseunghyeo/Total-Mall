@@ -92,17 +92,24 @@ public class MemberDAO {
 		}
 		return newVO;
 	}
+	
+	//회원탈퇴여부 변경
+	public int cancelUpdate(MemberVO vo) {
+		return sqlSession.update(MAPPER+".cancelUpdate", vo);
+	}
 	//회원 탈퇴하기
 	public int cancel(int m_idx) throws SQLException {
 		return sqlSession.update(MAPPER+".cancel", m_idx);
 	}
 
-	//문의 사항 리스트
+	//관리자가 받는 문의사항 전체 불러오기
 	public List<VocVO> getInquirylist(){
 		return sqlSession.selectList(MAPPER+".getInquirylist");
 	}
-	public List<VocVO> getInquirylistp(){
-		return sqlSession.selectList(MAPPER+".getInquirylistp");
+	
+	//기업회원이 받는 문의사항 불러오기
+	public List<VocVO> getInquirylistp(int m_idx){
+		return sqlSession.selectList(MAPPER+".getInquirylistp", m_idx);
 	}
 
 }

@@ -23,8 +23,10 @@
                 success: function (response) {
                     // 서버 응답에 대한 처리를 여기에 추가
                     console.log(response);
+                    
                     // 예를 들어, 페이지 리로드
                     location.reload();
+                    alert("변경되었습니다.")
                 },
                 error: function (error) {
                     // 에러 처리를 여기에 추가
@@ -44,30 +46,15 @@
 
 <body>
 
-	<div id="CategoryPage">
-		<h1>상품 관리</h1>
-		<div id="CategoryServeLine">
-
-			<div id="SearchproductLine">
+	<div id="p_management">
+		<h1>전체 상품 관리</h1>
+		<div id="BorderLine">
 
 
-				<div id="SearchproductContaner">
-					<table id="tb_myplist">
 
-						<tr>
-							<td colspan="4">총 상품 수: ${pageNav.totalRows}</td>
-							<td colspan="2">
-								<form>
-									<select name="searchField">
-										<option value="title">제목</option>
-										<option value="content">내용</option>
-										<option value="writer">작성자</option>
-									</select> <input type="text" name="searchWord"> <input
-										type="submit" value="검색">
-								</form>
-							</td>
-						</tr>
 
+				<div id="Contaner">
+					<table id="tb_plist">
 
 						<c:choose>
 							<c:when test="${empty allList}">
@@ -76,44 +63,81 @@
 									</td>
 								</tr>
 							</c:when>
+
 							<c:otherwise>
-								<c:forEach begin="1" end="10" varStatus="vs">
+								<tr>
+									<td colspan="6" class="all_p_list">
+										<div class="p_idx"></div>
+										<div class="p_img">이미지</div>
+										<div class="p_info">제품명</div>
+										<div class="p_price">가격</div>
+										<div class="p_quantity">재고</div>
+										<div class="p_period">판매기간</div>
+										<div class="p_status">판매상태 변경</div>
+
+									</td>
+								</tr>
+								<c:forEach begin="1" end="20" varStatus="vs">
 									<tr>
-										<td colspan="6">
-											<div id="Searchproductbox">
-												<a class="productimg"
-													href="${pageContext.request.contextPath}/product/item.do?p_idx=${allList[vs.count-1].p_idx}">
-													<img width="100%" height="100%"
-													src="../resources/uploads/${allList[vs.count-1].save_file_name1}">
-												</a>
-												<div id="SearchProduct">
-													<a
+										<td colspan="6" class="all_p_list">
+											<div class="p_idx">${allList[vs.count-1].p_idx}</div>
+
+											<div class="p_img">
+												<c:if test="${not empty allList[vs.count-1].price}">
+													<a class="productimg"
 														href="${pageContext.request.contextPath}/product/item.do?p_idx=${allList[vs.count-1].p_idx}">
-														${allList[vs.count-1].summary} </a><br>
+														<img width="100%" height="100%"
+														src="../resources/uploads/${allList[vs.count-1].save_file_name1}">
+													</a>
+												</c:if>
+											</div>
+											<div class="p_info">
+												<a
+													href="${pageContext.request.contextPath}/product/item.do?p_idx=${allList[vs.count-1].p_idx}">
+													<h3>${allList[vs.count-1].product_name}</h3>
+													${allList[vs.count-1].summary}
+												</a>
+											</div>
+											<div class="p_price">
+												<c:if test="${not empty allList[vs.count-1].price}">
 													<fmt:formatNumber value="${allList[vs.count-1].price}"
 														pattern="#,##0" var="formattedPrice" />
-													<c:out value="${formattedPrice}원" />
-													<br>
+													<p id="non_DCprice">
+														<c:out value="정가: ${formattedPrice}원" />
+													</p>
+													<fmt:formatNumber
+														value="${allList[vs.count-1].price * (1 - allList[vs.count-1].discount_rate / 100)}"
+														pattern="#,##0" var="DCPrice" />
+													<p id="DCprice">
+														<c:out value="할인가: ${DCPrice}원" />
+													</p>
+
+												</c:if>
 												</div>
-												<div class="SearchProductPrice">
-													<div class="SearchProductPrice">
-														<c:choose>
-															<c:when test="${allList[vs.count-1].p_status eq 0}">
-																<input type="button" value="판매중단"
-																	onclick="updateProductStatus('discontinue',${allList[vs.count-1].p_idx})">
-															</c:when>
-															<c:when test="${allList[vs.count-1].p_status eq 1}">
-																<input type="button" value="판매재개"
-																	onclick="updateProductStatus('continue', ${allList[vs.count-1].p_idx})">
-															</c:when>
-														</c:choose>
+												<div class="p_quantity">${allList[vs.count-1].quantity}</div>
+											
+											<div class="p_period">
+												<fmt:formatDate value="${allList[vs.count-1].start_date}"
+													pattern="yyyy-MM-dd" />
+												<br>
+												<fmt:formatDate value="${allList[vs.count-1].end_date}"
+													pattern="yyyy-MM-dd" />
+											</div>
 
-
-													</div>
-
-												</div>
+											<div class="p_status">
+												<c:choose>
+													<c:when test="${allList[vs.count-1].p_status eq 0}">
+														<input type="button" value="판매중단"
+															onclick="updateProductStatus('discontinue',${allList[vs.count-1].p_idx})">
+													</c:when>
+													<c:when test="${allList[vs.count-1].p_status eq 1}">
+														<input type="button" value="판매재개"
+															onclick="updateProductStatus('continue', ${allList[vs.count-1].p_idx})">
+													</c:when>
+												</c:choose>
 											</div>
 										</td>
+
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -123,7 +147,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 </body>
 

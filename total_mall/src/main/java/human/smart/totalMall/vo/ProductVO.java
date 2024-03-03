@@ -44,5 +44,5 @@ public class ProductVO {
 	private int totalDelivery;
 	private int totalDiscount;
 	
-	
+	private int count;//상품 상태에 따른 합계
 }

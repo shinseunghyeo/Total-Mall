@@ -6,13 +6,13 @@ import human.smart.totalMall.dao.ProductDAO;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor 
-@Service("pCon")
-public class ProductPConService implements ProductService {
+@Service("todayProduct")
+public class ProductTodayProductService implements ProductService {
 
 private ProductDAO dao;
 	
 	@Override
-	public int p_con(){
-		return dao.p_con();
+	public int todayProduct(){
+		return dao.todayProduct();
 	}
 }
