@@ -84,8 +84,8 @@
                                 <p>이메일</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="email" id="email">
-                                <input type="button" value="이메일 인증" id="email-button" placeholder="이메일 형식에 맞춰서 적어주세요">
+                                <input type="text" name="email" id="email" placeholder="이메일">
+                                <input type="button" value="이메일 인증" id="email-button">
                                 <p id="email_test">이메일 형식이 맞지 않습니다.</p>
                             </div>
                         </div>
@@ -94,9 +94,12 @@
                                 <p>이메일 인증 번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="" id="email2">
+                                <input type="text" name="" id="email2" placeholder="인증번호 6자리를 입력해주세요"
+                                disabled = "disabled" maxlength="6">
                                 <input type="button" value="인증번호 확인" id="email-button2">
                                 <p id="email2_test">이메일 번호가 맞지 않습니다.</p>
+                                <input type="hidden" name="result_confirm" id="result_confirm">
+	                			<span id="mail-check-result"></span>
                             </div>
                         </div>
                         <div class="input-text">

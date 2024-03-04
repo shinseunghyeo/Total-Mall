@@ -58,7 +58,7 @@
     #customerQuestions tr{border-bottom: 1px solid #ddd;}
     #customerQuestions tr td:first-child{width: 30%;height: 50px;background-color: #f2f2f2;}
     #customerQuestions textarea{width: 100%; height: 100%; border: none; outline: none;}
-    #customerQuestions #customerbtn{width: 150px;height: 50px; margin: auto;background-color: #3498db;text-align: center;cursor: pointer;}
+    #customerQuestions #customerbtn{width: 150px;height: 50px; margin: auto;background-color: #3498db;text-align: center;cursor: pointer; border: none; color: white; font-weight: 800;}
     #shippingInfo{display: none;}
     #shippingInfo div{padding: 40px;}
     #shippingInfo h3{margin: auto;}

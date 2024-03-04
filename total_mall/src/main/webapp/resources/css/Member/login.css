@@ -82,7 +82,7 @@
         #section-wrap{/* 회색부분 */
         	margin: 0 auto;
             width: 1050px;
-            height: 750px;
+            height: 820px;
             background-color: rgb(224, 224, 224);
 
         }
@@ -237,10 +237,14 @@
             margin: auto;
             text-align: center;
         }
-        #event p{
-            color: red;
+        #event-a{
+        	width: 400px;
+        	margin-left: 0;
         }
-        #event>img{
+        #event p{
+            color: black;
+        }
+        #event>a>img{
             width: 400px;
             
         }

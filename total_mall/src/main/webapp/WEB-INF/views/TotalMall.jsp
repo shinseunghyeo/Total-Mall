@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1,user-scalable=no">
 <link rel="stylesheet" href="resources/css/Main/TotalMall.css">
-<title>Insert title here2</title>
+<title>Total Mall</title>
 </head>
 <body>
   	<%@ include file="Main/MainHeader.jsp" %>
@@ -52,112 +52,120 @@
     </div>
     <!-- ---------오늘의 상품--------- -->
     <!-- ---------카테고리 추천 상품--------- -->
-    <div class="CategoryBestLine">
-        <h2>추천 카테고리 상품</h2>
-        <div class="CategoryBest">
-            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide)" src="resources/img/Mallimg/왼쪽 아이콘.png">
-            <div class="CategoryBestContainer">
-                <div id="FoodSlide" style="margin-left: 0px;">
-                    <div class="CategoryBestbox">
-       				    <c:choose>
-							<c:when test="${empty mainchoice}">
-								<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-							</c:when>
-							<c:otherwise>
-								<c:forEach begin="1" end="15" varStatus="vs">
-									<c:if test="${not empty mainchoice[vs.count-1]}">
-					                    <div>
-					                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
-											<img src="resources/uploads/${mainchoice[vs.count-1].save_file_name1}">
-					                       	</a>
-											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
-											<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
-					                        <span class="price" style="font-weight: bold">${mainchoice[vs.count-1].price}원</span>
-					                    </div>
-									</c:if>
-									<c:if test="${vs.count%3 == 0}">
-					                </div>
-					                <div class="CategoryBestbox">
-									</c:if>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-                    </div>
-                </div>
-            </div>
-            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/오른쪽 아이콘.png">
-        </div>
-    </div>
-    <div class="CategoryBestLine">
-        <div class="CategoryBest">
-            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide2)" src="resources/img/Mallimg/왼쪽 아이콘.png">
-            <div class="CategoryBestContainer">
-                <div id="FoodSlide2" style="margin-left: 0px;">
-                    <div class="CategoryBestbox">
-       				    <c:choose>
-							<c:when test="${empty mainchoice2}">
-								<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-							</c:when>
-							<c:otherwise>
-								<c:forEach begin="1" end="15" varStatus="vs">
-									<c:if test="${not empty mainchoice2[vs.count-1]}">
-					                    <div>
-					                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
-											<img src="resources/uploads/${mainchoice2[vs.count-1].save_file_name1}">
-					                       	</a>
-											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
-											<span class="truncate">${mainchoice2[vs.count-1].product_name}</span></a><br>
-					                        <span class="price" style="font-weight: bold">${mainchoice2[vs.count-1].price}원</span> 
-					                    </div>
-									</c:if>
-									<c:if test="${vs.count%3 == 0}">
-					                </div>
-					                <div class="CategoryBestbox">
-									</c:if>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-	                </div>
-                </div>
-            </div>
-            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/오른쪽 아이콘.png">
-        </div>
-    </div>        
-    <div class="CategoryBestLine">
-        <div class="CategoryBest">
-            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide3)" src="resources/img/Mallimg/왼쪽 아이콘.png">
-            <div class="CategoryBestContainer">
-                <div id="FoodSlide3" style="margin-left: 0px;">
-                    <div class="CategoryBestbox">
-       				    <c:choose>
-							<c:when test="${empty mainchoice3}">
-								<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
-							</c:when>
-							<c:otherwise>
-								<c:forEach begin="1" end="15" varStatus="vs">
-									<c:if test="${not empty mainchoice3[vs.count-1]}">
-					                    <div>
-					                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
-											<img src="resources/uploads/${mainchoice3[vs.count-1].save_file_name1}">
-					                       	</a>
-											<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
-											<span class="truncate">${mainchoice3[vs.count-1].product_name}</span></a><br>
-					                        <span class="price" style="font-weight: bold">${mainchoice3[vs.count-1].price}원</span> 
-					                    </div>
-									</c:if>
-									<c:if test="${vs.count%3 == 0}">
-					                </div>
-					                <div class="CategoryBestbox">
-									</c:if>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-                    </div>
-                </div>
-            </div>
-            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide3)" src="resources/img/Mallimg/오른쪽 아이콘.png">
-        </div>
-    </div>
+    <c:choose>
+    	<c:when test="${not empty member}">
+    		<div class="CategoryBestLine">
+		        <h2>추천 카테고리 상품</h2>
+		        <div class="CategoryBest">
+		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide)" src="resources/img/Mallimg/왼쪽 아이콘.png">
+		            <div class="CategoryBestContainer">
+		                <div id="FoodSlide" style="margin-left: 0px;">
+		                    <div class="CategoryBestbox">
+		       				    <c:choose>
+									<c:when test="${empty mainchoice}">
+										<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+									</c:when>
+									<c:otherwise>
+										<c:forEach begin="1" end="15" varStatus="vs">
+											<c:if test="${not empty mainchoice[vs.count-1]}">
+							                    <div>
+							                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
+													<img src="resources/uploads/${mainchoice[vs.count-1].save_file_name1}">
+							                       	</a>
+													<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice[vs.count-1].p_idx}">
+													<span class="truncate">${mainchoice[vs.count-1].product_name}</span></a><br>
+							                        <span class="price" style="font-weight: bold">${mainchoice[vs.count-1].price}원</span>
+							                    </div>
+											</c:if>
+											<c:if test="${vs.count%3 == 0}">
+							                </div>
+							                <div class="CategoryBestbox">
+											</c:if>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+		                    </div>
+		                </div>
+		            </div>
+		            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		        </div>
+		    </div>
+		    <div class="CategoryBestLine">
+		        <div class="CategoryBest">
+		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide2)" src="resources/img/Mallimg/왼쪽 아이콘.png">
+		            <div class="CategoryBestContainer">
+		                <div id="FoodSlide2" style="margin-left: 0px;">
+		                    <div class="CategoryBestbox">
+		       				    <c:choose>
+									<c:when test="${empty mainchoice2}">
+										<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+									</c:when>
+									<c:otherwise>
+										<c:forEach begin="1" end="15" varStatus="vs">
+											<c:if test="${not empty mainchoice2[vs.count-1]}">
+							                    <div>
+							                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
+													<img src="resources/uploads/${mainchoice2[vs.count-1].save_file_name1}">
+							                       	</a>
+													<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice2[vs.count-1].p_idx}">
+													<span class="truncate">${mainchoice2[vs.count-1].product_name}</span></a><br>
+							                        <span class="price" style="font-weight: bold">${mainchoice2[vs.count-1].price}원</span> 
+							                    </div>
+											</c:if>
+											<c:if test="${vs.count%3 == 0}">
+							                </div>
+							                <div class="CategoryBestbox">
+											</c:if>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+			                </div>
+		                </div>
+		            </div>
+		            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		        </div>
+		    </div>        
+		    <div class="CategoryBestLine">
+		        <div class="CategoryBest">
+		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide3)" src="resources/img/Mallimg/왼쪽 아이콘.png">
+		            <div class="CategoryBestContainer">
+		                <div id="FoodSlide3" style="margin-left: 0px;">
+		                    <div class="CategoryBestbox">
+		       				    <c:choose>
+									<c:when test="${empty mainchoice3}">
+										<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+									</c:when>
+									<c:otherwise>
+										<c:forEach begin="1" end="15" varStatus="vs">
+											<c:if test="${not empty mainchoice3[vs.count-1]}">
+							                    <div>
+							                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
+													<img src="resources/uploads/${mainchoice3[vs.count-1].save_file_name1}">
+							                       	</a>
+													<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainchoice3[vs.count-1].p_idx}">
+													<span class="truncate">${mainchoice3[vs.count-1].product_name}</span></a><br>
+							                        <span class="price" style="font-weight: bold">${mainchoice3[vs.count-1].price}원</span> 
+							                    </div>
+											</c:if>
+											<c:if test="${vs.count%3 == 0}">
+							                </div>
+							                <div class="CategoryBestbox">
+											</c:if>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+		                    </div>
+		                </div>
+		            </div>
+		            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide3)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		        </div>
+		    </div>
+    	</c:when>
+    	<c:otherwise>
+    	
+    	</c:otherwise>
+    </c:choose>
+    
     <!-- ---------카테고리 추천 상품--------- -->
     <!-- ---------카테고리별 상품--------- -->
     <div id="CategoryMallLine">

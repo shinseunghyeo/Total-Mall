@@ -51,7 +51,9 @@
 	                            <input type="submit" value="로그인">
 	                        </div>
 	                        <div id="event">
-	                            <img src="../resources/img/MainEventimg/이벤트00.jpg" alt="#">
+	                        	<a href="${pageContext.request.contextPath}/nav/EventPage.do" id="event-a">
+	                        		<img src="../resources/img/MainEventimg/이벤트00.jpg" alt="#">
+	                        	</a>
 	                            <p>${msg}</p>
 	                        </div>
 	                        

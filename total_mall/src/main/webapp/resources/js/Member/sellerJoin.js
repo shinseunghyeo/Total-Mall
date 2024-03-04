@@ -86,6 +86,53 @@ $(function () {
     });
 
     /* 유효성 검사 */
+    /* 이메일 인증 */
+	let code;
+	const checkInput = $("#email2");//인증번호 입력하는 곳
+	
+	$("#email-button").on("click", function(){//이메일 인증버튼을 클릭했을 때
+		
+		const email = $("#email").val();//이메일 주소
+		
+		//이메일 유효성 검사
+		let regExp_email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+		
+		if(regExp_email.test(email)){//유효성 검사를 통과하면
+			
+			$.ajax({
+				type: "get",
+				url: "emailCheck.do?email="+email,
+				success: function(data){
+					checkInput.attr("disabled", false);//인증번호 입력란을 활성화시킴
+					code = data;//서버에서 받은 인증번호를 변수 code에 저장
+					alert("인증번호가 전송되었습니다");
+				}
+			});//end of ajax
+			
+		}else{
+			alert("입력하신 내용이 이메일 형식에 맞지 않습니다");
+			frm_join.email.focus();
+		}
+	
+	});//end of email
+	
+	//사용자가 자신의 메일에서 인증번호을 확인한 후 인증번호 입력란에 인증번호를 입력하고 난 뒤 인증확인 버튼을 클릭한 경우
+	$("#email-button2").on("click", function(){
+		
+		const inputCode = checkInput.val();//인증번호 입력란에 입력된 값
+		const resultMsg = $("#mail-check-result");//결과값을 보여주는 span태그
+		const resultEmailAuth = $("#result_confirm");//인증결과를 넘겨줄 input hidden태그
+		
+		if(inputCode == code){//인증번호 입력란에 입력된 값과 서버에서 받은 인증번호 값이 일치하면
+			alert("이메일 인증이 완료가 되었습니다.");
+			resultEmailAuth.val("PASS");//메일인증 성공		
+		}else{
+			alert("인증번호가 일치하지 않습니다.")
+			resultEmailAuth.val("FAIL");//메일인증 성공
+		}
+		 
+	});//end of confirm_email
+	/* 이메일 인증 끝 */
 
 });
 //submit시 전체 유효성 검사 순서대로
