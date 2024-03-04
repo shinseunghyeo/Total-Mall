@@ -125,7 +125,7 @@ function cancelMember(){
 	if(confirmAns){
 		location.href = "cancelProcess.do";
 	}else{
-		history.back();
+		alert("회원 탈퇴를 취소했습니다.");
 	}
 }
 /* 회원탈퇴 스크립트 */

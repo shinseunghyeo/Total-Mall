@@ -113,7 +113,8 @@
                             <p>대표자 명</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="representative_name" value="${member.representative_name}" placeholder="">
+                        	<input type="hidden" name="representative_name" value="${member.representative_name}">
+                            <input type="text" name="representative_name" value="${member.representative_name}" placeholder="" disabled>
                             <p>대표자명이 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -122,7 +123,8 @@
                             <p>사업자 등록번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="company_number" value="${member.company_number}" placeholder="">
+                        	<input type="hidden" name="company_number" value="${member.company_number}">
+                            <input type="text" name="company_number" value="${member.company_number}" placeholder="" disabled>
                             <p>사업자 등록번호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -131,7 +133,8 @@
                             <p>상호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="mutual" value="${member.mutual}">
+                        	<input type="hidden" name="mutual" value="${member.mutual}">
+                            <input type="text" name="mutual" value="${member.mutual}" disabled>
                             <p>상호가 올바르지 않습니다.</p>
                         </div>
                     </div>
@@ -140,7 +143,8 @@
                             <p>통신판매번호</p>
                         </div>
                         <div class="input-text2">
-                            <input type="text" name="mail_order_number" value="${member.mail_order_number}">
+                        	<input type="hidden" name="mail_order_number" value="${member.mail_order_number}">
+                            <input type="text" name="mail_order_number" value="${member.mail_order_number}" disabled>
                             <p>통신판매번호가 올바르지 않습니다.</p>
                         </div>
                     </div>
