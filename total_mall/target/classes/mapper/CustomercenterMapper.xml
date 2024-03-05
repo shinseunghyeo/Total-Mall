@@ -101,7 +101,7 @@
 				update tb_notice set title=#{title}, content=#{content}, update_date=now()
 					     where n_idx=#{n_idx}
 			</otherwise>
-		</choose>	
+		</choose>
 	</update>
 	
 	<!-- 게시글 삭제 처리: update -->

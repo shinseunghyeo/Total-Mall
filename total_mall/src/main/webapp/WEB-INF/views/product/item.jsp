@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>  
 <html>
 <head>
@@ -261,7 +262,7 @@ function continuedPost() {
                             </div><hr>
 			<div id="content">
             </div>
-                
+            
                 <script>
                 var buttons = document.getElementsByClassName("rating-button");
                     function changeContent(option, clickedButton) {
@@ -273,16 +274,20 @@ function continuedPost() {
                         var contentDiv = document.getElementById('content');
                         switch(option) {
                             case 'recent':
-                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br><fmt:formatDate value="${review.post_date}"
+                                    pattern="yyyy-MM-dd HH:mm:ss" /><br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.savefile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'old':
-                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lEvaluationList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lEvaluationList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br><fmt:formatDate value="${review.post_date}"
+                                    pattern="yyyy-MM-dd HH:mm:ss" /><br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.savefile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'high_rating':
-                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty hStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${hStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br><fmt:formatDate value="${review.post_date}"
+                                    pattern="yyyy-MM-dd HH:mm:ss" /><br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.savefile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             case 'low_rating':
-                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br>${review.post_date}<br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.originfile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
+                                contentDiv.innerHTML = '<c:choose><c:when test="${empty lStarList}"><tr><td colspan="6">등록된 상품이 없습니다</td></tr></c:when><c:otherwise><c:forEach items="${lStarList}" var="review" varStatus="vs">${review.member_name}<br><c:forEach begin="1" end="5" varStatus="star"><c:choose><c:when test="${star.index <= review.star}"><span style="color: orange">★</span></c:when><c:otherwise><span style="color: orange">☆</span></c:otherwise></c:choose></c:forEach>(${review.star})<br><fmt:formatDate value="${review.post_date}"
+                                    pattern="yyyy-MM-dd HH:mm:ss" /><br><c:if test="${not empty review.originfile_name}"><img width="50" height="50" src="../resources/uploads/${review.savefile_name}"></c:if>${review.content}<hr></c:forEach></c:otherwise></c:choose>';
                                 break;
                             default:
                                 break;
@@ -335,12 +340,12 @@ function continuedPost() {
 	                </tr>
 	                <tr>
 	                    <td>문의 내용</td>
-	                    <td>
-	                        <textarea name="content" cols="100" rows="35"></textarea>
+	                    <td style="display:flex;">
+		                    <textarea name="content" placeholder="상품 문의가 필요하시다면 여기에 문의사항을 작성해주세요."></textarea>
 	                    </td>
 	                </tr>
 	            </table>
-	                                <div id="VocWritefile">
+                    <div id="VocWritefile">
                         <input type="file" id="file" name="uploadFile"><br><br>
                     </div>
 	            
