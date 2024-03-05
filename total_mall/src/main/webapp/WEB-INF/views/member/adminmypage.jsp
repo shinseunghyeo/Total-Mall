@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../resources/css/Member/admin.css">
 	<script src="../resources/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="../resources/js/Member/admin_mypage.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>

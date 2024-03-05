@@ -77,7 +77,13 @@ $(function () {
             });
         };
 
-        
+            if ($(this).is(".buyer_nav_ul_li:eq(6)")) {
+        loadContent("buyermypage/product/myreview.do");
+        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(6))").css({
+            backgroundColor: "rgba(224, 224, 224, 0.42)",
+            lightCss,
+        });
+    };
 
 
 
@@ -96,6 +102,7 @@ $(function () {
         }
 
 
+
         //개인회원 페이지 네비게이션 hover css 변경    
     }).on("mouseenter", ".buyer_nav_ul_li", function () {
         $(this).css({
@@ -108,13 +115,7 @@ $(function () {
 
     });
 
-    $("#hide_menu").hide(); //내가 쓴 글 - 하위메뉴 나타나기
-    $("#hide_li").on("mouseenter", function () {
-        $(this).next().fadeIn(300).delay(2000).fadeOut(300);
-        //fadeIn(): 선택한 요소가 서서히 나타나게 함, 매개값 실행시간을 밀리초로 설정할 수 있음
-        //fadeOut(): 선택한 요소가 서서히 사라지게 함, 매개값 실행시간을 밀리초로 설정할 수 있음
 
-    });
 
 });
 

@@ -12,9 +12,9 @@
 </head>
 <body>
 <body>
-	
+
 	<div id="order_management">
-				<h1>전체 주문내역</h1>
+		<h1>전체 주문내역</h1>
 		<div id="order_wrap">
 
 
@@ -44,22 +44,28 @@
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
-					${allorderList[vs.count-1].o_idx}
+						<div class="new-sort">
+							${allorderList[vs.count-1].o_idx}<br>
+							${p_or_notMap[allorderList[vs.count-1].payment_or_not.toString()]}
+						</div>
 						<div class="new-img-div">
-						
-							<img src="../resources/uploads/${allorderList[vs.count-1].save_file_name1}" alt="${allorderList[vs.count-1].product_name}">
+
+							<img
+								src="../resources/uploads/${allorderList[vs.count-1].save_file_name1}"
+								alt="${allorderList[vs.count-1].product_name}">
 						</div>
 						<div class="new-name">
 							<p>
 								<a
 									href="${pageContext.request.contextPath}/product/item.do?p_idx=${allorderList[vs.count-1].p_idx}">${allorderList[vs.count-1].product_name}
+
 								</a>
-								
 							</p>
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${allorderList[vs.count-1].o_update_time}"
+								<fmt:formatDate
+									value="${allorderList[vs.count-1].o_update_time}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</p>
 						</div>
@@ -69,20 +75,29 @@
 						<div class="new-price">
 							<p>
 								<c:if test="${not empty allorderList[vs.count-1].price}">
-									<fmt:formatNumber value="${allorderList[vs.count-1].price * allorderList[vs.count-1].c_quantity}"
+									<fmt:formatNumber
+										value="${allorderList[vs.count-1].price * allorderList[vs.count-1].c_quantity}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
 							</p>
 						</div>
 						<div class="new-another">
-						<c:if test="${not empty allorderList[vs.count-1].o_idx}">
-							<input type="button" value="주문상태 변경" class="new-another-button">
-							<input type="button" value="주문 상세보기" class="new-another-button">
-						</c:if>
+							<c:if test="${not empty allorderList[vs.count-1].o_idx}">
+
+
+
+
+
+								<input type="button" value="주문상태 변경" class="new-another-button">
+								<input type="button" value="주문 상세보기" class="new-another-button">
+							</c:if>
 						</div>
 					</div>
+
 				</c:forEach>
+
+
 			</div>
 		</div>
 	</div>

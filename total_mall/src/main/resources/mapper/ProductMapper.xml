@@ -271,28 +271,26 @@
 		SELECT
 		c.o_idx, c.c_idx, c.m_idx, c.c_quantity, c.c_update_time,
 		p.p_idx, p.product_name, p.price, p.discount_rate, p.save_file_name1,
-		o.o_update_time, o.totalprice
+		o.o_update_time, o.totalprice, c.payment_or_not
 		FROM
 		tb_cart c
 		LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
 		LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx
 		WHERE
-		c.m_idx = #{m_idx} AND
-	    c.payment_or_not NOT IN (0, 1)
+		c.m_idx = #{m_idx}
 	</select>
 	<!-- 개인회원 홈 주문조회: select -->
 	<select id="getOrders_1" parameterType="_int" resultType="cartVO">
 		SELECT
 		c.o_idx, c.c_idx, c.m_idx, c.c_quantity, c.c_update_time,
 		p.p_idx, p.product_name, p.price, p.discount_rate, p.save_file_name1,
-		o.o_update_time, o.totalprice
+		o.o_update_time, o.totalprice, c.payment_or_not
 		FROM
 		tb_cart c
 		LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
 		LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx
 		WHERE
 		c.m_idx = #{m_idx} AND
-	    c.payment_or_not NOT IN (0, 1) AND
 	    o.o_update_time >= CURDATE() - INTERVAL 1 MONTH
 	</select>
 
@@ -333,6 +331,21 @@
 	SELECT * 
 	FROM p_status_count_view
 	 WHERE m_idx = #{m_idx}
+	</select>
+	
+	<!-- 주문 상태 변경 -->
+	<update id="oModify" parameterType="CartVO">
+	UPDATE tb_cart
+    SET payment_or_not = #{payment_or_not}
+    WHERE p_idx = #{p_idx}
+	</update>	
+	
+	<!-- 개인회원 리뷰 모아보기-->
+	<select id="myreview" parameterType="_int" resultType="ReviewVO">
+	select* from tb_review
+	where m_idx= #{m_idx}
+	ORDER BY post_date ASC
+	LIMIT 20 OFFSET 0;
 	</select>
 	
 	

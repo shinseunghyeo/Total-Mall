@@ -27,6 +27,7 @@ import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SalesVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
@@ -42,7 +43,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1, todayProduct, statusP;
+	myoList_1, todayProduct, statusP, myReview;
 	
 	
 	@Setter(onMethod_={ @Autowired })
@@ -261,7 +262,29 @@ public class MemberController {
 		}
 		return "member/sellermypage";
 	}
-	
+	//주문 상태 맵
+	@ModelAttribute("p_or_notMap")
+	public Map<String, String> p_or_notMap() {
+		// 숫자값과 등급값을 매핑한 Map 생성
+		Map<String, String> p_or_notMap = new HashMap<>();
+		p_or_notMap.put("0", "장바구니");
+		p_or_notMap.put("1", "결제중");
+		p_or_notMap.put("2", "결제완료");
+		p_or_notMap.put("3", "상품 준비중");
+		p_or_notMap.put("4", "배송지시");
+		p_or_notMap.put("5", "배송중");
+		p_or_notMap.put("6", "배송완료");
+		
+		p_or_notMap.put("10", "교환요청");
+		p_or_notMap.put("11", "취소요청");
+		p_or_notMap.put("12", "반품요청");
+		p_or_notMap.put("13", "교환완료");
+		p_or_notMap.put("14", "취소완료");
+		p_or_notMap.put("15", "반품완료");
+
+		return p_or_notMap;
+	}
+
 
 	
 /////////////////////////////// 기업회원 마이페이지 홈 ///////////////////////////////	
@@ -450,7 +473,18 @@ return "forward:/product/order_history.do?m_idx="+m_idx;
 
 }
 
+//개인회원 리뷰 모아보기
+@GetMapping("/buyermypage/product/myreview.do")
+public String myreview(@SessionAttribute("member") MemberVO member, Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	List<ReviewVO> myreview = myReview.myreview(m_idx);
 
+model.addAttribute("myreview", myreview); 
+return "forward:/product/myreview.do?m_idx="+m_idx;
+}
 
 
 
@@ -620,6 +654,18 @@ model.addAttribute("allorderList", allorderList);
 
 // 주문내역 페이지로 이동
 return "product/allorderlist";
+}
+
+
+
+//전체 매출 페이지 요청(ajax)
+@GetMapping("adminmypage/member/allSales.do")
+public String allSales2(Model model) {
+	List<SalesVO> salesList = sList.getSales();
+	
+	model.addAttribute("salesList", salesList);
+	
+	return "member/allSales";
 }
 
 

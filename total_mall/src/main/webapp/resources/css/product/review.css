@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 h1 {text-align: center;margin-top: 20px;color: #333;}
-#reviewForm {width: 50%;margin: 20px auto;background-color: #fff;padding: 30px;border-radius: 10px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);}
+#reviewForm {margin: 8% auto;background-color: #fff;padding: 30px;border-radius: 10px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);}
 #reviewForm div {margin-bottom: 20px;}
 #reviewForm label {font-weight: bold;color: #555;}
 #reviewForm input[type="text"],#reviewForm select,#reviewForm textarea {
@@ -17,3 +17,21 @@ border: none;border-radius: 5px;cursor: pointer;font-size: 18px;transition: back
 #reviewForm label {display: block;margin-bottom: 5px;}
 #reviewForm textarea {height: 150px;}
 #reviewForm button[type="submit"] {width: 100%;margin-top: 20px;}
+#product_img{
+    width: 6rem;
+    height: 6rem;
+    margin: 0 4%;
+}
+#product_text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+#product {
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    align-items: center;
+    justify-content: flex-start;
+}

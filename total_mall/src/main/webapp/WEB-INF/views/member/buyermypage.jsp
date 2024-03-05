@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,8 @@
 					<li class="buyer_nav_ul_li">배송조회</li>
 					<li class="buyer_nav_ul_li">회원정보설정</li>
 					<li class="buyer_nav_ul_li">주소록 설정</li>
-					<li class="buyer_nav_ul_li" id="hide_li">내가 쓴 글</li>
-					<ul id="hide_menu">
-						<li>문의/답변</li>
-						<li>상품평</li>
-					</ul>
+					<li class="buyer_nav_ul_li">상품 문의/답변</li>
+					<li class="buyer_nav_ul_li">나의 상품평가</li>
 					<li class="buyer_nav_ul_li">고객센터</li>
 				</ul>
 			</div>

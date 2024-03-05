@@ -116,6 +116,15 @@ public class ProductDAO{
 	public List<ProductVO> statusP(int m_idx){
 		return sqlSession.selectList(MAPPER+".statusP", m_idx);
 	}
+	//주문 상태 변경
+	public int oModify(CartVO vo) {
+		return sqlSession.insert(MAPPER + ".oModify", vo);
+	}
+	
+	//상품 상태에 따른 합계 조회
+	public List<ReviewVO> myreview(int m_idx){
+		return sqlSession.selectList(MAPPER+".myreview", m_idx);
+	}
 	
 	
 	public List<ProductVO> getProducts(SearchVO vo){

@@ -7,8 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>개인회원 마이페이지</title>
+<script>
+function openReviewPage(p_idx) {
+    var url = '${pageContext.request.contextPath}/product/review.do?p_idx=' + p_idx;
+    window.open(url, '_blank', 'width=800,height=800');
+}
+
+
+</script>
+
 </head>
-<body>
+
 <body>
 	<div id="nav_back"></div>
 	<div id="buyer_home">
@@ -16,24 +25,29 @@
 			<img src="../resources/img/Mallimg/마이페이지 광고.png" alt="마이페이지 광고">
 
 			<div id="grade_wrap">
-				<h3>${member.member_name}회원님의 등급은 <c:out value="${gradeMap[member.grade.toString()]}" /> 입니다</h3>
+				<h3>${member.member_name}회원님의
+					등급은
+					<c:out value="${gradeMap[member.grade.toString()]}" />
+					입니다
+				</h3>
 				<br>
 				<div id="bar">
-<c:forEach var="i" begin="1" end="5">
-    <div style="width: 1.5rem; height: 1.5rem;">
-        <c:choose>
-            <c:when test="${member.grade eq i}">
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#3498DB"
-                    class="bi bi-circle-fill" viewBox="0 0 16 16">
+					<c:forEach var="i" begin="1" end="5">
+						<div style="width: 1.5rem; height: 1.5rem;">
+							<c:choose>
+								<c:when test="${member.grade eq i}">
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+										width="1.5rem" height="1.5rem" fill="#3498DB"
+										class="bi bi-circle-fill" viewBox="0 0 16 16">
                     <circle cx="8" cy="8" r="8" />
                 </svg>
-            </c:when>
-            <c:otherwise>
-                <!-- 등급에 맞지 않는 경우 아무 내용도 표시하지 않음 -->
-            </c:otherwise>
-        </c:choose>
-    </div>
-</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<!-- 등급에 맞지 않는 경우 아무 내용도 표시하지 않음 -->
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</c:forEach>
 
 				</div>
 				<ul id="grade">
@@ -78,11 +92,17 @@
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
-						<div class="new-img-div">
-						<p>${orderList_1[vs.count-1].o_idx}</p>
-						<c:if test="${not empty orderList_1[vs.count-1].save_file_name1}">
-							<img src="../resources/uploads/${orderList_1[vs.count-1].save_file_name1}" alt="${orderList_1[vs.count-1].product_name}" class="new-img">
-						</c:if>
+						
+						<div class="new-sort">
+							${orderList_1[vs.count-1].o_idx}<br>
+							${p_or_notMap[orderList_1[vs.count-1].payment_or_not.toString()]}
+							</div>
+							<div class="new-img-div">
+							<c:if test="${not empty orderList_1[vs.count-1].save_file_name1}">
+								<img
+									src="../resources/uploads/${orderList_1[vs.count-1].save_file_name1}"
+									alt="${orderList_1[vs.count-1].product_name}" class="new-img">
+							</c:if>
 						</div>
 						<div class="new-name">
 							<p>
@@ -110,13 +130,20 @@
 							</p>
 						</div>
 						<div class="new-another">
-						<c:if test="${not empty orderList_1[vs.count-1].m_idx}">
-							<input type="button" value="리뷰 작성" class="new-another-button">
-							<input type="button" value="문의 하기" class="new-another-button">
-							<input type="button" value="주문 상세보기" class="new-another-button">
-						</c:if>
+							<c:if test="${not empty orderList_1[vs.count-1].m_idx}">
+								<a href="javascript:void(0);"
+									onclick="openReviewPage(${orderList_1[vs.count-1].p_idx});">
+									<input type="button" value="리뷰 작성" class="new-another-button">
+								</a>
+								<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList_1[vs.count-1].p_idx}"
+							target="_blank">
+								<input type="button" value="문의 하기" class="new-another-button">
+							</a>
+							<a><input type="button" value="주문 상세보기" class="new-another-button"></a>
+							</c:if>
 						</div>
 					</div>
+
 				</c:forEach>
 			</div>
 		</div>
@@ -124,5 +151,5 @@
 
 </body>
 
-</body>
+
 </html>
