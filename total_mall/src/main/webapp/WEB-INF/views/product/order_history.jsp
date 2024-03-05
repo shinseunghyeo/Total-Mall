@@ -7,7 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>개인회원 마이페이지</title>
-
+<script>
+function openReviewPage(p_idx) {
+    var url = '${pageContext.request.contextPath}/product/review.do?p_idx=' + p_idx;
+    window.open(url, '_blank', 'width=800,height=800');
+}
+</script>
 </head>
 <body>
 <body>
@@ -42,8 +47,12 @@
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
+						
+						<div class="new-sort">
+							${orderList[vs.count-1].o_idx}<br>
+						${p_or_notMap[orderList[vs.count-1].payment_or_not.toString()]}
+						</div>
 						<div class="new-img-div">
-						<p>${orderList[vs.count-1].o_idx}</p>
 						<c:if test="${not empty orderList[vs.count-1].save_file_name1}">
 							<img src="../resources/uploads/${orderList[vs.count-1].save_file_name1}" alt="${orderList[vs.count-1].product_name}" class="new-img">
 						</c:if>
@@ -75,9 +84,16 @@
 						</div>
 						<div class="new-another">
 						<c:if test="${not empty orderList[vs.count-1].m_idx}">
-							<input type="button" value="리뷰 작성" class="new-another-button">
-							<input type="button" value="문의 하기" class="new-another-button">
-							<input type="button" value="주문 상세보기" class="new-another-button">
+							<a href="javascript:void(0);"
+									onclick="openReviewPage(${orderList[vs.count-1].p_idx});">
+									<input type="button" value="리뷰 작성" class="new-another-button">
+								</a>
+							<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList[vs.count-1].p_idx}"
+							target="_blank">
+								<input type="button" value="문의 하기" class="new-another-button">
+							</a>
+							
+							<a><input type="button" value="주문 상세보기" class="new-another-button"></a>
 						</c:if>
 						</div>
 					</div>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.totalMall.common.PageNav;
@@ -34,7 +35,7 @@ public class ProductController {
 	@Setter(onMethod_={ @Autowired })
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
-    		allpList, alloList,todayProduct, statusP,
+    		allpList, alloList,todayProduct, statusP,oModify, myReview,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -169,6 +170,19 @@ public class ProductController {
 
         return "product/search";
     }
+    
+    
+ // 리뷰 페이지 요청 처리
+    @GetMapping("/review.do") 
+    public String review2(@RequestParam int p_idx, Model model) {
+        ProductVO revvo = pReview.getProRev(p_idx);
+        model.addAttribute("productReview", revvo);
+        ProductVO vo = pItem.getProduct(p_idx);
+		model.addAttribute("product", vo);
+        return "product/review";
+    }
+
+    
     // 리퓨 페이지 요청 처리
     @PostMapping("/review.do") 
 	public String review(int p_idx, Model model) {
@@ -402,7 +416,29 @@ public class ProductController {
 		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
 	}
 
+	//주문 상태 변경
+	@PostMapping("oModify.do")
+	public String gradeUpdate(@ModelAttribute("cartVO")CartVO vo, Model model) {
+		int oMod = oModify.oModify(vo);
+		int p_idx = vo.getP_idx();
+		String viewPage = (oMod == 1) ? "redirect:/product/order_management.do" : "redirect:/product/order_management.do";
 
+		return viewPage;// views/member폴더에 대한 경로 추가
+	}
+	
+  	//개인회원 리뷰 모아보기
+  	@GetMapping("/myreview.do")
+	public String myreview(@SessionAttribute("member") MemberVO member, Model model) {
+  		if (member == null || member.getM_idx() == 0) {
+		    return "redirect:/member/login.do";
+		}
+		int m_idx = member.getM_idx();
+  		List<ReviewVO> myreview = myReview.myreview(m_idx);
+		model.addAttribute("myreview", myreview); 
+		return "product/myreview";
+	}
+	
+	
 	
 	
 	

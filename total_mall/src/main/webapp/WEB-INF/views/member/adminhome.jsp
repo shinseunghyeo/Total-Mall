@@ -79,7 +79,9 @@
 		<div id="first_div">
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>${member.member_name} 님 <small>계정입니다</small></h2>
+					<h2>${member.member_name}
+						님 <small>계정입니다</small>
+					</h2>
 					<div id="current_wrap">
 						<h2 id="currentDate"></h2>
 						<h2 id="currentTime"></h2>
@@ -91,8 +93,9 @@
 					<h2>공지사항</h2>
 					<div id="notice_table">
 						<div id="notice_btn">
-							
-							<input type="button" value="전체보기" onclick="window.location.href='${pageContext.request.contextPath}/customercenter/notice.do?service';">
+
+							<input type="button" value="전체보기"
+								onclick="window.location.href='${pageContext.request.contextPath}/customercenter/notice.do?service';">
 							<input type="button" value="글쓰기">
 						</div>
 
@@ -106,17 +109,18 @@
 								</tr>
 							</thead>
 							<tbody>
-									<c:forEach var="i" begin="1" end="5" varStatus="vs">
-										<tr>
+								<c:forEach var="i" begin="1" end="5" varStatus="vs">
+									<tr>
 										<td>${i}</td>
-										<td>
-											<a href="${pageContext.request.contextPath}/customercenter/notice.do?service=${homeNList[vs.count-1].service}&n_idx=${homeNList[vs.count-1].n_idx}">${homeNList[vs.count-1].title}</a>
+										<td><a
+											href="${pageContext.request.contextPath}/customercenter/notice.do?service=${homeNList[vs.count-1].service}&n_idx=${homeNList[vs.count-1].n_idx}">${homeNList[vs.count-1].title}</a>
 										</td>
 										<td>${homeNList[vs.count-1].writer}</td>
-										<td><fmt:formatDate value="${homeNList[vs.count-1].post_date}"
-									pattern="yyyy/MM/dd HH:mm:ss" /></td>
-										</tr>
-									</c:forEach>
+										<td><fmt:formatDate
+												value="${homeNList[vs.count-1].post_date}"
+												pattern="yyyy/MM/dd HH:mm:ss" /></td>
+									</tr>
+								</c:forEach>
 
 
 
@@ -143,11 +147,6 @@
 				<div class="inner_box">
 					<h2>고객센터</h2>
 					<div id="cs_table">
-						<div id="cs_btn">
-							<input type="button" value="기업회원"> <input type="button"
-								value="개인회원">
-						</div>
-
 						<table>
 							<thead>
 								<tr>
@@ -159,18 +158,18 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach var="i" begin="1" end="5" varStatus="vs">
-										<tr>
+								<c:forEach var="i" begin="1" end="5" varStatus="vs">
+									<tr>
 										<td>${i}</td>
-										<td><c:out value="${fn:substring(gradeMap[homeVList[vs.count-1].grade.toString()], 0, 4)}" /></td>
-										<td>
-											<a href="#">${homeVList[vs.count-1].title}</a>
-										</td>
+										<td><c:out
+												value="${fn:substring(gradeMap[homeVList[vs.count-1].grade.toString()], 0, 4)}" /></td>
+										<td><a href="#">${homeVList[vs.count-1].title}</a></td>
 										<td>${homeVList[vs.count-1].writer}</td>
-										<td><fmt:formatDate value="${homeVList[vs.count-1].post_date}"
-									pattern="yyyy/MM/dd" /></td>
-										</tr>
-									</c:forEach>
+										<td><fmt:formatDate
+												value="${homeVList[vs.count-1].post_date}"
+												pattern="yyyy/MM/dd" /></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

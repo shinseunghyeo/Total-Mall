@@ -153,8 +153,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="5" id="td-page-nav"><%@ include
-								file="../product/paging.jsp"%></td>
+						<td colspan="5" id="td-page-nav"></td>
 					</tr>
 				</tfoot>
 			</table>
