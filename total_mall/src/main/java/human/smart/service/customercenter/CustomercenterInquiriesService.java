@@ -8,15 +8,19 @@ import human.smart.totalMall.dao.CustomercenterDAO;
 import human.smart.totalMall.vo.VocVO;
 import lombok.AllArgsConstructor;
 
-@Service("cInquiry")
+@Service("cInquiries")
 @AllArgsConstructor
-public class CustomercenterInquiryService implements CustomercenterService {
+public class CustomercenterInquiriesService implements CustomercenterService {
 	
 	private CustomercenterDAO dao;
-	
+
 	@Override
-	public List<VocVO> getBoard(int m_idx) {
-		return dao.getBoard(m_idx);
+	public List<VocVO> vocBoard(int v_idx) {
+		return dao.vocBoard(v_idx);
+	}
+	@Override
+	public int answerupdate(VocVO voc) {
+		return dao.answerupdate(voc);
 	}
 
 }
