@@ -15,7 +15,7 @@
  		<typeAlias alias="vocVO" type="human.smart.totalMall.vo.VocVO" />
  		<typeAlias alias="reviewVO" type="human.smart.totalMall.vo.ReviewVO" />
  		<typeAlias alias="pvocVO" type="human.smart.totalMall.vo.PvocVO" />
- 		
+ 		<typeAlias alias="salesVO" type="human.smart.totalMall.vo.SalesVO" />
  	</typeAliases>
  
 </configuration>

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.SalesVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,11 @@ public class MemberDAO {
 	public static final String MAPPER = "human.smart.totalMall.MemberMapper";
 	
 	private final SqlSession sqlSession;
+	
+	//전체매출불러오기
+	public List<SalesVO> getSales(){
+		return sqlSession.selectList(MAPPER+".getSales");
+	}
 	
 	//회원가입하기
 	public int join(MemberVO vo) throws SQLException{

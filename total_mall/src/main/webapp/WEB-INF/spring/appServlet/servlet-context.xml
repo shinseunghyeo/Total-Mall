@@ -49,6 +49,7 @@
 			<exclude-mapping path="/member/findPwProcess.do"/>
 			<exclude-mapping path="/member/login.do"/>
 			<exclude-mapping path="/member/loginProcess.do"/>
+			<exclude-mapping path="/member/allSales.do"/>
 			
 	 
 			<exclude-mapping path="/product/list.do"/>

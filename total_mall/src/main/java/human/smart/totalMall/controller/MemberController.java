@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.service.customercenter.CustomercenterService;
 import human.smart.service.member.MemberService;
-import human.smart.totalMall.common.CCPageNav;
 import human.smart.totalMall.common.PageNav;
 import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.SalesVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
 import lombok.Setter;
@@ -38,7 +38,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade, cancelUpdate;
+				  mGrade, cancelUpdate, sList;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
@@ -49,6 +49,16 @@ public class MemberController {
 	PageNav pageNav;
 
 	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc;
+	
+	//전체 매출 페이지 요청
+	@GetMapping("/allSales.do")
+	public String allSales(Model model) {
+		List<SalesVO> salesList = sList.getSales();
+		
+		model.addAttribute("salesList", salesList);
+		
+		return "member/allSales";
+	}
 	
 	//로그인 페이지 요청
 	@GetMapping("/login.do")
