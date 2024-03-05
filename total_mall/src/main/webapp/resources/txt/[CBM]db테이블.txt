@@ -29,6 +29,7 @@ originfile_name varchar(50), -- 원본 파일명
 savefile_name varchar(50), -- 저장 파일명
 post_date datetime default now(), -- 등록일
 update_date datetime default now(), -- 수정일
+Answer varchar(1000), -- 답변
 voc_state int not null, -- 문의 상태
 constraint tb_voc_pk primary key (v_idx), -- 기본키
 constraint tb_voc_fk foreign key (m_idx)
@@ -47,6 +48,7 @@ create table tb_pvoc (
     savefile_name varchar(50),
     post_date datetime default now(),
     update_date datetime default now(),
+	Answer varchar(1000), -- 답변
     voc_state int not null,
     constraint tb_voc_pk primary key (v_idx),
     constraint fk_pvoc_member foreign key (m_idx) references tb_member (m_idx),
