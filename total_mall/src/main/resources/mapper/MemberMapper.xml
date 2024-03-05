@@ -7,7 +7,8 @@
 	<select id="getSales" resultType="salesVO">
 		SELECT COUNT(*) AS record_count, SUM(totalprice) AS totalPrice, DATE_FORMAT(o_start_date, '%Y-%m-%d') AS order_date
 		FROM tb_order
-		GROUP BY DATE_FORMAT(o_start_date, '%Y-%m-%d');
+		GROUP BY DATE_FORMAT(o_start_date, '%Y-%m-%d') 
+		ORDER BY DATE_FORMAT(o_start_date, '%Y-%m-%d');
 	</select>
 	
  	<!-- 회원가입 -->

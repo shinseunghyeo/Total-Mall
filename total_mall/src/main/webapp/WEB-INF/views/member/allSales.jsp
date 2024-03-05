@@ -49,6 +49,8 @@
         tr{
         	height: 40px
         }
+        svg > g > g:last-child { pointer-events: none }
+        
     </style>
     
 </head>
