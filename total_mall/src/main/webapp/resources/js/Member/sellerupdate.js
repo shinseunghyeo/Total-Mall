@@ -166,6 +166,77 @@ $(function () {
 });
 
 
+//submit시 전체 유효성 검사 순서대로
+function validateForm() {
+	const regExp_id = /^[A-Za-z0-9~!@#$%^()+|=]{8,12}$/;
+    const regExp_pw = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[~!@#$%^()+|=])[A-Za-z0-9~!@#$%^()+|=]{8,16}$/;
+    const regExp_phone =/^010-\d{4}-\d{4}$/;
+    var memberId = document.forms["frm_join"]["member_id"].value;
+    var memberPw = document.forms["frm_join"]["member_pw"].value;
+    var memberPw2 = document.forms["frm_join"]["member_pw2"].value;
+    var memberName = document.forms["frm_join"]["member_name"].value;
+    var handphone = document.forms["frm_join"]["handphone"].value;
+    var email = document.forms["frm_join"]["email"].value;
+    var address1 = document.forms["frm_join"]["address1"].value;
+    var address2 = document.forms["frm_join"]["address2"].value;
+    var address3 = document.forms["frm_join"]["address3"].value;
+    var representativeName = document.forms["frm_join"]["representative_name"].value;
+	var companyNumber = document.forms["frm_join"]["company_number"].value;
+	var mutual = document.forms["frm_join"]["mutual"].value;
+	var mailOrderNumber = document.forms["frm_join"]["mail_order_number"].value;
+	var account1 = document.forms["frm_join"]["account1"].value;
+	var depositorName = document.forms["frm_join"]["depositor_name"].value;
+	const regExp_account = /^\d{6}-\d{2}-\d{6}$/;
+	
+    if(memberPw.trim() == ""){
+		alert("비밀번호를 작성해 주세요");
+		return false;
+	}
+    if (!regExp_pw.test(memberPw)) {
+        alert("비밀번호는 8~16자로 영어,특수문자,숫자를 포함해 주세요.");
+        return false;
+    }
+    if ($("#member_pw").val() != $("#member_pw2").val()) {
+        alert("비밀번호가 맞지 않습니다.");
+        return false;
+    }
+    if (frm_join.member_name.value.length == 0) {
+        alert("이름을 적어주세요.");
+        return false;
+    }
+    if(handphone.trim() == ""){
+		alert("핸드폰 번호를 작성해 주세요");
+		return false;
+	}
+    if (!regExp_phone.test(frm_join.handphone.value)) {
+        alert("010-숫자4자리-숫자4자리로 입력해야 합니다.");
+        return false;
+    }
+    if(email.trim() == ""){
+		alert("이메일을 작성해 주세요");
+		return false;
+	}
+	if(address3.trim() == ""){
+		alert("상세주소를 작성해 주세요");
+		return false;
+	}
+	if(account1.trim() == ""){
+		alert("계좌를 작성해 주세요");
+		return false;
+	}
+	if (!regExp_account.test(frm_join.account1.value)) {
+        alert("계좌는 숫자6자리-숫자2자리-숫자6자리로 입력해야 합니다.");
+        return false;
+    }
+	if(depositorName.trim() == ""){
+		alert("예금주명을 작성해 주세요");
+		return false;
+	}
+	alert("회원정보 수정이 완료되었습니다.");
+    return true;
+}
+//submit시 전체 유효성 검사 순서대로
+
 
 
 

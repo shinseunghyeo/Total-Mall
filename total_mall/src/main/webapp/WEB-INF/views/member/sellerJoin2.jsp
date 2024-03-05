@@ -47,7 +47,7 @@
                                 <p>대표자 명</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="representative_name" id="" placeholder="">
+                                <input type="text" name="representative_name" id="" placeholder="대표자 명을 적어주세요">
                                 <p id="representative_name_test">대표자명이 올바르지 않습니다.</p>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                 <p>사업자 등록번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="company_number" id="" placeholder="">
+                                <input type="text" name="company_number" id="" placeholder="사업자 등록번호를 적어주세요">
                                 <p id="company_number_test">사업자 등록번호가 올바르지 않습니다.</p>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <p>상호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="mutual" id="">
+                                <input type="text" name="mutual" id="" placeholder="상호를 적어주세요">
                                 <p id="mutual_test">상호가 올바르지 않습니다.</p>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                 <p>통신판매번호</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="mail_order_number" id="">
+                                <input type="text" name="mail_order_number" id="" placeholder="통신판매번호를 적어주세요">
                                 <p id="mail_order_number_test">통신판매번호가 올바르지 않습니다.</p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                 <p>계좌</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="account1" id="account">
+                                <input type="text" name="account1" id="account" placeholder="계좌는 6자리-2자리-6자리 숫자로">
                                 <select name="account2" id="account_select">
                                     <option value="nonghyup">농협</option>
                                     <option value="kbstar">국민</option>
@@ -97,7 +97,7 @@
                                 <p>예금주명</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="depositor_name" id="">
+                                <input type="text" name="depositor_name" id="" placeholder="예금주명을 적어주세요">
                                 <p id="depositor_name_test">예금주명이 맞지 않습니다</p>
                             </div>
                         </div>

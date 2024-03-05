@@ -18,7 +18,7 @@
             
         </div>
         <div id="update_form">
-            <form name="frm_join" method="post" action="buyerUpdateProcess.do">
+            <form name="frm_join" method="post" action="buyerUpdateProcess.do" id="myForm" onsubmit="return validateForm()">
                 <div id="white-board">
                     <div id="white-board-header">
                         <div>
