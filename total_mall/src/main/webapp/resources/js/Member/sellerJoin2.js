@@ -2,6 +2,7 @@
 
 $(function () {
 	/* 유효성 검사 */
+	const regExp_account = /^\d{6}-\d{2}-\d{6}$/;
     function checkRnameValidity() {
         if (frm_join.representative_name.value.length == 0) {
             $("#representative_name_test").css("color", "black")
@@ -85,6 +86,7 @@ function validateForm() {
 	var mailOrderNumber = document.forms["frm_join"]["mail_order_number"].value;
 	var account1 = document.forms["frm_join"]["account1"].value;
 	var depositorName = document.forms["frm_join"]["depositor_name"].value;
+	const regExp_account = /^\d{6}-\d{2}-\d{6}$/;
 	
 	if(representativeName.trim() == ""){
 		alert("대표자명을 작성해 주세요");
@@ -106,6 +108,10 @@ function validateForm() {
 		alert("계좌를 작성해 주세요");
 		return false;
 	}
+	if (!regExp_account.test(frm_join.account1.value)) {
+        alert("계좌는 숫자6자리-숫자2자리-숫자6자리로 입력해야 합니다.");
+        return false;
+    }
 	if(depositorName.trim() == ""){
 		alert("예금주명을 작성해 주세요");
 		return false;

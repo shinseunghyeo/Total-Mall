@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="update_info">
-        <form name="frm_join" method="post" action="sellerUpdateProcess.do">
+        <form name="frm_join" method="post" action="sellerUpdateProcess.do" onsubmit="return validateForm()">
             <div id="section-header">
                 <div id="section-header1">
                     <h1>회원 정보 수정</h1>
