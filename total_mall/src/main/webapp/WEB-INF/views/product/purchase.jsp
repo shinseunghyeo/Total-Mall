@@ -106,7 +106,7 @@
             </table>
         </div>
         <div id="Purchase"><br>
-            <input type="button" value="결제하기" class="submit-button" id="button">
+            <input type="submit" value="결제하기" class="submit-button" id="button">
         </div><br>
 
     </div>
@@ -115,7 +115,9 @@
     <%@include file="../Main/Footer2.jsp" %>
 </body>
 <script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
+<!-- 
 <script>
+
 $('#button').click(function() {
 	var totalPaymentAmountText = $('#totalPaymentAmount').text();
 	var totalPaymentAmount = parseInt(totalPaymentAmountText.replace(/[^\d]/g, ''), 10);
@@ -146,5 +148,7 @@ $('#button').click(function() {
 		alert(msg);
 	});
 });
+
 </script>
+ -->
 </html>

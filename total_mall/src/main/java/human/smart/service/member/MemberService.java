@@ -4,6 +4,7 @@ import java.util.List;
 
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.SalesVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
 
@@ -25,5 +26,6 @@ public interface MemberService {
 	default MemberVO sellerUpdateProcess(MemberVO memberVO) {return null;}
 	default int cancelUpdate(MemberVO vo){return 0;}
 	default String joinEmail(String email) {return null;}
+	default List<SalesVO> getSales(){return null;}
 
 }
