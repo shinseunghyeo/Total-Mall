@@ -26,7 +26,7 @@ import lombok.Setter;
 public class CustomercenterController {
 
 	@Setter(onMethod_={ @Autowired }) CustomercenterService cPage,cNotice, cTotalCount, 
-	cInsert, cInquiry, homeNotice, homeVoc, bUpdate;
+	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries;
 	@Setter(onMethod_={ @Autowired }) CCPageNav CCpageNav;
 	
 	//공지사항 페이지 요청 처리
@@ -35,7 +35,7 @@ public class CustomercenterController {
 
 		if(searchVO.getPageNum() == 0) {
 			searchVO.setPageNum(1);
-		}			
+		}
 
 		List<NoticeVO> noticeList = cNotice.getBoards(searchVO);
 		model.addAttribute("noticeList", noticeList);
@@ -71,7 +71,25 @@ public class CustomercenterController {
 		
 		model.addAttribute("inquiry", voc);
 		return "customercenter/inquiry";//views/member폴더에 대한 경로 추가
+	}
+
+	//문의내역 요청 처리
+	@GetMapping("/inquiries.do")
+	public String inquiries(int v_idx, Model model) {
+		List<VocVO> voc = cInquiries.vocBoard(v_idx);
 		
+		model.addAttribute("inquiries", voc);
+		return "customercenter/inquiries";//views/member폴더에 대한 경로 추가
+	}
+	//문의 답변
+	@PostMapping("/answerProcess.do")
+	public String answerProcess(VocVO voc) {
+	    String viewPage = "customercenter/inquiries";
+	    int result = cInquiries.answerupdate(voc);
+	    if (result == 1) {
+	        viewPage = "redirect:inquiries.do";
+	    }
+	    return viewPage;
 	}
 
 	//자주 묻는 질문 페이지 요청 처리
@@ -126,27 +144,27 @@ public class CustomercenterController {
 		return viewPage;
 	}
 
-	//글삭제 요청 처리
-	@GetMapping("/delete.do")
-	public String delete(int b_idx) {
-		//요청과 함께 전달되는 값: b_idx
-		//전달되는 값을 @RequestParam("b_idx")을 이용해서 전달값의 이름과 다른 매개변수에
-	    //할당받을 수 있음
-			
-		//게시글 삭제하는 것을 BoardDeleteService클래스를 이용해서 처리함
-		int result = bDelete.delete(b_idx);
-		
-		String viewPage = "board/view";//글삭제 실패시 JSP페이지
-		if(result == 1) {
-			viewPage = "redirect:/board/list.do";
-		}
-			
-			
-		return viewPage;
-		
-	}
-	
-	
+//	//글삭제 요청 처리
+//	@GetMapping("/delete.do")
+//	public String delete(int b_idx) {
+//		//요청과 함께 전달되는 값: b_idx
+//		//전달되는 값을 @RequestParam("b_idx")을 이용해서 전달값의 이름과 다른 매개변수에
+//	    //할당받을 수 있음
+//			
+//		//게시글 삭제하는 것을 BoardDeleteService클래스를 이용해서 처리함
+//		int result = bDelete.delete(b_idx);
+//		
+//		String viewPage = "board/view";//글삭제 실패시 JSP페이지
+//		if(result == 1) {
+//			viewPage = "redirect:/board/list.do";
+//		}
+//			
+//			
+//		return viewPage;
+//		
+//	}
+//	
+//	
 //	//파일 다운로드 요청 처ㅣ
 //	@GetMapping("/download.do")
 //	public void download(String originfile_name, String savefile_name, 

@@ -48,7 +48,8 @@
 					<c:otherwise>
 						<c:forEach var="i" begin="1" end="5">
 						<c:if test="${not empty inquiry[i-1]}">
-						<h2>${inquiry[i-1].voc_type}</h2><hr>
+						<a style="margin:0;" href="${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${inquiry[i-1].v_idx}">
+						<h2>${inquiry[i-1].voc_type}</h2></a><hr>
 						</c:if>
 						</c:forEach>
 					</c:otherwise>

@@ -17,6 +17,7 @@ public class VocVO {
 	private String content; //내용
 	private String originfile_name; //원본 파일명
 	private String savefile_name; //저장 파일명
+	private String answer; //답변
 	private Date post_date; //작성일
 	private Date update_date; //수정일
 	private int voc_state; //삭제 여부

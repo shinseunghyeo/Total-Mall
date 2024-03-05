@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
@@ -46,7 +45,14 @@ public class CustomercenterDAO{
 	public List<VocVO> getBoard(int m_idx){
 		return sqlSession.selectList(MAPPER+".getBoard", m_idx);
 	}
-	
+	//문의내역 불러오기
+	public List<VocVO> vocBoard(int v_idx) {
+		return sqlSession.selectList(MAPPER+".vocBoard", v_idx);
+	}
+	public int answerupdate(VocVO voc) {
+		return sqlSession.update(MAPPER+".answerupdate", voc);
+	}
+
 	//게시글 수정하기
 	public int update(NoticeVO vo) {
 		return sqlSession.update(MAPPER+".update", vo);
