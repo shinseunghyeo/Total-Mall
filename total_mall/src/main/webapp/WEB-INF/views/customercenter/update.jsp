@@ -1,33 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글수정</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글쓰기</title>
+<link rel="stylesheet" href="../resources/css/customercenter/noticeWrite.css">
+<script type="text/javascript" src="../resources/js/customercenter/noticeWrite.js"></script>
+
 </head>
 <body>
 
-<h3>글수정</h3>
-<hr>
-<form name="frm_update" method="post" action="updateProcess.do" enctype="multipart/form-data">
-<input type="hidden" name="b_idx" value="${board.b_idx}" >
-<input type="hidden" name="m_idx" value="${member.m_idx}" >
-<input type="hidden" name="writer" value="${member.member_name}" >
-작성자: <input type="text" value="${member.member_name}" disabled> <br>
-제목: <input type="text" name="title" value="${board.title}"> <br>
-내용: <textarea name="content" cols="30" rows="10">${board.content}</textarea> <br>
-첨부파일: <input type="file" name="uploadFile" > <br>
-(새로운 파일을 선택하면 이전 파일이 교체됩니다)<br><br>
-
-<input type="submit" value="수정하기" >
-<input type="reset" value="다시입력" >
-<input type="button" value="목록보기" onclick="location.href='list.do'" >
-
-
-</form>
-
-
+    <div class="container" id="contentDiv">
+        <h1>공지사항 게시글 작성</h1>
+        <form id="frm_write" method="post" action="../customercenter/writeProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <input type="hidden" name="m_idx" value="${member.m_idx}">
+            <label for="writer">작성자</label>
+            <input type="text" value="${member.member_name}" disabled>
+            <input type="hidden" name="writer" value="${member.member_name}">
+            <label for="service">서비스</label>
+            <select name="service" id="service">
+                <option value="menu">옵션 선택</option>
+                <option value="customer">고객 서비스</option>
+                <option value="event">이벤트 당첨</option>
+                <option value="transaction">안전 거래</option>
+                <option value="hazardousgoods">위해 상품</option>
+            </select>
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" value="${board.title}">
+            <label for="content">내용</label>
+            <textarea name="content" id="content" cols="30" rows="10" value="${board.content}"></textarea>
+            <label for="uploadFile">첨부 파일</label>
+            <input type="file" id="uploadFile" name="uploadFile">
+            <input type="submit" value="작성 완료">
+        </form>
+    </div>
 </body>
 </html>
