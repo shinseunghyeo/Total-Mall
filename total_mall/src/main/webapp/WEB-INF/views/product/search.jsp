@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>검색 페이지</title>
 <link rel="stylesheet" href="../resources/css/product/search.css">
 </head>
 
 <body>
   	<%@ include file="../Main/Header2.jsp" %>
     <div id="CategoryPage">
-        <h3 style="color: #3498db;">추천 검색어 > 돼지고기 / 소고기 / 닭고기 </h3>
         <div id="CategoryServeLine">
             <div id="CategoryServemenuLine">
                 <h2>카테고리</h2>

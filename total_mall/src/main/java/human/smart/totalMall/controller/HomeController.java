@@ -84,7 +84,7 @@ public class HomeController {
     	//추천 카테고리 상품
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		    // 세션에 회원 정보가 있는지 확인합니다.
-	    if (member != null && member.getGrade() ==1) {
+		if (member != null && (member.getGrade() == 1 || member.getGrade() == 2 || member.getGrade() == 3 || member.getGrade() == 4 || member.getGrade() == 5)) {
 	        // 세션에서 회원 ID를 가져옵니다.
 	        String memberId = member.getCategorie();
 			String[] memberId2 = memberId.split(",");

@@ -61,7 +61,6 @@
 	                </div>
                 </div>
             </div>
-            <a href="${pageContext.request.contextPath}/member/allSales.do">전체 매출</a>
         </section>
         <%@ include file="../Main/Footer2.jsp" %>
     

@@ -87,7 +87,7 @@
 		                    </div>
 		                </div>
 		            </div>
-		            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/오른쪽 아이콘.png">
 		        </div>
 		    </div>
 		    <div class="CategoryBestLine">
@@ -122,7 +122,7 @@
 			                </div>
 		                </div>
 		            </div>
-		            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/오른쪽 아이콘.png">
 		        </div>
 		    </div>        
 		    <div class="CategoryBestLine">
@@ -157,7 +157,7 @@
 		                    </div>
 		                </div>
 		            </div>
-		            <img style="width: 2%; height: 60px;"  onclick="FoodSlideRight(FoodSlide3)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide3)" src="resources/img/Mallimg/오른쪽 아이콘.png">
 		        </div>
 		    </div>
     	</c:when>

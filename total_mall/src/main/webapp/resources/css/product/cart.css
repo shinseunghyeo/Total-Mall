@@ -140,19 +140,28 @@
     .cart_item-4{
         width: 100%;
         text-align: center;
+        display: flex;
     }
     .cart_item-4 input[type="text"]{
         border-radius: 0;
         border: solid 1px black; 
         margin-top: 65px;
+        margin-left: 10px;
         height: 17px;
-        
         width: 50px;
         text-align: center;
     }
-    .cart_item-4 input[type="button"]{
-        margin: 0;
+    .cart_item-4 input[type="submit"]{
+        margin-top: 65px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3498db;
+        color: white;
         padding: 0;
+        cursor: pointer;
+    }
+    .cart_item-4 input[type="submit"]{
     }
     .cart_item-4 a{
     	margin: 0;
