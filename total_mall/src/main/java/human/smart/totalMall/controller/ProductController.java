@@ -35,7 +35,7 @@ public class ProductController {
 	@Setter(onMethod_={ @Autowired })
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
-    		allpList, alloList,todayProduct, statusP,oModify, myReview,
+    		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -300,35 +300,38 @@ public class ProductController {
 		return viewPage;
 	}
 
-	// 상품 판매 중단 요청 처리
 	@GetMapping("/discontinued.do")
-	public String discontinued(int p_idx, Model model) {
-		// 로그 추가
+	public String discontinued(@RequestParam(value = "p_idxs", required = false) List<Integer> p_idxs, Model model) {
+	    // 선택된 상품이 없을 경우 예외처리
+	    if (p_idxs == null || p_idxs.isEmpty()) {
+	        // 상품 선택이 없을 경우, 리다이렉트 또는 에러 페이지로 이동할 수 있음
+	        return "redirect:/product/list.do";
+	    }
 
-		int result = pDiscontinued.discontinued(p_idx);
+	    // 로그 추가
+	    for (int p_idx : p_idxs) {
+	        int result = pDiscontinued.discontinued(p_idx);
+	        // 각 상품에 대한 처리
+	    }
 
-		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/product/list.do";
-
-		// 로그 추가
-
-		return viewPage;
+	    return "redirect:/product/list.do";
 	}
 
-	// 상품 판매 재개 요청 처리
 	@GetMapping("/continued.do")
-	public String continued(int p_idx, Model model) {
-		// 요청과 함께 전달되는 값: b_idx
-		// 전달되는 값을 @RequestParam("b_idx")을 이용해서 전달값의 이름과
-		// 다른 매개변수에 할당 받을 수 있음(값의 이름을 바꿀 수 있다)
-		// public String view(@RequestParam("b_idx") int bIdx, Model model) {
+	public String continued(@RequestParam(value = "p_idxs", required = false) List<Integer> p_idxs, Model model) {
+	    // 선택된 상품이 없을 경우 예외처리
+	    if (p_idxs == null || p_idxs.isEmpty()) {
+	        // 상품 선택이 없을 경우, 리다이렉트 또는 에러 페이지로 이동할 수 있음
+	        return "redirect:/product/list.do";
+	    }
 
-		// 게시글 삭제하는 것을 BoardDeleteService클래스를 이용해서 처리함
-		int result = pContinued.continued(p_idx);
+	    // 로그 추가
+	    for (int p_idx : p_idxs) {
+	        int result = pContinued.continued(p_idx);
+	        // 각 상품에 대한 처리
+	    }
 
-		String viewPage = (result == 1) ? "forward:/product/item.do?p_idx=" + p_idx : "redirect:/product/list.do";
-
-		return viewPage;// views/member폴더에 대한 경로 추가
-
+	    return "redirect:/product/list.do";
 	}
 	// 내 상품보기
 	@GetMapping("myplist.do")
@@ -418,13 +421,14 @@ public class ProductController {
 
 	//주문 상태 변경
 	@PostMapping("oModify.do")
-	public String gradeUpdate(@ModelAttribute("cartVO")CartVO vo, Model model) {
-		int oMod = oModify.oModify(vo);
-		int p_idx = vo.getP_idx();
-		String viewPage = (oMod == 1) ? "redirect:/product/order_management.do" : "redirect:/product/order_management.do";
+	public String gradeUpdate(@ModelAttribute CartVO vo, Model model) {
+	    int oMod = oModify.oModify(vo);
+	    int p_idx = vo.getP_idx();
+	    String viewPage = (oMod == 1) ? "redirect:/product/order_management.do" : "redirect:/product/order_management.do";
 
-		return viewPage;// views/member폴더에 대한 경로 추가
+	    return viewPage;
 	}
+
 	
   	//개인회원 리뷰 모아보기
   	@GetMapping("/myreview.do")
@@ -438,7 +442,18 @@ public class ProductController {
 		return "product/myreview";
 	}
 	
-	
+	//상품 상태에 따른 합계 조회
+	@RequestMapping("/statusO.do")
+	public String statusO(@SessionAttribute("member") MemberVO member, Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		if (member == null || member.getM_idx() == 0) {
+		    return "redirect:/member/login.do";
+		}
+		int m_idx = member.getM_idx();
+		 List<CartVO> statusOlist = statusO.statusO(m_idx);
+		 model.addAttribute("statusOlist", statusOlist);
+		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
+	}
 	
 	
 	

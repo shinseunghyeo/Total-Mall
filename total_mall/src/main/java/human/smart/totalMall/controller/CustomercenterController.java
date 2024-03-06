@@ -17,6 +17,7 @@ import human.smart.service.customercenter.CustomercenterService;
 import human.smart.totalMall.common.CCPageNav;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
 import lombok.Setter;
@@ -26,7 +27,7 @@ import lombok.Setter;
 public class CustomercenterController {
 
 	@Setter(onMethod_={ @Autowired }) CustomercenterService cPage,cNotice, cTotalCount, 
-	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries;
+	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries, homePvoc;
 	@Setter(onMethod_={ @Autowired }) CCPageNav CCpageNav;
 	
 	//공지사항 페이지 요청 처리
@@ -73,7 +74,7 @@ public class CustomercenterController {
 		return "customercenter/inquiry";//views/member폴더에 대한 경로 추가
 	}
 
-	//문의내역 요청 처리
+	//관리자 문의내역 요청 처리
 	@GetMapping("/inquiries.do")
 	public String inquiries(int v_idx, Model model) {
 		List<VocVO> voc = cInquiries.vocBoard(v_idx);
@@ -81,16 +82,28 @@ public class CustomercenterController {
 		model.addAttribute("inquiries", voc);
 		return "customercenter/inquiries";//views/member폴더에 대한 경로 추가
 	}
-	//문의 답변
+	
+	//관리자 문의내역 요청 처리
+	@PostMapping("/inquiries.do")
+	public String inquiries2(int v_idx, Model model) {
+		List<VocVO> voc = cInquiries.vocBoard(v_idx);
+		
+		model.addAttribute("inquiries", voc);
+		return "customercenter/inquiries";//views/member폴더에 대한 경로 추가
+	}
+	
+	//관리자 문의 답변
 	@PostMapping("/answerProcess.do")
-	public String answerProcess(VocVO voc) {
+	public String answerProcess(VocVO voc, Model model) {
+		int v_idx = voc.getV_idx();
 	    String viewPage = "customercenter/inquiries";
 	    int result = cInquiries.answerupdate(voc);
 	    if (result == 1) {
-	        viewPage = "redirect:inquiries.do";
+	        viewPage = "forward:/customercenter/inquiries.do?v_idx="+v_idx;
 	    }
 	    return viewPage;
 	}
+
 
 	//자주 묻는 질문 페이지 요청 처리
 	@GetMapping("/QnA.do")
@@ -190,6 +203,15 @@ public class CustomercenterController {
 		List<VocVO> homeVList = homeVoc.homeVoc();
 		model.addAttribute("homeVList", homeVList);
 		return "forward:/member/adminhome.do";
+	}
+	
+	//기업회원 홈 문의사항
+	@RequestMapping("/homePvoc.do")
+	public String homePvoc(@SessionAttribute("member") MemberVO member,Model model) {
+		int m_idx = member.getM_idx();
+		List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
+		model.addAttribute("homePVList", homePVList);
+		return "forward:/member/sellerhome.do";
 	}
 
 }

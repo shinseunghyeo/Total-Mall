@@ -94,7 +94,7 @@
 	<!-- 문의사항 내역 -->
 	<update id="answerupdate" parameterType="vocVO">
 		UPDATE tb_voc
-		SET content = #{content}
+		SET answer = #{answer}, voc_state=2, update_date=now()
 		WHERE v_idx = #{v_idx};
 	</update>
 	
@@ -165,6 +165,19 @@
 		JOIN tb_member ON tb_voc.m_idx = tb_member.m_idx
 		WHERE tb_voc.voc_state = 1
 		ORDER BY tb_voc.update_date DESC
+		LIMIT 5
+	</select>
+	
+	<!-- 기업회원 홈 문의사항 -->
+	<select id="homePvoc" parameterType="_int" resultType="PvocVO">
+		SELECT *
+		FROM tb_pvoc
+		WHERE p_idx IN (
+		    SELECT DISTINCT p_idx
+		    FROM tb_pvoc
+		    WHERE m_idx = #{m_idx})
+		AND tb_pvoc.voc_state = 1
+		ORDER BY tb_pvoc.update_date DESC
 		LIMIT 5
 	</select>
 	

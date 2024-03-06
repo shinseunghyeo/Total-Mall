@@ -24,4 +24,6 @@ public class PvocVO {
 	//BoardVO클래스를 writeProcess.do 요청을 처리하기 위해
 	//첨부파일을 MultipartFile 타입으로 추가 정의함
 	private MultipartFile uploadFile;
+	
+	private int grade;//회원등급
 }

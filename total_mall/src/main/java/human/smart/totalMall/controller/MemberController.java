@@ -27,6 +27,7 @@ import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;
 import human.smart.totalMall.vo.ProductVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.ReviewVO;
 import human.smart.totalMall.vo.SalesVO;
 import human.smart.totalMall.vo.SearchVO;
@@ -43,13 +44,13 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1, todayProduct, statusP, myReview;
+	myoList_1, todayProduct, statusP, myReview, statusO;
 	
 	
 	@Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
 
-	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc;
+	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc, homePvoc;
 	
 	//전체 매출 페이지 요청
 	@GetMapping("/allSales.do")
@@ -275,12 +276,12 @@ public class MemberController {
 		p_or_notMap.put("5", "배송중");
 		p_or_notMap.put("6", "배송완료");
 		
-		p_or_notMap.put("10", "교환요청");
-		p_or_notMap.put("11", "취소요청");
-		p_or_notMap.put("12", "반품요청");
-		p_or_notMap.put("13", "교환완료");
-		p_or_notMap.put("14", "취소완료");
-		p_or_notMap.put("15", "반품완료");
+		p_or_notMap.put("11", "교환요청");
+		p_or_notMap.put("12", "취소요청");
+		p_or_notMap.put("13", "반품요청");
+		p_or_notMap.put("14", "교환완료");
+		p_or_notMap.put("15", "취소완료");
+		p_or_notMap.put("16", "반품완료");
 
 		return p_or_notMap;
 	}
@@ -297,8 +298,15 @@ public String sellerMypage(@SessionAttribute("member") MemberVO member, Model mo
 	    return "redirect:/member/login.do";
 	}
 	int m_idx = member.getM_idx();
+	
+	
 List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 합계 조회
+List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
+List<CartVO> statusOlist = statusO.statusO(m_idx);
+
 model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
+model.addAttribute("homePVList", homePVList);
+model.addAttribute("statusOlist", statusOlist);
 return "member/sellermypage";
 }
 
@@ -311,7 +319,11 @@ public String sellerHome(@SessionAttribute("member") MemberVO member, Model mode
 	int m_idx = member.getM_idx();
 	
 List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 합계 조회
+List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
+List<CartVO> statusOlist = statusO.statusO(m_idx);
 model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
+model.addAttribute("homePVList", homePVList);
+model.addAttribute("statusOlist", statusOlist);
 return "member/sellerhome";
 }
 
@@ -326,10 +338,10 @@ return "forward:/member/sellerhome.do";
 public Map<String, String> statusPMap() {
 	// 숫자값과 등급값을 매핑한 Map 생성
 	Map<String, String> statusPMap = new HashMap<>();
-	statusPMap.put("0", "판매중인 상품");
-	statusPMap.put("1", "판매중단 상품");
-	statusPMap.put("2", "품절 상품");
-	statusPMap.put("3", "기한만료 상품");
+	statusPMap.put("0", "판매중");
+	statusPMap.put("1", "판매중단");
+	statusPMap.put("2", "품절");
+	statusPMap.put("3", "판매기한만료");
 	return statusPMap;
 }
 
@@ -533,6 +545,16 @@ public String adminhome2(Model model) {
 return "forward:/member/adminhome.do";
 }
 
+//관리자, 기업회원 공통 문의사항 상태
+@ModelAttribute("voc_stateMap")
+public Map<String, String> voc_stateMap() {
+	// 숫자값과 등급값을 매핑한 Map 생성
+	Map<String, String> voc_stateMap = new HashMap<>();
+	voc_stateMap.put("1", "답변중");
+	voc_stateMap.put("2", "답변완료");
+
+	return voc_stateMap;
+}
 /////////////////////////////// 관리자 마이페이지 ///////////////////////////////	
 
 

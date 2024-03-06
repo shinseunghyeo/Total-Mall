@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.NoticeVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
 import lombok.RequiredArgsConstructor;
@@ -76,5 +77,10 @@ public class CustomercenterDAO{
 	//관리자 홈 문의사항
 	public List<VocVO> homeVoc(){
 		return sqlSession.selectList(MAPPER+".homeVoc");
+	}
+	
+	//기업회원 홈 문의사항
+	public List<PvocVO> homePvoc(int m_idx){
+		return sqlSession.selectList(MAPPER+".homePvoc", m_idx);
 	}
 }

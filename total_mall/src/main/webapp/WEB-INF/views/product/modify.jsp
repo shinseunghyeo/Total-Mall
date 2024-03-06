@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기업회원 상품수정</title>
-
+	<link rel="stylesheet" href="../resources/css/Member/seller.css">
 </head>
 <body>
 	<fmt:formatDate value="${product.start_date}" pattern="yyyy-MM-dd"
