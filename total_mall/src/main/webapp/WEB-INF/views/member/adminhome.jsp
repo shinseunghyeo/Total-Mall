@@ -70,6 +70,17 @@
 	    }
 	});
 	});
+	
+	function openPopup(url) {
+	    // 팝업 창의 크기 및 위치 설정
+	    var width = 600;
+	    var height = 600;
+	    var left = (window.innerWidth - width) / 2;
+	    var top = (window.innerHeight - height) / 2;
+
+	    // 팝업 창 열기
+	    window.open(url, '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+	}
 </script>
 
 </head>
@@ -154,6 +165,7 @@
 									<th>분류</th>
 									<th>제목</th>
 									<th>작성자</th>
+									<th>상태</th>
 									<th>작성일</th>
 								</tr>
 							</thead>
@@ -163,8 +175,11 @@
 										<td>${i}</td>
 										<td><c:out
 												value="${fn:substring(gradeMap[homeVList[vs.count-1].grade.toString()], 0, 4)}" /></td>
-										<td><a href="#">${homeVList[vs.count-1].title}</a></td>
+										<td><a href="javascript:void(0);"
+											onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${homeVList[vs.count-1].v_idx}')">
+												${homeVList[vs.count-1].title} </a></td>
 										<td>${homeVList[vs.count-1].writer}</td>
+										<td>${voc_stateMap[homeVList[vs.count-1].voc_state.toString()]}</td>
 										<td><fmt:formatDate
 												value="${homeVList[vs.count-1].post_date}"
 												pattern="yyyy/MM/dd" /></td>
@@ -179,11 +194,8 @@
 		<div id="last_div">
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>이벤트</h2>
-					<ul>
-						<li><a href="#">진행중인 이벤트 <b>10 &gt;</b></a></li>
-						<li><a href="#">완료된 이벤트 <b>10 &gt;</b></a></li>
-					</ul>
+					<h2>여기에 뭐 넣지???</h2>
+
 				</div>
 			</div>
 			<div class="big_box">

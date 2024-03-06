@@ -75,3 +75,18 @@ END;
 //
 
 DELIMITER ;
+
+
+
+
+-- o_status_count_view 뷰 생성
+CREATE VIEW order_count_view AS
+SELECT p.m_idx, c.payment_or_not, COUNT(*) AS count
+FROM tb_cart c
+JOIN tb_product p ON c.p_idx = p.p_idx
+WHERE p.p_idx IN (
+    SELECT p_idx
+    FROM tb_product
+) IS NOT NULL
+GROUP BY p.m_idx, c.payment_or_not
+ORDER BY c.payment_or_not ASC;

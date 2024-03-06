@@ -27,4 +27,5 @@ public class CartVO {
 	
 	 // 추가: mMIdx 필드
     private int mMIdx;
+    private int count;//주문 상태에 따른 합계
 }

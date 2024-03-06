@@ -8,6 +8,18 @@
 <title>기업회원 홈페이지</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="../resources/js/Member/seller_mypage.js"></script>
+    <script type="text/javascript">
+	function openPopup(url) {
+	    // 팝업 창의 크기 및 위치 설정
+	    var width = 600;
+	    var height = 600;
+	    var left = (window.innerWidth - width) / 2;
+	    var top = (window.innerHeight - height) / 2;
+
+	    // 팝업 창 열기
+	    window.open(url, '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+	}
+    </script>
 </head>
 <body>
 				<div id="short_cut">

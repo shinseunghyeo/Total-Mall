@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import human.smart.totalMall.common.CCPageNav;
 import human.smart.totalMall.vo.NoticeVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
 
@@ -25,6 +26,9 @@ public interface CustomercenterService {
 			HttpServletResponse response) {}
 	default int getTotalCount(SearchVO vo) {return 0;}
 	
+	
+	
 	default List<NoticeVO> homeNotice(){return null;}
 	default List<VocVO> homeVoc(){return null;}
+	default List<PvocVO> homePvoc(int m_idx){return null;}
 }

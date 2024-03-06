@@ -86,7 +86,7 @@ th {
 								<td><fmt:formatDate
 										value="${inquirylist[vs.count-1].post_date}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
-								<td>${inquirylist[vs.count-1].voc_state}</td>
+								<td>${voc_stateMap[inquirylist[vs.count-1].voc_state.toString()]}</td>
 
 							</tr>
 						</c:forEach>
@@ -112,7 +112,7 @@ th {
 								<td><fmt:formatDate
 										value="${pinquirylist[vs.count-1].post_date}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
-								<td>${pinquirylist[vs.count-1].voc_state}</td>
+								<td>${voc_stateMap[pinquirylist[vs.count-1].voc_state.toString()]}</td>
 							</tr>
 						</c:forEach>
 				</c:when>

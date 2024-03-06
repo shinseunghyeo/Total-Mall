@@ -56,30 +56,31 @@
         ${inquiries[0].post_date}<br>
         이름: ${inquiries[0].writer}<br>
         이메일: ${inquiries[0].email}<br>
+
 		<c:if test="${product.save_file_name != null}">
 	        <img src="../resources/uploads/${product.save_file_name}">
         </c:if><hr>
 		<c:if test="${inquiries[0].answer != null}">
 			<pre>${inquiries[0].answer}</pre>
 		</c:if>
-		<c:if test="${member.grade == 8 && inquiries[0].answer == null}">
+		<c:if test="${member.grade == 8 && inquiries[0].answer == null}"><!-- 관리자 -->
 	        <form id="frm_write" method="post" action="../customercenter/answerProcess.do" enctype="multipart/form-data">
 				<input type="hidden" name="v_idx" value="${inquiries[0].v_idx}"> <!-- id 필드 추가 -->
-	        	<pre>답변:<br><textarea name="content" placeholder="고객 답변을 작성해주세요"></textarea></pre>
+	        	<pre>답변:<br><textarea name="answer" placeholder="고객 답변을 작성해주세요"></textarea></pre>
 	            <input type="submit" value="답변하기">
             </form>
         </c:if>
 		<c:if test="${member.grade == 9 && inquiries[0].answer == null}">
 	        <form id="frm_write" method="post" action="../customercenter/answerProcess.do" enctype="multipart/form-data">
 				<input type="hidden" name="v_idx" value="${inquiries[0].v_idx}"> <!-- id 필드 추가 -->
-	        	<pre>답변:<br><textarea name="content" placeholder="고객 답변을 작성해주세요"></textarea></pre>
+	        	<pre>답변:<br><textarea name="answer" placeholder="고객 답변을 작성해주세요"></textarea></pre>
 	            <input type="submit" value="답변하기">
             </form>
         </c:if>
 		<c:if test="${member.grade == 0 && inquiries[0].answer == null}">
 	        <form id="frm_write" method="post" action="../customercenter/answerProcess.do" enctype="multipart/form-data">
 				<input type="hidden" name="v_idx" value="${inquiries[0].v_idx}"> <!-- id 필드 추가 -->
-	        	<pre>답변:<br><textarea name="content" placeholder="고객 답변을 작성해주세요"></textarea></pre>
+	        	<pre>답변:<br><textarea name="answer" placeholder="고객 답변을 작성해주세요"></textarea></pre>
 	            <input type="submit" value="답변하기">
             </form>
         </c:if>

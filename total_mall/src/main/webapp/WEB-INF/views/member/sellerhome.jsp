@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +49,18 @@
       }
   });
   });
+  
+	function openPopup(url) {
+	    // 팝업 창의 크기 및 위치 설정
+	    var width = 600;
+	    var height = 600;
+	    var left = (window.innerWidth - width) / 2;
+	    var top = (window.innerHeight - height) / 2;
+
+	    // 팝업 창 열기
+	    window.open(url, '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+	}
+
     </script>
 </head>
 <body>
@@ -55,9 +69,17 @@
 		<div id="first_div">
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>상품등록</h2>
+					<h2>상품관리</h2>
 					<ul>
-						<li><a href="#">튜토리얼 보기 </a></li>
+						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+							<li><a href="#">
+							<c:if test="${not empty statusPlist[vs.count-1].p_status and statusPlist[vs.count-1].p_status < 4}">
+									${statusPMap[statusPlist[vs.count-1].p_status.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
+									<b>${statusPlist[vs.count-1].count} &gt;</b>
+							</c:if>
+							</a>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
@@ -65,60 +87,69 @@
 				<div class="inner_box">
 					<h2>주문/배송</h2>
 					<ul>
-						<li><a href="#">
-								<h2>결제완료</h2> <br> <b>10 &gt;</b>
-						</a></li>
-						<li><a href="#">
-								<h2>상품준비중</h2> <br> <b>10 &gt;</b>
-						</a></li>
-						<li><a href="#">
-								<h2>배송지시</h2> <br> <b>10 &gt;</b>
-						</a></li>
-						<li><a href="#">
-								<h2>배송중</h2> <br> <b>10 &gt;</b>
-						</a></li>
-						<li><a href="#">
-								<h2>배송완료</h2> <br> <b>10 &gt;</b>
-						</a></li>
+						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+							<li><a href="#">
+							<c:if test="${not empty statusOlist[vs.count-1].payment_or_not and statusOlist[vs.count-1].payment_or_not < 7 and statusOlist[vs.count-1].payment_or_not > 1}">
+									<h2>${p_or_notMap[statusOlist[vs.count-1].payment_or_not.toString()]}</h2>
+									<br>
+									<b>${statusOlist[vs.count-1].count} &gt;</b> 
+							</c:if>
+							</a>
+							</li>
+						</c:forEach>
 					</ul>
+					
 				</div>
 			</div>
 		</div>
 		<div id="second_div">
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>상품관리</h2>
+					<h2>취소/교환/반품</h2>
 					<ul>
-						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+						<c:forEach var="i" begin="0" end="12" varStatus="vs">
 							<li><a href="#">
-							<c:if test="${not empty statusPlist[vs.count-1].p_status}">
-									${statusPMap[statusPlist[vs.count-1].p_status.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
-									<b>${statusPlist[vs.count-1].count} &gt;</b>
+							<c:if test="${not empty statusOlist[vs.count-1].payment_or_not and statusOlist[vs.count-1].payment_or_not < 15 and statusOlist[vs.count-1].payment_or_not > 10}">
+									${p_or_notMap[statusOlist[vs.count-1].payment_or_not.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
+									<b>${statusOlist[vs.count-1].count} &gt;</b> 
 							</c:if>
-							</a></li>
+							</a>
+							</li>
 						</c:forEach>
 					</ul>
 
 				</div>
 			</div>
-			<div class="small_box">
-				<div class="inner_box">
-					<h2>취소/교환/반품</h2>
-					<ul>
-						<li><a href="#">교환 요청 <b>10 &gt;</b></a></li>
-						<li><a href="#">취소 요청 <b>10 &gt;</b></a></li>
-						<li><a href="#">반품 요청 <b>10 &gt;</b></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="small_box">
+			
+			<div class="big_box">
 				<div class="inner_box">
 					<h2>고객문의</h2>
-					<ul>
-						<li><a href="#">진행중인 문의사항 <b>10 &gt;</b></a></li>
-						<li><a href="#">완료된 문의사항 <b>10 &gt;</b></a></li>
-						<li><a href="#">오늘 작성된 리뷰 <b>10 &gt;</b></a></li>
-					</ul>
+					<div id="cs_table">
+						<table>
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>상품명</th>
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="i" begin="1" end="5" varStatus="vs">
+									<tr>
+										<td>${i}</td>
+										<td><a href="javascript:void(0);"
+											onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${homePVList[vs.count-1].v_idx}')">
+												${homePVList[vs.count-1].product_name} </a></td>
+										<td>${homePVList[vs.count-1].writer}</td>
+										<td><fmt:formatDate
+												value="${homePVList[vs.count-1].post_date}"
+												pattern="yyyy/MM/dd" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
