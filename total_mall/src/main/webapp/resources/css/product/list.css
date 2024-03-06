@@ -2,7 +2,7 @@
 
     #CategoryPage{width: 1050px;margin: auto;}
     #CategoryServeLine{display: flex;}
-    #CategoryServemenuLine{width: 20%;height: 1100px;padding-bottom: 20px;border: 2px solid gray;}
+    #CategoryServemenuLine{width: 20%;height: 1100px;padding-bottom: 20px;border: 0.1px solid black; background-color: lightblue;}
     #CategoryServemenuLine a{padding: 5px;margin:0; display: inline-block;}
     #CategoryServemenuLine p{margin: 0;width: 180px;}
     #CategoryServemenuLine h2{padding: 10px;margin: 0px;}

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의내역</title>
 <link rel="stylesheet" href="../resources/css/customercenter/inquiry.css">
 </head>
 <body>
@@ -49,7 +49,7 @@
 						<c:forEach var="i" begin="1" end="5">
 						<c:if test="${not empty inquiry[i-1]}">
 						<a style="margin:0;" href="${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${inquiry[i-1].v_idx}">
-						<h2>${inquiry[i-1].voc_type}</h2></a><hr>
+						<h3>${inquiry[i-1].voc_type}</h3></a><hr>
 						</c:if>
 						</c:forEach>
 					</c:otherwise>
@@ -68,7 +68,7 @@
 					<c:otherwise>
 						<c:forEach var="i" begin="1" end="5">
 							<c:if test="${not empty inquiry[i-1]}">
-								<h2>${inquiry[i-1].title}</h2><hr>
+								<h3>${inquiry[i-1].title}</h3><hr>
 							</c:if>
 						</c:forEach>
 					</c:otherwise>

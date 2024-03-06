@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토탈 소식</title>
 <link rel="stylesheet" href="../resources/css/customercenter/notice.css">
 </head>
 <body>

@@ -18,10 +18,20 @@
     #InquiryTitlebox{width: 30%; border-right: solid 1px rgba(0, 0, 0, 0.2);background-color: rgba(37, 222, 255, 0.04);}
     #InquiryTitlebox #InquiryTitle{width: 100%; height: 100px;display: flex;justify-content: center;align-items: center; border-bottom: solid 1px rgba(0, 0, 0, 0.2);background-color: rgba(37, 222, 255, 0.02);}
     #InquiryTitlebox #InquiryTitle h1{color: rgba(0, 0, 0, 0.7);}    
-    #InquiryTitlebox .UserTitele{width: 100%; height: 100px;}
+    #InquiryTitlebox .UserTitele{width: 100%; height: 100px; text-align: center;}
     #InquiryTitlebox .UserTitele h4{margin: 0;padding: 20px;}
     #InquiryContentbox{width: 70%; background-color: rgba(255, 255, 255, 0.45);background-color: rgba(37, 222, 255, 0.04);}
     #InquiryContentbox #InquiryContent{width: 100%; height: 100px;display: flex;justify-content: center;align-items: center; border-bottom: solid 1px rgba(0, 0, 0, 0.2);background-color: rgba(37, 222, 255, 0.02);}
     #InquiryContentbox #InquiryContent h1{color: rgba(0, 0, 0, 0.7);}
     #InquiryContentbox .UserContent{width: 100%; height: 100px;display: flex;justify-content: center;align-items: center;}
     /* ---------문의내역--------- */
+    
+    /* ---------추가사항--------- */
+    #InquiryContentbox .UserTitele h3{
+    	padding-left: 10px;
+    }
+    
+    hr{
+    	border: none; /* 기본 테두리 제거 */
+    	border-top: 1px solid rgba(0, 0, 0, 0.2);
+    }

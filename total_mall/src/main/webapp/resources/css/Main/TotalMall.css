@@ -31,7 +31,8 @@
 
     /* ---------카테고리 추천 상품--------- */
     .CategoryBestLine{width: 1050px; height: 300px;margin: auto;}
-    .CategoryBestLine .Category_LeftArrow{width: 2%; height: 60px;}
+    .CategoryBestLine .Category_LeftArrow{width: 2%; height: 35px; margin-bottom: 45px}
+    .Category_RightArrow{width: 2%; height: 35px; margin-bottom: 45px}
     .CategoryBestLine .CategoryBest{display: flex;justify-content: center;align-items: center;text-align: center;}
     .CategoryBestLine .CategoryBestContainer{width: 1000px;height: 250px;overflow: hidden;position: relative;}
     #FoodSlide div{transition: margin-left 1s;}
