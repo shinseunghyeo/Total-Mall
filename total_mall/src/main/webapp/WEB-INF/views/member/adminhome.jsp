@@ -145,13 +145,10 @@
 		<div id="second_div">
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>상품관리</h2>
-					<ul>
-						<li><a href="#">오늘 등록된 상품 <b>${todayProduct} &gt;</b></a></li>
-						<li><a href="#">별점 낮은 상품 <b>10 &gt;</b></a></li>
-						<li><a href="#">품절 상품 <b>10 &gt;</b></a></li>
-						<li><a href="#">기한 만료 상품 <b>10 &gt;</b></a></li>
-					</ul>
+					<h2>회원 현황</h2>
+					
+					
+					
 				</div>
 			</div>
 			<div class="big_box">
@@ -194,8 +191,19 @@
 		<div id="last_div">
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>여기에 뭐 넣지???</h2>
+					<h2>상품관리</h2>
+					<ul>
+						<li><a href="#">오늘 등록된 상품 <b>${todayProduct} &gt;</b></a></li>
+						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+							<li><a href="#"> <c:if
+										test="${not empty statusP2list[vs.count-1].p_status and statusP2list[vs.count-1].p_status < 4}">
+									${statusPMap[statusP2list[vs.count-1].p_status.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
+										<b>${statusP2list[vs.count-1].count} &gt;</b>
+									</c:if>
+							</a></li>
+						</c:forEach>
 
+					</ul>
 				</div>
 			</div>
 			<div class="big_box">

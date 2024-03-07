@@ -47,7 +47,7 @@
 		<h1>회원관리</h1>
 		<div id="member_wrap">
 			<div id="search_bar">
-				<div id="bbs-info">총 1009명 | 페이지 1 / 101</div>
+				<div id="bbs-info">총 명 | 페이지</div>
 				<form id="search" action="member_management.do">
 					<select name="searchField" id="searchField">
 						<option value="grade">회원 등급</option>
@@ -62,10 +62,12 @@
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>회원 분류/등급 조정</th>
 						<th>아이디(이름)</th>
+						<th>가입일/수정일</th>
+						<th>회원 분류/등급 조정</th>
+
 						<th>탈퇴여부</th>
-						<th>등록일/수정일</th>
+
 					</tr>
 				</thead>
 				<tbody id="memberTableBody">
@@ -83,6 +85,26 @@
 										target="_blank"
 										onclick="openMemberInfoWindow('${pageContext.request.contextPath}/member/member_info.do?m_idx=${memberList[vs.count-1].m_idx}')">
 											${memberList[vs.count-1].m_idx} </a></td>
+
+									<td class="title"><c:if
+											test="${not empty memberList[vs.count-1].member_id}">
+											<a
+										href="${pageContext.request.contextPath}/member/member_info.do?m_idx=${memberList[vs.count-1].m_idx}"
+										target="_blank"
+										onclick="openMemberInfoWindow('${pageContext.request.contextPath}/member/member_info.do?m_idx=${memberList[vs.count-1].m_idx}')"> ${memberList[vs.count-1].member_id} <c:set
+													var="member_name"
+													value="${memberList[vs.count-1].member_name}" /> <c:out
+													value="(${member_name})" />
+											</a>
+										</c:if></td>
+
+									<td><small> <fmt:formatDate
+												value="${memberList[vs.count-1].reg_date}"
+												pattern="yyyy-MM-dd HH:mm:ss /" />
+									</small> <small> <fmt:formatDate
+												value="${memberList[vs.count-1].last_modified_date}"
+												pattern="yyyy-MM-dd HH:mm:ss" />
+									</small></td>
 									<td><c:if test="${not empty memberList[vs.count-1].grade}">
 											<form id="gradeUpdateForm" method="post"
 												action="gradeUpdate.do">
@@ -105,14 +127,7 @@
 												</select> <input type="submit">
 											</form>
 										</c:if></td>
-									<td class="title"><c:if
-											test="${not empty memberList[vs.count-1].member_id}">
-											<a href="#"> ${memberList[vs.count-1].member_id} <c:set
-													var="member_name"
-													value="${memberList[vs.count-1].member_name}" /> <c:out
-													value="(${member_name})" />
-											</a>
-										</c:if></td>
+
 									<td><c:if
 											test="${not empty memberList[vs.count-1].cancel_or_not}">
 											<c:out
@@ -139,13 +154,7 @@
 
 											</form>
 										</c:if></td>
-									<td><small> <fmt:formatDate
-												value="${memberList[vs.count-1].reg_date}"
-												pattern="yyyy-MM-dd HH:mm:ss /" />
-									</small> <small> <fmt:formatDate
-												value="${memberList[vs.count-1].last_modified_date}"
-												pattern="yyyy-MM-dd HH:mm:ss" />
-									</small></td>
+
 								</tr>
 							</c:forEach>
 						</c:otherwise>

@@ -131,6 +131,16 @@ public class ProductDAO{
 		return sqlSession.selectList(MAPPER+".statusO", m_idx);
 	}
 	
+	//배송 상태에 따른 합계 조회
+	public List<CartVO> statusO2(int m_idx){
+		return sqlSession.selectList(MAPPER+".statusO2", m_idx);
+	}
+	
+	//상품 상태에 따른 합계 조회(관리자)
+	public List<ProductVO> statusP2(){
+		return sqlSession.selectList(MAPPER+".statusP2");
+	}
+	
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);
 	}

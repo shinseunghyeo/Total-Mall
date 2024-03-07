@@ -75,8 +75,8 @@ input[type=submit], button{
 </head>
 <body>
 	<div class="container">
-
-    <c:if test="${member.grade == 8}"><!-- 관리자 -->
+<c:choose>
+    <c:when test="${member.grade == 8}"><!-- 관리자 -->
         <h1>${inquiries[0].title}</h1>
 		<img src="">
 		<h3 style="margin: 0;">${inquiries[0].voc_type}</h3>
@@ -105,8 +105,8 @@ input[type=submit], button{
 				<input type="submit" value="답변하기">
 			</form>
 		</c:if>
-    </c:if>
-   <c:if test="${member.grade == 9}"><!-- 기업회원 -->
+    </c:when>
+   <c:when test="${member.grade == 9}"><!-- 기업회원 -->
 		<h1>고객문의내역</h1>
 		<img src="">
 		${product.product_name}
@@ -135,8 +135,8 @@ input[type=submit], button{
 				<input type="submit" value="답변하기">
 			</form>
 		</c:if>
-    </c:if>
-
+    </c:when>
+</c:choose>
 	</div>
 </body>
 </html>

@@ -82,7 +82,7 @@
 						<c:otherwise>
 							<tr>
 								<td colspan="6" class="all_p_list">
-									<div class="p_idx"></div>
+									<div class="p_idx">상품<br>번호</div>
 									<div class="p_img">이미지</div>
 									<div class="p_info">제품명</div>
 									<div class="p_price">가격</div>

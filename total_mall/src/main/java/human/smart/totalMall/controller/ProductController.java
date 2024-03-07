@@ -35,7 +35,7 @@ public class ProductController {
 	@Setter(onMethod_={ @Autowired })
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
-    		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO,
+    		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -453,6 +453,29 @@ public class ProductController {
 		 List<CartVO> statusOlist = statusO.statusO(m_idx);
 		 model.addAttribute("statusOlist", statusOlist);
 		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
+	}
+	
+	//상품 상태에 따른 합계 조회
+	@RequestMapping("/statusO2.do")
+	public String statusO2(@SessionAttribute("member") MemberVO member, Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		if (member == null || member.getM_idx() == 0) {
+		    return "redirect:/member/login.do";
+		}
+		int m_idx = member.getM_idx();
+		 List<CartVO> statusO2list = statusO2.statusO2(m_idx);
+		 model.addAttribute("statusO2list", statusO2list);
+		return "forward:/member/sellerhome.do"; // JSP 페이지 이름
+	}
+	
+	//상품 상태에 따른 합계 조회(관리자)
+	@RequestMapping("/statusP2.do")
+	public String statusP2(Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		
+		 List<ProductVO> statusP2list = statusP2.statusP2();
+		 model.addAttribute("statusP2list", statusP2list);
+		return "forward:/member/adminhome.do"; // JSP 페이지 이름
 	}
 	
 	

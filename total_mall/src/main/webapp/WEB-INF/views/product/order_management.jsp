@@ -34,8 +34,8 @@
                         success: function(response) {
                             // 성공 처리
                             console.log(response);
-                            location.reload();
                             alert("변경되었습니다.");
+                            location.reload();
                         },
                         error: function(error) {
                             // 에러 처리
@@ -78,7 +78,7 @@
 						<p>가격</p>
 					</div>
 					<div class="p-6">
-						<p><input type="button" value="주문 상태 변경" class="new-another-button order-modify-btn"></p>
+						<p><input type="button" value="주문 상태 변경" class="order-modify-btn"></p>
 						
 					</div>
 				</div>

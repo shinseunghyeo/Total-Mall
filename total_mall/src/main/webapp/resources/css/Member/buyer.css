@@ -252,11 +252,10 @@
 	}
 	
 	.new-sort{
-	width: 10%
+	width: 11%
 	}
     .new-img-div {
-        width: 10%;
-        margin: 10px;
+        width: 11%;
     }
     .new-img {
         width: 100%;
@@ -266,7 +265,8 @@
 	    width: 4rem;
 	    height: 4rem;
 	}
-    .new-name {
+	
+	    .new-name {
         width: 30%;
     }
 
@@ -1344,7 +1344,9 @@
     flex-wrap: nowrap;
     align-items: stretch;
     width: 94%;
-    padding: 3%;}
+    padding: 3%;
+    min-height: 475px;
+    }
     #DetailsBtnLine{display: flex;text-align: center;}
     #DetailsBtnLine .pageColor{width: 25%;height: 50px; cursor: pointer;border-bottom: 1px solid lightyellow;line-height: 50px;font-weight: bold;}
     #DetailsBtnLine .pageColor_on{background-color: gray;}

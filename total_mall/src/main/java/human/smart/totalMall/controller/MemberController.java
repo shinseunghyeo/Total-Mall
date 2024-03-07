@@ -44,7 +44,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1, todayProduct, statusP, myReview, statusO;
+	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2;
 	
 	
 	@Setter(onMethod_={ @Autowired })
@@ -303,10 +303,12 @@ public String sellerMypage(@SessionAttribute("member") MemberVO member, Model mo
 List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 합계 조회
 List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
 List<CartVO> statusOlist = statusO.statusO(m_idx);
+List<CartVO> statusO2list = statusO2.statusO2(m_idx);
 
 model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
 model.addAttribute("homePVList", homePVList);
 model.addAttribute("statusOlist", statusOlist);
+model.addAttribute("statusO2list", statusO2list);
 return "member/sellermypage";
 }
 
@@ -321,9 +323,12 @@ public String sellerHome(@SessionAttribute("member") MemberVO member, Model mode
 List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 합계 조회
 List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
 List<CartVO> statusOlist = statusO.statusO(m_idx);
+List<CartVO> statusO2list = statusO2.statusO2(m_idx);
+
 model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
 model.addAttribute("homePVList", homePVList);
 model.addAttribute("statusOlist", statusOlist);
+model.addAttribute("statusO2list", statusO2list);
 return "member/sellerhome";
 }
 
@@ -518,10 +523,12 @@ public String adminMypage(Model model) {
 	int toProduct = todayProduct.todayProduct();
 	List<NoticeVO> homeNList = homeNotice.homeNotice();
 	List<VocVO> homeVList = homeVoc.homeVoc();
+	List<ProductVO> statusP2list = statusP2.statusP2();
 	
 	model.addAttribute("todayProduct", toProduct);
 	model.addAttribute("homeNList", homeNList);
 	model.addAttribute("homeVList", homeVList);
+	model.addAttribute("statusP2list", statusP2list);
 return "member/adminmypage";
 }
 
@@ -531,10 +538,12 @@ public String adminhome(Model model) {
 	int toProduct = todayProduct.todayProduct();
 	List<NoticeVO> homeNList = homeNotice.homeNotice();
 	List<VocVO> homeVList = homeVoc.homeVoc();
+	List<ProductVO> statusP2list = statusP2.statusP2();
 	
 	model.addAttribute("todayProduct", toProduct);	
 	model.addAttribute("homeNList", homeNList);
 	model.addAttribute("homeVList", homeVList);
+	model.addAttribute("statusP2list", statusP2list);
 return "member/adminhome";
 }
 

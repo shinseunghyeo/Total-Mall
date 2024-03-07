@@ -88,5 +88,45 @@ WHERE p.p_idx IN (
     SELECT p_idx
     FROM tb_product
 ) IS NOT NULL
+AND c.payment_or_not NOT IN (0, 1, 11, 12, 13, 14, 15, 16)  -- 값을 제외
 GROUP BY p.m_idx, c.payment_or_not
 ORDER BY c.payment_or_not ASC;
+
+
+-- o_status_count_view 뷰 생성
+CREATE VIEW order_count_view2 AS
+SELECT p.m_idx, c.payment_or_not, COUNT(*) AS count
+FROM tb_cart c
+JOIN tb_product p ON c.p_idx = p.p_idx
+WHERE p.p_idx IN (
+    SELECT p_idx
+    FROM tb_product
+) IS NOT NULL
+AND c.payment_or_not NOT IN (0, 1, 2, 3, 4, 5, 6)  -- 값을 제외
+GROUP BY p.m_idx, c.payment_or_not
+ORDER BY c.payment_or_not ASC;
+
+
+
+CREATE VIEW p_status_count_view2 AS-- 상품 상태에 따른 합계 조회 뷰(관리자)
+SELECT p_status, COUNT(*) as count
+FROM tb_product
+WHERE p_idx IN (
+    SELECT DISTINCT p_idx
+    FROM tb_product
+    WHERE m_idx IS NOT NULL
+)
+GROUP BY p_status
+ORDER BY p_status ASC;
+
+
+CREATE VIEW buyer_order_view AS
+SELECT
+	c.o_idx, c.c_idx, c.m_idx, c.c_quantity, c.c_update_time,
+	p.p_idx, p.product_name, p.price, p.discount_rate, p.save_file_name1,
+	o.o_update_time, o.totalprice, c.payment_or_not
+FROM
+	tb_cart c
+	LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
+	LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx
+WHERE c.payment_or_not NOT IN (0, 1);

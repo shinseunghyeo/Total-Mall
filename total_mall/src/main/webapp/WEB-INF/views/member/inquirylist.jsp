@@ -49,6 +49,19 @@ th {
 	background-color: #f2f2f2;
 }
 </style>
+<script type="text/javascript">
+
+function openPopup(url) {
+    // 팝업 창의 크기 및 위치 설정
+    var width = 600;
+    var height = 600;
+    var left = (window.innerWidth - width) / 2;
+    var top = (window.innerHeight - height) / 2;
+
+    // 팝업 창 열기
+    window.open(url, '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -69,9 +82,10 @@ th {
 					<thead>
 						<tr>
 							<th>번호</th>
+							<th>문의 내용</th>
 							<th>이름</th>
 							<th>이메일</th>
-							<th>문의 내용</th>
+							
 							<th>문의 시간</th>
 							<th>처리 상태</th>
 						</tr>
@@ -80,9 +94,15 @@ th {
 						<c:forEach begin="1" end="10" varStatus="vs">
 							<tr>
 								<td>${vs.count}</td>
+								<td>
+								<a href="javascript:void(0);"
+													onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${inquirylist[vs.count-1].v_idx}')">
+								${inquirylist[vs.count-1].voc_type}
+								</a>
+								</td>
 								<td>${inquirylist[vs.count-1].writer}</td>
 								<td>${inquirylist[vs.count-1].email}</td>
-								<td>${inquirylist[vs.count-1].voc_type}</td>
+								
 								<td><fmt:formatDate
 										value="${inquirylist[vs.count-1].post_date}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -95,9 +115,9 @@ th {
 					<thead>
 						<tr>
 							<th>번호</th>
+							<th>상품명</th>
 							<th>이름</th>
 							<th>이메일</th>
-							<th>상품명</th>
 							<th>문의 시간</th>
 							<th>처리 상태</th>
 						</tr>
@@ -106,9 +126,14 @@ th {
 						<c:forEach begin="1" end="10" varStatus="vs">
 							<tr>
 								<td>${vs.count}</td>
+								<td>
+								<a href="javascript:void(0);"
+													onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries2.do?v_idx=${pinquirylist[vs.count-1].v_idx}')">
+								${pinquirylist[vs.count-1].product_name}
+								</a>
+								</td>
 								<td>${pinquirylist[vs.count-1].writer}</td>
 								<td>${pinquirylist[vs.count-1].email}</td>
-								<td>${pinquirylist[vs.count-1].product_name}</td>
 								<td><fmt:formatDate
 										value="${pinquirylist[vs.count-1].post_date}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>

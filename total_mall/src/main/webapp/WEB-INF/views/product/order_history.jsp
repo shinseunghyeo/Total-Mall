@@ -27,7 +27,7 @@ function openReviewPage(p_idx) {
 			<div class="new_order">
 				<div class="new-menu">
 					<div class="p-1">
-						<p></p>
+						<p><small>주문번호</small></p>
 					</div>
 					<div class="p-2">
 						<p>상품명</p>
@@ -49,8 +49,8 @@ function openReviewPage(p_idx) {
 					<div class="new-item">
 						
 						<div class="new-sort">
-							${orderList[vs.count-1].o_idx}<br>
-						${p_or_notMap[orderList[vs.count-1].payment_or_not.toString()]}
+						<div>${orderList[vs.count-1].o_idx}</div>
+							<small>${p_or_notMap[orderList[vs.count-1].payment_or_not.toString()]}</small>
 						</div>
 						<div class="new-img-div">
 						<c:if test="${not empty orderList[vs.count-1].save_file_name1}">

@@ -49,10 +49,11 @@
 							${p_or_notMap[allorderList[vs.count-1].payment_or_not.toString()]}
 						</div>
 						<div class="new-img-div">
-
-							<img
-								src="../resources/uploads/${allorderList[vs.count-1].save_file_name1}"
-								alt="${allorderList[vs.count-1].product_name}">
+							<c:if test="${not empty allorderList[vs.count-1].save_file_name1}">
+								<img
+									src="../resources/uploads/${allorderList[vs.count-1].save_file_name1}"
+									alt="${allorderList[vs.count-1].product_name}">
+							</c:if>
 						</div>
 						<div class="new-name">
 							<p>
