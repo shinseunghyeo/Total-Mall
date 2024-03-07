@@ -27,7 +27,8 @@ import lombok.Setter;
 public class CustomercenterController {
 
 	@Setter(onMethod_={ @Autowired }) CustomercenterService cPage,cNotice, cTotalCount, 
-	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries, homePvoc;
+	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries, homePvoc, cInquiries2;
+	
 	@Setter(onMethod_={ @Autowired }) CCPageNav CCpageNav;
 	
 	//공지사항 페이지 요청 처리
@@ -104,6 +105,37 @@ public class CustomercenterController {
 	    return viewPage;
 	}
 
+	//기업회원 문의내역 요청 처리
+	@GetMapping("/inquiries2.do")
+	public String inquiries3(int v_idx, Model model) {
+		List<PvocVO> voc = cInquiries2.vocBoard2(v_idx);
+		
+		model.addAttribute("inquiries2", voc);
+		return "customercenter/inquiries";//views/member폴더에 대한 경로 추가
+	}
+	
+	//기업회원 문의내역 요청 처리
+	@PostMapping("/inquiries2.do")
+	public String inquiries4(int v_idx, Model model) {
+		List<PvocVO> voc = cInquiries2.vocBoard2(v_idx);
+		
+		model.addAttribute("inquiries2", voc);
+		return "customercenter/inquiries";//views/member폴더에 대한 경로 추가
+	}
+	
+	//기업회원 문의 답변
+	@PostMapping("/answerProcess2.do")
+	public String answerProcess2(PvocVO voc, Model model) {
+		int v_idx = voc.getV_idx();
+	    String viewPage = "customercenter/inquiries";
+	    int result = cInquiries2.answerupdate2(voc);
+	    if (result == 1) {
+	        viewPage = "forward:/customercenter/inquiries2.do?v_idx="+v_idx;
+	    }
+	    return viewPage;
+	}
+
+	
 
 	//자주 묻는 질문 페이지 요청 처리
 	@GetMapping("/QnA.do")

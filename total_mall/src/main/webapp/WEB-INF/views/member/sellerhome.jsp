@@ -139,7 +139,7 @@
 									<tr>
 										<td>${i}</td>
 										<td><a href="javascript:void(0);"
-											onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${homePVList[vs.count-1].v_idx}')">
+											onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries2.do?v_idx=${homePVList[vs.count-1].v_idx}')">
 												${homePVList[vs.count-1].product_name} </a></td>
 										<td>${homePVList[vs.count-1].writer}</td>
 										<td><fmt:formatDate
