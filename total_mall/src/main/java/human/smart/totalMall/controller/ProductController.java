@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import human.smart.service.product.ProductService;
 import human.smart.totalMall.common.PageNav;
-import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.OrderVO;

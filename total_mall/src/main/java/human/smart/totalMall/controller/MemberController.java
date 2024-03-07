@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import human.smart.service.customercenter.CustomercenterService;
 import human.smart.service.member.MemberService;
+import human.smart.service.product.ProductService;
 import human.smart.totalMall.common.PageNav;
-import human.smart.totalMall.product.ProductService;
 import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.NoticeVO;

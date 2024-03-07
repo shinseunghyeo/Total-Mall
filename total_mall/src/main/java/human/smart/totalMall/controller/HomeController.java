@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import human.smart.totalMall.product.ProductService;
+import human.smart.service.product.ProductService;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.ProductVO;
 
