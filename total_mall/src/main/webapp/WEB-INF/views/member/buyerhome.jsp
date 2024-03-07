@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@ function openReviewPage(p_idx) {
 			<div id="grade_wrap">
 				<h3>${member.member_name}회원님의
 					등급은
-					<c:out value="${gradeMap[member.grade.toString()]}" />
+					<c:out value="${gradeMap[member.grade.toString()].substring(7)}" />
 					입니다
 				</h3>
 				<br>

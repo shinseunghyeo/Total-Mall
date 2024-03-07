@@ -87,10 +87,10 @@
 				<div class="inner_box">
 					<h2>주문/배송</h2>
 					<ul>
-						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+						<c:forEach var="i" begin="0" end="4" varStatus="vs">
 							<li><a href="#">
 							<c:if test="${not empty statusOlist[vs.count-1].payment_or_not and statusOlist[vs.count-1].payment_or_not < 7 and statusOlist[vs.count-1].payment_or_not > 1}">
-									<h2>${p_or_notMap[statusOlist[vs.count-1].payment_or_not.toString()]}</h2>
+									<h3>${p_or_notMap[statusOlist[vs.count-1].payment_or_not.toString()]}</h3>
 									<br>
 									<b>${statusOlist[vs.count-1].count} &gt;</b> 
 							</c:if>

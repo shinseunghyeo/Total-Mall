@@ -278,6 +278,7 @@
 		LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx
 		WHERE
 		c.m_idx = #{m_idx}
+		ORDER BY o_update_time desc
 	</select>
 	<!-- 개인회원 홈 주문조회: select -->
 	<select id="getOrders_1" parameterType="_int" resultType="cartVO">
@@ -292,6 +293,7 @@
 		WHERE
 		c.m_idx = #{m_idx} AND
 	    o.o_update_time >= CURDATE() - INTERVAL 1 MONTH
+	    ORDER BY o_update_time desc
 	</select>
 
 	<!-- 기업회원 주문조회: select -->
