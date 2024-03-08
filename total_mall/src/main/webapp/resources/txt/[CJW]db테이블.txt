@@ -150,5 +150,7 @@ SELECT
   COUNT(*) AS count
 FROM 
   tb_member
+WHERE 
+  grade NOT IN (8)  
 ORDER BY 
   grade ASC;

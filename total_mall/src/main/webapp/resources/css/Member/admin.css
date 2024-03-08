@@ -1,13 +1,17 @@
 @charset "UTF-8";
     /* 글씨체 변경 */
     @font-face {
-        font-family: "G-market-Light";
-		src: url(fonts/GmarketSansTTFLight.ttf) format('truetype');
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
     }
 
     @font-face {
-        font-family: "G-market-Bold";
-        src: url(fonts/GmarketSansTTFBold.ttf) format('truetype');
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
     }
 
     p,
@@ -20,11 +24,11 @@
     h6,
     td,
     input[type='button'] {
-        font-family: "G-market-Light";
+        font-family: 'GmarketSansTTFLight';
     }
 
     th {
-        font-family: "G-market-Bold";
+        font-family: 'GmarketSansTTFBold';
     }
 
     /* 글씨체 변경 */
