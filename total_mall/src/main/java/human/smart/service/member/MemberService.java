@@ -27,5 +27,6 @@ public interface MemberService {
 	default int cancelUpdate(MemberVO vo){return 0;}
 	default String joinEmail(String email) {return null;}
 	default List<SalesVO> getSales(){return null;}
+	default List<MemberVO> memberCnt(){return null;}
 
 }

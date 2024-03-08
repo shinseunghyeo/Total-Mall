@@ -83,17 +83,17 @@ $(function () {
             });
         };
         
-        if ($(this).is(".admin_nav_ul_li:eq(5)")) {
+        if ($(this).is(".admin_nav_ul_li:eq(4)")) {
             loadContent("adminmypage/member/allSales.do");
-            $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(5))").css({
+            $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(4))").css({
                 backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });
         };
         
-        if ($(this).is(".admin_nav_ul_li:eq(6)")) {
+        if ($(this).is(".admin_nav_ul_li:eq(5)")) {
             loadContent("adminmypage/member/inquirylist.do");
-            $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(6))").css({
+            $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(5))").css({
                 backgroundColor: "rgb(158, 158, 158)",
                 lightCss
             });

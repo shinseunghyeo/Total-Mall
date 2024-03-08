@@ -40,7 +40,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade, cancelUpdate, sList;
+				  mGrade, cancelUpdate, sList, memberCnt;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
@@ -286,7 +286,15 @@ public class MemberController {
 		return p_or_notMap;
 	}
 
-
+	//관리자 홈 회원 현황
+	@RequestMapping("/memberCnt.do")
+	public String memberCnt(Model model) {
+		// 메서드1에서 사용할 데이터를 모델에 담음
+		
+		 List<MemberVO> memberCntlist = memberCnt.memberCnt();
+		 model.addAttribute("memberCntlist", memberCntlist);
+		return "forward:/member/adminhome.do"; // JSP 페이지 이름
+	}
 	
 /////////////////////////////// 기업회원 마이페이지 홈 ///////////////////////////////	
 	
@@ -524,11 +532,14 @@ public String adminMypage(Model model) {
 	List<NoticeVO> homeNList = homeNotice.homeNotice();
 	List<VocVO> homeVList = homeVoc.homeVoc();
 	List<ProductVO> statusP2list = statusP2.statusP2();
+	List<MemberVO> memberCntlist = memberCnt.memberCnt();
+	
 	
 	model.addAttribute("todayProduct", toProduct);
 	model.addAttribute("homeNList", homeNList);
 	model.addAttribute("homeVList", homeVList);
 	model.addAttribute("statusP2list", statusP2list);
+	model.addAttribute("memberCntlist", memberCntlist);
 return "member/adminmypage";
 }
 
@@ -539,11 +550,14 @@ public String adminhome(Model model) {
 	List<NoticeVO> homeNList = homeNotice.homeNotice();
 	List<VocVO> homeVList = homeVoc.homeVoc();
 	List<ProductVO> statusP2list = statusP2.statusP2();
+	List<MemberVO> memberCntlist = memberCnt.memberCnt();
 	
+	 
 	model.addAttribute("todayProduct", toProduct);	
 	model.addAttribute("homeNList", homeNList);
 	model.addAttribute("homeVList", homeVList);
 	model.addAttribute("statusP2list", statusP2list);
+	model.addAttribute("memberCntlist", memberCntlist);
 return "member/adminhome";
 }
 
@@ -571,7 +585,9 @@ public Map<String, String> voc_stateMap() {
 @GetMapping("member_management.do")
 public String member_management(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
 List<MemberVO> memberList = mManage.getMembers(searchVO);
+List<MemberVO> memberCntlist = memberCnt.memberCnt();
 model.addAttribute("memberList", memberList);
+model.addAttribute("memberCntlist", memberCntlist);
 if(searchVO.getPageNum() == 0) {
 searchVO.setPageNum(1);
 }
@@ -584,8 +600,9 @@ return "member/member_management";
 //회원 등급 변경
 @PostMapping("gradeUpdate.do")
 public String gradeUpdate(@ModelAttribute("memberVO")MemberVO vo, Model model) {
-	int gradeUpdate = mGrade.gradeUpdate(vo);
 	int m_idx = vo.getM_idx();
+	int gradeUpdate = mGrade.gradeUpdate(vo);
+	
 	String viewPage = (gradeUpdate == 1) ? "redirect:/member/member_management.do" : "redirect:/member/member_management.do";
 
 	return viewPage;// views/member폴더에 대한 경로 추가
@@ -598,6 +615,10 @@ public String cancelUpdate(@ModelAttribute("memberVO")MemberVO vo, Model model) 
 	int m_idx = vo.getM_idx();
 	String viewPage = (cUpdate == 1) ? "redirect:/member/member_management.do" : "redirect:/member/member_management.do";
 
+	System.out.println("cancelUpdate 메서드 호출됨");
+    System.out.println("m_idx: " + m_idx);
+    System.out.println("cancelUpdate 결과: " + cancelUpdate);
+	
 	return viewPage;// views/member폴더에 대한 경로 추가
 }
 
@@ -636,6 +657,7 @@ public Map<String, String> getGradeMap() {
 	gradeMap.put("7", "미정");
 	gradeMap.put("8", "관리자");
 	gradeMap.put("9", "기업회원");
+	gradeMap.put("0", "총 회원 수");
 
 	return gradeMap;
 }

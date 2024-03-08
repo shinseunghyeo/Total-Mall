@@ -117,5 +117,9 @@ public class MemberDAO {
 	public List<VocVO> getInquirylistp(int m_idx){
 		return sqlSession.selectList(MAPPER+".getInquirylistp", m_idx);
 	}
-
+	
+	//관리자 홈 회원 현황
+	public List<MemberVO> memberCnt(){
+		return sqlSession.selectList(MAPPER+".memberCnt");
+	}
 }

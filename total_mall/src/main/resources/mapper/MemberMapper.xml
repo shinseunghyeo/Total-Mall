@@ -145,5 +145,10 @@
 		ORDER BY post_date DESC;
 
  	</select>
+ 	
+ 	<!-- 관리자 홈 회원 현황-->
+ 	<select id="memberCnt" resultType="memberVO">
+ 		SELECT * FROM member_count_view
+ 	</select>
 	
 </mapper>

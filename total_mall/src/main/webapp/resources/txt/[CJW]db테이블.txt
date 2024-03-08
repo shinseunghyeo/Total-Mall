@@ -130,3 +130,25 @@ FROM
 	LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
 	LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx
 WHERE c.payment_or_not NOT IN (0, 1);
+
+
+CREATE VIEW member_count_view AS -- 회원 수 조회
+SELECT 
+  grade,
+  COUNT(*) AS count
+FROM 
+  tb_member
+WHERE 
+  grade NOT IN (8)
+GROUP BY 
+  grade
+
+UNION ALL
+
+SELECT 
+  0 AS grade, -- 여기서 0으로 지정
+  COUNT(*) AS count
+FROM 
+  tb_member
+ORDER BY 
+  grade ASC;
