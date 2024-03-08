@@ -9,6 +9,7 @@
 <title>관리자 회원관리 페이지</title>
 <!-- member_management.jsp 파일 내의 JavaScript 부분 -->
 <script src="../resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Member/loadContent.js"></script>
 <script>
 	function openMemberInfoWindow(url) {
 		// 새 창의 크기 및 위치 설정

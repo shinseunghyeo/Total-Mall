@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>관리자 상품관리 페이지</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Member/loadContent.js"></script>
 <!-- 중복 코드 통합 -->
 <script type="text/javascript">
 function updateProductStatus(action) {
@@ -38,8 +39,8 @@ function updateProductStatus(action) {
 				// 서버 응답에 대한 처리를 여기에 추가
 				console.log(response);
 				// 예를 들어, 페이지 리로드
-				location.reload();
 				alert("변경되었습니다.");
+				loadContent("../member/adminmypage/product/allplist.do");
 			},
 			error : function(error) {
 				// 에러 처리를 여기에 추가
@@ -154,9 +155,12 @@ function updateProductStatus(action) {
 										</div>
 
 										<div class="p_status">
-											${statusPMap[allList[vs.count-1].p_status.toString()]} <input
+											${statusPMap[allList[vs.count-1].p_status.toString()]} 
+											<c:if test="${not empty allList[vs.count-1].p_status}">
+											<input
 												type="checkbox" name="productCheckbox"
-												value="${productList3[vs.count-1].p_idx}">
+												value="${allList[vs.count-1].p_idx}">
+											</c:if>
 										</div>
 									</td>
 

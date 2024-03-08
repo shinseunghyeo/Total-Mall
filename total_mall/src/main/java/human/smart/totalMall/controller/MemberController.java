@@ -261,7 +261,7 @@ public class MemberController {
 			session.removeAttribute("member");
 			session.setAttribute("member", newVO);
 		}
-		return "member/sellermypage";
+		return "redirect:/member/sellermypage.do";
 	}
 	//주문 상태 맵
 	@ModelAttribute("p_or_notMap")

@@ -260,8 +260,8 @@
 	<!-- 기업회원 상품조회: select -->
 	<select id="getProducts3" parameterType="_int"
 		resultType="productVO">
-		SELECT * FROM tb_product WHERE m_idx LIKE #{m_idx}
-		ORDER BY p_last_modified_date DESC
+		SELECT * FROM tb_product WHERE m_idx=#{m_idx}
+		ORDER BY p_reg_date DESC, p_last_modified_date ASC
 		LIMIT 20 OFFSET 0
 	</select>
 	
@@ -298,8 +298,7 @@
 
 	<!-- 관리자 주문조회: select -->
 	<select id="getOrders3" resultType="cartVO">
-		SELECT c_idx, p_idx, m_idx, o_idx, c_quantity, o_update_time, 
-		totalprice, payment_or_not, product_name, price, discount_rate, save_file_name1, mMIdx
+		SELECT *
 		FROM orderList
 		ORDER BY o_update_time desc
 	</select>
@@ -337,7 +336,7 @@
 	<select id="statusO" parameterType="_int" resultType="CartVO">
 	SELECT * 
 	FROM order_count_view
-	 WHERE m_idx = #{m_idx}
+	WHERE m_idx = #{m_idx}
 	</select>
 	
 	<!-- 배송 상태에 따른 합계 조회 -->
