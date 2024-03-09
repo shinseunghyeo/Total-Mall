@@ -1,23 +1,16 @@
 
 $(function () {
 
-    const boldCss = {
-        fontFamily: "G-market-Bold",
-        fontSize: "22px"
-    };
-    const lightCss = {
-        fontFamily: "G-market-Light",
-        fontSize: "16px"
-    };
-
     //판매자 페이지 네비게이션 기본 css 설정(홈화면 활성화)
     $(".buyer_nav_ul_li:first").css({
         backgroundColor: "rgb(224, 224, 224)",
-        boldCss
+        fontFamily: 'GmarketSansTTFBold',
+        fontSize: "22px"
     });
     $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:first)").css({
         backgroundColor: "rgba(224, 224, 224, 0.42)",
-        lightCss
+        fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
     });
 
 
@@ -34,7 +27,8 @@ $(function () {
         });
         $(this).css({
             backgroundColor: "rgb(224, 224, 224)",
-            boldCss
+            fontFamily: 'GmarketSansTTFBold',
+        fontSize: "22px"
         });
 
         const pages = [
@@ -49,7 +43,8 @@ $(function () {
             loadContent("buyermypage/member/buyerhome.do");
             $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(0))").css({
                 backgroundColor: "rgba(224, 224, 224, 0.42)",
-                lightCss,
+                fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
             });
         };
 
@@ -57,7 +52,8 @@ $(function () {
             loadContent("buyermypage/product/order_history.do");
             $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(1))").css({
                 backgroundColor: "rgba(224, 224, 224, 0.42)",
-                lightCss,
+                fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
             });
         };
 
@@ -65,7 +61,8 @@ $(function () {
             loadContent("buyermypage/member/buyerupdate.do");
             $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(3))").css({
                 backgroundColor: "rgba(224, 224, 224, 0.42)",
-                lightCss,
+                fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
             });
         };
 
@@ -73,18 +70,28 @@ $(function () {
             loadContent("buyermypage/member/buyeraddress.do");
             $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(4))").css({
                 backgroundColor: "rgba(224, 224, 224, 0.42)",
-                lightCss,
+                fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
             });
         };
 
-            if ($(this).is(".buyer_nav_ul_li:eq(6)")) {
+            if ($(this).is(".buyer_nav_ul_li:eq(5)")) {
         loadContent("buyermypage/product/myreview.do");
-        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(6))").css({
+        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(5))").css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
-            lightCss,
+            fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
         });
     };
 
+           if ($(this).is(".buyer_nav_ul_li:eq(6)")) {
+        loadContent("buyermypage/member/inquirylist.do");
+        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(6))").css({
+            backgroundColor: "rgba(224, 224, 224, 0.42)",
+            fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
+        });
+    };
 
 
         // Ajax로 페이지를 불러와서 content 영역에 표시

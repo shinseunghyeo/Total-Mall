@@ -1,28 +1,17 @@
 
 $(function () {
 
-    const navCss = {
-        backgroundColor: "rgb(158, 158, 158)",
-
-    };
-
-    const boldCss = {
-        fontFamily: "G-market-Bold",
-        fontSize: "22px"
-    };
-    const lightCss = {
-        fontFamily: "G-market-Light",
-        fontSize: "16px"
-    };
 
     //관리자 페이지 네비게이션 기본 css 설정(홈화면 활성화)
     $(".admin_nav_ul_li:first").css({
         backgroundColor: "rgba(224, 224, 224, 0.42)",
-        boldCss
+        fontFamily: "GmarketSansTTFBold",
+        fontSize: "22px"
     });
     $(".admin_nav_ul_li:not(.admin_nav_ul_li:first)").css({
         backgroundColor: "rgb(158, 158, 158)",
-        lightCss
+        fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
     });
 
 
@@ -39,7 +28,8 @@ $(function () {
         });
         $(this).css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
-            boldCss
+            fontFamily: "GmarketSansTTFBold",
+        fontSize: "22px"
         });
 
         const pages = [
@@ -55,7 +45,8 @@ $(function () {
             loadContent("adminmypage/member/adminhome.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(0))").css({
 	            backgroundColor: "rgb(158, 158, 158)",
-                lightCss
+                fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
             });
         };
 
@@ -63,7 +54,8 @@ $(function () {
             loadContent("adminmypage/member/member_management.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(1))").css({
                 backgroundColor: "rgb(158, 158, 158)",
-                lightCss
+                fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
             });
         };
 
@@ -71,7 +63,8 @@ $(function () {
             loadContent("adminmypage/product/allplist.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(2))").css({
                 backgroundColor: "rgb(158, 158, 158)",
-                lightCss
+                fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
             });
         };
         
@@ -79,7 +72,8 @@ $(function () {
             loadContent("adminmypage/product/allorderlist.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(3))").css({
                 backgroundColor: "rgb(158, 158, 158)",
-                lightCss
+                fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
             });
         };
         
@@ -87,7 +81,8 @@ $(function () {
             loadContent("adminmypage/member/allSales.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(4))").css({
                 backgroundColor: "rgb(158, 158, 158)",
-                lightCss
+                fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
             });
         };
         
@@ -95,7 +90,8 @@ $(function () {
             loadContent("adminmypage/member/inquirylist.do");
             $(".admin_nav_ul_li:not(.admin_nav_ul_li:eq(5))").css({
                 backgroundColor: "rgb(158, 158, 158)",
-                lightCss
+                fontFamily: "GmarketSansTTFLight",
+        fontSize: "16px"
             });
         };
 

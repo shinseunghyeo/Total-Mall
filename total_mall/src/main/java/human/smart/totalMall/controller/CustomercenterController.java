@@ -27,7 +27,8 @@ import lombok.Setter;
 public class CustomercenterController {
 
 	@Setter(onMethod_={ @Autowired }) CustomercenterService cPage,cNotice, cTotalCount, 
-	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries, homePvoc, cInquiries2;
+	cInsert, cInquiry, homeNotice, homeVoc, bUpdate, cInquiries, homePvoc, cInquiries2,
+	sellerhomeVoc;
 	
 	@Setter(onMethod_={ @Autowired }) CCPageNav CCpageNav;
 	
@@ -243,6 +244,15 @@ public class CustomercenterController {
 		int m_idx = member.getM_idx();
 		List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
 		model.addAttribute("homePVList", homePVList);
+		return "forward:/member/sellerhome.do";
+	}
+	
+	//기업회원 홈 고객센터 문의사항
+	@RequestMapping("/sellerhomeVoc.do")
+	public String sellerhomeVoc(@SessionAttribute("member") MemberVO member,Model model) {
+		int m_idx = member.getM_idx();
+		List<VocVO> sellerhomeVList = sellerhomeVoc.sellerhomeVoc(m_idx);
+		model.addAttribute("sellerhomeVList", sellerhomeVList);
 		return "forward:/member/sellerhome.do";
 	}
 

@@ -149,7 +149,7 @@
 					<ul>
 						<c:forEach var="i" begin="0" end="9" varStatus="vs">
 							<li><a href="#"> <c:if
-										test="${not empty memberCntlist[vs.count-1].grade}">
+										test="${not empty memberCntlist[vs.count-1].count}">
 									${gradeMap[memberCntlist[vs.count-1].grade.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
 										<b>${memberCntlist[vs.count-1].count} &gt;</b>
 									</c:if>

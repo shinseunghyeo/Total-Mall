@@ -34,7 +34,10 @@ public interface ProductService {
 	default int cartQuantityUpdate(CartVO vo) {return 0;}
 	default int cartDelete(CartVO vo) {return 0;}
 	default int purchaseInsert(OrderVO vo) {return 0;}
-	default List<CartVO> getOrders(int m_idx){return null;}
+	//default List<CartVO> getOrders(int m_idx){return null;}
+	default List<CartVO> getOrders(SearchVO vo){return null;}
+	default int totalOrderCnt(SearchVO vo){return 0;}
+	
 	default int modify(ProductVO vo, HttpServletRequest request){return 0;}
 	default int discontinued(int p_idx) {return 0;}
 	default int continued(int p_idx) {return 0;}
@@ -58,6 +61,8 @@ public interface ProductService {
 	default int cartInsert2(CartVO vo) {return 0;}
 	default CartVO cartCheck(CartVO vo) {return null;}
 	default int cartOidxUpdate(int m_idx, int o_idx) {return 0;}
+	
+
 	
 	
 	

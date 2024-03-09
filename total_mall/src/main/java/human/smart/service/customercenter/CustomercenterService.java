@@ -32,5 +32,6 @@ public interface CustomercenterService {
 	default List<PvocVO> homePvoc(int m_idx){return null;}
 	default List<PvocVO> vocBoard2(int v_idx){return null;}
 	default int answerupdate2(PvocVO voc) {return 0;}
+	default List<VocVO> sellerhomeVoc(int m_idx){return null;}
 	
 }

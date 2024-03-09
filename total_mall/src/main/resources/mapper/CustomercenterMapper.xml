@@ -192,5 +192,13 @@
 		LIMIT 5
 	</select>
 	
+	<!-- 기업회원 홈 고객센터 문의 -->
+	<select id="sellerhomeVoc" parameterType="_int" resultType="VocVO">
+		SELECT *
+		FROM tb_voc
+		WHERE m_idx=#{m_idx}
+		ORDER BY update_date DESC
+		LIMIT 5
+	</select>
   
 </mapper>

@@ -12,6 +12,7 @@ public class PvocVO {
 	private int m_idx; //회원 번호
 	private int p_idx; //상품 번호
 	private String product_name; //상품명
+	private String member_id;
 	private String writer; //작성자
 	private String email; //작성자 이메일
 	private String content; //내용

@@ -185,11 +185,28 @@
 			</div>
 			<div class="small_box">
 				<div class="inner_box">
-					<h2>고객센터</h2>
-					<ul>
-						<li><a href="#">나의 문의 <b>10 &gt;</b></a></li>
-						<li><a href="#">답변받은 문의 <b>10 &gt;</b></a></li>
-					</ul>
+						<h2>고객센터</h2>
+					<div id="cs_table">
+						<table>
+							<thead>
+								<tr>
+									<th>제목</th>
+									<th>상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="i" begin="1" end="5" varStatus="vs">
+									<tr>
+										<td><a href="javascript:void(0);"
+											onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${sellerhomeVList[vs.count-1].v_idx}')">
+												${sellerhomeVList[vs.count-1].title} </a></td>
+										<td>${voc_stateMap[sellerhomeVList[vs.count-1].voc_state.toString()]}
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

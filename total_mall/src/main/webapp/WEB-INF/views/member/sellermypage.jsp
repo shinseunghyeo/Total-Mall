@@ -23,7 +23,8 @@
 					<li class="seller_nav_ul_li">상품관리</li>
 					<li class="seller_nav_ul_li">주문관리</li>
 					<li class="seller_nav_ul_li">회원설정</li>
-					<li class="seller_nav_ul_li">문의사항</li>
+					<li class="seller_nav_ul_li">고객문의</li>
+					<li class="seller_nav_ul_li">고객센터</li>
 				</ul>
 			</div>
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import human.smart.totalMall.dao.ProductDAO;
 import human.smart.totalMall.vo.CartVO;
+import human.smart.totalMall.vo.SearchVO;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor 
@@ -15,10 +16,10 @@ public class ProductMyolistService implements ProductService {
     private ProductDAO dao;
 
     @Override
-    public List<CartVO> getOrders(int m_idx) {
-        
+    public List<CartVO> getOrders(SearchVO vo) {
+    	vo.setStartIdx((vo.getPageNum()-1)*10);
 
-        return dao.getOrders(m_idx);
+        return dao.getOrders(vo);
     }
 
     

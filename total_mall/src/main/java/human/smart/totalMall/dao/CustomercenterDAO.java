@@ -92,4 +92,10 @@ public class CustomercenterDAO{
 	public List<PvocVO> homePvoc(int m_idx){
 		return sqlSession.selectList(MAPPER+".homePvoc", m_idx);
 	}
+	
+	//기업회원 홈 고객센터 문의
+	public List<VocVO> sellerhomeVoc(int m_idx){
+		return sqlSession.selectList(MAPPER+".sellerhomeVoc", m_idx);
+	}
+
 }

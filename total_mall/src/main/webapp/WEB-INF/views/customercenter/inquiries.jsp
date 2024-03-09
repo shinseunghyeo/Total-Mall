@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -74,6 +76,7 @@ input[type=submit], button{
 </script>
 </head>
 <body>
+
 	<div class="container">
 <c:choose>
     <c:when test="${member.grade == 8}"><!-- 관리자 -->
@@ -106,7 +109,7 @@ input[type=submit], button{
 			</form>
 		</c:if>
     </c:when>
-   <c:when test="${member.grade == 9}"><!-- 기업회원 -->
+   <c:when test="${member.grade == 9 and not empty inquiries2}"><!-- 기업회원 -->
 		<h1>고객문의내역</h1>
 		<img src="">
 		${product.product_name}
@@ -135,6 +138,42 @@ input[type=submit], button{
 				<input type="submit" value="답변하기">
 			</form>
 		</c:if>
+    </c:when>
+    <c:when test="${not empty member.member_id and member.grade != 9}"><!-- 개인회원 -->
+		<h1>고객문의내역</h1>
+		<img src="">
+		${product.product_name}
+		<pre>${inquiries2[0].content}</pre>
+		${inquiries2[0].post_date}<br> 이름: ${inquiries2[0].writer}<br>
+		이메일: ${inquiries2[0].email}<br>
+
+		<c:if test="${product.save_file_name != null}">
+			<img src="../resources/uploads/${product.save_file_name}">
+		</c:if>
+		<hr>
+
+			<pre>${inquiries2[0].answer}</pre>
+			<button onclick="closeWindow()">닫기</button>
+
+    </c:when>
+        <c:when test="${member.grade == 9 and not empty inquiries}"><!-- 개인회원 -->
+
+		<h1>${inquiries[0].title}</h1>
+		<img src="">
+		<h3 style="margin: 0;">${inquiries[0].voc_type}</h3>
+		<pre>${inquiries[0].content}</pre>
+		${inquiries[0].post_date}<br> 이름: ${inquiries[0].writer}<br>
+		이메일: ${inquiries[0].email}<br>
+
+		<c:if test="${product.save_file_name != null}">
+			<img src="../resources/uploads/${product.save_file_name}">
+		</c:if>
+		<hr>
+		<c:if test="${inquiries[0].answer != null}">
+			<pre>${inquiries[0].answer}</pre>
+			<button onclick="closeWindow()">닫기</button>
+		</c:if>
+		
     </c:when>
 </c:choose>
 	</div>

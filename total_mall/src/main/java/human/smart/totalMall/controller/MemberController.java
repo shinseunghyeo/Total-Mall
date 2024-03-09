@@ -40,7 +40,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade, cancelUpdate, sList, memberCnt;
+				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
@@ -50,7 +50,8 @@ public class MemberController {
 	@Setter(onMethod_={ @Autowired })
 	PageNav pageNav;
 
-	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc, homePvoc;
+	@Setter(onMethod_={ @Autowired }) CustomercenterService homeNotice, homeVoc, homePvoc,
+	sellerhomeVoc;
 	
 	//전체 매출 페이지 요청
 	@GetMapping("/allSales.do")
@@ -312,11 +313,13 @@ List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 �
 List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
 List<CartVO> statusOlist = statusO.statusO(m_idx);
 List<CartVO> statusO2list = statusO2.statusO2(m_idx);
+List<VocVO> sellerhomeVList = sellerhomeVoc.sellerhomeVoc(m_idx);
 
 model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
 model.addAttribute("homePVList", homePVList);
 model.addAttribute("statusOlist", statusOlist);
 model.addAttribute("statusO2list", statusO2list);
+model.addAttribute("sellerhomeVList", sellerhomeVList);
 return "member/sellermypage";
 }
 
@@ -332,11 +335,13 @@ List<ProductVO> statusPlist = statusP.statusP(m_idx);//상품 상태에 따른 �
 List<PvocVO> homePVList = homePvoc.homePvoc(m_idx);
 List<CartVO> statusOlist = statusO.statusO(m_idx);
 List<CartVO> statusO2list = statusO2.statusO2(m_idx);
+List<VocVO> sellerhomeVList = sellerhomeVoc.sellerhomeVoc(m_idx);
 
 model.addAttribute("statusPlist", statusPlist);//상품 상태에 따른 합계 조회
 model.addAttribute("homePVList", homePVList);
 model.addAttribute("statusOlist", statusOlist);
 model.addAttribute("statusO2list", statusO2list);
+model.addAttribute("sellerhomeVList", sellerhomeVList);
 return "member/sellerhome";
 }
 
@@ -417,7 +422,7 @@ model.addAttribute("orderList2", orderList2);
 
 
 
-//문의사항 리스트(관리자, 기업회원 공통)
+//문의사항 리스트(관리자, 기업회원, 개인회원 공통)
 @GetMapping("/inquirylist.do")
 public String getInquirylist(@SessionAttribute("member") MemberVO member, Model model) {
 	if (member == null || member.getM_idx() == 0) {
@@ -430,6 +435,13 @@ public String getInquirylist(@SessionAttribute("member") MemberVO member, Model 
 	model.addAttribute("inquirylist", voclist);
 	List<VocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
 	model.addAttribute("pinquirylist", pvoclist);
+	
+	String member_id = member.getMember_id();
+	
+	model.addAttribute("member_id", member_id);
+	
+	List<PvocVO> buyerInquirylist = buyerInquiry.buyerInquirylist(member_id);
+	model.addAttribute("buyerInquirylist", buyerInquirylist);
 	
 	return "member/inquirylist";
 }
@@ -524,6 +536,21 @@ return "member/buyerupdate";
 public String buyerAddress() {
 return "member/buyeraddress";
 }
+
+//개인회원 상품 문의/답변 설정
+@GetMapping("/buyermypage/member/inquirylist.do")
+public String inquirylist(@SessionAttribute("member") MemberVO member, Model model) {
+	
+	String member_id = member.getMember_id();
+	model.addAttribute("member_id", member_id);
+	
+	List<PvocVO> buyerInquirylist = buyerInquiry.buyerInquirylist(member_id);
+	model.addAttribute("buyerInquirylist", buyerInquirylist);
+	
+	
+return "member/inquirylist";
+}
+
 /////////////////////////////// 관리자 마이페이지 홈 ///////////////////////////////		
 //관리자 마이페이지 처리
 @GetMapping("adminmypage.do")

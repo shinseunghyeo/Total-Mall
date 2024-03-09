@@ -36,12 +36,13 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
+    		totalOrderCnt,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
 
     @Setter(onMethod_={ @Autowired })
-	PageNav pageNav;
+	PageNav pageNav, pageNav2;
     
     // 카테고리 페이지 요청 처리
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
@@ -351,9 +352,22 @@ public class ProductController {
 	
 	//개인회원 전체 주문내역
 	@GetMapping("/order_history.do")
-	public String orderlist(int m_idx, Model model) {
-  		List<CartVO> orderList = myoList.getOrders(m_idx);
+	public String orderlist(@ModelAttribute("sVO")SearchVO searchVO, Model model, 
+			@SessionAttribute("member") MemberVO member) {
+		int m_idx = member.getM_idx();
+		searchVO.setM_idx(m_idx);
+		List<CartVO> orderList = myoList.getOrders(searchVO);
 		model.addAttribute("orderList", orderList);
+		if(searchVO.getPageNum() == 0) {
+    		searchVO.setPageNum(1);
+    	}
+    	pageNav2.setTotalRows(totalOrderCnt.getTotalCount(searchVO));
+    	pageNav2 = pPage.setPageNav(pageNav2, searchVO.getPageNum(), searchVO.getPageBlock());
+    	model.addAttribute("pageNav2", pageNav2);
+    	
+    	System.out.println("totalOrderCnt");
+    	System.out.println("startIdx");
+    	
 		return "product/order_history";
 	}
 	

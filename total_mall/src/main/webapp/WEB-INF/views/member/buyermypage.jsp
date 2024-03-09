@@ -23,9 +23,9 @@
 					<li class="buyer_nav_ul_li">배송조회</li>
 					<li class="buyer_nav_ul_li">회원정보설정</li>
 					<li class="buyer_nav_ul_li">주소록 설정</li>
-					<li class="buyer_nav_ul_li">상품 문의/답변</li>
 					<li class="buyer_nav_ul_li">나의 상품평가</li>
-					<li class="buyer_nav_ul_li">고객센터</li>
+					<li class="buyer_nav_ul_li">상품 문의/답변</li>
+					<li class="buyer_nav_ul_li">고객센터 문의/답변</li>
 				</ul>
 			</div>
 			<div id="inner_wrap">

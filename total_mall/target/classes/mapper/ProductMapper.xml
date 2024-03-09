@@ -192,13 +192,13 @@
 	<insert id="pvocInsert" parameterType="pvocVO">
 		<choose>
 			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
-				insert into tb_pvoc (m_idx, p_idx, product_name, writer, email, content, originfile_name, savefile_name, voc_state)
-					values(#{m_idx},#{p_idx},#{product_name},#{writer},#{email},#{content},#{originfile_name}
+				insert into tb_pvoc (m_idx, p_idx, product_name, member_id, writer, email, content, originfile_name, savefile_name, voc_state)
+					values(#{m_idx},#{p_idx},#{product_name},#{member_id}, #{writer},#{email},#{content},#{originfile_name}
 					,#{savefile_name},#{voc_state})
 			</when>
 			<otherwise>
-				insert into tb_pvoc (m_idx, p_idx, product_name, writer, email, content, voc_state) 
-					values(#{m_idx},#{p_idx},#{product_name},#{writer},#{email},#{content},#{voc_state})
+				insert into tb_pvoc (m_idx, p_idx, product_name, member_id,writer, email, content, voc_state) 
+					values(#{m_idx},#{p_idx},#{product_name},#{member_id},#{writer},#{email},#{content},#{voc_state})
 			</otherwise>
 		</choose>
 	</insert>
@@ -267,11 +267,27 @@
 	
 
 	<!-- 개인회원 전체 주문조회: select -->
-	<select id="getOrders" parameterType="_int" resultType="cartVO">
+	<!-- <select id="getOrders" parameterType="_int" resultType="cartVO">
 		SELECT * FROM buyer_order_view
 		WHERE m_idx = #{m_idx}
 		ORDER BY o_update_time DESC
+	</select> -->
+	
+	<!-- 개인회원 전체 주문조회: select -->
+	<select id="getOrders" parameterType="searchVO" resultType="cartVO">
+		SELECT * FROM buyer_order_view
+		WHERE m_idx = #{m_idx}
+		ORDER BY o_update_time DESC
+		limit #{startIdx}, 10
 	</select>
+	
+	<!-- 개인회원 주문조회 합계: select -->
+	<select id="totalOrderCnt" parameterType="searchVO" resultType="_int">
+	SELECT count(*) FROM buyer_order_view
+	WHERE m_idx = #{m_idx}
+	</select>
+	
+	
 	<!-- 개인회원 홈 주문조회: select -->
 	<select id="getOrders_1" parameterType="_int" resultType="cartVO">
 		SELECT * FROM buyer_order_view
