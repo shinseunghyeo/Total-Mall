@@ -40,7 +40,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry;
+				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry, sellerbuyerVoc;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
@@ -433,8 +433,10 @@ public String getInquirylist(@SessionAttribute("member") MemberVO member, Model 
 	
 	List<VocVO> voclist = Inquiry.getInquirylist();
 	model.addAttribute("inquirylist", voclist);
-	List<VocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
+	List<PvocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
 	model.addAttribute("pinquirylist", pvoclist);
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
 	
 	String member_id = member.getMember_id();
 	
@@ -444,6 +446,22 @@ public String getInquirylist(@SessionAttribute("member") MemberVO member, Model 
 	model.addAttribute("buyerInquirylist", buyerInquirylist);
 	
 	return "member/inquirylist";
+}
+
+//문의사항 리스트(관리자, 기업회원, 개인회원 공통)
+@GetMapping("/inquirylist2.do")
+public String getInquirylist3(@SessionAttribute("member") MemberVO member, Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	model.addAttribute("m_idx", m_idx);
+	
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
+	
+	
+	return "member/inquirylist2";
 }
 
 
@@ -457,12 +475,28 @@ public String getInquirylist2(@SessionAttribute("member") MemberVO member,Model 
 	int m_idx = member.getM_idx();
 	model.addAttribute("m_idx", m_idx);
 	
-	List<VocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
+	List<PvocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
 	model.addAttribute("pinquirylist", pvoclist);
 	
 	return "member/inquirylist";
 }
 
+
+//기업회원 고객센터 문의사항 리스트 처리(ajax)
+@GetMapping("sellermypage/member/inquirylist2.do")
+public String getInquirylist4(@SessionAttribute("member") MemberVO member, Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	model.addAttribute("m_idx", m_idx);
+	
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
+	
+	
+	return "member/inquirylist2";
+}
 
 	
 /////////////////////////////// 개인회원 마이페이지 홈 ///////////////////////////////		
@@ -549,6 +583,22 @@ public String inquirylist(@SessionAttribute("member") MemberVO member, Model mod
 	
 	
 return "member/inquirylist";
+}
+
+//개인회원 고객센터 문의사항 리스트 처리(ajax)
+@GetMapping("buyermypage/member/inquirylist2.do")
+public String getInquirylist5(@SessionAttribute("member") MemberVO member, Model model) {
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	int m_idx = member.getM_idx();
+	model.addAttribute("m_idx", m_idx);
+	
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
+	
+	
+	return "member/inquirylist2";
 }
 
 /////////////////////////////// 관리자 마이페이지 홈 ///////////////////////////////		

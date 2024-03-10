@@ -93,6 +93,15 @@ $(function () {
         fontSize: "16px"
             });
         }; 
+        
+        if ($(this).is(".seller_nav_ul_li:eq(6)")) {
+            loadContent("sellermypage/member/inquirylist2.do");
+            $(".seller_nav_ul_li:not(.seller_nav_ul_li:eq(6))").css({
+                backgroundColor: "rgb(158, 158, 158)",
+                fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
+            });
+        }; 
 
     
     // Ajax로 페이지를 불러와서 content 영역에 표시

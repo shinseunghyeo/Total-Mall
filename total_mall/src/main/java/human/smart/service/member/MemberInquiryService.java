@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import human.smart.totalMall.dao.MemberDAO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.VocVO;
 import lombok.AllArgsConstructor;
 
@@ -18,7 +19,7 @@ public class MemberInquiryService implements MemberService {
 		return dao.getInquirylist();
 	}
 	@Override
-	public List<VocVO> getInquirylistp(int m_idx) {
+	public List<PvocVO> getInquirylistp(int m_idx) {
 		return dao.getInquirylistp(m_idx);
 	}
 

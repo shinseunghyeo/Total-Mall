@@ -66,17 +66,26 @@ $(function () {
             });
         };
 
-        if ($(this).is(".buyer_nav_ul_li:eq(4)")) {
-            loadContent("buyermypage/member/buyeraddress.do");
-            $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(4))").css({
-                backgroundColor: "rgba(224, 224, 224, 0.42)",
-                fontFamily: 'GmarketSansTTFLight',
-        fontSize: "16px"
-            });
-        };
+//        if ($(this).is(".buyer_nav_ul_li:eq(4)")) {
+//            loadContent("buyermypage/member/buyeraddress.do");
+//            $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(4))").css({
+//                backgroundColor: "rgba(224, 224, 224, 0.42)",
+//                fontFamily: 'GmarketSansTTFLight',
+//        fontSize: "16px"
+//            });
+//        };
 
-            if ($(this).is(".buyer_nav_ul_li:eq(5)")) {
+            if ($(this).is(".buyer_nav_ul_li:eq(4)")) {
         loadContent("buyermypage/product/myreview.do");
+        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(4))").css({
+            backgroundColor: "rgba(224, 224, 224, 0.42)",
+            fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
+        });
+    };
+
+           if ($(this).is(".buyer_nav_ul_li:eq(5)")) {
+        loadContent("buyermypage/member/inquirylist.do");
         $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(5))").css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
             fontFamily: 'GmarketSansTTFLight',
@@ -84,8 +93,8 @@ $(function () {
         });
     };
 
-           if ($(this).is(".buyer_nav_ul_li:eq(6)")) {
-        loadContent("buyermypage/member/inquirylist.do");
+    if ($(this).is(".buyer_nav_ul_li:eq(6)")) {
+        loadContent("buyermypage/member/inquirylist2.do");
         $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(6))").css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
             fontFamily: 'GmarketSansTTFLight',

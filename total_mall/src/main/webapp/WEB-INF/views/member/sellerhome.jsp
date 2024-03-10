@@ -195,6 +195,13 @@
 								</tr>
 							</thead>
 							<tbody>
+							<c:choose>
+									<c:when test="${empty sellerhomeVList}">
+										<tr>
+											<td colspan="4"><h3>나의 문의가 없습니다</h3></td>
+										</tr>
+									</c:when>
+							<c:when test="${not empty sellerhomeVList}">
 								<c:forEach var="i" begin="1" end="5" varStatus="vs">
 									<tr>
 										<td><a href="javascript:void(0);"
@@ -204,6 +211,8 @@
 										</td>
 									</tr>
 								</c:forEach>
+								</c:when>
+								</c:choose>
 							</tbody>
 						</table>
 					</div>

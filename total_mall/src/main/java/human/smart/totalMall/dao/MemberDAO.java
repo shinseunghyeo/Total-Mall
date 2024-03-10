@@ -115,7 +115,7 @@ public class MemberDAO {
 	}
 	
 	//기업회원이 받는 문의사항 불러오기
-	public List<VocVO> getInquirylistp(int m_idx){
+	public List<PvocVO> getInquirylistp(int m_idx){
 		return sqlSession.selectList(MAPPER+".getInquirylistp", m_idx);
 	}
 	
@@ -128,4 +128,10 @@ public class MemberDAO {
 	public List<MemberVO> memberCnt(){
 		return sqlSession.selectList(MAPPER+".memberCnt");
 	}
+	
+	//개인회원, 기업회원이 관리자한테 한 문의 불러오기
+	public List<VocVO> sellerbuyerVocList(int m_idx){
+		return sqlSession.selectList(MAPPER+".sellerbuyerVocList", m_idx);
+	}
+	
 }
