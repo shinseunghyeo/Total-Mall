@@ -36,7 +36,7 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
-    		totalOrderCnt,
+    		totalOrderCnt, cList5,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -48,7 +48,9 @@ public class ProductController {
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
     	List<ProductVO> productList = cList.getProducts(searchVO);
+    	List<ProductVO> productList5 = cList5.getProducts5(searchVO);
     	model.addAttribute("productList", productList);
+    	model.addAttribute("productList5", productList5);
 
         return "product/list";
     }

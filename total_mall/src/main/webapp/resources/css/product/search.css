@@ -44,3 +44,7 @@
     #SearchproductLine .SearchProductPrice a{margin: 0;}
     #SearchproductLine .SearchProductPrice a:hover {text-decoration: none;}
     span:focus{color: #3498db;}
+    
+    .blue-price{
+    	color: #3498db;
+    }
