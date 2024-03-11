@@ -15,10 +15,10 @@
     a, p, h1, h2, h3, h4, h5, td, .search-text, #VocTitlebox, #voc_type{
     	font-family: 'GmarketSansTTFLight';
     }
-    input[type="text"], #CustomerNum{
+    input[type="text"],textarea, #CustomerNum{
     	font-family: 'GmarketSansTTFLight';
     }
-    #CustomerTitle, #CustomerListbox a{
+    #CustomerTitle, #CustomerListbox a, .bold, span{
     	font-family: 'GmarketSansTTFBold';
     }
     /* ---------고객센터해더--------- */

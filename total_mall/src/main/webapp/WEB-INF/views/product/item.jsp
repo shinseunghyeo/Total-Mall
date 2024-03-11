@@ -255,10 +255,10 @@ function continuedPost() {
         <br>
             <div id="Reviewsbox">
                 <h2 class="bold">상품평가</h2>
-                <button class="rating-button" onclick="changeContent('recent', this)">최근평가순</button>
-                <button class="rating-button" onclick="changeContent('old', this)">오래된평가순</button>
-                <button class="rating-button" onclick="changeContent('high_rating', this)">높은별점순</button>
-                <button class="rating-button" onclick="changeContent('low_rating', this)">낮은별점순</button>
+                <button class="rating-button" onclick="changeContent('recent', this)">오래된평가순</button>
+                <button class="rating-button" onclick="changeContent('old', this)">최근평가순</button>
+                <button class="rating-button" onclick="changeContent('high_rating', this)">낮은별점순</button>
+                <button class="rating-button" onclick="changeContent('low_rating', this)">높은별점순</button>
                             </div><hr>
 			<div id="content">
             </div>

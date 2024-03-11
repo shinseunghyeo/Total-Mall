@@ -16,7 +16,7 @@
                 고객센터
             </div>
             <div id="CustomerContent">
-                <input type="text">
+                
             </div>
             <div id="CustomerNum">
                 <div>

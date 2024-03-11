@@ -16,7 +16,7 @@
                 고객센터
             </div>
             <div id="CustomerContent">
-                <input type="text">
+                
             </div>
             <div id="CustomerNum">
                 <div>
@@ -91,14 +91,14 @@
                 </div>
                 <div id="VocWritecontentbox">
                     <div id="VocWritecontent">
-                        <input style="width: 100%;height: 350px;" type="text" name="content" placeholder="의견을 작성해주세요.">
+                        <textarea style="width: 100%; height: 350px; resize: none;" name="content" placeholder="의견을 작성해주세요."></textarea>
                     </div>
                     <div id="VocWritefile">
                         <input type="file" id="file" name="uploadFile"><br><br>
                     </div>
                 </div>
             </div>
-            <input id="Vocbutton" type="submit" value="보내기">
+            <input id="Vocbutton" type="submit" value="보내기" class="bold">
         </div>
     </form>
     <!-- ---------고객센터--------- -->

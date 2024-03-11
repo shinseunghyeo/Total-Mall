@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
                 고객센터
             </div>
             <div id="CustomerContent">
-                <input type="text">
+                
             </div>
             <div id="CustomerNum">
                 <div>
@@ -38,7 +39,14 @@
     <!-- ---------토탈소식--------- -->
     <div id="NoticeTitle">
         <h3 class="bold">공지사항</h3>
-		<a href="${pageContext.request.contextPath}/customercenter/write.do" style="text-decoration: none;"><input type="button" value="글등록"style="margin-left: auto;width:150px;height:50px;font-weight:bold"></a>
+        <c:choose>
+        	<c:when test="${member.grade eq 8}">
+	        	<a href="${pageContext.request.contextPath}/customercenter/write.do" style="text-decoration: none;"><input type="button" value="글등록"style="margin-left: auto;width:150px;height:50px;font-weight:bold;border: none;background-color: rgb(52, 152, 219); color: white;" class="bold2"></a>	
+        	</c:when>
+        	<c:otherwise>
+        	
+        	</c:otherwise>
+        </c:choose>
     </div>
     <div id="NoticeLine">
         <div id="NoticeMenubox">
@@ -96,10 +104,10 @@
 							${noticeList[0].content} <br>
 		                </div>
 		                <div style="text-align: right;">
-		                							<!-- 수정하기, 삭제하기 버튼은 회원이면서 본인이 작성한 게시글일 때 화면에 출력되도록 함 -->
+		                	<%-- 						<!-- 수정하기, 삭제하기 버튼은 회원이면서 본인이 작성한 게시글일 때 화면에 출력되도록 함 -->
 							<input type="button" value="수정하기" onclick="location.href='update.do?n_idx=${noticeList[0].n_idx}'">
 							<input type="button" value="삭제하기" onclick="deletePost()">
-							<input type="button" value="목록보기" onclick="location.href='notice.do'" >
+							<input type="button" value="목록보기" onclick="location.href='notice.do'" > --%>
 						</div>
 					</c:otherwise>
 				</c:choose>

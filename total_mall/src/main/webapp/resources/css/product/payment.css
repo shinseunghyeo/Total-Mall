@@ -16,6 +16,9 @@
     a, p, h1, h2, h3, h4, h5, td{
     	font-family: 'GmarketSansTTFLight';
     }
+    .bold{
+    	font-family: 'GmarketSansTTFBold';
+    }
 
     /* ---------결제페이지--------- */
     #PurchaseLine{
