@@ -16,39 +16,39 @@
     <form method="get" action="payment.do">
     <div id="PurchaseLine">
         <div id="Purchasepage"><br>
-            <h2>구매자 정보</h2>
+            <h2 class="bold">구매자 정보</h2>
             <table>
                 <tr class="tr1">
-                    <td class="td1">이름</td>
+                    <td class="td1 bold">이름</td>
                     <td>${member.member_name}</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1">이메일</td>
+                    <td class="td1 bold">이메일</td>
                     <td>${member.email}</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1">휴대폰 번호</td>
+                    <td class="td1 bold">휴대폰 번호</td>
                     <td>${member.handphone}</td>
                 </tr>
             </table>
         </div>
         <div id="Purchasepage"><br>
-            <h2>받는 사람 정보</h2>
+            <h2 class="bold">받는 사람 정보</h2>
             <table>
                 <tr class="tr1">
-                    <td class="td1">이름</td>
+                    <td class="td1 bold">이름</td>
                     <td id="buyerName">${member.member_name}</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1">배송주소</td>
+                    <td class="td1 bold">배송주소</td>
                     <td>${member.address2}  ${member.address3}</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1">휴대폰 번호</td>
+                    <td class="td1 bold">휴대폰 번호</td>
                     <td>${member.handphone}</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1">요청사항</td>
+                    <td class="td1 bold">요청사항</td>
                     <td>
                         <select name="requests" class="request">
                             <option value="1">부재시 문 앞에 놓아주세요</option>
@@ -85,28 +85,28 @@
 		
 		
         <div id="Purchasepage"><br>
-            <h2>결제 정보</h2>
+            <h2 class="bold">결제 정보</h2>
             <table>
                 <tr class="tr1">
-                    <td class="td1">총상품가격</td>
+                    <td class="td1 bold">총상품가격</td>
                     <td class="price">${totalOrderAmount} 원</td>
                 </tr>
                 <tr class="tr2">
-                	<td class="td1">할인금액</td>
+                	<td class="td1 bold">할인금액</td>
                 	<td class="price">${product.totalDiscount}</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1">배송비</td>
+                    <td class="td1 bold">배송비</td>
                     <td class="price">${product.totalDelivery }</td>
                 </tr>
                 <tr class="tr2">
-                    <td class="td1 payment">총결제금액</td>
-                    <td class="payment price" id="totalPaymentAmount">${totalOrderAmount + product.totalDelivery - product.totalDiscount}원</td>
+                    <td class="td1 payment bold">총결제금액</td>
+                    <td class="payment price bold" id="totalPaymentAmount">${totalOrderAmount + product.totalDelivery - product.totalDiscount}원</td>
                 </tr>
             </table>
         </div>
         <div id="Purchase"><br>
-            <input type="submit" value="결제하기" class="submit-button" id="button">
+            <input type="submit" value="결제하기" class="submit-button bold" id="button">
         </div><br>
 
     </div>

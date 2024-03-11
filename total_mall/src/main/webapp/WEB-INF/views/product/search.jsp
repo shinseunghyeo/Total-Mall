@@ -69,7 +69,7 @@
 				                            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList2[vs.count-1].p_idx}" class="bold">
 				                            ${productList2[vs.count-1].product_name}
 				                            </a><br>
-				                            <span class="price bold">${productList2[vs.count-1].price}원</span><br>
+				                            <span class="price bold">${(productList2[vs.count-1].price-(productList2[vs.count-1].price/100*productList2[vs.count-1].discount_rate)).intValue()}원</span><br>
 				                            <p class="light">상품내용</p><br>
 				                            <p class="light">${productList2[vs.count-1].summary}</p><br>
 				                        </div>

@@ -143,14 +143,14 @@
 									<c:forEach var="i" begin="1" end="5" varStatus="vs">
 										<c:if test="${not empty productList[vs.count-1]}">
 						                    <div class="CategoryProduct">
-						                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+						                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
 						                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
 						                       	</a>
 						                       	
-						                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}" class="list-a">
+						                        <a  style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}" class="list-a">
 						                        	${productList[vs.count-1].product_name}
 						                        </a>
-							                        <span class="price" style="width:100%; text-align: center;">${productList[i-1].price}원</span>
+							                        <span class="price" style="width:100%; text-align: center;">${(productList[i-1].price-(productList[i-1].price/100*productList[i-1].discount_rate)).intValue()}원</span>
 						                    </div>
 										</c:if>
 									</c:forEach>
@@ -170,13 +170,13 @@
 											<c:if test="${not empty productList[i-1]}">
 					                            <div class="CategoryProduct">
 					                                <span>${i}</span>
-					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+					                                <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
 								                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
 					                                </a>
-					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}" class="list-a">
+					                                <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}" class="list-a">
 						                                ${productList[i-1].product_name}
 					                                </a>
-										            <span class="price" style="width:100%; text-align: center;" class="productPrice" id="productPrice2${i}">${productList[i-1].price}원</span>
+										            <span class="price" style="width:100%; text-align: center;" class="productPrice" id="productPrice2${i}">${(productList[i-1].price-(productList[i-1].price/100*productList[i-1].discount_rate)).intValue()}원</span>
 			        		                    </div>
 											</c:if>
                                 	</c:forEach>
@@ -193,13 +193,13 @@
 										<c:if test="${not empty productList[i-1]}">
 									        <div class="CategoryProduct">
 									            <span>${i}</span>
-									            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+									            <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
 									                <img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
 									            </a>
-									            <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+									            <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
 									                ${productList[i-1].product_name}
 									            </a>
-									            <span class="price" style="width:100%; text-align: center;">${productList[i-1].price}원</span>
+									            <span class="price" style="width:100%; text-align: center;">${(productList[i-1].price-(productList[i-1].price/100*productList[i-1].discount_rate)).intValue()}원</span>
 									        </div>
 										</c:if>
                                 	</c:forEach>

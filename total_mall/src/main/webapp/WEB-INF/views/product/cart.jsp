@@ -18,16 +18,16 @@
     <section>
         <div id="white-board">
             <div id="cart-header">
-                <h1>장바구니</h1>
+                <h1 class="bold">장바구니</h1>
             </div>
             <div id="cart-middle">
                 <div id="left-div">
                     <div id="list-div">
                         <p></p>
-                        <p>상품사진</p>
-                        <p>상품이름</p>
-                        <p>수량</p>
-                        <p>가격</p>
+                        <p class="bold">상품사진</p>
+                        <p class="bold">상품이름</p>
+                        <p class="bold">수량</p>
+                        <p class="bold">가격</p>
                         <p></p>
                     </div>
                     
@@ -44,14 +44,14 @@
 	                    		<c:if test="${not empty cartList[i-1] }">
 	                    			<div class="cart_item">
 				                        <div class="cart_item_seller">
-				                            <p>${i}</p>
+				                            <p class="bold">${i}</p>
 				                        </div>
 				                        <div style="display: flex;width: 100%;">
 				                            <div class="cart_item-2">
 				                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${cartList[vs.count-1].p_idx}"><img src="../resources/uploads/${cartList[i-1].save_file_name1}" alt="#"></a>
 				                            </div>
 				                            <div class="cart_item-3">
-				                                <p><a href="${pageContext.request.contextPath}/product/item.do?p_idx=${cartList[vs.count-1].p_idx}">${cartList[i-1].product_name }</a></p>
+				                                <p class="bold"><a class="bold" href="${pageContext.request.contextPath}/product/item.do?p_idx=${cartList[vs.count-1].p_idx}">${cartList[i-1].product_name }</a></p>
 				                            </div>
 				                            <form id="cart_item-4-form" method="get" action="cartQuantityUpdate.do">
 					                            <div class="cart_item-4">
@@ -63,7 +63,7 @@
 				                            </form>
 				                            <div class="cart_item-5">
 				                                <div>
-				                                    <p class="price">${cartList[i-1].price*cartList[i-1].c_quantity }</p>
+				                                    <p class="price bold">${cartList[i-1].price*cartList[i-1].c_quantity }</p>
 				                                </div>
 				                                <div>
 				                                	<form class="deleteForm" id="deleteForm-${i}" method="get" action="cartDelete.do">
@@ -77,7 +77,7 @@
 				                        <div class="cart_item_price">
 				                            <div class="cart_item_price-1" style="width: 20%;text-align: center;">
 				                                <div>
-				                                    <p>상품금액</p>
+				                                    <p class="bold">상품금액</p>
 				                                </div>
 				                                <div style="text-align: center;">
 				                                    <p class="price">${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
@@ -88,7 +88,7 @@
 				                            </div>
 				                            <div class="cart_item_price-1">
 				                                <div>
-				                                    <p class="price">할인금액</p>
+				                                    <p class="price bold">할인금액</p>
 				                                </div>
 				                                <div class="discount-div">
 				                                    <p class="price">${(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue() }원</p>
@@ -99,7 +99,7 @@
 				                            </div>
 				                            <div class="cart_item_price-1">
 				                                <div>
-				                                    <p>배송비</p>
+				                                    <p class="bold">배송비</p>
 				                                </div>
 				                                <div>
 				                                    <p>2,500원</p>
@@ -110,7 +110,7 @@
 				                            </div>
 				                            <div class="cart_item_price-1">
 				                                <div>
-				                                    <p>주문금액</p>
+				                                    <p class="bold">주문금액</p>
 				                                </div>
 				                                <div>
 				                                    <p class="price">${(cartList[i-1].price*cartList[i-1].c_quantity)-(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()+2500 }원</p>
@@ -141,42 +141,42 @@
                 	<input type="hidden" name="totalDelivery" value="${totalDelivery }">
 	                <div id="right-div">
 	                    <div id="right_header">
-	                        <h1>결제 예정금액</h1>
+	                        <h1 class="bold">결제 예정금액</h1>
 	                    </div>
 	                    <div id="right_first_div">
 	                        <div>
-	                            <p>상품금액</p>
+	                            <p class="bold">상품금액</p>
 	                        </div>
 	                        <div>
-	                            <h2 class="price">${totalOrderAmount }원</h2>
+	                            <h2 class="price bold">${totalOrderAmount }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_second_div">
 	                        <div>
-	                            <p>할인금액</p>
+	                            <p class="bold red">할인금액</p>
 	                        </div>
 	                        <div> 
-	                            <h2 class="price">${totalDiscount }원</h2>
+	                            <h2 class="price bold red">${totalDiscount }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_third_div">
 	                        <div>
-	                            <p>배송비</p>
+	                            <p class="bold">배송비</p>
 	                        </div>
 	                        <div>
-	                            <h2 class="price">${totalDelivery}원</h2>
+	                            <h2 class="price bold">${totalDelivery}원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_fourth_div">
 	                        <div>
-	                            <p>합계</p>
+	                            <p class="bold">합계</p>
 	                        </div>
 	                        <div>
-	                            <h2 class="price">${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
+	                            <h2 class="price bold">${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_fifth_div">
-	                        <input type="submit" value="결제">
+	                        <input type="submit" value="결제" class="bold">
 	                    </div>
 	                </div>
                 </form>

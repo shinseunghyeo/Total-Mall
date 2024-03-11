@@ -156,7 +156,7 @@ input[type=submit], button{
 			<button onclick="closeWindow()">닫기</button>
 
     </c:when>
-        <c:when test="${member.grade != 9 and not empty inquiries and not empty inquiries[0].voc_type}"><!-- 개인회원 -->
+        <c:when test="${member.grade != 8 and not empty inquiries and not empty inquiries[0].voc_type}"><!-- 개인회원 -->
 
 		<h1>${inquiries[0].title}</h1>
 		<img src="">

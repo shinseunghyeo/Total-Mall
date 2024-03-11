@@ -18,11 +18,17 @@
     input[type="text"], #CustomerNum{
     	font-family: 'GmarketSansTTFLight';
     }
-    #CustomerTitle, #CustomerListbox a{
+    #CustomerTitle, #CustomerListbox a, span{
     	font-family: 'GmarketSansTTFBold';
     }
     .bold{
     	font-family: 'GmarketSansTTFBold';
+    }
+    .bold2{
+    	font-family: 'GmarketSansTTFBold';
+    }
+    .bold2:hover{
+    	cursor: pointer;
     }
     /* ---------고객센터해더--------- */
     #CustomerMain{width: 1050px; height: 110px; background-color: #3498db;margin: auto;}
