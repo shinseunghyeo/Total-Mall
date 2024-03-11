@@ -18,11 +18,11 @@
             <div id="section-1">
                 <div id="section-header">
                     <div id="section-header1">
-                        <p>회원가입</p>
+                        <p class="bold">회원가입</p>
                     </div>
                     <div id="section-header2">
-                        <p>1 가입</p>
-                        <p>2 정보입력</p>
+                        <p class="bold">1 가입</p>
+                        <p class="bold">2 정보입력</p>
                     </div>
                 </div>
                 <form name="frm_join" method="post" action="sellerJoinProcess3.do" onsubmit="return validateForm()">
@@ -39,7 +39,7 @@
                     <div id="white-board">
                         <div id="white-board-header">
                             <div>
-                                <p>회원정보를 모두 입력해주셔야 회원가입이 완료가 됩니다</p>
+                                <p class="bold">회원정보를 모두 입력해주셔야 회원가입이 완료가 됩니다</p>
                             </div>
                         </div>
                         <div class="input-text" id="input-top">
@@ -103,8 +103,8 @@
                         </div>
                     </div>
                     <div id="button">
-                        <input type="button" value="이전" onclick="historyBack()">
-                        <input type="submit" value="가입" id="next-button">
+                        <input type="button" value="이전" onclick="historyBack()" class="bold">
+                        <input type="submit" value="가입" id="next-button" class="bold">
                     </div>
                 </form>
             </div>

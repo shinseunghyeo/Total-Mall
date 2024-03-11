@@ -85,7 +85,7 @@
         </c:choose>
         <div id="CategoryServeLine">
             <div id="CategoryServemenuLine">
-                <h2>카테고리</h2>
+                <h2 class="bold">카테고리</h2>
                 <span>식품</span><br>
                 <a href="list.do?category=meat"><p>>고기</p></a><br>
                 <a href="list.do?category=vegetables"><p>>야채</p></a><br>
@@ -133,7 +133,7 @@
                         <img id="FoodImg" src="../resources/img/Mallimg/식품1.jpg">
                     </a>
                     <div id="CategoryProductbox">
-                        <br><h3>핫딜 세일</h3><hr>
+                        <br><h3 class="bold">핫딜 세일</h3><hr>
                         <div class="Productmain">
 						    <c:choose>
 								<c:when test="${empty productList}">
@@ -147,7 +147,7 @@
 						                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
 						                       	</a>
 						                       	
-						                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
+						                        <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}" class="list-a">
 						                        	${productList[vs.count-1].product_name}
 						                        </a>
 							                        <span class="price" style="width:100%; text-align: center;">${productList[i-1].price}원</span>
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <div id="CategoryProductbestbox">
-                        <br><h3>검색어 순위</h3><hr>
+                        <br><h3 class="bold">검색어 순위</h3><hr>
                         <div class="Productmain">
    						    <c:choose>
 								<c:when test="${empty productList}">
@@ -173,7 +173,7 @@
 					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
 								                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
 					                                </a>
-					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+					                                <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}" class="list-a">
 						                                ${productList[i-1].product_name}
 					                                </a>
 										            <span class="price" style="width:100%; text-align: center;" class="productPrice" id="productPrice2${i}">${productList[i-1].price}원</span>

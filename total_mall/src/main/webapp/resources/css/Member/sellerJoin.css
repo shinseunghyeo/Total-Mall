@@ -1,6 +1,27 @@
 @charset "UTF-8";
 
-
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    a, p, h1, h2, h3, h4, h5{
+    	font-family: 'GmarketSansTTFLight';
+    }
+    input[type="text"], input[type="password"]{
+    	font-family: 'GmarketSansTTFLight';	
+    }
+    .bold{
+    	font-family: 'GmarketSansTTFBold';
+    }
     
     #section-wrap{
         margin: 0 auto;
@@ -118,6 +139,7 @@
         border-radius: 5px 5px 5px 5px;
         height: 38px;
         width: 94px;
+        font-family: 'GmarketSansTTFLight';
         
     }
     #email-button2{
@@ -127,6 +149,7 @@
         border-radius: 5px 5px 5px 5px;
         height: 38px;
         width: 94px;
+        font-family: 'GmarketSansTTFLight';
         
     }
     #email-button:hover{
@@ -140,6 +163,7 @@
         height: 36.5px;
         width: 100px;
         margin: auto;
+        font-family: 'GmarketSansTTFLight';
         
     }
     #address-button:hover{
@@ -160,6 +184,7 @@
         font-size: 25px;
         font-weight: 800;
         color: white;
+        font-family: 'GmarketSansTTFLight';
     }
     #button input:hover{
         cursor: pointer;

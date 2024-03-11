@@ -37,7 +37,7 @@
     </div>
     <!-- ---------토탈소식--------- -->
     <div id="NoticeTitle">
-        <h3>공지사항</h3>
+        <h3 class="bold">공지사항</h3>
 		<a href="${pageContext.request.contextPath}/customercenter/write.do" style="text-decoration: none;"><input type="button" value="글등록"style="margin-left: auto;width:150px;height:50px;font-weight:bold"></a>
     </div>
     <div id="NoticeLine">
@@ -53,19 +53,19 @@
         <div id="NoticeContentbox">
             <c:choose>
 				<c:when test="${param.service == ''}">
-	            <h3 id="NoticeContenttitle">전체</h3>
+	            <h3 id="NoticeContenttitle" class="bold">전체</h3>
 	       		</c:when>
 				<c:when test="${param.service == 'customer'}">
-	            <h3 id="NoticeContenttitle">고객서비스</h3>
+	            <h3 id="NoticeContenttitle" class="bold">고객서비스</h3>
 	       		</c:when>
 				<c:when test="${param.service == 'event'}">
-	            <h3 id="NoticeContenttitle">이벤트당첨</h3>
+	            <h3 id="NoticeContenttitle" class="bold">이벤트당첨</h3>
 	       		</c:when>
 				<c:when test="${param.service == 'transaction'}">
-	            <h3 id="NoticeContenttitle">안전거래</h3>
+	            <h3 id="NoticeContenttitle" class="bold">안전거래</h3>
 	       		</c:when>
 				<c:when test="${param.service == 'hazardousgoods'}">
-	            <h3 id="NoticeContenttitle">위해상품</h3>
+	            <h3 id="NoticeContenttitle" class="bold">위해상품</h3>
 	       		</c:when>
 				<c:otherwise>
 	            <h3 id="NoticeContenttitle">토탈소식</h3>

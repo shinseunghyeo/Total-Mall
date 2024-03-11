@@ -1,13 +1,21 @@
 @charset "UTF-8";
 
 
-    @font-face {
-        font-family: "G-market-Light";
-        src: url('../fonts/GmarketSansTTFLight.woff') format('woff');
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
     }
+    
     @font-face {
-        font-family: "G-market-Bold";
-        src:  url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    a, p, h1, h2, h3, h4, h5{
+    	font-family: 'GmarketSansTTFLight';
     }
     #white-board{
         margin: 0 auto;
@@ -57,6 +65,10 @@
         padding-bottom: 5px;
         border-radius: 5px;
         border: 0.5px solid black;
+    }
+    .no-cart{
+    	text-align: center;
+    	font-size: 20px;
     }
     #list-div p:first-child{
         width: 0%;
@@ -160,6 +172,7 @@
         color: white;
         padding: 0;
         cursor: pointer;
+        font-family: 'GmarketSansTTFLight';
     }
     .cart_item-4 input[type="submit"]{
     }

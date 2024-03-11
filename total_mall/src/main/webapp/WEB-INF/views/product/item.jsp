@@ -143,22 +143,22 @@ function continuedPost() {
 	            <div id="Productdetail">
 	                <div id="ProductContent">
 	                    <br>
-	                    <h1>${product.product_name}</h1>
+	                    <h1 class="bold">${product.product_name}</h1>
 	                    <h2>
 	                    <span style="color:orange;">${hEvaluationListStars}</span>
 	                    (${hStarsize})
 	                    ${hEvaluationListAverage}
 	                    </h2><br>
-	                    <h2 class="price">${product.price}원</h2>
+	                    <h2 class="price bold">${product.price}원</h2>
 						<c:choose>
 						    <c:when test="${product.discount_rate > 0}">
-						        <h2 style="color:red">${product.discount_rate}% <span style="color:red" class="price">${discountedPrice}</span>원</h2>
+						        <h2 style="color:red" class="bold">${product.discount_rate}% <span style="color:red" class="price bold">${discountedPrice}</span>원</h2>
 						    </c:when>
 						    <c:otherwise>
 						    </c:otherwise>
 						</c:choose>
 	                    <c:set var="discountedPrice" value="${product.price * (1 - product.discount_rate / 100)}" /></h2><hr>
-						<h3>상품내용</h3>
+						<h3 class="bold">상품내용</h3>
 						${product.summary}
 						<c:if test="${member.m_idx eq product.m_idx}">
 						<a href="modify.do?p_idx=${product.p_idx}"><input type="button" value="상품수정"></a>
@@ -199,35 +199,35 @@ function continuedPost() {
             <div class="pageColor" onclick="product_On('shippingInfo')">배송/교환 반품 안내</div>
         </div>
         <div id="productDetails">
-            <h2>상세정보</h2>
+            <h2 class="bold">상세정보</h2>
 				<img src="../resources/uploads/${product.save_file_name2}">
             <br><br><br><br><br><br><hr>
-            <h3>상세내용</h3>
+            <h3 class="bold">상세내용</h3>
             <span>${product.detail}</span><br><hr>
-            <h3>상품 정보 제공 고시</h3><hr>
+            <h3 class="bold">상품 정보 제공 고시</h3><hr>
             <table>
                 <tr>
-                    <td>상품번호</td>
+                    <td class="bold">상품번호</td>
                     <td>${product.product_code}</td>
                 </tr>
                 <tr>
-                    <td>브랜드</td>
+                    <td class="bold">브랜드</td>
                     <td>${product.brand}</td>
                 </tr>
                 <tr>
-                    <td>부가세 면세여부</td>
+                    <td class="bold">부가세 면세여부</td>
                     <td>과세상품</td>
                 </tr>
                 <tr>
-                    <td>사업자구분</td>
+                    <td class="bold">사업자구분</td>
                     <td>개인사업자</td>
                 </tr>
                 <tr>
-                    <td>과세자구분</td>
+                    <td class="bold">과세자구분</td>
                     <td>일반과세자+간이과세자(세금계산서 발급사업자)</td>
                 </tr>
             </table><hr>
-            <h3>주의사항</h3>
+            <h3 class="bold">주의사항</h3>
             <ol>
                 <li>
                     전자상거래 등에서의 소비자보호법에 관한 법률에 의거하여 미성년자가 물품을 구매하는 경우,<br>
@@ -254,7 +254,7 @@ function continuedPost() {
         
         <br>
             <div id="Reviewsbox">
-                <h2>상품평가</h2>
+                <h2 class="bold">상품평가</h2>
                 <button class="rating-button" onclick="changeContent('recent', this)">최근평가순</button>
                 <button class="rating-button" onclick="changeContent('old', this)">오래된평가순</button>
                 <button class="rating-button" onclick="changeContent('high_rating', this)">높은별점순</button>
@@ -329,7 +329,7 @@ function continuedPost() {
 				<input type="hidden" name="writer" value="${member.member_name}">
 				<input type="hidden" name="email" value="${member.email}">
 				<input type="hidden" name="voc_state" value="1">
-	            <h2>문의사항</h2>
+	            <h2 class="bold">문의사항</h2>
 	            <table>
 	                <tr>
 	                    <td>상품정보</td>
@@ -358,19 +358,19 @@ function continuedPost() {
         
         <div id="shippingInfo">
             <div>
-                <h2>배송/교환 반품 안내</h2><br>
-                <h3>배송정보</h3>
+                <h2 class="bold">배송/교환 반품 안내</h2><br>
+                <h3 class="bold">배송정보</h3>
                 배송방법 - 순차배송<br>
                 배송비 - 무료배송<br>
                 배송기간 - 천재지변, 물량 수급 변동 등 예외적인 사유 발생 시, 다소 지연될 수 있는 점 양해 부탁드립니다.<br>
                 <br>
                 <br>
-                <h3>교환반품안내</h3>
+                <h3 class="bold">교환반품안내</h3>
                 교환/반품 비용 - 단순 변심의 경우에만 비용 발생 5,000원 <br>
                 교환/반품 신청 기준일 - 제품 수령 후 7일 이내까지<br>
                 <br>
                 <br>
-                <h3>교환/반품 제한사항</h3>
+                <h3 class="bold">교환/반품 제한사항</h3>
                 ㆍ주문/제작 상품의 경우, 상품의 제작이 이미 진행된 경우<br>
                 ㆍ상품 포장을 개봉하여 사용 또는 설치 완료되어 상품의 가치가 훼손된 경우 (단, 내용 확인을 위한 포장 개봉의 경우는 예외)<br>
                 ㆍ고객의 사용, 시간경과, 일부 소비에 의하여 상품의 가치가 현저히 감소한 경우<br>
@@ -379,7 +379,7 @@ function continuedPost() {
                 ㆍ제조사의 사정 (신모델 출시 등) 및 부품 가격 변동 등에 의해 무료 교환/반품으로 요청하는 경우<br>
                 <br>
                 <br>
-                <h3>주의사항</h3>
+                <h3 class="bold">주의사항</h3>
                 전자상거래 등에서의 소비자보호법에 관한 법률에 의거하여 미성년자가 물품을 구매하는 경우,<br>
                 법정대리인이 동의하지 않으면 미성년자 본인 또는 법정대리인이 구매를 취소할 수 있습니다.<br>
                 등록된 판매 상품과 상품의 내용, 거래 정보 및 가격은 판매자가 등록한 것으로<br>

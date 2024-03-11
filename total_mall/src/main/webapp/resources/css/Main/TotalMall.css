@@ -1,5 +1,23 @@
 @charset "UTF-8";
-
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    a, p, h1, h2, h3, h4, h5{
+    	font-family: 'GmarketSansTTFLight';
+    }
+    span, .today-a, .bold{
+    	font-family: 'GmarketSansTTFBold';
+    }
     a {margin-left: 10px; text-decoration: none;color: inherit;font-weight: bold;}
     a:hover {color: black;text-decoration: underline;}
     

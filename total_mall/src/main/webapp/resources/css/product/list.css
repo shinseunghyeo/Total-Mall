@@ -1,5 +1,20 @@
 @charset "UTF-8";
-
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    span, .list-a, .bold{
+    	font-family: 'GmarketSansTTFBold';
+    }
     #CategoryPage{width: 1050px;margin: auto;}
     #CategoryServeLine{display: flex;}
     #CategoryServemenuLine{width: 20%;height: 1100px;padding-bottom: 20px;border: 0.1px solid black; background-color: lightblue;}

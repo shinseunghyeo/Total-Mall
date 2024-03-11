@@ -18,11 +18,11 @@
             <div id="section-1">
                 <div id="section-header">
                     <div id="section-header1">
-                        <p>회원가입</p>
+                        <p class="bold">회원가입</p>
                     </div>
                     <div id="section-header2">
-                        <p>1 가입</p>
-                        <p>2 정보입력</p>
+                        <p class="bold">1 가입</p>
+                        <p class="bold">2 정보입력</p>
                     </div>
                 </div>
                 <form name="frm_join" method="post" action="buyerJoinProcess1.do" id="myForm">
@@ -30,15 +30,15 @@
                     <div id="white-board">
                         <div id="white-board-header">
                             <div>
-                                <p onclick="userTypeChange('buyer')">개인 회원</p>
+                                <p onclick="userTypeChange('buyer')" class="bold">개인 회원</p>
                             </div>
                             <div>
-                                <p onclick="userTypeChange('seller')">기업 회원</p>
+                                <p onclick="userTypeChange('seller')" class="bold">기업 회원</p>
                             </div>
                         </div>
                         <div id="check-all">
                             <input type="checkbox" name="" id="checkAll" class="checkbox-design-All" >
-                            <p>모두 동의하기</p>
+                            <p class="bold">모두 동의하기</p>
                         </div>
                         <div id="check-box">
                             <div class="check-box">
@@ -73,10 +73,10 @@
                             </div>
                         </div>
                         <div id="categorie-header">
-                            <p>관심 카테고리</p>
+                            <p class="bold">관심 카테고리</p>
                         </div>
                         <div id="categorie-header2">
-                            <p>(3개 선택 필수)</p>
+                            <p class="bold">(3개 선택 필수)</p>
                         </div>
                         <div id="gray-board">
                             <div class="check-categorie">
@@ -128,33 +128,33 @@
                         </div>
                     </div>
                     <div id="button">
-                        <input type="submit" value="다음">
+                        <input type="submit" value="다음" class="bold">
                     </div>
                 </form>
             </div>
             <div id="section-2">
                 <div id="section-header">
                     <div id="section-header1">
-                        <p>회원가입</p>
+                        <p class="bold">회원가입</p>
                     </div>
                     <div id="section-header2">
-                        <p>1 가입</p>
-                        <p>2 정보입력</p>
+                        <p class="bold">1 가입</p>
+                        <p class="bold">2 정보입력</p>
                     </div>
                 </div>
                 <form name="frm_join2" method="post" action="sellerJoinProcess1.do" id="myForm2">
                     <div id="white-board2">
                         <div id="white-board-header2">
                             <div>
-                                <p onclick="userTypeChange('buyer')">개인 회원</p>
+                                <p onclick="userTypeChange('buyer')" class="bold">개인 회원</p>
                             </div>
                             <div>
-                                <p onclick="userTypeChange('seller')">기업 회원</p>
+                                <p onclick="userTypeChange('seller')" class="bold">기업 회원</p>
                             </div>
                         </div>
                         <div id="check-all">
                             <input type="checkbox" name="" id="checkAll2">
-                            <p>모두 동의하기</p>
+                            <p class="bold">모두 동의하기</p>
                         </div>
                         <div id="check-box2">
                             <div class="check-box">
@@ -195,7 +195,7 @@
                         </div>
                     </div>
                     <div id="button">
-                        <input type="submit" value="다음">
+                        <input type="submit" value="다음" class="bold">
                     </div>
                 </form>
             </div>
