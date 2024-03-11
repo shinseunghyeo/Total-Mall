@@ -1,13 +1,17 @@
 @charset "UTF-8";
     /* 글씨체 변경 */
     @font-face {
-        font-family: "G-market-Light";
-		src: url(fonts/GmarketSansTTFLight.ttf) format('truetype');
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
     }
 
     @font-face {
-        font-family: "G-market-Bold";
-        src: url(fonts/GmarketSansTTFBold.ttf) format('truetype');
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
     }
 
     p,
@@ -18,8 +22,13 @@
     h4,
     h5,
     h6,
+    td,
     input[type='button'] {
-        font-family: "G-market-Light";
+        font-family: 'GmarketSansTTFLight';
+    }
+
+    th {
+        font-family: 'GmarketSansTTFBold';
     }
 
     /* 글씨체 변경 */
@@ -252,11 +261,10 @@
 	}
 	
 	.new-sort{
-	width: 10%
+	width: 11%
 	}
     .new-img-div {
-        width: 10%;
-        margin: 10px;
+        width: 11%;
     }
     .new-img {
         width: 100%;
@@ -266,7 +274,8 @@
 	    width: 4rem;
 	    height: 4rem;
 	}
-    .new-name {
+	
+	    .new-name {
         width: 30%;
     }
 
@@ -1344,7 +1353,9 @@
     flex-wrap: nowrap;
     align-items: stretch;
     width: 94%;
-    padding: 3%;}
+    padding: 3%;
+    min-height: 475px;
+    }
     #DetailsBtnLine{display: flex;text-align: center;}
     #DetailsBtnLine .pageColor{width: 25%;height: 50px; cursor: pointer;border-bottom: 1px solid lightyellow;line-height: 50px;font-weight: bold;}
     #DetailsBtnLine .pageColor_on{background-color: gray;}
@@ -1376,3 +1387,11 @@
     /* ---------상품정보--------- */
     
 	/* //////////////////////나의 상품평가 끝/////////////////////// */
+	
+	
+/* //////////////////////상품문의/답변 시작/////////////////////// */
+		
+	
+		
+		
+/* //////////////////////상품문의/답변 끝/////////////////////// */

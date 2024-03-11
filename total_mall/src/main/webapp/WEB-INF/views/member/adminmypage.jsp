@@ -25,7 +25,6 @@
                     <li class="admin_nav_ul_li">회원관리</li>
                     <li class="admin_nav_ul_li">상품관리</li>
                     <li class="admin_nav_ul_li">주문조회</li>
-                    <li class="admin_nav_ul_li">이벤트</li>
                     <li class="admin_nav_ul_li">매출/통계</li>
                     <li class="admin_nav_ul_li">고객응대</li>
                 </ul>

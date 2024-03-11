@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>기업회원 상품관리 페이지</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Member/loadContent.js"></script>
 <!-- 중복 코드 통합 -->
 <script type="text/javascript">
 	function updateProductStatus(action) {
@@ -38,8 +39,10 @@
 					// 서버 응답에 대한 처리를 여기에 추가
 					console.log(response);
 					// 예를 들어, 페이지 리로드
-					location.reload();
+					//location.reload();
 					alert("변경되었습니다.");
+					loadContent("../member/sellermypage/product/myplist.do");
+					
 				},
 				error : function(error) {
 					// 에러 처리를 여기에 추가
@@ -56,6 +59,9 @@
 
 	        window.open(url, 'Product Window', 'width=' + width + ', height=' + height);
 	    }
+	 
+	 
+
 </script>
 </head>
 
@@ -82,7 +88,7 @@
 						<c:otherwise>
 							<tr>
 								<td colspan="6" class="all_p_list">
-									<div class="p_idx"></div>
+									<div class="p_idx">상품<br>번호</div>
 									<div class="p_img">이미지</div>
 									<div class="p_info">제품명</div>
 									<div class="p_price">가격</div>
@@ -147,9 +153,12 @@
 										</div>
 
 										<div class="p_status">
-											${statusPMap[productList3[vs.count-1].p_status.toString()]} <input
+											${statusPMap[productList3[vs.count-1].p_status.toString()]} 
+											<c:if test="${not empty productList3[vs.count-1].p_status}">
+											<input
 												type="checkbox" name="productCheckbox"
 												value="${productList3[vs.count-1].p_idx}">
+											</c:if>
 										</div>
 									</td>
 

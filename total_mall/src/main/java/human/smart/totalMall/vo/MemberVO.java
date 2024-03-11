@@ -27,5 +27,7 @@ public class MemberVO {
 	private Date reg_date;
 	private Date last_modified_date;
 	private int cancel_or_not;
+	
+	private int count;//회원 등급에 따른 합계
 
 }

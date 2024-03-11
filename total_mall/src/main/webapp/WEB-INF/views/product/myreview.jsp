@@ -8,7 +8,7 @@
     <title>나의 리뷰</title>
 </head>
 <body>
-    <!-- 리뷰 테스트 코드 -->
+    
     <div id="nav_back"></div>
 
     <div id="DetailsLine">
@@ -55,6 +55,6 @@
             </table>
         </div>
     </div>
-    <!-- 리뷰 테스트 코드 -->
+   
 </body>
 </html>

@@ -34,6 +34,9 @@ constraint tb_voc_pk primary key (v_idx), -- 기본키
 constraint tb_voc_fk foreign key (m_idx)
 references tb_member (m_idx) -- 외래키
 );
+
+
+
 -- 판매자 문의
 create table tb_pvoc (
     v_idx int unsigned auto_increment,
@@ -52,6 +55,11 @@ create table tb_pvoc (
     constraint fk_pvoc_member foreign key (m_idx) references tb_member (m_idx),
     constraint fk_pvoc_product foreign key (p_idx) references tb_product (p_idx)
 );
+
+ALTER TABLE tb_pvoc
+ADD COLUMN member_id VARCHAR(30) NOT NULL;
+
+
 -- 리뷰
 CREATE TABLE tb_review(
     r_idx INT UNSIGNED AUTO_INCREMENT,

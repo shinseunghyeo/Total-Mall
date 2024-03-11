@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import human.smart.totalMall.vo.MemberVO;
+import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.SalesVO;
 import human.smart.totalMall.vo.SearchVO;
 import human.smart.totalMall.vo.VocVO;
@@ -114,8 +115,23 @@ public class MemberDAO {
 	}
 	
 	//기업회원이 받는 문의사항 불러오기
-	public List<VocVO> getInquirylistp(int m_idx){
+	public List<PvocVO> getInquirylistp(int m_idx){
 		return sqlSession.selectList(MAPPER+".getInquirylistp", m_idx);
 	}
-
+	
+	//개인회원이 기업회원한테 쓴 문의사항 불러오기
+	public List<PvocVO> buyerInquirylist(String member_id){
+		return sqlSession.selectList(MAPPER+".buyerInquirylist", member_id);
+	}
+	
+	//관리자 홈 회원 현황
+	public List<MemberVO> memberCnt(){
+		return sqlSession.selectList(MAPPER+".memberCnt");
+	}
+	
+	//개인회원, 기업회원이 관리자한테 한 문의 불러오기
+	public List<VocVO> sellerbuyerVocList(int m_idx){
+		return sqlSession.selectList(MAPPER+".sellerbuyerVocList", m_idx);
+	}
+	
 }

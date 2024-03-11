@@ -142,8 +142,30 @@
 		    FROM tb_pvoc
 		    WHERE m_idx = #{m_idx}
 		)
-		ORDER BY post_date DESC;
+		ORDER BY post_date DESC
 
+ 	</select>
+ 	
+ 	<!-- 개인회원이 기업회원한테 쓴 문의사항 불러오기 -->
+ 	<select id="buyerInquirylist" parameterType="String" resultType="PvocVO">
+ 		select * from tb_pvoc
+ 		where member_id=#{member_id}
+ 		order by post_date desc
+ 	</select>
+ 	
+ 	
+ 	<!-- 관리자 홈 회원 현황-->
+ 	<select id="memberCnt" resultType="memberVO">
+ 		SELECT * FROM member_count_view
+ 	</select>
+ 	
+ 	
+ 	<!-- 개인회원, 기업회원이 관리자한테 한 문의 불러오기 -->
+ 	<select id="sellerbuyerVocList" parameterType="_int" resultType="VocVO">
+ 		SELECT *
+	    FROM tb_voc
+	    WHERE m_idx = #{m_idx}
+	    ORDER BY post_date DESC
  	</select>
 	
 </mapper>

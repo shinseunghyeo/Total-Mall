@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@ function openReviewPage(p_idx) {
 			<div id="grade_wrap">
 				<h3>${member.member_name}회원님의
 					등급은
-					<c:out value="${gradeMap[member.grade.toString()]}" />
+					<c:out value="${gradeMap[member.grade.toString()].substring(7)}" />
 					입니다
 				</h3>
 				<br>
@@ -72,7 +73,7 @@ function openReviewPage(p_idx) {
 			<div class="new_order">
 				<div class="new-menu">
 					<div class="p-1">
-						<p></p>
+						<p><small>주문번호</small></p>
 					</div>
 					<div class="p-2">
 						<p>상품명</p>
@@ -94,8 +95,8 @@ function openReviewPage(p_idx) {
 					<div class="new-item">
 						
 						<div class="new-sort">
-							${orderList_1[vs.count-1].o_idx}<br>
-							${p_or_notMap[orderList_1[vs.count-1].payment_or_not.toString()]}
+							<div>${orderList_1[vs.count-1].o_idx}</div>
+							<small>${p_or_notMap[orderList_1[vs.count-1].payment_or_not.toString()]}</small>
 							</div>
 							<div class="new-img-div">
 							<c:if test="${not empty orderList_1[vs.count-1].save_file_name1}">

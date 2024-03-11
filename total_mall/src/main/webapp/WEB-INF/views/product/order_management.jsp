@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>기업회원 주문관리페이지</title>
 <script src="../resources/js/jquery-3.7.1.min.js"></script>
+   <script type="text/javascript" src="../resources/js/Member/loadContent.js"></script>
    <script>
         $(document).ready(function() {
             $(".order-modify-btn").click(function() {
@@ -34,8 +35,9 @@
                         success: function(response) {
                             // 성공 처리
                             console.log(response);
-                            location.reload();
                             alert("변경되었습니다.");
+                            loadContent("../member/sellermypage/product/order_management.do");
+                            
                         },
                         error: function(error) {
                             // 에러 처리
@@ -47,6 +49,8 @@
                 }
             });
         });
+        
+
     </script>
 </head>
 <body>
@@ -78,7 +82,7 @@
 						<p>가격</p>
 					</div>
 					<div class="p-6">
-						<p><input type="button" value="주문 상태 변경" class="new-another-button order-modify-btn"></p>
+						<p><input type="button" value="주문 상태 변경" class="order-modify-btn"></p>
 						
 					</div>
 				</div>
@@ -126,9 +130,7 @@
                             <c:if test="${not empty orderList2[vs.count-1].o_idx}">
                                 <form class="order-modify-form">
                                     <input type="hidden" name="p_idx" value="${orderList2[vs.count-1].p_idx}">
-                                     <!-- 주문 상태 변경 체크박스 -->
-                                   <input type="checkbox" name="order_modify_checkbox" class="order-modify-checkbox" value="${orderList2[vs.count-1].o_idx}">
-                                     선택 
+                                   
                                     <select name="payment_or_not" class="payment-status">
                                         <c:forEach var="entry" items="${p_or_notMap}">
                                         <c:if test="${entry.key ne '0' and entry.key ne '1'}">
@@ -143,7 +145,10 @@
                                         </c:if>    
                                         </c:forEach>
                                     </select>
-                                                                   </form>
+                                    <!-- 주문 상태 변경 체크박스 -->
+                                    <input type="checkbox" name="order_modify_checkbox" class="order-modify-checkbox" value="${orderList2[vs.count-1].o_idx}">
+                                     선택 
+                               </form>
 
 
 								<input type="submit" value="송장번호 입력" class="new-another-button">

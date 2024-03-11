@@ -25,10 +25,13 @@ public interface CustomercenterService {
 	default void download(String originfile_name, String savefile_name, HttpServletRequest request,
 			HttpServletResponse response) {}
 	default int getTotalCount(SearchVO vo) {return 0;}
-	
-	
+
 	
 	default List<NoticeVO> homeNotice(){return null;}
 	default List<VocVO> homeVoc(){return null;}
 	default List<PvocVO> homePvoc(int m_idx){return null;}
+	default List<PvocVO> vocBoard2(int v_idx){return null;}
+	default int answerupdate2(PvocVO voc) {return 0;}
+	default List<VocVO> sellerhomeVoc(int m_idx){return null;}
+	
 }

@@ -91,9 +91,20 @@
 	<select id="vocBoard" parameterType="_int" resultType="vocVO">
 		select * from tb_voc where v_idx = #{v_idx}
 	</select>
-	<!-- 문의사항 내역 -->
+	<!-- 관리자 문의사항 내역 -->
 	<update id="answerupdate" parameterType="vocVO">
 		UPDATE tb_voc
+		SET answer = #{answer}, voc_state=2, update_date=now()
+		WHERE v_idx = #{v_idx};
+	</update>
+	
+	<!-- 기업회원 문의사항 내역 -->
+	<select id="vocBoard2" parameterType="_int" resultType="PvocVO">
+		select * from tb_pvoc where v_idx = #{v_idx}
+	</select>
+	<!-- 기업회원 문의사항 내역 -->
+	<update id="answerupdate2" parameterType="PvocVO">
+		UPDATE tb_pvoc
 		SET answer = #{answer}, voc_state=2, update_date=now()
 		WHERE v_idx = #{v_idx};
 	</update>
@@ -181,5 +192,14 @@
 		LIMIT 5
 	</select>
 	
+	<!-- 기업회원 홈 고객센터 문의 -->
+	<select id="sellerhomeVoc" parameterType="_int" resultType="VocVO">
+		SELECT *
+		FROM tb_voc
+		WHERE m_idx=#{m_idx}
+		AND voc_state = 1
+		ORDER BY update_date DESC
+		LIMIT 5
+	</select>
   
 </mapper>

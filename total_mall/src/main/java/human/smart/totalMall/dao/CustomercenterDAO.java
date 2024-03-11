@@ -46,14 +46,23 @@ public class CustomercenterDAO{
 	public List<VocVO> getBoard(int m_idx){
 		return sqlSession.selectList(MAPPER+".getBoard", m_idx);
 	}
-	//문의내역 불러오기
+	//관리자 문의내역 불러오기
 	public List<VocVO> vocBoard(int v_idx) {
 		return sqlSession.selectList(MAPPER+".vocBoard", v_idx);
 	}
 	public int answerupdate(VocVO voc) {
 		return sqlSession.update(MAPPER+".answerupdate", voc);
 	}
+	
+	//기업회원 문의내역 불러오기
+		public List<PvocVO> vocBoard2(int v_idx) {
+			return sqlSession.selectList(MAPPER+".vocBoard2", v_idx);
+		}
+		public int answerupdate2(PvocVO voc) {
+			return sqlSession.update(MAPPER+".answerupdate2", voc);
+		}
 
+	
 	//게시글 수정하기
 	public int update(NoticeVO vo) {
 		return sqlSession.update(MAPPER+".update", vo);
@@ -83,4 +92,10 @@ public class CustomercenterDAO{
 	public List<PvocVO> homePvoc(int m_idx){
 		return sqlSession.selectList(MAPPER+".homePvoc", m_idx);
 	}
+	
+	//기업회원 홈 고객센터 문의
+	public List<VocVO> sellerhomeVoc(int m_idx){
+		return sqlSession.selectList(MAPPER+".sellerhomeVoc", m_idx);
+	}
+
 }

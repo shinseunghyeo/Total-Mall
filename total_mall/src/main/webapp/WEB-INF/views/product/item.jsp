@@ -324,6 +324,7 @@ function continuedPost() {
 	        <div id="customerQuestions">
 				<input type="hidden" name="p_idx" value="${product.p_idx}">
 				<input type="hidden" name="product_name" value="${product.product_name}">
+				<input type="hidden" name="member_id" value="${member.member_id}">
 				<input type="hidden" name="m_idx" value="${product.m_idx}">
 				<input type="hidden" name="writer" value="${member.member_name}">
 				<input type="hidden" name="email" value="${member.email}">
