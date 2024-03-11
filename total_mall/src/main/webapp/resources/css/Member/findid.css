@@ -1,6 +1,22 @@
 @charset "UTF-8";
 
-  
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    a, p, h1, h2, h3, h4, h5, td{
+    	font-family: 'GmarketSansTTFLight';
+    }
+      
     #section-wrap{
         margin: 0 auto;
         background-color: rgb(224, 224, 224);
@@ -17,7 +33,7 @@
         margin: 0 auto;
         width: 500px;
         background-color: white;
-        height: 300px;
+        height: 280px;
         border-radius: 15px 15px 15px 15px;
     }
     #white-board-top{
@@ -57,6 +73,7 @@
         border: none;
         border-radius: 15px 15px 15px 15px ;
         color: white;
+        font-family: 'GmarketSansTTFLight';
     }
     #id-top p:first-child{
         font-size: 20px;

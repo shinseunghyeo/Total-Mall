@@ -18,11 +18,11 @@
             <div id="section-1">
                 <div id="section-header">
                     <div id="section-header1">
-                        <p>회원가입</p>
+                        <p class="bold">회원가입</p>
                     </div>
                     <div id="section-header2">
-                        <p>1 가입</p>
-                        <p>2 정보입력</p>
+                        <p class="bold">1 가입</p>
+                        <p class="bold">2 정보입력</p>
                     </div>
                 </div>
                 <form name="frm_join" method="post" action="buyerJoinProcess2.do" onsubmit="return validateForm()">
@@ -31,7 +31,7 @@
                     <div id="white-board">
                         <div id="white-board-header">
                             <div>
-                                <p>회원정보를 모두 입력해주셔야 회원가입이 완료가 됩니다</p>
+                                <p class="bold">회원정보를 모두 입력해주셔야 회원가입이 완료가 됩니다</p>
                             </div>
                         </div>
                         <div class="input-text" id="input-top">
@@ -39,7 +39,7 @@
                                 <p>아이디</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="member_id" id="" placeholder="아이디는 8~12자로 영어,숫자를 포함">
+                                <input type="text" name="member_id" id="member_id" placeholder="아이디는 8~12자로 영어,숫자를 포함">
                                 <p id="id_test">아이디는 8~12자로 영어,숫자를 포함</p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <p>휴대폰</p>
                             </div>
                             <div class="input-text2">
-                                <input type="text" name="handphone" id="" placeholder="010-숫자4자리-숫자4자리로 입력해야 합니다">
+                                <input type="text" name="handphone" id="handphone" placeholder="010-숫자4자리-숫자4자리로 입력해야 합니다">
                                 <p id="handphone_test">010-숫자4자리-숫자4자리로 입력해야 합니다</p>
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                         <div class="input-text"></div>
                     </div>
                     <div id="button">
-                        <input type="submit" value="가입">
+                        <input type="submit" value="가입" class="bold">
                     </div>
                 </form>
             </div>

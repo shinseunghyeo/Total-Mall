@@ -19,8 +19,7 @@
     <!-- ---------이벤트--------- -->
     <!-- ---------오늘의 상품--------- -->
     <div style="width: 100%;">
-        <h2 style="margin: auto;width: 1050px;">오늘의 상품</h2><br>
-        <a href="${pageContext.request.contextPath}/member/inquirylist.do">문의사항 목록</a>
+        <h2 style="margin: auto;width: 1050px;" class="bold">오늘의 상품</h2><br>
     </div>
     <div id="TodayMallServeLine">
         <div id="TodayMallServebox">
@@ -35,7 +34,7 @@
 								<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${maintoday[vs.count-1].p_idx}">
 					                <img src="resources/uploads/${maintoday[vs.count-1].save_file_name1}">
 					            </a><br>
-								<a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${maintoday[vs.count-1].p_idx}">
+								<a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${maintoday[vs.count-1].p_idx}" class="today-a">
 					            ${maintoday[vs.count-1].product_name}
 					            </a><br>
 					            <span class="price">${maintoday[vs.count-1].price}원</span>
@@ -55,7 +54,7 @@
     <c:choose>
     	<c:when test="${not empty member}">
     		<div class="CategoryBestLine">
-		        <h2>추천 카테고리 상품</h2>
+		        <h2 class="bold">추천 카테고리 상품</h2>
 		        <div class="CategoryBest">
 		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide)" src="resources/img/Mallimg/왼쪽 아이콘.png">
 		            <div class="CategoryBestContainer">
@@ -169,7 +168,7 @@
     <!-- ---------카테고리 추천 상품--------- -->
     <!-- ---------카테고리별 상품--------- -->
     <div id="CategoryMallLine">
-        <h2>카테고리별 상품</h2>
+        <h2 class="bold">카테고리별 상품</h2>
                 <style>
 				    .truncate {
 				        white-space: nowrap;       /* 줄 바꿈 방지 */
@@ -454,7 +453,7 @@
     <!-- ---------카테고리별 상품--------- -->
     <!-- ---------마지막 상품--------- -->
     <div id="FinalMallLine">
-        <h2>착한 상품</h2>
+        <h2 class="bold">착한 상품</h2>
 
         <div class="MallSmallimg">
 			<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${mainkind[0].p_idx}">

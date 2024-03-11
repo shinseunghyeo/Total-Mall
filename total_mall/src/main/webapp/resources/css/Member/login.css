@@ -1,12 +1,37 @@
 @charset "UTF-8";
 
-		
+		 @font-face {
+	        font-family: 'GmarketSansTTFLight';
+			src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+			font-weight: bold;
+	    	font-style: normal;
+	    }
+	    
+	    @font-face {
+	        font-family: 'GmarketSansTTFBold';
+	        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+	        font-weight: bold;
+	    	font-style: normal;
+	    }
+	    #text-id::placeholder,
+	    #text-pw::placeholder {	        
+	        font-family: 'GmarketSansTTFLight';
+
+	    }
+	    a, p, h1, h2, h3, h4, h5{
+	    	font-family: 'GmarketSansTTFLight';
+	    }
+	    .bold{
+	    	font-family: 'GmarketSansTTFBold';
+	    }
+	   
 		
         input[type="text"], select {
             padding: 5px;
             border: none;
             border-radius: 5px;
             margin-right: 10px;
+            font-family: 'GmarketSansTTFLight';
         }
         #EventMall img{
             position: absolute;border: 2px solid black;

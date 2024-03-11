@@ -1,5 +1,22 @@
 @charset "UTF-8";
 
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    a, p, h1, h2, h3, h4, h5, td, .request{
+    	font-family: 'GmarketSansTTFLight';
+    }
+
     /* ---------결제페이지--------- */
     #PurchaseLine{width: 1100px; margin: auto;}
     #PurchaseLine #Purchasepage{width: 90%; margin: auto;}
@@ -32,6 +49,7 @@
         font-size: 20px;
         font-weight: 600;
         color: white;
+        font-family: 'GmarketSansTTFLight';
     }
     .submit-button:hover{
         cursor: pointer;

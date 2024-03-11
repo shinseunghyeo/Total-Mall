@@ -51,7 +51,7 @@
 			            <input type="hidden" name="pageNum" value="1">
 			            <input type="hidden" name="pageBlock" value="1">
 			            <!-- hidden input 추가 -->
-						<input style="margin-left: 10px" type="text" placeholder="원하시는 상품을 검색해 주세요." name="searchWord">
+						<input style="margin-left: 10px" type="text" placeholder="원하시는 상품을 검색해 주세요." name="searchWord" class="search-text">
 						<button style="border: none; background: none;margin-left: 45px" type="submit">
 							<img src="../resources/img/Headerimg/검색.png">
 						</button>
@@ -110,34 +110,34 @@
             <div id="Category">
                 <div id="CategoryContainer_Main" style="height: 100%;">
                     <div style="background-color: rgb(134, 150, 255);">
-                        <h2 style="margin: 0;margin-left: 10px;color: white;">전체 카테고리</h2><br>
+                        <h2 style="margin: 0;margin-left: 10px;color: white;" class="bold">전체 카테고리</h2><br>
                     </div>
                     <div id="Category1" onmouseover="handleMouseOver('Category1','ServeCategory1')">
-                        <p>식품></p><br>
+                        <p class="bold">식품></p><br>
                     </div>
                     <div id="Category2" onmouseover="handleMouseOver('Category2','ServeCategory2')">
-                        <p>홈데코></p><br>
+                        <p class="bold">홈데코></p><br>
                     </div>
                     <div id="Category3" onmouseover="handleMouseOver('Category3','ServeCategory3')">
-                        <p>취미></p><br>
+                        <p class="bold">취미></p><br>
                     </div>
                     <div id="Category4" onmouseover="handleMouseOver('Category4','ServeCategory4')">
-                        <p>생필품></p><br>
+                        <p class="bold">생필품></p><br>
                     </div>
                     <div id="Category5" onmouseover="handleMouseOver('Category5','ServeCategory5')">
-                        <p>의류></p><br>
+                        <p class="bold">의류></p><br>
                     </div>
                     <div id="Category6" onmouseover="handleMouseOver('Category6','ServeCategory6')">
-                        <p>도서></p><br>
+                        <p class="bold">도서></p><br>
                     </div>
                     <div id="Category7" onmouseover="handleMouseOver('Category7','ServeCategory7')">
-                        <p>가구></p><br>
+                        <p class="bold">가구></p><br>
                     </div>
                     <div id="Category8" onmouseover="handleMouseOver('Category8','ServeCategory8')">
-                        <p>가전></p><br>
+                        <p class="bold">가전></p><br>
                     </div>
                     <div id="Category9" onmouseover="handleMouseOver('Category9','ServeCategory9')">
-                        <p>스포츠></p><br>
+                        <p class="bold">스포츠></p><br>
                     </div>
                 </div>
                 <div id="serveMenucontainer">
@@ -151,28 +151,28 @@
                                 onmouseover="changeimage(this, '고기')" onmouseout="restoreimage(this, '고기')">
                                     <img class="normal-image" src="../resources/img/Headerimg/고기.png">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>고기</h1>
+                                    <h1 class="bold">고기</h1>
                                 </div>
                             </a>
                             <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=vegetables"><div class="image-container"  
                                 onmouseover="changeimage(this, '야채')" onmouseout="restoreimage(this, '야채')">
                                     <img class="normal-image" src="../resources/img/Headerimg/야채.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>야채</h1>
+                                    <h1 class="bold">야채</h1>
                                 </div>
                             </a>
                             <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=fruits"><div class="image-container"  
                                 onmouseover="changeimage(this, '과일')" onmouseout="restoreimage(this, '과일')">
                                     <img class="normal-image" src="../resources/img/Headerimg/과일.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>과일</h1>
+                                    <h1 class="bold">과일</h1>
                                 </div>
                             </a>
                             <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=frozen"><div class="image-container"  
                                 onmouseover="changeimage(this, '냉동')" onmouseout="restoreimage(this, '냉동')">
                                     <img class="normal-image" src="../resources/img/Headerimg/냉동.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>냉동</h1>
+                                    <h1 class="bold">냉동</h1>
                                 </div>
                             </a>
                             </div>
@@ -181,13 +181,13 @@
                                 onmouseover="changeimage(this, '주방')" onmouseout="restoreimage(this, '주방')">
                                     <img class="normal-image" src="../resources/img/Headerimg/주방.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>주방</h1>
+                                    <h1 class="bold">주방</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=curtain"><div class="image-container"  
                                 onmouseover="changeimage(this, '커튼')" onmouseout="restoreimage(this, '커튼')">
                                     <img class="normal-image" src="../resources/img/Headerimg/커튼.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>커튼</h1>
+                                    <h1 class="bold">커튼</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory3">
@@ -195,19 +195,19 @@
                                 onmouseover="changeimage(this, '게임')" onmouseout="restoreimage(this, '게임')">
                                     <img class="normal-image" src="../resources/img/Headerimg/게임.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>게임</h1>
+                                    <h1 class="bold">게임</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=lego"><div class="image-container"  
                                 onmouseover="changeimage(this, '레고')" onmouseout="restoreimage(this, '레고')">
                                     <img class="normal-image" src="../resources/img/Headerimg/레고.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>레고</h1>
+                                    <h1 class="bold">레고</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=petsupplies"><div class="image-container"  
                                 onmouseover="changeimage(this, '펫용품')" onmouseout="restoreimage(this, '펫용품')">
                                     <img class="normal-image" src="../resources/img/Headerimg/펫용품.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>펫용품</h1>
+                                    <h1 class="bold">펫용품</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory4">
@@ -215,13 +215,13 @@
                                 onmouseover="changeimage(this, '생필품')" onmouseout="restoreimage(this, '생필품')">
                                     <img class="normal-image" src="../resources/img/Headerimg/생필품.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>생필품</h1>
+                                    <h1 class="bold">생필품</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=bodyhair"><div class="image-container"  
                                 onmouseover="changeimage(this, '바디헤어')" onmouseout="restoreimage(this, '바디헤어')">
                                     <img class="normal-image" src="../resources/img/Headerimg/바디헤어.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>바디헤어</h1>
+                                    <h1 class="bold">바디헤어</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory5">
@@ -229,13 +229,13 @@
                                 onmouseover="changeimage(this, '남성')" onmouseout="restoreimage(this, '남성')">
                                     <img class="normal-image" src="../resources/img/Headerimg/남성.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>남성</h1>
+                                    <h1 class="bold">남성</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=women"><div class="image-container"  
                                 onmouseover="changeimage(this, '여성')" onmouseout="restoreimage(this, '여성')">
                                     <img class="normal-image" src="../resources/img/Headerimg/여성.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>여성</h1>
+                                    <h1 class="bold">여성</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory6">
@@ -243,19 +243,19 @@
                                 onmouseover="changeimage(this, '교육')" onmouseout="restoreimage(this, '교육')">
                                     <img class="normal-image" src="../resources/img/Headerimg/교육.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>교육</h1>
+                                    <h1 class="bold">교육</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=novels"><div class="image-container"  
                                 onmouseover="changeimage(this, '소설')" onmouseout="restoreimage(this, '소설')">
                                     <img class="normal-image" src="../resources/img/Headerimg/소설.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>소설</h1>
+                                    <h1 class="bold">소설</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=overseas"><div class="image-container"  
                                 onmouseover="changeimage(this, '해외')" onmouseout="restoreimage(this, '해외')">
                                     <img class="normal-image" src="../resources/img/Headerimg/해외.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>해외</h1>
+                                    <h1 class="bold">해외</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory7">
@@ -263,13 +263,13 @@
                                 onmouseover="changeimage(this, '생활')" onmouseout="restoreimage(this, '생활')">
                                     <img class="normal-image" src="../resources/img/Headerimg/생활.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>생활</h1>
+                                    <h1 class="bold">생활</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=bedding"><div class="image-container"  
                                 onmouseover="changeimage(this, '침상')" onmouseout="restoreimage(this, '침상')">
                                     <img class="normal-image" src="../resources/img/Headerimg/침상.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>침상</h1>
+                                    <h1 class="bold">침상</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory8">
@@ -277,13 +277,13 @@
                                 onmouseover="changeimage(this, '가전')" onmouseout="restoreimage(this, '가전')">
                                     <img class="normal-image" src="../resources/img/Headerimg/가전.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>가전</h1>
+                                    <h1 class="bold">가전</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=digital"><div class="image-container"  
                                 onmouseover="changeimage(this, '디지털')" onmouseout="restoreimage(this, '디지털')">
                                     <img class="normal-image" src="../resources/img/Headerimg/디지털.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>디지털</h1>
+                                    <h1 class="bold">디지털</h1>
                                 </div></a>
                             </div>
                             <div class="ServeCategorydisplay" id="ServeCategory9">
@@ -291,13 +291,13 @@
                                 onmouseover="changeimage(this, '축구')" onmouseout="restoreimage(this, '축구')">
                                     <img class="normal-image" src="../resources/img/Headerimg/축구.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>축구</h1>
+                                    <h1 class="bold">축구</h1>
                                 </div></a>
                                 <a style="width: 25%; margin: 0;" href="${pageContext.request.contextPath}/product/list.do?category=golf"><div class="image-container"  
                                 onmouseover="changeimage(this, '골프')" onmouseout="restoreimage(this, '골프')">
                                     <img class="normal-image" src="../resources/img/Headerimg/골프.png" style="width: 100%;">
                                     <img class="Categorymain-image" src="../resources/img/Headerimg/카테고리메뉴배경.png">
-                                    <h1>골프</h1>
+                                    <h1 class="bold">골프</h1>
                                 </div></a>
                             </div>
                         </div>

@@ -1,6 +1,27 @@
 @charset "UTF-8";
 
-
+	@font-face {
+        font-family: 'GmarketSansTTFLight';
+		src: url('../../font/GmarketSansTTFLight.ttf') format('truetype');
+		font-weight: bold;
+    	font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'GmarketSansTTFBold';
+        src: url('../../font/GmarketSansTTFBold.ttf') format('truetype');
+        font-weight: bold;
+    	font-style: normal;
+    }
+    a, p, h1, h2, h3, h4, h5{
+    	font-family: 'GmarketSansTTFLight';
+    }
+    input[type="text"], input[type="password"], #account_select{
+    	font-family: 'GmarketSansTTFLight';	
+    }
+    .bold{
+    	font-family: 'GmarketSansTTFBold';
+    }
     
     #section-wrap{
         margin: 0 auto;
@@ -128,6 +149,7 @@
         font-size: 25px;
         font-weight: 800;
         color: white;
+        font-family: 'GmarketSansTTFLight';
     }
     #button input:hover{
         cursor: pointer;

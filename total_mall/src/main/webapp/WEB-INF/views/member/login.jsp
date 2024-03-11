@@ -23,7 +23,7 @@
 	                        </div>
 	                        <div id="select">
 	                            <div class="buyer">
-	                                <p>
+	                                <p class="bold">
 	                                    로그인 페이지
 	                                </p>
 	                            </div>
@@ -40,15 +40,15 @@
 	                                <p>아이디 저장</p>
 	                            </div>
 	                            <div id="find-id">
-	                                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-	                                <a href="${pageContext.request.contextPath}/member/findidpw.do">아이디/비밀번호 찾기</a>
+	                                <a href="${pageContext.request.contextPath}/member/join.do" class="bold">회원가입</a>
+	                                <a href="${pageContext.request.contextPath}/member/findidpw.do" class="bold">아이디/비밀번호 찾기</a>
 	                            </div>
 	                        </div>
 	                        <div id="question">
 	                            
 	                        </div>
 	                        <div id="loginbox">
-	                            <input type="submit" value="로그인">
+	                            <input type="submit" value="로그인" class="bold">
 	                        </div>
 	                        <div id="event">
 	                        	<a href="${pageContext.request.contextPath}/nav/EventPage.do" id="event-a">
