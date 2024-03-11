@@ -139,7 +139,7 @@ input[type=submit], button{
 			</form>
 		</c:if>
     </c:when>
-    <c:when test="${not empty member.member_id and member.grade != 9}"><!-- 개인회원 -->
+    <c:when test="${not empty inquiries2[0].member_id and member.grade != 9}"><!-- 개인회원 -->
 		<h1>고객문의내역</h1>
 		<img src="">
 		${product.product_name}
@@ -156,7 +156,7 @@ input[type=submit], button{
 			<button onclick="closeWindow()">닫기</button>
 
     </c:when>
-        <c:when test="${member.grade == 9 and not empty inquiries}"><!-- 개인회원 -->
+        <c:when test="${member.grade != 9 and not empty inquiries and not empty inquiries[0].voc_type}"><!-- 개인회원 -->
 
 		<h1>${inquiries[0].title}</h1>
 		<img src="">
