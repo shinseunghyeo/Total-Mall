@@ -209,7 +209,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/어린이용품.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/홈데코.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -239,7 +239,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/낚시장비.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/취미.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -269,7 +269,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/운동.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/생필품.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -299,7 +299,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/펫밀크.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/의류.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -329,7 +329,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/주방도구.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/도서.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -359,7 +359,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/주방도구.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/가구.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -389,7 +389,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/주방도구.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/가전.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>
@@ -419,7 +419,7 @@
             </div>
         </div>
         <div class="CategoryMall">
-            <img class="CategoryMallMainimg" src="resources/img/Mallimg/주방도구.jpg">
+            <img class="CategoryMallMainimg" src="resources/img/Mallimg/스포츠.png">
             <div class="CategoryMallMenu">
                 <div class="CategoryMallbox">
 				    <c:choose>

@@ -155,6 +155,11 @@ public class ProductDAO{
 	public List<ProductVO> getProducts(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts", vo);
 	}
+	//할인율이 높은 상품 출력
+	public List<ProductVO> getProducts5(SearchVO vo){
+		return sqlSession.selectList(MAPPER+".getProducts5", vo);
+	}
+	
 	public List<ProductVO> getProducts2(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getProducts2", vo);
 	}

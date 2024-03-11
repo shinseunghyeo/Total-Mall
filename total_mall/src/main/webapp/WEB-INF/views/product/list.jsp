@@ -133,7 +133,7 @@
                         <img id="FoodImg" src="../resources/img/Mallimg/식품1.jpg">
                     </a>
                     <div id="CategoryProductbox">
-                        <br><h3 class="bold">핫딜 세일</h3><hr>
+                        <br><h3 class="bold">높은 할인율</h3><hr>
                         <div class="Productmain">
 						    <c:choose>
 								<c:when test="${empty productList}">
@@ -141,16 +141,16 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="1" end="5" varStatus="vs">
-										<c:if test="${not empty productList[vs.count-1]}">
+										<c:if test="${not empty productList5[vs.count-1]}">
 						                    <div class="CategoryProduct">
-						                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}">
-						                       	<img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+						                        <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList5[vs.count-1].p_idx}">
+						                       	<img src="../resources/uploads/${productList5[vs.count-1].save_file_name1}">
 						                       	</a>
 						                       	
-						                        <a  style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[vs.count-1].p_idx}" class="list-a">
-						                        	${productList[vs.count-1].product_name}
+						                        <a  style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList5[vs.count-1].p_idx}" class="list-a">
+						                        	${productList5[vs.count-1].product_name}
 						                        </a>
-							                        <span class="price" style="width:100%; text-align: center;">${(productList[i-1].price-(productList[i-1].price/100*productList[i-1].discount_rate)).intValue()}원</span>
+							                        <span class="price" style="width:100%; text-align: center;">${(productList5[i-1].price-(productList5[i-1].price/100*productList5[i-1].discount_rate)).intValue()}원</span>
 						                    </div>
 										</c:if>
 									</c:forEach>
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <div id="CategoryProductbestbox">
-                        <br><h3 class="bold">검색어 순위</h3><hr>
+                        <br><h3 class="bold">상품 목록</h3><hr>
                         <div class="Productmain">
    						    <c:choose>
 								<c:when test="${empty productList}">
@@ -186,7 +186,7 @@
                         <div class="Productmain">
    						    <c:choose>
 								<c:when test="${empty productList}">
-									<tr><td colspan="6">등록된 상품이 없습니다</td></tr>
+									<tr><td colspan="6"></td></tr>
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="6" end="10" varStatus="vs">
@@ -194,9 +194,9 @@
 									        <div class="CategoryProduct">
 									            <span>${i}</span>
 									            <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
-									                <img src="../resources/uploads/${productList[vs.count-1].save_file_name1}">
+									                <img src="../resources/uploads/${productList[i-1].save_file_name1}">
 									            </a>
-									            <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}">
+									            <a style="margin: 0;" href="${pageContext.request.contextPath}/product/item.do?p_idx=${productList[i-1].p_idx}" class="list-a">
 									                ${productList[i-1].product_name}
 									            </a>
 									            <span class="price" style="width:100%; text-align: center;">${(productList[i-1].price-(productList[i-1].price/100*productList[i-1].discount_rate)).intValue()}원</span>

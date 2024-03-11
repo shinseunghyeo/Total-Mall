@@ -12,7 +12,7 @@
         font-weight: bold;
     	font-style: normal;
     }
-    a, p, h2, h3, h4, h5, span, li, textarea {
+    a, p, h2, h3, h4, h5, span, li, textarea, #ProductContent {
     	font-family: 'GmarketSansTTFLight';
     }
     button, h1, .pageColor pageColor_on, .pageColor, .bold{

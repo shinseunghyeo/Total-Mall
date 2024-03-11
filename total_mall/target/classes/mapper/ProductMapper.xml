@@ -89,6 +89,14 @@
 				ORDER BY p_idx DESC
 				LIMIT 20 OFFSET 0
 	</select>
+	
+	<!-- 할인율이 높은 상품 -->
+	<select id="getProducts5" parameterType="string" resultType="productVO">
+				SELECT * FROM tb_product WHERE category LIKE #{category} and p_status = 0
+				ORDER BY discount_rate DESC
+				LIMIT 20 OFFSET 0
+	</select>
+	
 	<select id="getProducts2" parameterType="SearchVO" resultType="productVO">
 		<choose>
 			<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
