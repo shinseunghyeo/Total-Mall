@@ -19,7 +19,7 @@
                     <form action="login_v1.1.html">
                         <div id="white-board-top">
                             <div id="find-id">
-                                <p>아이디 찾기</p>
+                                <p class="bold">아이디 찾기</p>
                             </div>
                         </div>
                         <div id="white-board-bottom">

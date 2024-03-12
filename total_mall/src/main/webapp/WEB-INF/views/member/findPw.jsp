@@ -21,7 +21,7 @@
                     	<input type="hidden" name="m_idx" value="${memberVO.m_idx}">
                         <div id="white-board-top">
                             <div id="find-pw">
-                                <p>비밀번호 재설정</p>
+                                <p class="bold">비밀번호 재설정</p>
                             </div>
                         </div>
                         <div id="white-board-bottom">

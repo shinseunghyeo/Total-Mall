@@ -452,7 +452,7 @@
     </div>
     <!-- ---------카테고리별 상품--------- -->
     <!-- ---------마지막 상품--------- -->
-    <div id="FinalMallLine">
+    <%-- <div id="FinalMallLine">
         <h2 class="bold">착한 상품</h2>
 
         <div class="MallSmallimg">
@@ -499,7 +499,7 @@
                 <img src="resources/uploads/${mainkind[11].save_file_name1}">
             </a>
         </div>
-    </div>
+    </div> --%>
 
     <!-- ---------마지막 상품--------- -->
   	<%@ include file="Main/MainFooter.jsp" %>

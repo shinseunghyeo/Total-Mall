@@ -20,10 +20,10 @@
                     <form method="post" action="findId.do">
                         <div id="white-board-top">
                             <div id="find-id">
-                                <p onclick="userTypeChange('findId')">아이디 찾기</p>
+                                <p onclick="userTypeChange('findId')" class="bold">아이디 찾기</p>
                             </div>
                             <div id="find-pw">
-                                <p onclick="userTypeChange('findPw')">비밀번호 재설정</p>
+                                <p onclick="userTypeChange('findPw')" class="bold">비밀번호 재설정</p>
                             </div>
                         </div>
                         <div id="white-board-bottom">
@@ -45,10 +45,10 @@
                     <form method="post" action="findPw.do">
                         <div id="white-board-top">
                             <div id="find-id2">
-                                <p onclick="userTypeChange('findId')">아이디 찾기</p>
+                                <p onclick="userTypeChange('findId')" class="bold">아이디 찾기</p>
                             </div>
                             <div id="find-pw2">
-                                <p onclick="userTypeChange('findPw')">비밀번호 재설정</p>
+                                <p onclick="userTypeChange('findPw')" class="bold">비밀번호 재설정</p>
                             </div>
                         </div>
                         <div id="white-board-bottom">
