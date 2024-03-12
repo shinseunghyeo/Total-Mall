@@ -104,7 +104,7 @@
 
 								</td>
 							</tr>
-							<c:forEach begin="1" end="20" varStatus="vs">
+							<c:forEach begin="1" end="10" varStatus="vs">
 								<tr>
 									<td colspan="6" class="all_p_list">
 										<div class="p_idx">${productList3[vs.count-1].p_idx}</div>
@@ -168,6 +168,9 @@
 					</c:choose>
 
 				</table>
+				<div>
+			<%@ include file="sellerprodpaging.jsp" %>
+			</div>
 			</div>
 		</div>
 	</div>

@@ -45,7 +45,7 @@ public class MemberController {
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
 	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2, allorderCnt, pPage2, allproductsCnt,
-	sellerOrderCnt;
+	sellerOrderCnt, mypList, myproductCnt;
 	
 	
 	@Setter(onMethod_={ @Autowired })
@@ -386,20 +386,31 @@ public String sellerUpdate() {
 
 //기업회원 상품관리 페이지 처리	
 @GetMapping("/sellermypage/product/myplist.do")
-public String myplist(HttpSession session, Model model) {
-    // 세션에서 MemberVO를 가져옵니다.
-    MemberVO member = (MemberVO) session.getAttribute("member");
+public String myplist(@ModelAttribute("sVO") SearchVO searchVO, Model model,
+		@SessionAttribute("member") MemberVO member) {
+	int m_idx = member.getM_idx();
+	searchVO.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(searchVO.getPageNum() == 0) {
+		searchVO.setPageNum(1);
+	}
+	
+	List<ProductVO> productList3 = mypList.getProducts3(searchVO);
+	model.addAttribute("productList3", productList3);
 
-    // MemberVO가 null이 아니고, m_idx 값이 있다면
-    if (member != null) {
-        int m_idx = member.getM_idx();
-        model.addAttribute("m_idx", m_idx);
-        return "forward:/product/myplist.do?m_idx=" + m_idx;
-    } else {
-        // 세션에 MemberVO가 없으면 로그인 페이지로 이동하거나 다른 적절한 처리를 수행합니다.
-        return "redirect:/login"; // 로그인 페이지로 리다이렉트하는 예시
+	int totalRows = myproductCnt.myproductCnt(searchVO);
+	
+	System.out.println("totalRows:"+totalRows);
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+
+	// MemberVO에서 m_idx 값을 가져와서 설정
+	
+	model.addAttribute("m_idx", m_idx);
+	return "product/myplist";
     }
-}
+
 
 //기업회원 주문관리 페이지 처리	
 @GetMapping("/sellermypage/product/order_management.do")
@@ -826,8 +837,8 @@ public String allolist(SearchVO searchVO, Model model) {
 	System.out.println("startIdx"+pageNav.getStartNum());
     List<CartVO> allorderList = alloList.getOrders3(searchVO);
     model.addAttribute("allorderList", allorderList);
-// 주문내역 페이지로 이동
-return "product/allorderlist";
+
+return "redirect:/product/allorderlist.do";
 }
 
 

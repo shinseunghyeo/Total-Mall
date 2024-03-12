@@ -266,11 +266,16 @@
 			   where p_idx = #{p_idx}
 	</update>
 	<!-- 기업회원 상품조회: select -->
-	<select id="getProducts3" parameterType="_int"
-		resultType="productVO">
+	<select id="getProducts3" parameterType="searchVO" resultType="productVO">
 		SELECT * FROM tb_product WHERE m_idx=#{m_idx}
 		ORDER BY p_reg_date DESC, p_last_modified_date ASC
-		LIMIT 20 OFFSET 0
+		limit #{startIdx}, 10
+	</select>
+	
+	<!-- 기업회원 상품조회 합계: select -->
+	<select id="myproductCnt" parameterType="searchVO" resultType="_int">
+		SELECT count(*) FROM tb_product WHERE m_idx=#{m_idx}
+		ORDER BY p_reg_date DESC, p_last_modified_date ASC
 	</select>
 	
 

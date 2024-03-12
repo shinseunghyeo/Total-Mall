@@ -84,6 +84,10 @@ public class ProductDAO{
 		return sqlSession.selectList(MAPPER+".getProducts3", vo);
 	}
 
+	//기업회원 내상품보기 합계
+	public int myproductCnt(SearchVO vo) {
+		return sqlSession.selectOne(MAPPER+".myproductCnt", vo);
+	}
 	
 	//개인회원 전체주문보기	
 //	public List<CartVO> getOrders(int m_idx){

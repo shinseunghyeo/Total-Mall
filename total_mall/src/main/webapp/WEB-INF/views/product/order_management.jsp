@@ -93,10 +93,9 @@
 		$
 				.ajax({
 					type : "POST",
-					url : "parcel.do",
+					url : "../product/parcel.do",
 					data : formData,
 					success : function(response) {
-						console.log("Success:", response);
 						loadContent("../member/sellermypage/product/order_management.do");
 					},
 					error : function(error) {
@@ -164,8 +163,9 @@
 						</div>
 						<div class="new-date">
 							<p>
-								<small><fmt:formatDate value="${orderList2[vs.count-1].o_update_time}"
-									pattern="yyyy-MM-dd HH:mm:ss" /></small>
+								<small><fmt:formatDate
+										value="${orderList2[vs.count-1].o_update_time}"
+										pattern="yyyy-MM-dd HH:mm:ss" /></small>
 							</p>
 						</div>
 						<div class="new-quantity">
@@ -182,7 +182,7 @@
 						</div>
 						<div class="new-another">
 							<c:if test="${not empty orderList2[vs.count-1].o_idx}">
-							<!-- 주문 상태 변경셀렉트박스 -->
+								<!-- 주문 상태 변경셀렉트박스 -->
 								<form class="order-modify-form">
 									<input type="hidden" name="p_idx"
 										value="${orderList2[vs.count-1].p_idx}"> <select
@@ -203,30 +203,30 @@
 									</select>
 									<!-- 주문 상태 변경 체크박스 -->
 									<div id="o_status">
-									<input type="checkbox" name="order_modify_checkbox"
-										class="order-modify-checkbox"
-										value="${orderList2[vs.count-1].o_idx}"> 주문 변경
+										<input type="checkbox" name="order_modify_checkbox"
+											class="order-modify-checkbox"
+											value="${orderList2[vs.count-1].o_idx}"> 주문 변경
 									</div>
 								</form>
-								<form id="parcelForm" action="parcel.do" method="post">
+								<form id="parcelForm" action="../product/parcel.do" method="post">
 									<input type="hidden" name="p_idx"
-										value="${orderList2[vs.count-1].p_idx}"> 
-										<div id="parcel_input">
-										<select id="parcelCompany"
-										name="parcel">
-										<c:forEach var="entry" items="${parcel_companyMap}">
-											<option value="${entry.key}">${entry.value}</option>
-										</c:forEach>
-									</select> 
-									<input type="text" name="tracking_number" id="tracking_number"
-										value="${orderList2[vs.count-1].tracking_number}"> 
-										</div>
-										<input
-										type="submit" value="송장번호 입력" class="new-another-button">
+										value="${orderList2[vs.count-1].p_idx}">
+									<div id="parcel_input">
+										<select id="parcelCompany" name="parcel">
+											<c:forEach var="entry" items="${parcel_companyMap}">
+												<option value="${entry.key}">${entry.value}</option>
+											</c:forEach>
+										</select> <input type="text" name="tracking_number"
+											id="tracking_number"
+											value="${orderList2[vs.count-1].tracking_number}">
+									</div>
+									<input type="submit" value="송장번호 입력" class="new-another-button">
 								</form>
 
 
-							<a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList2[vs.count-1].o_idx}"><input type="button" value="주문 상세보기" class="new-another-button"></a>
+								<a
+									href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList2[vs.count-1].o_idx}"><input
+									type="button" value="주문 상세보기" class="new-another-button"></a>
 
 							</c:if>
 						</div>
@@ -234,7 +234,7 @@
 				</c:forEach>
 			</div>
 			<div>
-			<%@ include file="sellerorderpaging.jsp" %>
+				<%@ include file="sellerorderpaging.jsp"%>
 			</div>
 		</div>
 	</div>
