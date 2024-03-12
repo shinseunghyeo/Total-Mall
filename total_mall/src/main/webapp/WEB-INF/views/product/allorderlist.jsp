@@ -83,7 +83,7 @@
 						<p>가격</p>
 					</div>
 					<div class="p-6">
-						<p><p><input type="button" value="주문 상태 변경" class="order-modify-btn"></p></p>
+						<p><input type="button" value="주문 상태 변경" class="order-modify-btn new-another-button"></p>
 					</div>
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
@@ -109,9 +109,9 @@
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate
+								<small><fmt:formatDate
 									value="${allorderList[vs.count-1].o_update_time}"
-									pattern="yyyy-MM-dd HH:mm:ss" />
+									pattern="yyyy-MM-dd HH:mm:ss" /></small>
 							</p>
 						</div>
 						<div class="new-quantity">
@@ -121,7 +121,7 @@
 							<p>
 								<c:if test="${not empty allorderList[vs.count-1].price}">
 									<fmt:formatNumber
-										value="${allorderList[vs.count-1].price * allorderList[vs.count-1].c_quantity}"
+										value="${(allorderList[vs.count-1].price - (allorderList[vs.count-1].price * (allorderList[vs.count-1].discount_rate * 0.01))) * allorderList[vs.count-1].c_quantity}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
@@ -150,7 +150,6 @@
                                     <input type="checkbox" name="order_modify_checkbox" class="order-modify-checkbox" value="${allorderList[vs.count-1].o_idx}">
                                      선택 
                                </form>
-								<input type="button" value="주문상태 변경" class="new-another-button">
 								<input type="button" value="주문 상세보기" class="new-another-button">
 							</c:if>
 						</div>

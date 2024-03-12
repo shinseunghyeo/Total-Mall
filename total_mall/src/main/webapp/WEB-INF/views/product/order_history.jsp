@@ -75,8 +75,7 @@ function openReviewPage(p_idx) {
 						<div class="new-price">
 							<p>
 								<c:if test="${not empty orderList[vs.count-1].price}">
-									<fmt:formatNumber value="${orderList[vs.count-1].price}"
-										pattern="#,##0" var="formattedPrice" />
+									<fmt:formatNumber value="${(orderList[vs.count-1].price - (orderList[vs.count-1].price * (orderList[vs.count-1].discount_rate * 0.01))) * orderList[vs.count-1].c_quantity}" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
 							</p>
@@ -86,7 +85,12 @@ function openReviewPage(p_idx) {
 							<a href="javascript:void(0);"
 									onclick="openReviewPage(${orderList[vs.count-1].p_idx});">
 									<input type="button" value="리뷰 작성" class="new-another-button">
-								</a>
+							</a>
+							<a
+									href="http://nexs.cjgls.com/web/info.jsp?slipno=${orderList[vs.count-1].tracking_number}"
+									target="_blank"> <input type="button" value="배송 추적하기"
+									class="new-another-button">
+								</a>	
 							<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList[vs.count-1].p_idx}"
 							target="_blank">
 								<input type="button" value="문의 하기" class="new-another-button">
