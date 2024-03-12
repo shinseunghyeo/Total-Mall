@@ -165,8 +165,8 @@
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList2[vs.count-1].o_update_time}"
-									pattern="yyyy-MM-dd HH:mm:ss" />
+								<small><fmt:formatDate value="${orderList2[vs.count-1].o_update_time}"
+									pattern="yyyy-MM-dd HH:mm:ss" /></small>
 							</p>
 						</div>
 						<div class="new-quantity">
@@ -176,7 +176,7 @@
 							<p>
 								<c:if test="${not empty orderList2[vs.count-1].price}">
 									<fmt:formatNumber
-										value="${orderList2[vs.count-1].price * orderList2[vs.count-1].c_quantity}"
+										value="${(orderList2[vs.count-1].price - (orderList2[vs.count-1].price * (orderList2[vs.count-1].discount_rate * 0.01))) * orderList2[vs.count-1].c_quantity}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
@@ -184,6 +184,7 @@
 						</div>
 						<div class="new-another">
 							<c:if test="${not empty orderList2[vs.count-1].o_idx}">
+							<!-- 주문 상태 변경셀렉트박스 -->
 								<form class="order-modify-form">
 									<input type="hidden" name="p_idx"
 										value="${orderList2[vs.count-1].p_idx}"> <select
@@ -203,20 +204,29 @@
 										</c:forEach>
 									</select>
 									<!-- 주문 상태 변경 체크박스 -->
+									<div id="o_status">
 									<input type="checkbox" name="order_modify_checkbox"
 										class="order-modify-checkbox"
-										value="${orderList2[vs.count-1].o_idx}"> 선택
+										value="${orderList2[vs.count-1].o_idx}"> 주문 변경
+									</div>
 								</form>
+								<!-- 송장번호 입력 -->
 								<form id="parcelForm" action="parcel.do" method="post">
 									<input type="hidden" name="p_idx"
-										value="${orderList2[vs.count-1].p_idx}"> <select id="parcelCompany"
+										value="${orderList2[vs.count-1].p_idx}"> 
+										<div id="parcel_input">
+										<select id="parcelCompany"
 										name="parcel">
 										<c:forEach var="entry" items="${parcel_companyMap}">
 											<option value="${entry.key}">${entry.value}</option>
 										</c:forEach>
-									</select> <input type="text" name="tracking_number"
-										value="${orderList2[vs.count-1].tracking_number}"> <input
+									</select> 
+									<input type="text" name="tracking_number" id="tracking_number"
+										value="${orderList2[vs.count-1].tracking_number}"> 
+										</div>
+										<input
 										type="submit" value="송장번호 입력" class="new-another-button">
+										
 								</form>
 
 
