@@ -14,6 +14,11 @@ create table tb_cart (
     references tb_product (p_idx) 
 );
 
+  ALTER TABLE tb_cart
+ADD COLUMN parcel int DEFAULT '0' NOT NULL;
+
+  ALTER TABLE tb_cart
+ADD COLUMN tracking_number varchar(70) DEFAULT '0' NOT NULL;
 
 
 

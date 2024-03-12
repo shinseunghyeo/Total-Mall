@@ -15,6 +15,7 @@ public class ProductMyplistService implements ProductService {
 	private ProductDAO dao;
 	@Override
 	public List<ProductVO> getProducts3(SearchVO vo){
+		vo.setStartIdx((vo.getPageNum()-1)*10);
 		return dao.getProducts3(vo);
 	}
 }

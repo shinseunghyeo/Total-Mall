@@ -36,7 +36,8 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
-    		totalOrderCnt, cList5, parcel,pPage2,allorderCnt, allproductsCnt,sellerOrderCnt,
+    		totalOrderCnt, cList5, parcel,pPage2,allorderCnt, allproductsCnt,sellerOrderCnt,myproductCnt,
+    		
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -336,15 +337,29 @@ public class ProductController {
 
 	    return "redirect:/product/list.do";
 	}
-	// 내 상품보기
+	//기업회원 내 상품보기
 	@GetMapping("myplist.do")
 	public String myplist(@ModelAttribute("sVO") SearchVO searchVO, Model model,
 			@SessionAttribute("member") MemberVO member) {
+		int m_idx = member.getM_idx();
+		searchVO.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+		if(searchVO.getPageNum() == 0) {
+    		searchVO.setPageNum(1);
+    	}
+		
 		List<ProductVO> productList3 = mypList.getProducts3(searchVO);
 		model.addAttribute("productList3", productList3);
 
+		int totalRows = myproductCnt.myproductCnt(searchVO);
+		
+		System.out.println("totalRows:"+totalRows);
+		
+    	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+    	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+    	model.addAttribute("pageNav", pageNav);
+
 		// MemberVO에서 m_idx 값을 가져와서 설정
-		int m_idx = member.getM_idx();
+		
 		model.addAttribute("m_idx", m_idx);
 		return "product/myplist";
 	}
@@ -391,8 +406,6 @@ public class ProductController {
 		if(searchVO.getPageNum() == 0) {
     		searchVO.setPageNum(1);
     	}
-		List<CartVO> orderList = myoList.getOrders(searchVO);
-		model.addAttribute("orderList", orderList);
 		
 		int totalRows = sellerOrderCnt.sellerOrderCnt(searchVO);
 		
