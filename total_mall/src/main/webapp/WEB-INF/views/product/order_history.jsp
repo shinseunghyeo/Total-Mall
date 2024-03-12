@@ -23,7 +23,6 @@ function openReviewPage(p_idx) {
 			<h1>전체 주문내역</h1>
 
 
-
 			<div class="new_order">
 				<div class="new-menu">
 					<div class="p-1">

@@ -32,6 +32,5 @@
 			<a href="order_history.do?pageNum=${pageNav.total_pageNum}&pageBlock=${pageNav.last_pageBlock}">&gt;&gt;</a>
 		</c:if>	
 
-
  
 
