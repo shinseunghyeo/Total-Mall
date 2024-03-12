@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.PvocVO;
 import human.smart.totalMall.vo.SalesVO;
@@ -133,5 +134,11 @@ public class MemberDAO {
 	public List<VocVO> sellerbuyerVocList(int m_idx){
 		return sqlSession.selectList(MAPPER+".sellerbuyerVocList", m_idx);
 	}
+	
+	//주문상세보기 페이지 처리하기
+	public List<CartVO> getViewOrderDetails(int o_idx){
+		return sqlSession.selectList(MAPPER+".getViewOrderDetails", o_idx);
+	}
+	
 	
 }

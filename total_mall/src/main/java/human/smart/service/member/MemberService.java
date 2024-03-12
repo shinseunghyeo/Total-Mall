@@ -2,6 +2,7 @@ package human.smart.service.member;
 
 import java.util.List;
 
+import human.smart.totalMall.vo.CartVO;
 import human.smart.totalMall.vo.MemberVO;
 import human.smart.totalMall.vo.ProductVO;
 import human.smart.totalMall.vo.PvocVO;
@@ -31,6 +32,7 @@ public interface MemberService {
 	default List<MemberVO> memberCnt(){return null;}
 	default List<PvocVO> buyerInquirylist(String member_id){return null;}
 	default List<VocVO> sellerbuyerVocList(int m_idx){return null;}
+	default List<CartVO> getViewOrderDetails(int o_idx){return null;}
 	
 
 }

@@ -40,7 +40,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry, sellerbuyerVoc;
+				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry, sellerbuyerVoc, mViewOrderDetails;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
@@ -866,5 +866,37 @@ public Map<String, String> parcelMap() {
     parcelMap.put("20", "http://www.honamlogis.co.kr/page/index.php?pid=tracking_number&SLIP_BARCD=");
     return parcelMap;
 }
+
+	//주문상세보기 페이지 요청
+	@GetMapping("/ViewOrderDetails.do")
+	public String ViewOrderDetails(int o_idx, Model model) {
+		List<CartVO> orderList = mViewOrderDetails.getViewOrderDetails(o_idx);
+		CartVO firstCartVO = orderList.get(0);
+		int m_idx = firstCartVO.getMMIdx();
+		MemberVO vo = mInfo.getMember(m_idx);
+		
+		int totalSum = 0;
+		for (CartVO cartVO : orderList) {
+		    int itemPrice = cartVO.getPrice() * cartVO.getC_quantity();
+		    totalSum += itemPrice;
+		}
+		
+		int totalDiscount = 0;
+		for (CartVO cartVO : orderList) {
+		    int itemDiscount = (int)((cartVO.getPrice()*cartVO.getC_quantity())/100.0*cartVO.getDiscount_rate());
+		    totalDiscount += itemDiscount;
+		}
+		int orderListSize = orderList.size();
+		
+		
+		model.addAttribute("totalProductPrice", totalSum);
+		model.addAttribute("totalDiscount", totalDiscount);
+		model.addAttribute("orderListSize", orderListSize);
+		model.addAttribute("member2", vo);
+		model.addAttribute("orderList", orderList);
+		return "member/ViewOrderDetails";
+	}
+
+
 
 }
