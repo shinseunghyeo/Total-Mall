@@ -12,11 +12,14 @@
         font-weight: bold;
     	font-style: normal;
     }
-    a, p, h2, h3, h4, h5, span, li, textarea, #ProductContent {
+    a, p, h2, h3, h4, h5, span, li, textarea, #ProductContent, #shippingInfo div{
     	font-family: 'GmarketSansTTFLight';
     }
     button, h1, .pageColor pageColor_on, .pageColor, .bold{
     	font-family: 'GmarketSansTTFBold';
+    }
+    .line-through{
+    	text-decoration: line-through;
     }
     /* ---------상품상세보기--------- */
     #ProductdetailLine{width: 1050px;margin: auto;height: 650px;}

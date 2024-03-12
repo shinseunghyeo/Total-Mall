@@ -106,7 +106,7 @@
         // 차트 옵션
         var options = {
             title: '주문 통계',
-            curveType: 'function',
+            curveType: 'none',
             legend: {position: 'bottom'}
         };
 
