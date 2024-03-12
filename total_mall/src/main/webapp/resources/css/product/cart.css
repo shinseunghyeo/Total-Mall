@@ -27,6 +27,9 @@
     .bold3{
     	color: red;
     }
+    .20px{
+    	font-size: 20px;
+    }
     
     
     
@@ -239,6 +242,7 @@
     }
     #right-div p, #right-div h1, #right-div h2{/* 우측박스 p,h1,h2 전체 마진 0 */
         margin: 0;
+        font-size: 20px;
     }
     #right-div{
         width: 100%;
