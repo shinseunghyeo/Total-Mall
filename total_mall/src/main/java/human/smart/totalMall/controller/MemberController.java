@@ -44,7 +44,7 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2;
+	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2, allorderCnt, pPage2;
 	
 	
 	@Setter(onMethod_={ @Autowired })
@@ -777,11 +777,26 @@ public String allpList(Model model) {
 
 //관리자 전체 주문내역 처리(ajax)
 @GetMapping("adminmypage/product/allorderlist.do")
-public String allolist(Model model) {
+public String allolist(SearchVO searchVO, Model model) {
+	if(searchVO.getPageNum() == 0) {
+		searchVO.setPageNum(1);
+	}
+	
+	int totalRows = allorderCnt.allorderCnt(searchVO);
+	
+	System.out.println("totalRows:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
 
-List<CartVO> allorderList = alloList.getOrders3();
-model.addAttribute("allorderList", allorderList);
-
+	
+	System.out.println("allorderCnt:"+pageNav.getTotalRows());
+	System.out.println("startIdx"+pageNav.getStartNum());
+    List<CartVO> allorderList = alloList.getOrders3(searchVO);
+    model.addAttribute("allorderList", allorderList);
 // 주문내역 페이지로 이동
 return "product/allorderlist";
 }

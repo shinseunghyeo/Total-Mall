@@ -115,9 +115,15 @@ public class ProductDAO{
 	}
 	
 	//관리자 전체 주문보기	
-	public List<CartVO> getOrders3(){
-		return sqlSession.selectList(MAPPER+".getOrders3");
+	public List<CartVO> getOrders3(SearchVO vo){
+		return sqlSession.selectList(MAPPER+".getOrders3",vo);
 	}
+	
+	//관리자 주문조회 합계
+	public int allorderCnt(SearchVO vo) {
+		return sqlSession.selectOne(MAPPER + ".allorderCnt", vo);
+	}
+	
 	//오늘 등록된 상품수
 	public int todayProduct() {
 		return sqlSession.selectOne(MAPPER+".todayProduct");

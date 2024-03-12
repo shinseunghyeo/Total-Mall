@@ -36,7 +36,7 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
-    		totalOrderCnt, cList5, parcel,pPage2,
+    		totalOrderCnt, cList5, parcel,pPage2,allorderCnt,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -409,16 +409,37 @@ public class ProductController {
 		return "product/allplist";
 	}
 
-	// 기업회원 전체 주문내역
+	
+	
+	// 관리자 전체 주문내역
 	@GetMapping("/allorderlist.do")
-	public String allolist(Model model) {
-	   
-	    List<CartVO> allorderList = alloList.getOrders3();
+	public String allolist(SearchVO searchVO,Model model) {
+		if(searchVO.getPageNum() == 0) {
+    		searchVO.setPageNum(1);
+    	}
+		
+		int totalRows = allorderCnt.allorderCnt(searchVO);
+		
+		System.out.println("totalRows:"+totalRows);
+		
+		PageNav pageNav = new PageNav();
+		
+    	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+    	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+    	model.addAttribute("pageNav", pageNav);
+
+    	
+    	System.out.println("allorderCnt:"+pageNav.getTotalRows());
+    	System.out.println("startIdx"+pageNav.getStartNum());
+	    List<CartVO> allorderList = alloList.getOrders3(searchVO);
 	    model.addAttribute("allorderList", allorderList);
 
 	    // 주문내역 페이지로 이동
 	    return "product/allorderlist";
 	}
+	
+	
+	
 
 	//오늘 등록된 상품수 호출
 	@RequestMapping("/todayProduct")

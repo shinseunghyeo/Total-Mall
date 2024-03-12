@@ -322,11 +322,19 @@
 	</select>
 
 	<!-- 관리자 주문조회: select -->
-	<select id="getOrders3" resultType="cartVO">
+	<select id="getOrders3" parameterType="searchVO" resultType="cartVO">
 		SELECT *
 		FROM orderList
 		ORDER BY o_update_time desc
+		limit #{startIdx}, 10
 	</select>
+	
+	<!-- 관리자 주문조회 합계 -->
+	<select id="allorderCnt" parameterType="searchVO" resultType="_int">
+	    SELECT count(*)
+		FROM orderList
+		ORDER BY o_update_time desc
+	</select>	
 	
 	<!-- 오늘 등록된 상품수: select -->
 	<select id="todayProduct" resultType="_int">
