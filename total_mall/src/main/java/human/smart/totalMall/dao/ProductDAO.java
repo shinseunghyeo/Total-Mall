@@ -105,13 +105,22 @@ public class ProductDAO{
 		return sqlSession.selectList(MAPPER+".getOrders_1", m_idx);
 	}
 	//기업회원 주문보기	
-	public List<CartVO> getOrders2(int m_idx){
-		return sqlSession.selectList(MAPPER+".getOrders2", m_idx);
+	public List<CartVO> getOrders2(SearchVO searchVO){
+		return sqlSession.selectList(MAPPER+".getOrders2", searchVO);
+	}
+	//기업회원 주문보기	합계
+	public int sellerOrderCnt(SearchVO vo) {
+		return sqlSession.selectOne(MAPPER + ".sellerOrderCnt", vo);
 	}
 	
+	
 	//관리자 전체 상품보기
-	public List<ProductVO> getProducts4() {
-		return sqlSession.selectList(MAPPER+".getProducts4");
+	public List<ProductVO> getProducts4(SearchVO vo) {
+		return sqlSession.selectList(MAPPER+".getProducts4", vo);
+	}
+	//관리자 전체 상품보기 합계
+	public int allproductsCnt(SearchVO vo) {
+		return sqlSession.selectOne(MAPPER + ".allproductsCnt", vo);
 	}
 	
 	//관리자 전체 주문보기	

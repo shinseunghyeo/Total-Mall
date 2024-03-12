@@ -107,7 +107,7 @@ function updateProductStatus(action) {
 
 								</td>
 							</tr>
-							<c:forEach begin="1" end="20" varStatus="vs">
+							<c:forEach begin="1" end="10" varStatus="vs">
 								<tr>
 									<td colspan="6" class="all_p_list">
 										<div class="p_idx">${allList[vs.count-1].p_idx}</div>
@@ -170,6 +170,9 @@ function updateProductStatus(action) {
 					</c:choose>
 
 				</table>
+			</div>
+			<div>
+			<%@ include file="allprodpaging.jsp" %>
 			</div>
 		</div>
 	</div>

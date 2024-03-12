@@ -42,8 +42,11 @@ public interface ProductService {
 	default int discontinued(int p_idx) {return 0;}
 	default int continued(int p_idx) {return 0;}
 	default List<ProductVO> getProducts3(SearchVO vo){return null;}
-	default List<CartVO> getOrders2(int m_idx){return null;}
-	default List<ProductVO> getProducts4(){return null;}
+	default List<CartVO> getOrders2(SearchVO searchVO){return null;}
+	default int sellerOrderCnt(SearchVO vo){return 0;}
+	default List<ProductVO> getProducts4(SearchVO vo){return null;}
+	default int allproductsCnt(SearchVO vo){return 0;}
+	
 	default List<CartVO> getOrders3(SearchVO vo){return null;}
 	default int totalOrderCnt(SearchVO vo){return 0;}
 	
@@ -65,6 +68,10 @@ public interface ProductService {
 	default CartVO cartCheck(CartVO vo) {return null;}
 	default int cartOidxUpdate(int m_idx, int o_idx) {return 0;}
 	default List<ProductVO> getProducts5(SearchVO vo){return null;}
+	
+	
+	
+	
 	
 	
 	

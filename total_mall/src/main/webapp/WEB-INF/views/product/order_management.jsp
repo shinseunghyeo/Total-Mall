@@ -233,6 +233,9 @@
 					</div>
 				</c:forEach>
 			</div>
+			<div>
+			<%@ include file="sellerorderpaging.jsp" %>
+			</div>
 		</div>
 	</div>
 

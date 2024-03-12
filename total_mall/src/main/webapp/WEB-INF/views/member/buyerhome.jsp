@@ -106,7 +106,7 @@ function openParcelLink(parcel, parcelMap) {
 						<p>기타</p>
 					</div>
 				</div>
-				<c:forEach begin="1" end="10" varStatus="vs">
+				<c:forEach begin="1" end="${orderList_1.size()}" varStatus="vs">
 					<div class="new-item">
 
 						<div class="new-sort">
