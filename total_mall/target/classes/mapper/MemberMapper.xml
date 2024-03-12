@@ -167,5 +167,12 @@
 	    WHERE m_idx = #{m_idx}
 	    ORDER BY post_date DESC
  	</select>
+ 	
+ 	<!-- 주문상세보기 페이지 요청 -->
+ 	<select id="getViewOrderDetails" parameterType="_int" resultType="cartVO">
+		SELECT * FROM totaldb.orderlist
+		where o_idx = #{o_idx}
+		
+	</select>
 	
 </mapper>

@@ -54,7 +54,7 @@
     <c:choose>
     	<c:when test="${not empty member and (member.grade eq 1 or member.grade eq 2 or member.grade eq 3 or member.grade eq 4 or member.grade eq 5)}">
     		<div class="CategoryBestLine">
-		        <h2 class="bold">추천 카테고리 상품</h2>
+		        <h2 class="bold">선택 카테고리 상품</h2>
 		        <div class="CategoryBest">
 		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide)" src="resources/img/Mallimg/왼쪽 아이콘.png">
 		            <div class="CategoryBestContainer">

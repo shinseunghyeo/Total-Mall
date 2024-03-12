@@ -51,6 +51,8 @@
 			<exclude-mapping path="/member/loginProcess.do"/>
 			<exclude-mapping path="/member/allSales.do"/>
 			
+			<exclude-mapping path="/member/ViewOrderDetails.do"/>
+			
 	 
 			<exclude-mapping path="/product/list.do"/>
 			<exclude-mapping path="/product/item.do"/>
