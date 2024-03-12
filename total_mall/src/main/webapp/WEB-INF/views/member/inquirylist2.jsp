@@ -66,7 +66,7 @@ function openPopup(url) {
 <body>
 <div id="nav_back"></div>
 	<div class="container">
-<h1>상품 문의 내역 확인</h1>
+<h1>고객센터 문의 내역 확인</h1>
 
 		<table>
 			<c:choose>

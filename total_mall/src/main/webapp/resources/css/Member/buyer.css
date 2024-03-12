@@ -264,8 +264,9 @@
 	width: 11%
 	}
     .new-img-div {
-        width: 11%;
-    }
+    width: 11%;
+    height: -webkit-fill-available;
+}
     .new-img {
         width: 100%;
         height: 100%;
@@ -292,6 +293,9 @@
 	    word-wrap: break-word;
 	    white-space: pre-wrap;
     }
+	.new-date {
+	line-height: 1.25rem;
+	}
 
     .new-name p a {
         text-decoration: none;

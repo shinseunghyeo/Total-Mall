@@ -36,7 +36,7 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
-    		totalOrderCnt, cList5,
+    		totalOrderCnt, cList5, parcel,pPage2,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -353,25 +353,32 @@ public class ProductController {
 
 	
 	//개인회원 전체 주문내역
-	@GetMapping("/order_history.do")
-	public String orderlist(@ModelAttribute("sVO")SearchVO searchVO, Model model, 
-			@SessionAttribute("member") MemberVO member) {
-		int m_idx = member.getM_idx();
-		searchVO.setM_idx(m_idx);
-		List<CartVO> orderList = myoList.getOrders(searchVO);
-		model.addAttribute("orderList", orderList);
-		if(searchVO.getPageNum() == 0) {
-    		searchVO.setPageNum(1);
-    	}
-    	pageNav2.setTotalRows(totalOrderCnt.getTotalCount(searchVO));
-    	pageNav2 = pPage.setPageNav(pageNav2, searchVO.getPageNum(), searchVO.getPageBlock());
-    	model.addAttribute("pageNav2", pageNav2);
-    	
-    	System.out.println("totalOrderCnt");
-    	System.out.println("startIdx");
-    	
-		return "product/order_history";
-	}
+		@GetMapping("/order_history.do")
+		public String orderlist(@ModelAttribute("sVO")SearchVO searchVO, Model model, 
+				@SessionAttribute("member") MemberVO member) {
+			int m_idx = member.getM_idx();
+			
+			searchVO.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+			if(searchVO.getPageNum() == 0) {
+	    		searchVO.setPageNum(1);
+	    	}
+			List<CartVO> orderList = myoList.getOrders(searchVO);
+			model.addAttribute("orderList", orderList);
+			
+			int totalRows = totalOrderCnt.totalOrderCnt(searchVO);
+			
+			System.out.println("totalRows:"+totalRows);
+			
+	    	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	    	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+	    	model.addAttribute("pageNav", pageNav);
+
+	    	
+	    	System.out.println("totalOrderCnt:"+pageNav.getTotalRows());
+	    	System.out.println("startIdx");
+	    	
+			return "product/order_history";
+		}
 	
 	
 	// 기업회원 전체 주문내역
@@ -495,6 +502,83 @@ public class ProductController {
 		return "forward:/member/adminhome.do"; // JSP 페이지 이름
 	}
 	
+	//송장번호 등록하기
+			@PostMapping("/parcel.do")
+			public String parcel(CartVO vo, Model model) {
+			    
+			    int p_idx = vo.getP_idx();
+
+			    String viewPage = "product/order_management";// 글수정 실패시 JSP페이지
+
+				// 글등록 요청을 BoardModifyService클래스로 처리
+				int result = parcel.parcel(vo);
+
+				if (result == 1) {
+					viewPage = "redirect:product/order_management";// 글수정 성공시 JSP페이지
+				}
+
+				return viewPage;
+			}
+			
+			
+			
+			//택배사 이름 맵
+			@ModelAttribute("parcel_companyMap")
+			public Map<String, String> parcel_companyMap() {
+				// 영어값과 한글값을 매핑한 Map 생성
+				Map<String, String> parcel_companyMap = new HashMap<>();
+				parcel_companyMap.put("1", "CJ대한통운");
+				parcel_companyMap.put("2", "한진택배");
+				parcel_companyMap.put("3", "롯데택배");
+				parcel_companyMap.put("4", "로젠택배");
+				parcel_companyMap.put("5", "일양로지스");
+				parcel_companyMap.put("6", "DHL");
+				parcel_companyMap.put("7", "FedEx");
+				parcel_companyMap.put("8", "대신택배");
+				parcel_companyMap.put("9", "경동택배");
+				parcel_companyMap.put("10", "합동택배");
+				parcel_companyMap.put("11", "CU편의점택배");
+				parcel_companyMap.put("12", "GS Postbox 택배");
+				parcel_companyMap.put("13", "TNT Express");
+				parcel_companyMap.put("14", "천일택배");
+				parcel_companyMap.put("15", "건영택배");
+				parcel_companyMap.put("16", "GSM nton");
+				parcel_companyMap.put("17", "ECMS Express");
+				parcel_companyMap.put("18", "굿투럭");
+				parcel_companyMap.put("19", "GSI Express");
+				parcel_companyMap.put("20", "우리택배");
+				return parcel_companyMap;
+			}
+
+
+			//택배사 주소 맵
+			@ModelAttribute("parcelMap")
+			public Map<String, String> parcelMap() {
+			    // 영어값과 한글값을 매핑한 Map 생성
+			    Map<String, String> parcelMap = new HashMap<>();
+			    parcelMap.put("1", "http://nexs.cjgls.com/web/info.jsp?slipno=");
+			    parcelMap.put("2", "https://www.hanjin.com/kor/CMS/DeliveryMgr/WaybillResult.do?\r\n"
+			    		+ "mCode=MN038&schLang=KR&wblnumText2=");
+			    parcelMap.put("3", "https://www.lotteglogis.com/open/tracking?InvNo=");
+			    parcelMap.put("4", "https://www.ilogen.com/web/personal/trace/");
+			    parcelMap.put("5", "https://www.ilyanglogis.com/functionality/popup_result.asp?hawb_no=");
+			    parcelMap.put("6", "https://www.dhl.com/kr-ko/home/tracking.html?tracking-id=");
+			    parcelMap.put("7", "https://www.fedex.com/fedextrack/?trknbr=");
+			    parcelMap.put("8", "https://www.ds3211.co.kr/freight/internalFreightSearch.ht?billno=");
+			    parcelMap.put("9", "https://kdexp.com/newDeliverySearch.kd?barcode=");
+			    parcelMap.put("10", "https://hdexp.co.kr/deliverySearch2.hd?barcode=");
+			    parcelMap.put("11", "https://www.cupost.co.kr/postbox/delivery/localResult.cupost?invoice_no=");
+			    parcelMap.put("12", "https://www.cvsnet.co.kr/invoice/tracking.do?invoice_no=");
+			    parcelMap.put("13", "https://www.tnt.com/express/ko_kr/site/shipping-tools/tracking.html?searchType=con&cons=");
+			    parcelMap.put("14", "http://www.chunil.co.kr/HTrace/HTrace.jsp?transNo=");
+			    parcelMap.put("15", "https://www.kunyoung.com/goods/goods_01.php?mulno=");
+			    parcelMap.put("16", "http://expressweb.co.kr/member/loginTracing.do?fwdCode=gexp&bound=AI&langCode=KOR&HBLNO=");
+			    parcelMap.put("17", "https://www.ecmsglobal.com/ko-kr/tracking.html?orderNumber=");
+			    parcelMap.put("18", "http://www.goodstoluck.co.kr/tracking/tracking.php?Txt_word=");
+			    parcelMap.put("19", "https://gsiexpress.com/track_pop.php?track_type=ship_num&query_num=");
+			    parcelMap.put("20", "http://www.honamlogis.co.kr/page/index.php?pid=tracking_number&SLIP_BARCD=");
+			    return parcelMap;
+			}
 	
 	
   	//장바구니 페이지 요청 처리

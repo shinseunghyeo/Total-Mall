@@ -96,7 +96,7 @@ public class ProductDAO{
 	
 	//개인회원 주문조회 합계
 	public int totalOrderCnt(SearchVO vo) {
-		return sqlSession.update(MAPPER + ".totalOrderCnt", vo);
+		return sqlSession.selectOne(MAPPER + ".totalOrderCnt", vo);
 	}
 	
 	
@@ -150,6 +150,11 @@ public class ProductDAO{
 	//상품 상태에 따른 합계 조회(관리자)
 	public List<ProductVO> statusP2(){
 		return sqlSession.selectList(MAPPER+".statusP2");
+	}
+	
+	//송장번호 입력
+	public int parcel(CartVO vo) {
+		return sqlSession.update(MAPPER + ".parcel", vo);
 	}
 	
 	public List<ProductVO> getProducts(SearchVO vo){

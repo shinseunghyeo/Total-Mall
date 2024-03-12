@@ -25,13 +25,7 @@ CREATE TABLE tb_product (
   );
 
   
-CREATE VIEW orderList AS
-SELECT c.c_idx, p.p_idx, p.m_idx, c.o_idx, c.c_quantity, o.o_update_time, 
-	o.totalprice, c.payment_or_not, p.product_name, p.price, p.discount_rate, p.save_file_name1, c.m_idx AS mMIdx
-FROM 
-    tb_cart c 
-    LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
-    LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx;
+
     
     
     
@@ -124,7 +118,7 @@ CREATE VIEW buyer_order_view AS
 SELECT
 	c.o_idx, c.c_idx, c.m_idx, c.c_quantity, c.c_update_time,
 	p.p_idx, p.product_name, p.price, p.discount_rate, p.save_file_name1,
-	o.o_update_time, o.totalprice, c.payment_or_not
+	o.o_update_time, o.totalprice, c.payment_or_not, c.parcel, c.tracking_number
 FROM
 	tb_cart c
 	LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
@@ -154,3 +148,15 @@ WHERE
   grade NOT IN (8)  
 ORDER BY 
   grade ASC;
+  
+  
+  
+  
+  
+  CREATE VIEW orderList AS
+SELECT c.c_idx, p.p_idx, p.m_idx, c.o_idx, c.c_quantity, o.o_update_time, 
+	o.totalprice, c.payment_or_not, p.product_name, p.price, p.discount_rate, p.save_file_name1, c.m_idx AS mMIdx, c.parcel, c.tracking_number
+FROM 
+    tb_cart c 
+    LEFT OUTER JOIN tb_product p ON c.p_idx = p.p_idx
+    LEFT OUTER JOIN tb_order o ON c.o_idx = o.o_idx;

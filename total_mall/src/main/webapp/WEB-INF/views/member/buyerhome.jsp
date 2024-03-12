@@ -15,6 +15,18 @@ function openReviewPage(p_idx) {
 }
 
 
+function openParcelLink(parcel, parcelMap) {
+    // parcelMap에 해당 택배사가 있는지 확인
+    var link = parcelMap[parcel];
+    if (link) {
+        // 해당 택배사의 링크를 가져와서 새 창 열기
+        window.open(link);
+    } else {
+        alert('해당 택배사의 링크를 찾을 수 없습니다.');
+    }
+}
+
+
 </script>
 
 </head>
@@ -73,7 +85,9 @@ function openReviewPage(p_idx) {
 			<div class="new_order">
 				<div class="new-menu">
 					<div class="p-1">
-						<p><small>주문번호</small></p>
+						<p>
+							<small>주문번호</small>
+						</p>
 					</div>
 					<div class="p-2">
 						<p>상품명</p>
@@ -93,12 +107,12 @@ function openReviewPage(p_idx) {
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
 					<div class="new-item">
-						
+
 						<div class="new-sort">
 							<div>${orderList_1[vs.count-1].o_idx}</div>
 							<small>${p_or_notMap[orderList_1[vs.count-1].payment_or_not.toString()]}</small>
-							</div>
-							<div class="new-img-div">
+						</div>
+						<div class="new-img-div">
 							<c:if test="${not empty orderList_1[vs.count-1].save_file_name1}">
 								<img
 									src="../resources/uploads/${orderList_1[vs.count-1].save_file_name1}"
@@ -114,8 +128,9 @@ function openReviewPage(p_idx) {
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList_1[vs.count-1].c_update_time}"
-									pattern="yyyy-MM-dd HH:mm:ss" />
+								<small><fmt:formatDate
+										value="${orderList_1[vs.count-1].c_update_time}"
+										pattern="yyyy-MM-dd HH:mm:ss" /></small>
 							</p>
 						</div>
 						<div class="new-quantity">
@@ -136,11 +151,18 @@ function openReviewPage(p_idx) {
 									onclick="openReviewPage(${orderList_1[vs.count-1].p_idx});">
 									<input type="button" value="리뷰 작성" class="new-another-button">
 								</a>
-								<a href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList_1[vs.count-1].p_idx}"
-							target="_blank">
-								<input type="button" value="문의 하기" class="new-another-button">
-							</a>
-							<a><input type="button" value="주문 상세보기" class="new-another-button"></a>
+								<a
+									href="http://nexs.cjgls.com/web/info.jsp?slipno=${orderList_1[vs.count-1].tracking_number}"
+									target="_blank"> <input type="button" value="배송 추적하기"
+									class="new-another-button">
+								</a>
+
+
+								<a> <input type="button" value="문의 하기"
+									class="new-another-button">
+								</a>
+								<a><input type="button" value="주문 상세보기"
+									class="new-another-button"></a>
 							</c:if>
 						</div>
 					</div>
