@@ -15,7 +15,7 @@
     a, p, h2, h3, h4, h5, span, li, textarea, #ProductContent, #shippingInfo div{
     	font-family: 'GmarketSansTTFLight';
     }
-    button, h1, .pageColor pageColor_on, .pageColor, .bold{
+    button, h1, .pageColor pageColor_on, .pageColor, .bold, td{
     	font-family: 'GmarketSansTTFBold';
     }
     .line-through{

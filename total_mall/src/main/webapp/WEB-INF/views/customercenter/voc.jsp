@@ -28,7 +28,6 @@
     </div>
     <div id="CustomerList"><br>
         <div id="CustomerListbox">
-            <a href="${pageContext.request.contextPath}/customercenter/inquiry.do">문의내역</a>
             <a href="${pageContext.request.contextPath}/customercenter/QnA.do">자주 묻는 질문</a>
             <a href="${pageContext.request.contextPath}/customercenter/voc.do" style="color: coral;">문의하기</a>
             <a href="${pageContext.request.contextPath}/customercenter/notice.do?service">토탈소식</a>

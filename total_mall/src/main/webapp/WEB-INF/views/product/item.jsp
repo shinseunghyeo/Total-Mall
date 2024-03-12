@@ -203,41 +203,41 @@ function continuedPost() {
 				<img src="../resources/uploads/${product.save_file_name2}">
             <br><br><br><br><br><br><hr>
             <h3 class="bold">상세내용</h3>
-            <span>${product.detail}</span><br><hr>
+            <span class="bold">${product.detail}</span><br><hr>
             <h3 class="bold">상품 정보 제공 고시</h3><hr>
             <table>
                 <tr>
                     <td class="bold">상품번호</td>
-                    <td>${product.product_code}</td>
+                    <td class="bold">${product.product_code}</td>
                 </tr>
                 <tr>
                     <td class="bold">브랜드</td>
-                    <td>${product.brand}</td>
+                    <td class="bold">${product.brand}</td>
                 </tr>
                 <tr>
                     <td class="bold">부가세 면세여부</td>
-                    <td>과세상품</td>
+                    <td class="bold">과세상품</td>
                 </tr>
                 <tr>
                     <td class="bold">사업자구분</td>
-                    <td>개인사업자</td>
+                    <td class="bold">개인사업자</td>
                 </tr>
                 <tr>
                     <td class="bold">과세자구분</td>
-                    <td>일반과세자+간이과세자(세금계산서 발급사업자)</td>
+                    <td class="bold">일반과세자+간이과세자(세금계산서 발급사업자)</td>
                 </tr>
             </table><hr>
             <h3 class="bold">주의사항</h3>
             <ol>
-                <li>
+                <li class="bold">
                     전자상거래 등에서의 소비자보호법에 관한 법률에 의거하여 미성년자가 물품을 구매하는 경우,<br>
                     법정대리인이 동의하지 않으면 미성년자 본인 또는 법정대리인이 구매를 취소할 수 있습니다.<br>
                 </li>
-                <li>
+                <li class="bold">
                     토탈몰에 등록된 판매 상품과 상품의 내용, 거래 정보 및 가격은 판매자가 등록한 것으로<br>
                     토탈몰은 해당 내용에 대하여 일체의 책임을 지지 않습니다.<br>
                 </li>
-                <li>
+                <li class="bold">
                     토탈몰의 결제시스템을 이용하지 않고 판매자와 직접 거래하실 경우 상품을 받지 못하거나 구매한 상품과 상이한 상품을 받는 등<br>
                     피해가 발생할 수 있으니 유의 바랍니다. 직거래로 인해 발생한 피해에 대해 토탈몰은 책임을 지지 않습니다.<br>
                 </li>
@@ -331,15 +331,15 @@ function continuedPost() {
 	            <h2 class="bold">문의사항</h2>
 	            <table>
 	                <tr>
-	                    <td>상품정보</td>
+	                    <td class="bold">상품정보</td>
 	                    <td>${product.product_name}</td>
 	                </tr>
 	                <tr>
-	                    <td>판매자</td>
+	                    <td class="bold">판매자</td>
 	                    <td>판매자 이름</td>
 	                </tr>
 	                <tr>
-	                    <td>문의 내용</td>
+	                    <td class="bold">문의 내용</td>
 	                    <td style="display:flex;">
 		                    <textarea name="content" placeholder="상품 문의가 필요하시다면 여기에 문의사항을 작성해주세요."></textarea>
 	                    </td>
@@ -356,7 +356,7 @@ function continuedPost() {
         </form>
         
         <div id="shippingInfo">
-            <div>
+            <div class="bold">
                 <h2 class="bold">배송/교환 반품 안내</h2><br>
                 <h3 class="bold">배송정보</h3>
                 배송방법 - 순차배송<br>
