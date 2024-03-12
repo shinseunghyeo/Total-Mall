@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../resources/css/product/payment.css">
 </head>
 <body>
-    <%@ include file="../Main/Header2.jsp" %>
+
     <!-- ---------결제페이지--------- -->
     <div id="PurchaseLine">
         <div class="top-div">
@@ -71,7 +71,7 @@
 
     </div>
     <!-- ---------결제페이지--------- -->
-	<%@ include file="../Main/Footer2.jsp" %>
+
 </body>
 <script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 </html>

@@ -150,7 +150,7 @@
                                     <input type="checkbox" name="order_modify_checkbox" class="order-modify-checkbox" value="${allorderList[vs.count-1].o_idx}">
                                      선택 
                                </form>
-								<input type="button" value="주문 상세보기" class="new-another-button">
+								<a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${allorderList[vs.count-1].o_idx}"><input type="button" value="주문 상세보기" class="new-another-button"></a>
 							</c:if>
 						</div>
 					</div>
@@ -158,6 +158,9 @@
 				</c:forEach>
 
 
+			</div>
+			<div>
+			<%@ include file="allorderpaging.jsp" %>
 			</div>
 		</div>
 	</div>

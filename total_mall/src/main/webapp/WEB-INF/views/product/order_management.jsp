@@ -226,7 +226,8 @@
 								</form>
 
 
-								<input type="button" value="주문 상세보기" class="new-another-button">
+							<a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList2[vs.count-1].o_idx}"><input type="button" value="주문 상세보기" class="new-another-button"></a>
+
 							</c:if>
 						</div>
 					</div>
