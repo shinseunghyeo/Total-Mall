@@ -80,7 +80,7 @@
 				                                    <p class="bold">상품금액</p>
 				                                </div>
 				                                <div style="text-align: center;">
-				                                    <p class="price bold">${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
+				                                    <p class="price bold 20px">${cartList[i-1].price*cartList[i-1].c_quantity }원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -91,7 +91,7 @@
 				                                    <p class="price bold bold3">할인금액</p>
 				                                </div>
 				                                <div class="discount-div">
-				                                    <p class="price bold bold3">${(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue() }원</p>
+				                                    <p class="price bold bold3 20px">${(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue() }원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -102,7 +102,7 @@
 				                                    <p class="bold">배송비</p>
 				                                </div>
 				                                <div>
-				                                    <p class="bold">2,500원</p>
+				                                    <p class="bold 20px">2,500원</p>
 				                                </div>
 				                            </div>
 				                            <div class="cart_item_price-2">
@@ -113,7 +113,7 @@
 				                                    <p class="bold bold2">주문금액</p>
 				                                </div>
 				                                <div>
-				                                    <p class="price bold2">${(cartList[i-1].price*cartList[i-1].c_quantity)-(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()+2500 }원</p>
+				                                    <p class="price bold2 20px">${(cartList[i-1].price*cartList[i-1].c_quantity)-(cartList[i-1].price*cartList[i-1].c_quantity/100*(cartList[i-1].discount_rate)).intValue()+2500 }원</p>
 				                                </div>
 				                            </div>
 				                            
@@ -148,7 +148,7 @@
 	                            <p class="bold">상품금액</p>
 	                        </div>
 	                        <div>
-	                            <h2 class="price bold">${totalOrderAmount }원</h2>
+	                            <h2 class="price bold 20px">${totalOrderAmount }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_second_div">
@@ -156,7 +156,7 @@
 	                            <p class="bold red bold3">할인금액</p>
 	                        </div>
 	                        <div> 
-	                            <h2 class="price bold red bold3">${totalDiscount }원</h2>
+	                            <h2 class="price bold red bold3 20px">${totalDiscount }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_third_div">
@@ -164,7 +164,7 @@
 	                            <p class="bold">배송비</p>
 	                        </div>
 	                        <div>
-	                            <h2 class="price bold">${totalDelivery}원</h2>
+	                            <h2 class="price bold 20px">${totalDelivery}원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_fourth_div">
@@ -172,7 +172,7 @@
 	                            <p class="bold">합계</p>
 	                        </div>
 	                        <div>
-	                            <h2 class="price bold">${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
+	                            <h2 class="price bold 20px">${totalOrderAmount-totalDiscount+totalDelivery }원</h2>
 	                        </div>
 	                    </div>
 	                    <div id="right_fifth_div">

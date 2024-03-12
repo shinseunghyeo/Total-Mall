@@ -89,7 +89,7 @@
 		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/오른쪽 아이콘.png">
 		        </div>
 		    </div>
-		    <div class="CategoryBestLine">
+		    <div class="CategoryBestLine" id="CategoryBestLine2">
 		        <div class="CategoryBest">
 		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide2)" src="resources/img/Mallimg/왼쪽 아이콘.png">
 		            <div class="CategoryBestContainer">
