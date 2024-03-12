@@ -9,49 +9,103 @@
 <meta charset="UTF-8">
 <title>기업회원 주문관리페이지</title>
 <script src="../resources/js/jquery-3.7.1.min.js"></script>
-   <script type="text/javascript" src="../resources/js/Member/loadContent.js"></script>
-   <script>
-        $(document).ready(function() {
-            $(".order-modify-btn").click(function() {
-                var formData = new FormData();
+<script type="text/javascript"
+	src="../resources/js/Member/loadContent.js"></script>
+<script type="text/javascript"
+	src="../resources/js/Member/loadContent.js"></script>
+<script>
+	$(document)
+			.ready(
+					function() {
+						$(".order-modify-btn")
+								.click(
+										function() {
+											var formData = new FormData();
 
-                // 선택된 주문 항목들의 데이터를 수집
-                $(".order-modify-checkbox:checked").each(function() {
-                    var form = $(this).closest('form');
-                    formData.append("p_idx", form.find("input[name='p_idx']").val());
-                    formData.append("payment_or_not", form.find("select[name='payment_or_not']").val());
-                    formData.append("order_modify_checkbox", $(this).val());
-                });
+											// 선택된 주문 항목들의 데이터를 수집
+											$(".order-modify-checkbox:checked")
+													.each(
+															function() {
+																var form = $(
+																		this)
+																		.closest(
+																				'form');
+																formData
+																		.append(
+																				"p_idx",
+																				form
+																						.find(
+																								"input[name='p_idx']")
+																						.val());
+																formData
+																		.append(
+																				"payment_or_not",
+																				form
+																						.find(
+																								"select[name='payment_or_not']")
+																						.val());
+																formData
+																		.append(
+																				"order_modify_checkbox",
+																				$(
+																						this)
+																						.val());
+															});
 
-                if (formData.getAll("order_modify_checkbox").length > 0) {
-                    // AJAX 요청 수행
-                    $.ajax({
-                        type: "POST",
-                        url: "../product/oModify.do",
-                        data: formData,
-                        processData: false,  // 필수: FormData 사용시 false로 설정
-                        contentType: false,  // 필수: FormData 사용시 false로 설정
-                        traditional: true,  // 배열 데이터 전송을 위해 필요
-                        success: function(response) {
-                            // 성공 처리
-                            console.log(response);
-                            alert("변경되었습니다.");
-                            loadContent("../member/sellermypage/product/order_management.do");
-                            
-                        },
-                        error: function(error) {
-                            // 에러 처리
-                            console.error("Ajax request failed: ", error);
-                        }
-                    });
-                } else {
-                    alert("선택된 주문이 없습니다.");
-                }
-            });
-        });
-        
+											if (formData
+													.getAll("order_modify_checkbox").length > 0) {
+												// AJAX 요청 수행
+												$
+														.ajax({
+															type : "POST",
+															url : "../product/oModify.do",
+															data : formData,
+															processData : false, // 필수: FormData 사용시 false로 설정
+															contentType : false, // 필수: FormData 사용시 false로 설정
+															traditional : true, // 배열 데이터 전송을 위해 필요
+															success : function(
+																	response) {
+																// 성공 처리
+																console
+																		.log(response);
+																alert("변경되었습니다.");
+																loadContent("../member/sellermypage/product/order_management.do");
 
-    </script>
+															},
+															error : function(
+																	error) {
+																// 에러 처리
+																console
+																		.error(
+																				"Ajax request failed: ",
+																				error);
+															}
+														});
+											} else {
+												alert("선택된 주문이 없습니다.");
+											}
+										});
+					});
+
+	function submitParcel() {
+		var formData = $('#parcelForm').serialize();
+
+		$
+				.ajax({
+					type : "POST",
+					url : "parcel.do",
+					data : formData,
+					success : function(response) {
+						console.log("Success:", response);
+						loadContent("../member/sellermypage/product/order_management.do");
+					},
+					error : function(error) {
+						console.error("Error:", error);
+						// 에러 처리 로직을 여기에 추가할 수 있습니다.
+					}
+				});
+	}
+</script>
 </head>
 <body>
 
@@ -82,8 +136,10 @@
 						<p>가격</p>
 					</div>
 					<div class="p-6">
-						<p><input type="button" value="주문 상태 변경" class="order-modify-btn"></p>
-						
+						<p>
+							<input type="button" value="주문 상태 변경" class="order-modify-btn">
+						</p>
+
 					</div>
 				</div>
 				<c:forEach begin="1" end="10" varStatus="vs">
@@ -126,32 +182,44 @@
 								</c:if>
 							</p>
 						</div>
-						 <div class="new-another">
-                            <c:if test="${not empty orderList2[vs.count-1].o_idx}">
-                                <form class="order-modify-form">
-                                    <input type="hidden" name="p_idx" value="${orderList2[vs.count-1].p_idx}">
-                                   
-                                    <select name="payment_or_not" class="payment-status">
-                                        <c:forEach var="entry" items="${p_or_notMap}">
-                                        <c:if test="${entry.key ne '0' and entry.key ne '1'}">
-                                            <c:choose>
-                                                <c:when test="${entry.key eq orderList2[vs.count-1].payment_or_not}">
-                                                    <option value="${entry.key}" selected>${entry.value}</option>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <option value="${entry.key}">${entry.value}</option>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:if>    
-                                        </c:forEach>
-                                    </select>
-                                    <!-- 주문 상태 변경 체크박스 -->
-                                    <input type="checkbox" name="order_modify_checkbox" class="order-modify-checkbox" value="${orderList2[vs.count-1].o_idx}">
-                                     선택 
-                               </form>
+						<div class="new-another">
+							<c:if test="${not empty orderList2[vs.count-1].o_idx}">
+								<form class="order-modify-form">
+									<input type="hidden" name="p_idx"
+										value="${orderList2[vs.count-1].p_idx}"> <select
+										name="payment_or_not" class="payment-status">
+										<c:forEach var="entry" items="${p_or_notMap}">
+											<c:if test="${entry.key ne '0' and entry.key ne '1'}">
+												<c:choose>
+													<c:when
+														test="${entry.key eq orderList2[vs.count-1].payment_or_not}">
+														<option value="${entry.key}" selected>${entry.value}</option>
+													</c:when>
+													<c:otherwise>
+														<option value="${entry.key}">${entry.value}</option>
+													</c:otherwise>
+												</c:choose>
+											</c:if>
+										</c:forEach>
+									</select>
+									<!-- 주문 상태 변경 체크박스 -->
+									<input type="checkbox" name="order_modify_checkbox"
+										class="order-modify-checkbox"
+										value="${orderList2[vs.count-1].o_idx}"> 선택
+								</form>
+								<form id="parcelForm" action="parcel.do" method="post">
+									<input type="hidden" name="p_idx"
+										value="${orderList2[vs.count-1].p_idx}"> <select id="parcelCompany"
+										name="parcel">
+										<c:forEach var="entry" items="${parcel_companyMap}">
+											<option value="${entry.key}">${entry.value}</option>
+										</c:forEach>
+									</select> <input type="text" name="tracking_number"
+										value="${orderList2[vs.count-1].tracking_number}"> <input
+										type="submit" value="송장번호 입력" class="new-another-button">
+								</form>
 
 
-								<input type="submit" value="송장번호 입력" class="new-another-button">
 								<input type="button" value="주문 상세보기" class="new-another-button">
 							</c:if>
 						</div>

@@ -57,26 +57,27 @@ $(function () {
             });
         };
 
-        if ($(this).is(".buyer_nav_ul_li:eq(3)")) {
+        if ($(this).is(".buyer_nav_ul_li:eq(2)")) {
             loadContent("buyermypage/member/buyerupdate.do");
-            $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(3))").css({
+            $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(2))").css({
                 backgroundColor: "rgba(224, 224, 224, 0.42)",
                 fontFamily: 'GmarketSansTTFLight',
         fontSize: "16px"
             });
         };
 
-//        if ($(this).is(".buyer_nav_ul_li:eq(4)")) {
-//            loadContent("buyermypage/member/buyeraddress.do");
-//            $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(4))").css({
-//                backgroundColor: "rgba(224, 224, 224, 0.42)",
-//                fontFamily: 'GmarketSansTTFLight',
-//        fontSize: "16px"
-//            });
-//        };
 
-            if ($(this).is(".buyer_nav_ul_li:eq(4)")) {
+            if ($(this).is(".buyer_nav_ul_li:eq(3)")) {
         loadContent("buyermypage/product/myreview.do");
+        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(3))").css({
+            backgroundColor: "rgba(224, 224, 224, 0.42)",
+            fontFamily: 'GmarketSansTTFLight',
+        fontSize: "16px"
+        });
+    };
+
+           if ($(this).is(".buyer_nav_ul_li:eq(4)")) {
+        loadContent("buyermypage/member/inquirylist.do");
         $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(4))").css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
             fontFamily: 'GmarketSansTTFLight',
@@ -84,18 +85,9 @@ $(function () {
         });
     };
 
-           if ($(this).is(".buyer_nav_ul_li:eq(5)")) {
-        loadContent("buyermypage/member/inquirylist.do");
-        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(5))").css({
-            backgroundColor: "rgba(224, 224, 224, 0.42)",
-            fontFamily: 'GmarketSansTTFLight',
-        fontSize: "16px"
-        });
-    };
-
-    if ($(this).is(".buyer_nav_ul_li:eq(6)")) {
+    if ($(this).is(".buyer_nav_ul_li:eq(5)")) {
         loadContent("buyermypage/member/inquirylist2.do");
-        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(6))").css({
+        $(".buyer_nav_ul_li:not(.buyer_nav_ul_li:eq(5))").css({
             backgroundColor: "rgba(224, 224, 224, 0.42)",
             fontFamily: 'GmarketSansTTFLight',
         fontSize: "16px"

@@ -222,7 +222,7 @@
 	</insert>
 	
 	<!-- 상품 수정하기: update -->
-	<insert id="modify" parameterType="ProductVO">
+	<update id="modify" parameterType="ProductVO">
 		<choose>
 			<when test="origin_file_name1 != null and origin_file_name2 != null">		
 				update tb_product set category=#{category}, product_name=#{product_name}, product_code=#{product_code}, 
@@ -253,7 +253,7 @@
 					   				where p_idx=#{p_idx}
 			</otherwise>
 		</choose>
-	</insert>
+	</update>
 	
 	<!-- 상품 판매중단 처리: update -->
 	<update id="discontinued" parameterType="_int">
@@ -293,11 +293,12 @@
 	<select id="totalOrderCnt" parameterType="searchVO" resultType="_int">
 	SELECT count(*) FROM buyer_order_view
 	WHERE m_idx = #{m_idx}
+	ORDER BY o_update_time DESC
 	</select>
 	
 	
 	<!-- 개인회원 홈 주문조회: select -->
-	<select id="getOrders_1" parameterType="_int" resultType="cartVO">
+	<select id="getOrders_1" parameterType="_int" resultType="CartVO">
 		SELECT * FROM buyer_order_view
 		WHERE m_idx = #{m_idx} 
 		AND o_update_time >= CURDATE() - INTERVAL 1 MONTH
@@ -305,7 +306,7 @@
 	</select>
 
 	<!-- 기업회원 주문조회: select -->
-	<select id="getOrders2" parameterType="_int" resultType="cartVO">
+	<select id="getOrders2" parameterType="_int" resultType="CartVO">
 		SELECT *
 		FROM orderList
 		WHERE m_idx = #{m_idx}
@@ -376,6 +377,11 @@
 	FROM p_status_count_view2
 	</select>
 	
+	<!-- 송장번호 등록하기 -->
+	<update id="parcel" parameterType="CartVO">
+	update tb_cart set parcel=#{parcel}, tracking_number =#{tracking_number}
+	where p_idx=#{p_idx}
+	</update>
 	
 	<!-- 장바구니 상품등록: insert -->
 	<insert id="cartInsert" parameterType="CartVO">

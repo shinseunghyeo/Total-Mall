@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인회원 마이페이지</title>
+<title>개인회원 전체 주문 내역</title>
 <script>
 function openReviewPage(p_idx) {
     var url = '${pageContext.request.contextPath}/product/review.do?p_idx=' + p_idx;
@@ -14,7 +14,7 @@ function openReviewPage(p_idx) {
 }
 </script>
 </head>
-<body>
+
 <body>
 	<div id="nav_back"></div>
 	<div id="buyer_home">
@@ -66,8 +66,8 @@ function openReviewPage(p_idx) {
 						</div>
 						<div class="new-date">
 							<p>
-								<fmt:formatDate value="${orderList[vs.count-1].c_update_time}"
-									pattern="yyyy-MM-dd HH:mm:ss" />
+								<small><fmt:formatDate value="${orderList[vs.count-1].c_update_time}"
+									pattern="yyyy-MM-dd HH:mm:ss" /></small>
 							</p>
 						</div>
 						<div class="new-quantity">
@@ -97,12 +97,19 @@ function openReviewPage(p_idx) {
 						</c:if>
 						</div>
 					</div>
+			
 				</c:forEach>
+
+			</div>
+			
+			<div>
+			<%@ include file="buyerorderpaging.jsp" %>
 			</div>
 		</div>
+			
 	</div>
 
 </body>
 
-</body>
+
 </html>

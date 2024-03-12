@@ -53,7 +53,7 @@ public interface ProductService {
 	default List<CartVO> statusO(int m_idx){return null;}
 	default List<CartVO> statusO2(int m_idx){return null;}
 	default List<ProductVO> statusP2(){return null;}
-	
+	default int parcel(CartVO vo){return 0;}
 	
 	
 	default int cartPaymentUpdate(int m_idx) {return 1;}
