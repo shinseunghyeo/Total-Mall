@@ -44,7 +44,8 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
-	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2, allorderCnt, pPage2;
+	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2, allorderCnt, pPage2, allproductsCnt,
+	sellerOrderCnt;
 	
 	
 	@Setter(onMethod_={ @Autowired })
@@ -402,21 +403,31 @@ public String myplist(HttpSession session, Model model) {
 
 //기업회원 주문관리 페이지 처리	
 @GetMapping("/sellermypage/product/order_management.do")
-public String orderlist2(@SessionAttribute("member") MemberVO member, Model model) {
-	// 세션에서 가져온 member가 null이면 로그인 페이지로 이동
-if (member == null || member.getM_idx() == 0) {
-    return "redirect:/member/login.do";
-}
+public String orderlist2(@ModelAttribute("sVO")SearchVO searchVO, Model model, 
+		@SessionAttribute("member") MemberVO member) {
+	int m_idx = member.getM_idx();
+	
+	searchVO.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(searchVO.getPageNum() == 0) {
+		searchVO.setPageNum(1);
+	}
+	List<CartVO> orderList = myoList.getOrders(searchVO);
+	model.addAttribute("orderList", orderList);
+	
+	int totalRows = sellerOrderCnt.sellerOrderCnt(searchVO);
+	
+	System.out.println("totalRows:"+totalRows);
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+    List<CartVO> orderList2 = myoList2.getOrders2(searchVO);
 
-// m_idx를 이용하여 주문내역 조회
-int m_idx = member.getM_idx();
-List<CartVO> orderList2 = myoList2.getOrders2(m_idx);
+    // 모델에 데이터 추가
+    model.addAttribute("m_idx", m_idx);
+    model.addAttribute("orderList2", orderList2);
 
-// 모델에 데이터 추가
-model.addAttribute("m_idx", m_idx);
-model.addAttribute("orderList2", orderList2);
-
-	return "forward:/product/order_management.do?m_idx=" + m_idx;
+	return "forward:/product/order_management.do";
 }
 
 
@@ -769,8 +780,26 @@ public Map<String, String> getCategorieMap() {
 
 //관리자 전체 상품내역 처리(ajax)
 @GetMapping("adminmypage/product/allplist.do")
-public String allpList(Model model) {
-		List<ProductVO> allList = allpList.getProducts4();
+public String allpList(SearchVO searchVO,Model model) {
+
+	if(searchVO.getPageNum() == 0) {
+		searchVO.setPageNum(1);
+	}
+	
+	int totalRows = allproductsCnt.allproductsCnt(searchVO);
+	
+	System.out.println("totalRows:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+
+	
+	System.out.println("allorderCnt:"+pageNav.getTotalRows());
+	System.out.println("startIdx"+pageNav.getStartNum());
+		List<ProductVO> allList = allpList.getProducts4(searchVO);
 	model.addAttribute("allList", allList);
 	return "product/allplist";
 }

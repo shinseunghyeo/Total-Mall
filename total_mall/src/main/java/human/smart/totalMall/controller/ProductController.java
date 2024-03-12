@@ -36,7 +36,7 @@ public class ProductController {
     private ProductService cList, pSearch, pPage, pItem, pInsert, pTotalCount, pReview, bUpdateCount,
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
-    		totalOrderCnt, cList5, parcel,pPage2,allorderCnt,
+    		totalOrderCnt, cList5, parcel,pPage2,allorderCnt, allproductsCnt,sellerOrderCnt,
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
     		pOrderInsert, pCartInsert2, pCartCheck, pCartOidxUpdate;
@@ -383,15 +383,25 @@ public class ProductController {
 	
 	// 기업회원 전체 주문내역
 	@GetMapping("/order_management.do")
-	public String orderlist2(@SessionAttribute("member") MemberVO member, Model model) {
-	    // 세션에서 가져온 member가 null이면 로그인 페이지로 이동
-	    if (member == null || member.getM_idx() == 0) {
-	        return "redirect:/member/login.do";
-	    }
-
-	    // m_idx를 이용하여 주문내역 조회
-	    int m_idx = member.getM_idx();
-	    List<CartVO> orderList2 = myoList2.getOrders2(m_idx);
+	public String orderlist2(@ModelAttribute("sVO")SearchVO searchVO, Model model, 
+			@SessionAttribute("member") MemberVO member) {
+		int m_idx = member.getM_idx();
+		
+		searchVO.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+		if(searchVO.getPageNum() == 0) {
+    		searchVO.setPageNum(1);
+    	}
+		List<CartVO> orderList = myoList.getOrders(searchVO);
+		model.addAttribute("orderList", orderList);
+		
+		int totalRows = sellerOrderCnt.sellerOrderCnt(searchVO);
+		
+		System.out.println("totalRows:"+totalRows);
+		
+    	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+    	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+    	model.addAttribute("pageNav", pageNav);
+	    List<CartVO> orderList2 = myoList2.getOrders2(searchVO);
 
 	    // 모델에 데이터 추가
 	    model.addAttribute("m_idx", m_idx);
@@ -403,8 +413,24 @@ public class ProductController {
 
 	//관리자 전체 상품내역
 	@GetMapping("/allplist.do")
-	public String allpList(Model model) {
-  		List<ProductVO> allList = allpList.getProducts4();
+	public String allpList(SearchVO searchVO, Model model) {
+		
+		if(searchVO.getPageNum() == 0) {
+    		searchVO.setPageNum(1);
+    	}
+		
+		int totalRows = allproductsCnt.allproductsCnt(searchVO);
+		
+		System.out.println("totalRows:"+totalRows);
+		
+		PageNav pageNav = new PageNav();
+		
+    	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+    	pageNav = pPage2.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+    	model.addAttribute("pageNav", pageNav);
+
+    	
+  		List<ProductVO> allList = allpList.getProducts4(searchVO);
 		model.addAttribute("allList", allList);
 		return "product/allplist";
 	}
