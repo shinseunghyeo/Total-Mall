@@ -62,6 +62,7 @@
                 </div>
             </div>
         </section>
+        <a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=563"><button>상세보기</button></a>
         <%@ include file="../Main/Footer2.jsp" %>
     
 </body>
