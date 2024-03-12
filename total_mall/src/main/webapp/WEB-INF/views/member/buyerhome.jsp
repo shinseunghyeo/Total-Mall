@@ -72,7 +72,7 @@ function openParcelLink(parcel, parcelMap) {
 				</ul>
 
 			</div>
-
+			<p>회원등급 안내: 회원등급은 매월 $$일 기준을 산정되며 두가지 기준이 블라블라블라 설명설명설명</p>
 
 
 
@@ -139,7 +139,7 @@ function openParcelLink(parcel, parcelMap) {
 						<div class="new-price">
 							<p>
 								<c:if test="${not empty orderList_1[vs.count-1].price}">
-									<fmt:formatNumber value="${(orderList_1[vs.count-1].price - (orderList_1[vs.count-1].price * (orderList_1[vs.count-1].discount_rate * 0.01))) * orderList_1[vs.count-1].c_quantity}"
+									<fmt:formatNumber value="${orderList_1[vs.count-1].price}"
 										pattern="#,##0" var="formattedPrice" />
 									<c:out value="${formattedPrice}원" />
 								</c:if>
