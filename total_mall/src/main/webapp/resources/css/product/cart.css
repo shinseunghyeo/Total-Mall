@@ -20,6 +20,18 @@
     .bold{
         font-family: 'GmarketSansTTFBold';
     }
+    .bold2{
+        font-family: 'GmarketSansTTFBold';
+        color: rgb(52, 152, 219);
+    }
+    .bold3{
+    	color: red;
+    }
+    
+    
+    
+    
+    
     #white-board{
         margin: 0 auto;
         width: 1050px;

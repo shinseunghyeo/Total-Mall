@@ -149,7 +149,7 @@ function continuedPost() {
 	                    (${hStarsize})
 	                    ${hEvaluationListAverage}
 	                    </h2><br>
-	                    <h2 class="price bold">${product.price}원</h2>
+	                    <h2 class="price bold line-through">${product.price}원</h2>
 						<c:choose>
 						    <c:when test="${product.discount_rate > 0}">
 						        <h2 style="color:red" class="bold">${product.discount_rate}% <span style="color:red" class="price bold">${discountedPrice}</span>원</h2>

@@ -99,7 +99,7 @@
 						<fmt:formatDate value="${noticeList[0].post_date}"
                                     pattern="yyyy-MM-dd HH:mm:ss" /><br><br>
                                     <c:if test="${not empty noticeList[0].savefile_name}">
-                                    <img style="width: 400px; height: 200px" src="../resources/uploads/${noticeList[0].savefile_name}">
+                                    <img style="width: 400px;" src="../resources/uploads/${noticeList[0].savefile_name}">
                                     </c:if><br>
 							${noticeList[0].content} <br>
 		                </div>

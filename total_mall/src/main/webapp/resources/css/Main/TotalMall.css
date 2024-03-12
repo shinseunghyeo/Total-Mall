@@ -18,6 +18,11 @@
     span, .today-a, .bold{
     	font-family: 'GmarketSansTTFBold';
     }
+    
+    .TodayMalltoday a{
+    	margin: 0;
+    } 
+    
     a {margin-left: 10px; text-decoration: none;color: inherit;font-weight: bold;}
     a:hover {color: black;text-decoration: underline;}
     
@@ -63,7 +68,7 @@
     /* ---------카테고리별 상품--------- */
     #CategoryMallLine{width: 1050px; height: 5900px;margin: auto;margin-top: 50px;}
     #CategoryMallLine .CategoryMall{width: 1050px;margin: auto; height: 600px;display: flex;text-align: center;gap: 10px;margin-bottom: 50px;}
-    #CategoryMallLine .CategoryMallMainimg{width: 25%;height: 554px;}
+    #CategoryMallLine .CategoryMallMainimg{width: 25%;height: 559px;}
     #CategoryMallLine .CategoryMallMenu{width: 75%;}
     #CategoryMallLine .CategoryMallbox{width: 100%;display: flex;gap: 10px;}
     #CategoryMallLine .CategoryMallbox div{width: 33%;}

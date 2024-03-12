@@ -23,7 +23,7 @@
 									&amp;
 									allowPublicKeyRetrieval=true
 									&amp;
-									serverTimezone=UTC" />
+									serverTimezone=Asia/Seoul" />
 		<property name="username" value="smart_dev" />
 		<property name="password" value="1234" />
 	</bean>

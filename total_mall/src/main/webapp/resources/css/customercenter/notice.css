@@ -18,7 +18,7 @@
     input[type="text"], #CustomerNum{
     	font-family: 'GmarketSansTTFLight';
     }
-    #CustomerTitle, #CustomerListbox a, span{
+    #CustomerTitle, #CustomerListbox a, span, #NoticeMenu a{
     	font-family: 'GmarketSansTTFBold';
     }
     .bold{
@@ -58,5 +58,5 @@
     #NoticeContentbox #NoticeContent{width: 90%; min-height: 500px; margin: auto;border-top: 1px solid rgba(0, 0, 0, 0.78);}
     .Notcename{height: 50px; border-bottom: 1px solid rgba(0, 0, 0, 0.3);display: flex;align-items: center;}
     .Notcename a{margin-left: 10px;}
-    .Notceviews{height: 500px; border-bottom: 1px solid rgba(0, 0, 0, 0.3);}
+    .Notceviews{height: 500px; border-bottom: 1px solid rgba(0, 0, 0, 0.3);font-family: 'GmarketSansTTFLight';}
     /* ---------토탈소식--------- */

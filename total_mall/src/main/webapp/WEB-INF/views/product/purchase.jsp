@@ -89,15 +89,15 @@
             <table>
                 <tr class="tr1">
                     <td class="td1 bold">총상품가격</td>
-                    <td class="price">${totalOrderAmount} 원</td>
+                    <td class="price bold">${totalOrderAmount} 원</td>
                 </tr>
                 <tr class="tr2">
                 	<td class="td1 bold">할인금액</td>
-                	<td class="price">${product.totalDiscount}</td>
+                	<td class="price bold">${product.totalDiscount}</td>
                 </tr>
                 <tr class="tr2">
                     <td class="td1 bold">배송비</td>
-                    <td class="price">${product.totalDelivery }</td>
+                    <td class="price bold">${product.totalDelivery }</td>
                 </tr>
                 <tr class="tr2">
                     <td class="td1 payment bold">총결제금액</td>
