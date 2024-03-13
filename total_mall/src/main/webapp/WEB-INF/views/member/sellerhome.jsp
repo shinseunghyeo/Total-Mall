@@ -71,7 +71,7 @@
 				<div class="inner_box">
 					<h2>상품관리</h2>
 					<ul>
-						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+						<c:forEach var="i" begin="0" end="${statusPlist.size()}" varStatus="vs">
 							<li><a href="#"> <c:if
 										test="${not empty statusPlist[vs.count-1].p_status and statusPlist[vs.count-1].p_status < 4}">
 									${statusPMap[statusPlist[vs.count-1].p_status.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
@@ -91,7 +91,7 @@
 								<li><h3>진행중인 주문/배송이 없습니다</h3></li>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="i" begin="0" end="4" varStatus="vs">
+								<c:forEach var="i" begin="0" end="${statusOlist.size()}" varStatus="vs">
 									<c:if
 										test="${not empty statusOlist[vs.count-1].payment_or_not}">
 										<li><a href="#">
@@ -118,7 +118,7 @@
 									</h4></li>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="i" begin="0" end="5" varStatus="vs">
+								<c:forEach var="i" begin="0" end="${statusO2list.size()}" varStatus="vs">
 									<c:if
 										test="${not empty statusO2list[vs.count-1].payment_or_not}">
 										<li><a href="#">

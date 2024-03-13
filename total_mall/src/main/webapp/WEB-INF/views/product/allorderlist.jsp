@@ -50,6 +50,9 @@
             });
         });
         
+        function openNewWindow(url) {
+            window.open(url, '_blank', 'width=800,height=400');
+        }
 
     </script>
 
@@ -86,7 +89,7 @@
 						<p><input type="button" value="주문 상태 변경" class="order-modify-btn new-another-button"></p>
 					</div>
 				</div>
-				<c:forEach begin="1" end="10" varStatus="vs">
+				<c:forEach begin="1" end="${allorderList.size()}" varStatus="vs">
 					<div class="new-item">
 						<div class="new-sort">
 							${allorderList[vs.count-1].o_idx}<br>
@@ -150,8 +153,7 @@
                                     <input type="checkbox" name="order_modify_checkbox" class="order-modify-checkbox" value="${allorderList[vs.count-1].o_idx}">
                                      선택 
                                </form>
-								<a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${allorderList[vs.count-1].o_idx}"><input type="button" value="주문 상세보기" class="new-another-button"></a>
-							</c:if>
+<input type="button" value="주문 상세보기" class="new-another-button" onclick="openNewWindow('${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${allorderList[vs.count-1].o_idx}')">							</c:if>
 						</div>
 					</div>
 
@@ -159,7 +161,7 @@
 
 
 			</div>
-			<div>
+			<div id="td-page-nav">
 			<%@ include file="allorderpaging.jsp" %>
 			</div>
 		</div>

@@ -66,32 +66,49 @@
 					<c:when test="${member.grade eq 9}">
 						<a
 							href="${pageContext.request.contextPath}/member/sellermypage.do">
-							<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+							<img src="resources/img/Headerimg/person.svg" width="40">
 						</a>
 					</c:when>
 					<c:when test="${member.grade == 1 || member.grade == 2 || member.grade == 3 || member.grade == 4 || member.grade == 5}">
 						<a href="${pageContext.request.contextPath}/member/buyermypage.do">
-							<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+							<img src="resources/img/Headerimg/person.svg" width="40">
 						</a>
 					</c:when>
 					<c:when test="${member.grade eq 8}">
 						<a href="${pageContext.request.contextPath}/member/adminmypage.do">
-							<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+							<img src="resources/img/Headerimg/person.svg" width="40">
 						</a>
 					</c:when>
 					<c:otherwise>
 						<a href="${pageContext.request.contextPath}/member/login.do">
-						<img src="resources/img/Headerimg/사용자 아이콘.png" width="40">
+						<img src="resources/img/Headerimg/person.svg" width="40">
 						</a>
 					</c:otherwise>
 				</c:choose>
 				<a href="${pageContext.request.contextPath}/product/cart.do?m_idx=${member.m_idx}"> <img
-					src="resources/img/Headerimg/장바구니 아이콘.png" width="40">
+					src="resources/img/Headerimg/cart3.svg" width="40">
 				</a> 
                 <div>
 		            <c:choose>
 		            	<c:when test="${not empty member }">
-		            		<a href="">${member.member_name }님</a><br>
+	            <c:choose>
+					<c:when test="${member.grade eq 9}">
+						<a
+							href="${pageContext.request.contextPath}/member/sellermypage.do">
+							${member.member_name }님
+						</a><br>
+					</c:when>
+					<c:when test="${member.grade == 1 || member.grade == 2 || member.grade == 3 || member.grade == 4 || member.grade == 5}">
+						<a href="${pageContext.request.contextPath}/member/buyermypage.do">
+							${member.member_name }님
+						</a><br>
+					</c:when>
+					<c:when test="${member.grade eq 8}">
+						<a href="${pageContext.request.contextPath}/member/adminmypage.do">
+							${member.member_name }님
+						</a><br>
+					</c:when>
+					</c:choose>
 			                <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a><br>
 			                <a href="${pageContext.request.contextPath}/customercenter/QnA.do">고객센터</a>
 		            	</c:when>

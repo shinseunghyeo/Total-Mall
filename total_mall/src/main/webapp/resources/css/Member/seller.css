@@ -770,7 +770,9 @@ width: 94%;
 .order-modify-form select {
 	width: 39%;
 }
-
+#order_details {
+    margin-left: 0px;
+}
 
 /* //////////////////////주문 관리 끝/////////////////////// */
 
@@ -979,3 +981,51 @@ width: 94%;
 }
 
 /*////////////////////////// 판매자 설정 끝 //////////////////////////*/
+
+
+/*////////////////////////// 문의 설정 시작 //////////////////////////*/
+
+/* 간단한 스타일링을 위한 CSS */
+#inq_wrap {
+	background-color: rgba(224, 224, 224, 0.42);
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#inq_wrap .container {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+#inq_wrap table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+#inq_wrap table, #inq_wrap th, #inq_wrap td {
+	border: 1px solid #ddd;
+}
+
+#inq_wrap th, #inq_wrap td {
+	padding: 10px;
+	text-align: left;
+}
+
+#inq_wrap th {
+	background-color: #f2f2f2;
+}
+
+#td-page-nav {
+    padding-top: 20px;
+    text-align: center;
+    border-bottom-width: 0;
+}
+/*////////////////////////// 문의 설정 끝 //////////////////////////*/

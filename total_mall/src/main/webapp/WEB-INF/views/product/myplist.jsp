@@ -104,7 +104,7 @@
 
 								</td>
 							</tr>
-							<c:forEach begin="1" end="10" varStatus="vs">
+							<c:forEach begin="1" end="${productList3.size()}" varStatus="vs">
 								<tr>
 									<td colspan="6" class="all_p_list">
 										<div class="p_idx">${productList3[vs.count-1].p_idx}</div>
@@ -168,7 +168,7 @@
 					</c:choose>
 
 				</table>
-				<div>
+				<div id="td-page-nav">
 			<%@ include file="sellerprodpaging.jsp" %>
 			</div>
 			</div>

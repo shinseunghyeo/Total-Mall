@@ -798,7 +798,7 @@
     }
 
     #update_form .input-text1 {
-        width: 35%;
+        width: 26%;
         height: 40px;
         line-height: 40px;
         font-size: 16px;
@@ -1392,7 +1392,55 @@
 	
 	
 /* //////////////////////상품문의/답변 시작/////////////////////// */
-		
+#inq_wrap {
+	width: 72%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: stretch;
+    padding: 4%;
+    /* width: 94%; */
+    background-color: rgb(224, 224, 224);
+}
+#inq_wrap .container {
+	background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 94%;
+    padding: 3%;
+    min-height: 475px;
+}
+
+
+
+#inq_wrap table {
+	width: 100%;
+	border-collapse: collapse;
+
+}
+
+#inq_wrap table, #inq_wrap th, #inq_wrap td {
+	border: 1px solid #ddd;
+}
+
+#inq_wrap th, #inq_wrap td {
+	padding: 10px 0;
+    text-align: center;
+}
+
+#inq_wrap th {
+	background-color: #f2f2f2;
+}
+
+#td-page-nav {
+    padding-top: 20px;
+    text-align: center;
+    border-bottom-width: 0;
+}
 	
 		
 		

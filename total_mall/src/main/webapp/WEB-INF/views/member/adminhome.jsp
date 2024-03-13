@@ -147,7 +147,7 @@
 				<div class="inner_box">
 					<h2>회원 현황</h2>
 					<ul>
-						<c:forEach var="i" begin="0" end="9" varStatus="vs">
+						<c:forEach var="i" begin="0" end="${memberCntlist.size()}" varStatus="vs">
 							<li><a href="#"> <c:if
 										test="${not empty memberCntlist[vs.count-1].count}">
 									${gradeMap[memberCntlist[vs.count-1].grade.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->
@@ -202,7 +202,7 @@
 					<h2>상품관리</h2>
 					<ul>
 						<li><a href="#">오늘 등록된 상품 <b>${todayProduct} &gt;</b></a></li>
-						<c:forEach var="i" begin="0" end="3" varStatus="vs">
+						<c:forEach var="i" begin="0" end="${statusP2list.size()}" varStatus="vs">
 							<li><a href="#"> <c:if
 										test="${not empty statusP2list[vs.count-1].p_status and statusP2list[vs.count-1].p_status < 4}">
 									${statusPMap[statusP2list[vs.count-1].p_status.toString()]} <!-- statusPMap에서 키를 사용하여 해당하는 문자열을 가져옴 -->

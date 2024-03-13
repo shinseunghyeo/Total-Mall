@@ -12,6 +12,10 @@ function openReviewPage(p_idx) {
     var url = '${pageContext.request.contextPath}/product/review.do?p_idx=' + p_idx;
     window.open(url, '_blank', 'width=800,height=800');
 }
+function openOrderDetails(url) {
+    // 새 창을 열기 위한 window.open() 함수 호출
+    window.open(url, '_blank', 'width=800,height=400');
+}
 </script>
 </head>
 
@@ -44,7 +48,7 @@ function openReviewPage(p_idx) {
 						<p>기타</p>
 					</div>
 				</div>
-				<c:forEach begin="1" end="10" varStatus="vs">
+				<c:forEach begin="1" end="${orderList.size()}" varStatus="vs">
 					<div class="new-item">
 						
 						<div class="new-sort">
@@ -96,8 +100,9 @@ function openReviewPage(p_idx) {
 								<input type="button" value="문의 하기" class="new-another-button">
 							</a>
 							
-							<a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList[vs.count-1].o_idx}"><input type="button" value="주문 상세보기" class="new-another-button"></a>
-
+<a href="javascript:void(0);" onclick="openOrderDetails('${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList[vs.count-1].o_idx}');">
+    <input type="button" value="주문 상세보기" class="new-another-button">
+</a>
 						</c:if>
 						</div>
 					</div>
@@ -106,7 +111,7 @@ function openReviewPage(p_idx) {
 
 			</div>
 			
-			<div>
+			<div id="td-page-nav">
 			<%@ include file="buyerorderpaging.jsp" %>
 			</div>
 		</div>

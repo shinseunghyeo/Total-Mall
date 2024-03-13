@@ -181,10 +181,17 @@ function continuedPost() {
 	                        <input type="text" name="c_quantity" id="inputBox" oninput="checkInput()" value="0" required>
 	                        <button id="incrementButton" onclick="increment()">+</button>
 	                    </div>
+	                    <c:choose>
+						<c:when test="${product.p_status eq 0}">
 	                    <a href="${pageContext.request.contextPath}/product/cartProcess.do?p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="cartLink"><button onclick="showCartAlert()">장바구니</button></a>
 	                    <a href="${pageContext.request.contextPath}/product/purchase.do?total_product_price=0&totalDiscount=${((product.price/100)*(product.discount_rate)).intValue()}&totalDelivery=2500&p_idx=${product.p_idx}&m_idx=${member.m_idx}" id="purchaseLink" onclick="updateLinks()">
 					        <button>구매</button>
 					    </a>
+					    </c:when>
+					    <c:otherwise>
+					    <a id="cartLink"><button>${statusPMap[product.p_status.toString()]}</button></a>
+					    </c:otherwise>
+						</c:choose>
 	                </div>
 	            </div>
         </div>

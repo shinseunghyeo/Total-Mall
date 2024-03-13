@@ -23,7 +23,7 @@
                         </tr>
                     </c:when>
                     <c:otherwise>
-                        <c:forEach items="${myreview}" var="review" varStatus="vs" begin="0" end="19">
+                        <c:forEach items="${myreview}" var="review" varStatus="vs" begin="0" end="${myreview.size()}">
                             <tr>
                                 <td colspan="6">
                                     <a href="${pageContext.request.contextPath}/product/item.do?p_idx=${review.p_idx}">
@@ -53,7 +53,9 @@
                     </c:otherwise>
                 </c:choose>
             </table>
+            <div id="td-page-nav">
             <%@ include file="myreviewpaging.jsp"%>
+            </div>
         </div>
     </div>
   
