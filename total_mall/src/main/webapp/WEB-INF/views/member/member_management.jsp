@@ -147,7 +147,7 @@
 							</tr>
 						</c:when>
 						<c:otherwise>
-							<c:forEach begin="1" end="10" varStatus="vs">
+							<c:forEach begin="1" end="${memberList.size()}" varStatus="vs">
 								<tr>
 									<td><a
 										href="${pageContext.request.contextPath}/member/member_info.do?m_idx=${memberList[vs.count-1].m_idx}"

@@ -25,6 +25,10 @@ function openParcelLink(parcel, parcelMap) {
     }
 }
 
+function openOrderDetails(url) {
+    // 새 창을 열기 위한 window.open() 함수 호출
+    window.open(url, '_blank', 'width=800,height=400');
+}
 
 
 </script>
@@ -164,11 +168,10 @@ function openParcelLink(parcel, parcelMap) {
 									class="new-another-button">
 								</a>
 
-								<a
-									href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList_1[vs.count-1].o_idx}"><input
-									type="button" value="주문 상세보기" class="new-another-button"></a>
-
-							</c:if>
+								<a href="javascript:void(0);" onclick="openOrderDetails('${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList_1[vs.count-1].o_idx}');">
+    <input type="button" value="주문 상세보기" class="new-another-button">
+</a>							
+</c:if>
 						</div>
 					</div>
 

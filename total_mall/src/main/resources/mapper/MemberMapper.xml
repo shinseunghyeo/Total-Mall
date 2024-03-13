@@ -94,7 +94,7 @@
 	<select id="MembersCnt" parameterType="SearchVO" resultType="_int">
 	<choose>
 		<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
-							select count(*)			        		*
+							select count(*)
 			        		from tb_member
 					<choose>
 					<when test="searchField == 'grade'"><!-- 검색영역: 등급 -->

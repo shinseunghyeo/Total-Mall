@@ -81,6 +81,10 @@ $(document).ready(function () {
     }
 });
 
+function openOrderDetails(orderIdx) {
+    var url = '${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=' + orderIdx;
+    window.open(url, '_blank', 'width=800,height=400');
+}
 </script>
 </head>
 <body>
@@ -116,7 +120,7 @@ $(document).ready(function () {
 
 					</div>
 				</div>
-				<c:forEach begin="1" end="10" varStatus="vs">
+				<c:forEach begin="1" end="${orderList2.size()}" varStatus="vs">
 					<div class="new-item">
 						<div class="new-sort">
 							${orderList2[vs.count-1].o_idx} <br>
@@ -201,16 +205,14 @@ $(document).ready(function () {
 								</form>
 
 
-								<a
-									href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList2[vs.count-1].o_idx}"><input
-									type="button" value="주문 상세보기" class="new-another-button"></a>
-
-							</c:if>
+<a id="order_details" href="#" onclick="openOrderDetails(${orderList2[vs.count-1].o_idx})">
+    <input type="button" value="주문 상세보기" class="new-another-button">
+</a>							</c:if>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-			<div>
+			<div id="td-page-nav">
 				<%@ include file="sellerorderpaging.jsp"%>
 			</div>
 		</div>
