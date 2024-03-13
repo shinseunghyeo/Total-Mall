@@ -11,10 +11,12 @@ public class SearchVO {
 	private String service;
 	private String n_idx;
 	private int m_idx;
+	private int member_id;
 	//보완된 SQL문으로 인해 추가함
 	private int pageNum;
 	private int pageBlock;
 	private int startIdx;//BoardMapper.xml에서 게시물 목록을 가져올 때 limit함수의 매개값으로 사용
 	//BoardListService클래스의 getBoards() 메소드에서 startIdx 값을 (pageNum-1)*10으로 세팅해줌
 
+	
 }

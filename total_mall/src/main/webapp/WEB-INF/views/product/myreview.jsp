@@ -53,8 +53,9 @@
                     </c:otherwise>
                 </c:choose>
             </table>
+            <%@ include file="myreviewpaging.jsp"%>
         </div>
     </div>
-   
+  
 </body>
 </html>

@@ -14,100 +14,76 @@
 <script type="text/javascript"
 	src="../resources/js/Member/loadContent.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						$(".order-modify-btn")
-								.click(
-										function() {
-											var formData = new FormData();
+var orderModifyXhr;  // order-modify-btn 요청을 저장할 변수
+var parcelXhr;       // submitParcel 요청을 저장할 변수
 
-											// 선택된 주문 항목들의 데이터를 수집
-											$(".order-modify-checkbox:checked")
-													.each(
-															function() {
-																var form = $(
-																		this)
-																		.closest(
-																				'form');
-																formData
-																		.append(
-																				"p_idx",
-																				form
-																						.find(
-																								"input[name='p_idx']")
-																						.val());
-																formData
-																		.append(
-																				"payment_or_not",
-																				form
-																						.find(
-																								"select[name='payment_or_not']")
-																						.val());
-																formData
-																		.append(
-																				"order_modify_checkbox",
-																				$(
-																						this)
-																						.val());
-															});
+$(document).ready(function () {
+    $(".order-modify-btn").click(function () {
+        var formData = new FormData();
 
-											if (formData
-													.getAll("order_modify_checkbox").length > 0) {
-												// AJAX 요청 수행
-												$
-														.ajax({
-															type : "POST",
-															url : "../product/oModify.do",
-															data : formData,
-															processData : false, // 필수: FormData 사용시 false로 설정
-															contentType : false, // 필수: FormData 사용시 false로 설정
-															traditional : true, // 배열 데이터 전송을 위해 필요
-															success : function(
-																	response) {
-																// 성공 처리
-																console
-																		.log(response);
-																alert("변경되었습니다.");
-																loadContent("../member/sellermypage/product/order_management.do");
+        // 선택된 주문 항목들의 데이터를 수집
+        $(".order-modify-checkbox:checked").each(function () {
+            var form = $(this).closest('form');
+            formData.append("p_idx", form.find("input[name='p_idx']").val());
+            formData.append("payment_or_not", form.find("select[name='payment_or_not']").val());
+            formData.append("order_modify_checkbox", $(this).val());
+        });
 
-															},
-															error : function(
-																	error) {
-																// 에러 처리
-																console
-																		.error(
-																				"Ajax request failed: ",
-																				error);
-															}
-														});
-											} else {
-												alert("선택된 주문이 없습니다.");
-											}
-										});
-					});
+        if (formData.getAll("order_modify_checkbox").length > 0) {
+            // 이미 실행 중인 요청이 있다면 중지
+            if (orderModifyXhr && orderModifyXhr.readyState !== 4) {
+                orderModifyXhr.abort();
+            }
 
-	function submitParcel() {
-		var formData = $('#parcelForm').serialize();
+            // AJAX 요청 수행
+            orderModifyXhr = $.ajax({
+                type: "POST",
+                url: "../product/oModify.do",
+                data: formData,
+                processData: false,
+                contentType: false,
+                traditional: true,
+                success: function (response) {
+                    console.log(response);
+                    alert("변경되었습니다.");
+                    loadContent("../member/sellermypage/product/order_management.do");
+                },
+                error: function (error) {
+                    console.error("Ajax request failed: ", error);
+                }
+            });
+        } else {
+            alert("선택된 주문이 없습니다.");
+        }
+    });
 
-		$
-				.ajax({
-					type : "POST",
-					url : "../product/parcel.do",
-					data : formData,
-					success : function(response) {
-						loadContent("../member/sellermypage/product/order_management.do");
-					},
-					error : function(error) {
-						console.error("Error:", error);
-						// 에러 처리 로직을 여기에 추가할 수 있습니다.
-					}
-				});
-	}
+    function submitParcel() {
+        var formData = $('#parcelForm').serialize();
+
+        // 이미 실행 중인 요청이 있다면 중지
+        if (parcelXhr && parcelXhr.readyState !== 4) {
+            parcelXhr.abort();
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "../product/parcel.do",
+            data: formData,
+            success: function (response) {
+                console.log(response);
+                alert("송장번호가 입력되었습니다");
+                loadContent("../member/sellermypage/product/order_management.do");
+            },
+            error: function (error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+});
+
 </script>
 </head>
 <body>
-
 
 	<div id="order_management">
 		<h1>전체 주문내역</h1>
@@ -208,7 +184,8 @@
 											value="${orderList2[vs.count-1].o_idx}"> 주문 변경
 									</div>
 								</form>
-								<form id="parcelForm" action="../product/parcel.do" method="post">
+								<form id="parcelForm" action="../product/parcel.do"
+									method="post">
 									<input type="hidden" name="p_idx"
 										value="${orderList2[vs.count-1].p_idx}">
 									<div id="parcel_input">

@@ -37,6 +37,7 @@ public class ProductController {
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
     		totalOrderCnt, cList5, parcel,pPage2,allorderCnt, allproductsCnt,sellerOrderCnt,myproductCnt,
+    		reviewCnt,
     		
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
@@ -44,6 +45,7 @@ public class ProductController {
 
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav, pageNav2;
+    
     
     // 카테고리 페이지 요청 처리
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
@@ -516,12 +518,26 @@ public class ProductController {
 	
   	//개인회원 리뷰 모아보기
   	@GetMapping("/myreview.do")
-	public String myreview(@SessionAttribute("member") MemberVO member, Model model) {
-  		if (member == null || member.getM_idx() == 0) {
-		    return "redirect:/member/login.do";
-		}
-		int m_idx = member.getM_idx();
-  		List<ReviewVO> myreview = myReview.myreview(m_idx);
+	public String myreview(@SessionAttribute("member") MemberVO member,SearchVO vo, Model model) {
+  		int m_idx = member.getM_idx();
+  		
+  		vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+  		if(vo.getPageNum() == 0) {
+  			vo.setPageNum(1);
+  		}
+  		
+  		int totalRows = reviewCnt.reviewCnt(vo);
+  		
+  		System.out.println("totalRows1:"+totalRows);
+  		
+  		PageNav pageNav = new PageNav();
+  		
+  		pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+  		pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+  		model.addAttribute("pageNav", pageNav);
+  		
+
+  		List<ReviewVO> myreview = myReview.myreview(vo);
 		model.addAttribute("myreview", myreview); 
 		return "product/myreview";
 	}
@@ -574,7 +590,23 @@ public class ProductController {
 				int result = parcel.parcel(vo);
 
 				if (result == 1) {
-					viewPage = "redirect:product/order_management";// 글수정 성공시 JSP페이지
+					viewPage = "redirect:../product/order_management.do";// 글수정 성공시 JSP페이지
+				}
+
+				return viewPage;
+			}
+			@GetMapping("/parcel.do")
+			public String parcel1(CartVO vo, Model model) {
+			    
+			    int p_idx = vo.getP_idx();
+
+			    String viewPage = "product/order_management";// 글수정 실패시 JSP페이지
+
+				// 글등록 요청을 BoardModifyService클래스로 처리
+				int result = parcel.parcel(vo);
+
+				if (result == 1) {
+					viewPage = "redirect:../product/order_management.do";// 글수정 성공시 JSP페이지
 				}
 
 				return viewPage;
@@ -732,6 +764,38 @@ public class ProductController {
   		return "product/payment";
   	}
   	
+	//주문 상태 맵
+	@ModelAttribute("p_or_notMap")
+	public Map<String, String> p_or_notMap() {
+		// 숫자값과 등급값을 매핑한 Map 생성
+		Map<String, String> p_or_notMap = new HashMap<>();
+		p_or_notMap.put("0", "장바구니");
+		p_or_notMap.put("1", "결제중");
+		p_or_notMap.put("2", "결제완료");
+		p_or_notMap.put("3", "상품 준비중");
+		p_or_notMap.put("4", "배송지시");
+		p_or_notMap.put("5", "배송중");
+		p_or_notMap.put("6", "배송완료");
+		
+		p_or_notMap.put("11", "교환요청");
+		p_or_notMap.put("12", "취소요청");
+		p_or_notMap.put("13", "반품요청");
+		p_or_notMap.put("14", "교환완료");
+		p_or_notMap.put("15", "취소완료");
+		p_or_notMap.put("16", "반품완료");
+
+		return p_or_notMap;
+	}
   	
-  	
+	//상품 상태에 따른 합계 조회 맵
+	@ModelAttribute("statusPMap")
+	public Map<String, String> statusPMap() {
+		// 숫자값과 등급값을 매핑한 Map 생성
+		Map<String, String> statusPMap = new HashMap<>();
+		statusPMap.put("0", "판매중");
+		statusPMap.put("1", "판매중단");
+		statusPMap.put("2", "품절");
+		statusPMap.put("3", "판매기한만료");
+		return statusPMap;
+	}
 }

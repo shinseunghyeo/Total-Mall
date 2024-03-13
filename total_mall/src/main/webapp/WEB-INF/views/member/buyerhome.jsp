@@ -14,7 +14,6 @@ function openReviewPage(p_idx) {
     window.open(url, '_blank', 'width=800,height=800');
 }
 
-
 function openParcelLink(parcel, parcelMap) {
     // parcelMap에 해당 택배사가 있는지 확인
     var link = parcelMap[parcel];
@@ -159,11 +158,15 @@ function openParcelLink(parcel, parcelMap) {
 									class="new-another-button">
 								</a>
 
-
-								<a> <input type="button" value="문의 하기"
+								<a
+									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList_1[vs.count-1].p_idx}"
+									target="_blank"> <input type="button" value="문의 하기"
 									class="new-another-button">
 								</a>
-								<a href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList_1[vs.count-1].o_idx}"><input type="button" value="주문 상세보기" class="new-another-button"></a>
+
+								<a
+									href="${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=${orderList_1[vs.count-1].o_idx}"><input
+									type="button" value="주문 상세보기" class="new-another-button"></a>
 
 							</c:if>
 						</div>

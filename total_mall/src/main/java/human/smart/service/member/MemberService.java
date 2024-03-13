@@ -20,19 +20,28 @@ public interface MemberService {
 	default List<ProductVO> getProducts3(SearchVO searchVO){return null;}
 	default MemberVO getMember(int m_idx){return null;}
 	default List<MemberVO> getMembers(SearchVO vo){return null;}
+	default int MembersCnt(SearchVO vo){return 0;}
 	default MemberVO buyerUpdateProcess(MemberVO memberVO) {return null;}
 	default int cancel(int m_idx) {return 0;}
-	default List<VocVO> getInquirylist(){return null;}
-	default List<PvocVO> getInquirylistp(int m_idx){return null;}
+	default List<VocVO> getInquirylist(SearchVO vo){return null;}
+	default int adminvocCnt(SearchVO vo){return 0;}
+	
+	
+	default List<PvocVO> getInquirylistp(SearchVO vo){return null;}
+	default int pvocCnt(SearchVO vo){return 0;}
 	default int gradeUpdate(MemberVO vo){return 0;}
 	default MemberVO sellerUpdateProcess(MemberVO memberVO) {return null;}
 	default int cancelUpdate(MemberVO vo){return 0;}
 	default String joinEmail(String email) {return null;}
 	default List<SalesVO> getSales(){return null;}
 	default List<MemberVO> memberCnt(){return null;}
-	default List<PvocVO> buyerInquirylist(String member_id){return null;}
-	default List<VocVO> sellerbuyerVocList(int m_idx){return null;}
+	default List<PvocVO> buyerInquirylist(SearchVO vo){return null;}
+	default int buyerInqCnt(SearchVO vo){return 0;}
+	default List<VocVO> sellerbuyerVocList(SearchVO vo){return null;}
+	default int VocCnt(SearchVO vo){return 0;}
 	default List<CartVO> getViewOrderDetails(int o_idx){return null;}
 	
+	
+
 
 }
