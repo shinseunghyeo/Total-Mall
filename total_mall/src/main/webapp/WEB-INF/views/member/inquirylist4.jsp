@@ -66,18 +66,27 @@ function openPopup(url) {
 <body>
 <div id="nav_back"></div>
 	<div class="container">
-<h1>고객센터 문의 내역 확인</h1>
-
+		<c:choose>
+			<c:when test="${member.grade == '8'}">
+				<h1>관리자 문의 내역 확인</h1>
+			</c:when>
+			<c:when test="${member.grade == '9'}">
+				<h1>판매자 문의 내역 확인</h1>
+			</c:when>
+			<c:otherwise>
+				<h1>상품 문의 내역 확인</h1>
+			</c:otherwise>
+		</c:choose>
 		<table>
 			<c:choose>
-				<c:when test="${not empty sellerbuyerVocList}"><!-- 관리자 -->
+				
+				<c:when test="${not empty pinquirylist and member.grade eq '9'}"><!-- 판매자 -->
 					<thead>
 						<tr>
 							<th>번호</th>
-							<th>문의 내용</th>
+							<th>상품명</th>
 							<th>이름</th>
 							<th>이메일</th>
-							
 							<th>문의 시간</th>
 							<th>처리 상태</th>
 						</tr>
@@ -88,21 +97,22 @@ function openPopup(url) {
 								<td>${vs.count}</td>
 								<td>
 								<a href="javascript:void(0);"
-													onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries.do?v_idx=${sellerbuyerVocList[vs.count-1].v_idx}')">
-								${sellerbuyerVocList[vs.count-1].voc_type}
+													onclick="openPopup('${pageContext.request.contextPath}/customercenter/inquiries2.do?v_idx=${pinquirylist[vs.count-1].v_idx}')">
+								${pinquirylist[vs.count-1].product_name}
 								</a>
 								</td>
-								<td>${sellerbuyerVocList[vs.count-1].writer}</td>
-								<td>${sellerbuyerVocList[vs.count-1].email}</td>
-								
+								<td>${pinquirylist[vs.count-1].writer}</td>
+								<td>${pinquirylist[vs.count-1].email}</td>
 								<td><fmt:formatDate
-										value="${sellerbuyerVocList[vs.count-1].post_date}"
+										value="${pinquirylist[vs.count-1].post_date}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
-								<td>${voc_stateMap[sellerbuyerVocList[vs.count-1].voc_state.toString()]}</td>
-
+								<td>${voc_stateMap[pinquirylist[vs.count-1].voc_state.toString()]}</td>
 							</tr>
 						</c:forEach>
+
 				</c:when>
+				
+				
 				<c:otherwise>
 					<tr>
 						<td colspan="6">등록된 문의가 없습니다</td>
@@ -112,7 +122,7 @@ function openPopup(url) {
 			<!-- 기타 문의 내역 행 추가 -->
 			</tbody>
 		</table>
-		<%@ include file="inquirylistpaging2.jsp"%>
+		<%@ include file="inquirylistpaging4.jsp"%>
 	</div>
 </body>
 </html>
