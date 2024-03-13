@@ -17,6 +17,7 @@
 			values(#{member_id},#{member_pw},#{member_name},#{handphone},#{email},#{address1},#{address2},#{address3}, #{categorie}, #{representative_name}, #{company_number}, #{mutual}, #{mail_order_number}, #{account1}, #{account2}, #{depositor_name}, #{grade})
  	</insert>
  	
+ 	
  	<!-- 로그인 -->
  	<select id="login" parameterType="string" resultType="memberVO">
  		select * from tb_member

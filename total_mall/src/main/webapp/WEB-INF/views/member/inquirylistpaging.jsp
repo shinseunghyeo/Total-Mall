@@ -29,7 +29,7 @@
     </script>
 </head>
 <body>
-	
+
     <!-- 3. 현재 페이지번호가 블록당 페이지수보다 큰 경우 '이전'과 맨 처음페이지 기호(<<) 출력 -->
     <c:if test="${pageNav.pageNum > pageNav.pages_pageBlock}">
         <a class="page-link" href="../member/inquirylist.do?pageNum=1&pageBlock=1">&lt;&lt;</a>

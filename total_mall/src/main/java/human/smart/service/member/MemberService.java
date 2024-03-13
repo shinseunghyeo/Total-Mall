@@ -42,6 +42,6 @@ public interface MemberService {
 	default List<CartVO> getViewOrderDetails(int o_idx){return null;}
 	
 	
-	
+
 
 }

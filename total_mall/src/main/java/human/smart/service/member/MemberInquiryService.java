@@ -20,6 +20,7 @@ public class MemberInquiryService implements MemberService {
 		vo.setStartIdx((vo.getPageNum()-1)*10);
 		return dao.getInquirylist(vo);
 	}
+	
 	@Override
 	public List<PvocVO> getInquirylistp(SearchVO vo) {
 		vo.setStartIdx((vo.getPageNum()-1)*10);

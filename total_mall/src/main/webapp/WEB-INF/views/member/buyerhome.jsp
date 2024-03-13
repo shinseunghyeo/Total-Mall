@@ -14,7 +14,6 @@ function openReviewPage(p_idx) {
     window.open(url, '_blank', 'width=800,height=800');
 }
 
-
 function openParcelLink(parcel, parcelMap) {
     // parcelMap에 해당 택배사가 있는지 확인
     var link = parcelMap[parcel];

@@ -51,6 +51,7 @@ public class ProductDAO{
 	public List<ReviewVO> getReview(Map<String, Object> paramMap){
 		return sqlSession.selectList(MAPPER+".getReview", paramMap);
 	}
+	
 	//조회수 업데이트
 	public void updateReadCount(int p_idx) {
 		sqlSession.update(MAPPER+".updateReadCount",p_idx);

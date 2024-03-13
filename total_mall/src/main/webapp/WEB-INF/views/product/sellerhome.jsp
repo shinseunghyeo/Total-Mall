@@ -22,6 +22,7 @@
     </script>
 </head>
 <body>
+
 				<div id="short_cut">
 
 					<div id="first_div">

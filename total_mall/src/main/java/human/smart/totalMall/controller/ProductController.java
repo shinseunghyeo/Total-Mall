@@ -46,6 +46,7 @@ public class ProductController {
     @Setter(onMethod_={ @Autowired })
 	PageNav pageNav, pageNav2;
     
+    
     // 카테고리 페이지 요청 처리
     @GetMapping("/list.do") // 두 번째 메서드의 URL 변경
     public String list(@ModelAttribute("sVO")SearchVO searchVO, Model model) {

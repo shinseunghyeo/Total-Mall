@@ -18,4 +18,5 @@ public class SearchVO {
 	private int startIdx;//BoardMapper.xml에서 게시물 목록을 가져올 때 limit함수의 매개값으로 사용
 	//BoardListService클래스의 getBoards() 메소드에서 startIdx 값을 (pageNum-1)*10으로 세팅해줌
 
+	
 }

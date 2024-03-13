@@ -35,6 +35,7 @@
 		</choose>
 	</insert>
 	
+	
 	<!-- 모든 게시글 조회: select -->
 	<select id="getBoards" parameterType="searchVO" resultType="noticeVO">
 		<!-- if~else구문, switch구문은 JSTL과 같이 choose-when-otherwise구문을 사용함 -->

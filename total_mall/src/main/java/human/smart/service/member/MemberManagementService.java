@@ -21,5 +21,5 @@ public class MemberManagementService implements MemberService {
 		vo.setStartIdx((vo.getPageNum()-1)*10);
 		return dao.getMembers(vo);
 	}
-	
+
 }

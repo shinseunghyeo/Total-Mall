@@ -12,6 +12,7 @@
 		where p_status = 0;
 	</select>
 	
+	
 	<select id="getMchoice" parameterType="String" resultType="productVO">
 		select * from tb_product
 		<choose>

@@ -106,6 +106,7 @@ public class MemberDAO {
 		return newVO;
 	}
 	
+	
 	//회원탈퇴여부 변경
 	public int cancelUpdate(MemberVO vo) {
 		return sqlSession.update(MAPPER+".cancelUpdate", vo);

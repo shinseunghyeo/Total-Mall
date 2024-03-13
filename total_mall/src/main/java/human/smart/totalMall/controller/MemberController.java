@@ -43,6 +43,7 @@ public class MemberController {
 				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry, sellerbuyerVoc, mViewOrderDetails, adminvocCnt, buyerInqCnt,
 				  VocCnt,pvocCnt, MembersCnt;
 	
+	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
 	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2, allorderCnt, pPage2, allproductsCnt,
