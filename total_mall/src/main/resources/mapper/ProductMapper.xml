@@ -380,22 +380,12 @@
 	</update>	
 	
 	<!-- 개인회원 리뷰 모아보기-->
-	<select id="myreview" parameterType="SearchVO" resultType="ReviewVO">
-	select * from tb_review
+	<select id="myreview" parameterType="_int" resultType="ReviewVO">
+	select* from tb_review
 	where m_idx= #{m_idx}
 	ORDER BY post_date ASC
-	limit #{startIdx}, 10
+	LIMIT 20 OFFSET 0;
 	</select>
-	
-	<!-- 개인회원 리뷰 모아보기 합계-->
-	<select id="reviewCnt" parameterType="SearchVO" resultType="_int">
-	select count(*) from tb_review
-	where m_idx= #{m_idx}
-	ORDER BY post_date ASC
-	</select>
-	
-	
-	
 	
 	<!-- 주문 상태에 따른 합계 조회 -->
 	<select id="statusO" parameterType="_int" resultType="CartVO">

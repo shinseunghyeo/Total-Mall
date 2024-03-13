@@ -151,16 +151,10 @@ public class ProductDAO{
 		return sqlSession.insert(MAPPER + ".oModify", vo);
 	}
 	
-	//개인회원 리뷰 모아보기
-	public List<ReviewVO> myreview(SearchVO vo){
-		return sqlSession.selectList(MAPPER+".myreview", vo);
+	//상품 상태에 따른 합계 조회
+	public List<ReviewVO> myreview(int m_idx){
+		return sqlSession.selectList(MAPPER+".myreview", m_idx);
 	}
-	
-	//개인회원 리뷰 모아보기 합계
-	public int reviewCnt(SearchVO vo) {
-		return sqlSession.selectOne(MAPPER+".reviewCnt", vo);
-	}
-	
 	
 	//상품 상태에 따른 합계 조회
 	public List<CartVO> statusO(int m_idx){

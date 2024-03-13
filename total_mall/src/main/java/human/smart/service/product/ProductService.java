@@ -56,9 +56,7 @@ public interface ProductService {
 	default int todayProduct(){return 0;}
 	default List<ProductVO> statusP(int m_idx){return null;}
 	default int oModify(CartVO vo){return 0;}
-	default List<ReviewVO> myreview(SearchVO vo){return null;}
-	default int reviewCnt(SearchVO vo){return 0;}
-	
+	default List<ReviewVO> myreview(int m_idx){return null;}
 	default List<CartVO> statusO(int m_idx){return null;}
 	default List<CartVO> statusO2(int m_idx){return null;}
 	default List<ProductVO> statusP2(){return null;}
@@ -71,8 +69,6 @@ public interface ProductService {
 	default CartVO cartCheck(CartVO vo) {return null;}
 	default int cartOidxUpdate(int m_idx, int o_idx) {return 0;}
 	default List<ProductVO> getProducts5(SearchVO vo){return null;}
-	
-	
 	
 	
 	

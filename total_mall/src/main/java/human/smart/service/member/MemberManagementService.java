@@ -18,7 +18,7 @@ public class MemberManagementService implements MemberService {
 
 	@Override
 	public List<MemberVO> getMembers(SearchVO vo){
-		vo.setStartIdx((vo.getPageNum()-1)*10);
+		vo.setStartIdx((vo.getPageNum()-1)*5);
 		return dao.getMembers(vo);
 	}
 	

@@ -76,11 +76,6 @@ public class MemberDAO {
 	public List<MemberVO> getMembers(SearchVO vo){
 		return sqlSession.selectList(MAPPER+".getMembers", vo);
 	}
-	
-	//회원정보 전체 가져오기 합계
-	public int MembersCnt(SearchVO vo) {
-		return sqlSession.selectOne(MAPPER+".MembersCnt", vo);
-	}
 		
 	//회원등급 변경
 	public int gradeUpdate(MemberVO vo) {
@@ -116,33 +111,18 @@ public class MemberDAO {
 	}
 
 	//관리자가 받는 문의사항 전체 불러오기
-	public List<VocVO> getInquirylist(SearchVO vo){
-		return sqlSession.selectList(MAPPER+".getInquirylist", vo);
-	}
-	
-	//관리자가 받는 문의사항 전체 불러오기 합계
-	public int adminvocCnt(SearchVO vo) {
-		return sqlSession.selectOne(MAPPER+".adminvocCnt", vo);
+	public List<VocVO> getInquirylist(){
+		return sqlSession.selectList(MAPPER+".getInquirylist");
 	}
 	
 	//기업회원이 받는 문의사항 불러오기
-	public List<PvocVO> getInquirylistp(SearchVO vo){
-		return sqlSession.selectList(MAPPER+".getInquirylistp", vo);
-	}
-	
-	//기업회원이 받는 문의사항 불러오기 합계
-	public int pvocCnt(SearchVO vo) {
-		return sqlSession.selectOne(MAPPER+".pvocCnt", vo);
+	public List<PvocVO> getInquirylistp(int m_idx){
+		return sqlSession.selectList(MAPPER+".getInquirylistp", m_idx);
 	}
 	
 	//개인회원이 기업회원한테 쓴 문의사항 불러오기
-	public List<PvocVO> buyerInquirylist(SearchVO vo){
-		return sqlSession.selectList(MAPPER+".buyerInquirylist", vo);
-	}
-	
-	//관리자가 받는 문의사항 전체 불러오기 합계
-	public int buyerInqCnt(SearchVO vo) {
-		return sqlSession.selectOne(MAPPER+".buyerInqCnt", vo);
+	public List<PvocVO> buyerInquirylist(String member_id){
+		return sqlSession.selectList(MAPPER+".buyerInquirylist", member_id);
 	}
 	
 	//관리자 홈 회원 현황
@@ -151,13 +131,8 @@ public class MemberDAO {
 	}
 	
 	//개인회원, 기업회원이 관리자한테 한 문의 불러오기
-	public List<VocVO> sellerbuyerVocList(SearchVO vo){
-		return sqlSession.selectList(MAPPER+".sellerbuyerVocList", vo);
-	}
-	
-	//개인회원, 기업회원이 관리자한테 한 문의 불러오기 합계
-	public int VocCnt(SearchVO vo) {
-		return sqlSession.selectOne(MAPPER+".VocCnt", vo);
+	public List<VocVO> sellerbuyerVocList(int m_idx){
+		return sqlSession.selectList(MAPPER+".sellerbuyerVocList", m_idx);
 	}
 	
 	//주문상세보기 페이지 처리하기

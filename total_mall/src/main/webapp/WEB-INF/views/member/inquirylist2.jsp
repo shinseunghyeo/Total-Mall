@@ -112,7 +112,6 @@ function openPopup(url) {
 			<!-- 기타 문의 내역 행 추가 -->
 			</tbody>
 		</table>
-		<%@ include file="inquirylistpaging2.jsp"%>
 	</div>
 </body>
 </html>

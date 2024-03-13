@@ -77,47 +77,17 @@
 						</otherwise>
 					</choose>
 					 		order by m_idx desc
-			                limit #{startIdx}, 10
+			                limit 0, 5
 		</when>
 		<otherwise><!-- 검색어가 없는 경우  -->
 			select /*+ INDEX(tb_member tb_member_pk) */
 			        		*
 			        		from tb_member
 			        		order by m_idx desc
-			       			limit #{startIdx}, 10
+			       			limit 0, 10
 		</otherwise>
 	</choose>
 </select>
-
-	<!-- 회원정보 전체 가져오기 합계 -->
-	<select id="MembersCnt" parameterType="SearchVO" resultType="_int">
-	<choose>
-		<when test="searchWord != null"><!-- 검색어가 있는 경우  -->
-							select count(*)			        		*
-			        		from tb_member
-					<choose>
-					<when test="searchField == 'grade'"><!-- 검색영역: 등급 -->
-							where grade like CONCAT('%',#{searchWord},'%')
-						</when>
-						<when test="searchField == 'member_id'"><!-- 검색영역: 아이디 -->
-							where member_id like CONCAT('%',#{searchWord},'%')
-						</when>
-						<when test="searchField == 'member_name'"><!-- 검색영역: 이름 -->
-							where member_name like CONCAT('%',#{searchWord},'%')
-						</when>
-						<otherwise><!-- 검색영역: 핸드폰 -->
-							where handphone like CONCAT('%',#{searchWord},'%')
-						</otherwise>
-					</choose>
-		</when>
-		<otherwise><!-- 검색어가 없는 경우  -->
-			select count(*)
-			        		
-			        		from tb_member
-		</otherwise>
-	</choose>
-</select>
-
 	
 	
 	<!-- 회원등급 변경 -->
@@ -159,21 +129,13 @@
 	</update>
 	
 	<!-- 관리자가 받는 문의사항 전체 불러오기 -->
- 	<select id="getInquirylist" parameterType="SearchVO" resultType="VocVO">
+ 	<select id="getInquirylist" resultType="VocVO">
  		select * from tb_voc
  		order by post_date desc
- 		limit #{startIdx}, 10
  	</select>
- 	
- 	<!-- 관리자가 받는 문의사항 전체 불러오기 합계 -->
- 	<select id="adminvocCnt" parameterType="SearchVO" resultType="_int">
- 	select count(*) from tb_voc
- 		order by post_date desc
- 	</select>
- 	
  	
  	<!-- 기업회원이 받는 문의사항 불러오기 -->
- 	<select id="getInquirylistp" parameterType="SearchVO" resultType="PvocVO">
+ 	<select id="getInquirylistp" parameterType="_int" resultType="PvocVO">
  		SELECT * FROM tb_pvoc
 		WHERE p_idx IN (
 		    SELECT DISTINCT p_idx
@@ -181,36 +143,15 @@
 		    WHERE m_idx = #{m_idx}
 		)
 		ORDER BY post_date DESC
-		limit #{startIdx}, 10
+
  	</select>
- 	
- 	<!-- 기업회원이 받는 문의사항 불러오기 합계 -->
- 	<select id="pvocCnt" parameterType="SearchVO" resultType="_int">
- 		select count(*) FROM tb_pvoc
-		WHERE p_idx IN (
-		    SELECT DISTINCT p_idx
-		    FROM tb_pvoc
-		    WHERE m_idx = #{m_idx}
-		)
-		ORDER BY post_date DESC
- 	</select>
- 	
  	
  	<!-- 개인회원이 기업회원한테 쓴 문의사항 불러오기 -->
- 	<select id="buyerInquirylist" parameterType="SearchVO" resultType="PvocVO">
+ 	<select id="buyerInquirylist" parameterType="String" resultType="PvocVO">
  		select * from tb_pvoc
  		where member_id=#{member_id}
  		order by post_date desc
- 		limit #{startIdx}, 10
  	</select>
- 	
- 	<!-- 개인회원이 기업회원한테 쓴 문의사항 불러오기 합계 -->
- 	<select id="buyerInqCnt" parameterType="SearchVO" resultType="_int">
- 		select count(*) from tb_pvoc
- 		where member_id=#{member_id}
- 		order by post_date desc
- 	</select>
- 	
  	
  	
  	<!-- 관리자 홈 회원 현황-->
@@ -220,21 +161,12 @@
  	
  	
  	<!-- 개인회원, 기업회원이 관리자한테 한 문의 불러오기 -->
- 	<select id="sellerbuyerVocList" parameterType="SearchVO" resultType="VocVO">
+ 	<select id="sellerbuyerVocList" parameterType="_int" resultType="VocVO">
  		SELECT *
 	    FROM tb_voc
 	    WHERE m_idx = #{m_idx}
 	    ORDER BY post_date DESC
-	    limit #{startIdx}, 10
  	</select>
- 	
- 	<!-- 개인회원, 기업회원이 관리자한테 한 문의 불러오기 합계 -->
- 	<select id="VocCnt" parameterType="SearchVO" resultType="_int">
- 		select count(*) FROM tb_voc
-	    WHERE m_idx = #{m_idx}
-	    ORDER BY post_date DESC
- 	</select>
- 	
  	
  	<!-- 주문상세보기 페이지 요청 -->
  	<select id="getViewOrderDetails" parameterType="_int" resultType="cartVO">

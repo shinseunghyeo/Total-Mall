@@ -87,12 +87,10 @@
 	<select id="getBoard" resultType="vocVO">
 		select * from tb_voc where m_idx = #{m_idx}
 	</select>
-	
 	<!-- 문의사항 내역 -->
 	<select id="vocBoard" parameterType="_int" resultType="vocVO">
 		select * from tb_voc where v_idx = #{v_idx}
 	</select>
-	
 	<!-- 관리자 문의사항 내역 -->
 	<update id="answerupdate" parameterType="vocVO">
 		UPDATE tb_voc
