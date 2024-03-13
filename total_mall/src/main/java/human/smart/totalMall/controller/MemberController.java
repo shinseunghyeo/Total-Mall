@@ -40,12 +40,13 @@ public class MemberController {
 	
 	@Setter(onMethod_={ @Autowired })
 	MemberService mJoin, mLogin, mFindId, mFindPw, mFindPwProcess,mManage, mInfo, mBuyerUpdateProcess, mSellerUpdateProcess, mCancel, Inquiry,
-				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry, sellerbuyerVoc, mViewOrderDetails;
+				  mGrade, cancelUpdate, sList, memberCnt, buyerInquiry, sellerbuyerVoc, mViewOrderDetails, adminvocCnt, buyerInqCnt,
+				  VocCnt,pvocCnt, MembersCnt;
 	
 	@Setter(onMethod_={ @Autowired })
 	ProductService myoList, pTotalCount,pPage,myoList2, allpList, alloList, 
 	myoList_1, todayProduct, statusP, myReview, statusO, statusO2, statusP2, allorderCnt, pPage2, allproductsCnt,
-	sellerOrderCnt, mypList, myproductCnt;
+	sellerOrderCnt, mypList, myproductCnt,reviewCnt;
 	
 	
 	@Setter(onMethod_={ @Autowired })
@@ -446,74 +447,174 @@ public String orderlist2(@ModelAttribute("sVO")SearchVO searchVO, Model model,
 
 //문의사항 리스트(관리자, 기업회원, 개인회원 공통)
 @GetMapping("/inquirylist.do")
-public String getInquirylist(@SessionAttribute("member") MemberVO member, Model model) {
+public String getInquirylist(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
 	if (member == null || member.getM_idx() == 0) {
 	    return "redirect:/member/login.do";
 	}
+	
+	int totalRows = adminvocCnt.adminvocCnt(vo);
+	
+	System.out.println("totalRows1:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	
 	int m_idx = member.getM_idx();
 	model.addAttribute("m_idx", m_idx);
 	
-	List<VocVO> voclist = Inquiry.getInquirylist();
+	List<VocVO> voclist = Inquiry.getInquirylist(vo);
 	model.addAttribute("inquirylist", voclist);
-	List<PvocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
-	model.addAttribute("pinquirylist", pvoclist);
-	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
-	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
 	
-	String member_id = member.getMember_id();
-	
-	model.addAttribute("member_id", member_id);
-	
-	List<PvocVO> buyerInquirylist = buyerInquiry.buyerInquirylist(member_id);
-	model.addAttribute("buyerInquirylist", buyerInquirylist);
 	
 	return "member/inquirylist";
 }
 
 //문의사항 리스트(관리자, 기업회원, 개인회원 공통)
 @GetMapping("/inquirylist2.do")
-public String getInquirylist3(@SessionAttribute("member") MemberVO member, Model model) {
-	if (member == null || member.getM_idx() == 0) {
-	    return "redirect:/member/login.do";
-	}
-	int m_idx = member.getM_idx();
-	model.addAttribute("m_idx", m_idx);
+public String getInquirylist2(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
 	
-	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+	int m_idx = member.getM_idx();
+	
+	vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	
+	int totalRows = VocCnt.VocCnt(vo);
+	
+	System.out.println("totalRows1:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(vo);
 	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
 	
 	
 	return "member/inquirylist2";
 }
 
+//개인회원의 판매자 문의 답변
+@GetMapping("/inquirylist3.do")
+public String getInquirylist3(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	
+	
+	int totalRows = buyerInqCnt.buyerInqCnt(vo);
+	
+	System.out.println("totalRows2:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	
+	List<PvocVO> buyerInquirylist = buyerInquiry.buyerInquirylist(vo);
+	model.addAttribute("buyerInquirylist", buyerInquirylist);
+	
+	return "member/inquirylist3";
+}
 
 
-//기업회원 문의사항 리스트 처리(ajax)
-@GetMapping("sellermypage/member/inquirylist.do")
-public String getInquirylist2(@SessionAttribute("member") MemberVO member,Model model) {
+//기업회원이 받는 문의사항 불러오기
+@GetMapping("/inquirylist4.do")
+public String getInquirylist4(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
+	
+int m_idx = member.getM_idx();
+	
+	vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
 	if (member == null || member.getM_idx() == 0) {
 	    return "redirect:/member/login.do";
 	}
-	int m_idx = member.getM_idx();
-	model.addAttribute("m_idx", m_idx);
 	
-	List<PvocVO> pvoclist = Inquiry.getInquirylistp(m_idx);
+	int totalRows = pvocCnt.pvocCnt(vo);
+	
+	System.out.println("totalRows1:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+
+	List<PvocVO> pvoclist = Inquiry.getInquirylistp(vo);
 	model.addAttribute("pinquirylist", pvoclist);
 	
-	return "member/inquirylist";
+	return "member/inquirylist4";
+}
+
+//기업회원 문의사항 리스트 처리(ajax)
+@GetMapping("sellermypage/member/inquirylist.do")
+public String getInquirylist6(@SessionAttribute("member") MemberVO member,SearchVO vo, Model model) {
+	
+int m_idx = member.getM_idx();
+	
+	vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	if (member == null || member.getM_idx() == 0) {
+	    return "redirect:/member/login.do";
+	}
+	
+	int totalRows = pvocCnt.pvocCnt(vo);
+	
+	System.out.println("totalRows1:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+
+	List<PvocVO> pvoclist = Inquiry.getInquirylistp(vo);
+	model.addAttribute("pinquirylist", pvoclist);
+	
+	return "member/inquirylist4";
 }
 
 
 //기업회원 고객센터 문의사항 리스트 처리(ajax)
 @GetMapping("sellermypage/member/inquirylist2.do")
-public String getInquirylist4(@SessionAttribute("member") MemberVO member, Model model) {
-	if (member == null || member.getM_idx() == 0) {
-	    return "redirect:/member/login.do";
-	}
-	int m_idx = member.getM_idx();
-	model.addAttribute("m_idx", m_idx);
+public String getInquirylist10(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
 	
-	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+int m_idx = member.getM_idx();
+	
+	vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	
+	int totalRows = VocCnt.VocCnt(vo);
+	
+	System.out.println("totalRows1:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(vo);
 	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
 	
 	
@@ -568,12 +669,25 @@ return "forward:/product/order_history.do?m_idx="+m_idx;
 
 //개인회원 리뷰 모아보기
 @GetMapping("/buyermypage/product/myreview.do")
-public String myreview(@SessionAttribute("member") MemberVO member, Model model) {
-	if (member == null || member.getM_idx() == 0) {
-	    return "redirect:/member/login.do";
-	}
+public String myreview(@SessionAttribute("member") MemberVO member, SearchVO vo,Model model) {
 	int m_idx = member.getM_idx();
-	List<ReviewVO> myreview = myReview.myreview(m_idx);
+		
+		vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+		if(vo.getPageNum() == 0) {
+			vo.setPageNum(1);
+		}
+		
+		int totalRows = reviewCnt.reviewCnt(vo);
+		
+		System.out.println("totalRows1:"+totalRows);
+		
+		PageNav pageNav = new PageNav();
+		
+		pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+		pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+		model.addAttribute("pageNav", pageNav);
+		
+	List<ReviewVO> myreview = myReview.myreview(vo);
 
 model.addAttribute("myreview", myreview); 
 return "forward:/product/myreview.do?m_idx="+m_idx;
@@ -593,30 +707,50 @@ public String buyerAddress() {
 return "member/buyeraddress";
 }
 
-//개인회원 상품 문의/답변 설정
+//개인회원 상품 문의/답변 설정//////////////////////////////////////
 @GetMapping("/buyermypage/member/inquirylist.do")
-public String inquirylist(@SessionAttribute("member") MemberVO member, Model model) {
+public String inquirylist(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	int totalRows = buyerInqCnt.buyerInqCnt(vo);
 	
-	String member_id = member.getMember_id();
-	model.addAttribute("member_id", member_id);
+	System.out.println("totalRows:"+totalRows);
 	
-	List<PvocVO> buyerInquirylist = buyerInquiry.buyerInquirylist(member_id);
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	List<PvocVO> buyerInquirylist = buyerInquiry.buyerInquirylist(vo);
 	model.addAttribute("buyerInquirylist", buyerInquirylist);
 	
 	
-return "member/inquirylist";
+return "member/inquirylist3";
 }
 
 //개인회원 고객센터 문의사항 리스트 처리(ajax)
 @GetMapping("buyermypage/member/inquirylist2.do")
-public String getInquirylist5(@SessionAttribute("member") MemberVO member, Model model) {
-	if (member == null || member.getM_idx() == 0) {
-	    return "redirect:/member/login.do";
-	}
-	int m_idx = member.getM_idx();
-	model.addAttribute("m_idx", m_idx);
+public String getInquirylist5(@SessionAttribute("member") MemberVO member,SearchVO vo, Model model) {
+int m_idx = member.getM_idx();
 	
-	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(m_idx);
+	vo.setM_idx(m_idx);//반드시 위에서 처리해 줄 것
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	
+	int totalRows = VocCnt.VocCnt(vo);
+	
+	System.out.println("totalRows1:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	List<VocVO> sellerbuyerVocList = sellerbuyerVoc.sellerbuyerVocList(vo);
 	model.addAttribute("sellerbuyerVocList", sellerbuyerVocList);
 	
 	
@@ -682,17 +816,27 @@ public Map<String, String> voc_stateMap() {
 
 //회원관리 처리
 @GetMapping("member_management.do")
-public String member_management(@ModelAttribute("sVO")SearchVO searchVO, Model model) {
-List<MemberVO> memberList = mManage.getMembers(searchVO);
+public String member_management(@ModelAttribute("sVO")SearchVO vo, Model model) {
+	if(vo.getPageNum() == 0) {
+			vo.setPageNum(1);
+		}
+		
+		int totalRows = MembersCnt.MembersCnt(vo);
+		
+		System.out.println("totalRows1:"+totalRows);
+		
+		PageNav pageNav = new PageNav();
+		
+		pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+		pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+		model.addAttribute("pageNav", pageNav);
+		
+	
+List<MemberVO> memberList = mManage.getMembers(vo);
 List<MemberVO> memberCntlist = memberCnt.memberCnt();
 model.addAttribute("memberList", memberList);
 model.addAttribute("memberCntlist", memberCntlist);
-if(searchVO.getPageNum() == 0) {
-searchVO.setPageNum(1);
-}
-pageNav.setTotalRows(pTotalCount.getTotalCount(searchVO));
-pageNav = pPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
-model.addAttribute("pageNav", pageNav);
+
 return "member/member_management";
 }
 
@@ -808,8 +952,8 @@ public String allpList(SearchVO searchVO,Model model) {
 	model.addAttribute("pageNav", pageNav);
 
 	
-	System.out.println("allorderCnt:"+pageNav.getTotalRows());
-	System.out.println("startIdx"+pageNav.getStartNum());
+	System.out.println("allorderCnt2:"+pageNav.getTotalRows());
+	System.out.println("startIdx2"+pageNav.getStartNum());
 		List<ProductVO> allList = allpList.getProducts4(searchVO);
 	model.addAttribute("allList", allList);
 	return "product/allplist";
@@ -856,8 +1000,23 @@ public String allSales2(Model model) {
 
 //관리자 문의사항 리스트 처리(ajax)
 @GetMapping("adminmypage/member/inquirylist.do")
-public String getInquirylist1(Model model) {
-	List<VocVO> voclist = Inquiry.getInquirylist();
+public String getInquirylist1(SearchVO vo, Model model) {
+	if(vo.getPageNum() == 0) {
+		vo.setPageNum(1);
+	}
+	
+	int totalRows = adminvocCnt.adminvocCnt(vo);
+	
+	System.out.println("totalRows:"+totalRows);
+	
+	PageNav pageNav = new PageNav();
+	
+	pageNav.setTotalRows(totalRows);//해당 페이지의 총 페이지 수 메소드
+	pageNav = pPage2.setPageNav(pageNav, vo.getPageNum(), vo.getPageBlock());
+	model.addAttribute("pageNav", pageNav);
+	
+	
+	List<VocVO> voclist = Inquiry.getInquirylist(vo);
 	model.addAttribute("inquirylist", voclist);
 	
 	return "member/inquirylist";

@@ -115,13 +115,13 @@
 		<div id="member_wrap">
 			<!-- 검색바 -->
 			<div id="search_bar">
-				<div id="bbs-info">총 ${memberCntlist[0].count} 명 | 페이지</div>
+				<div id="bbs-info">총 ${pageNav.totalRows} 명 | ${pageNav.total_pageNum}페이지</div>
 				<form id="search" action="member_management.do">
 					<select name="searchField" id="searchField">
 						<option value="grade">회원 등급</option>
-						<option value="m_idx">회원 번호</option>
 						<option value="member_id">회원 아이디</option>
 						<option value="member_name">회원 이름</option>
+						<option value="handphone">전화번호</option>
 					</select> <input type="text" name="searchWord" id="searchWord"
 						placeholder="검색어 입력"> <input type="button" value="검색"
 						onclick="searchMembers()">
@@ -233,7 +233,9 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="5" id="td-page-nav"></td>
+						<td colspan="5" id="td-page-nav">
+						 <%@ include file="memberpaging.jsp"%>
+						</td>
 					</tr>
 				</tfoot>
 			</table>
