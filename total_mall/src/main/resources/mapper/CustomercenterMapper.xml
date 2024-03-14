@@ -10,7 +10,7 @@
 		<choose>
 			<when test="originfile_name != null"><!-- test 조건식에 사용되는 변수: 입력값에서 가져온 변수  -->
 				insert into tb_voc (m_idx, writer, title, email, content, originfile_name, savefile_name, voc_type,voc_state)
-					values(#{m_idx},#{writer},#{title},#{content},#{email},#{originfile_name}
+					values(#{m_idx},#{writer},#{title},#{email},#{content},#{originfile_name}
 					,#{savefile_name},#{voc_type},#{voc_state})
 			</when>
 			<otherwise>

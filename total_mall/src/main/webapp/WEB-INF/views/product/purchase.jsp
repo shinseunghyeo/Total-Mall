@@ -106,7 +106,7 @@
             </table>
         </div>
         <div id="Purchase"><br>
-            <input type="button" value="결제하기" class="submit-button bold" id="button">
+            <input type="submit" value="결제하기" class="submit-button bold" id="button">
         </div><br>
 
     </div>
@@ -116,7 +116,7 @@
 </body>
 <script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 
-<script>
+<!-- <script>
 
 $('#button').click(function() {
 	var totalPaymentAmountText = $('#totalPaymentAmount').text();
@@ -149,6 +149,6 @@ $('#button').click(function() {
 	});
 });
 
-</script>
+</script> -->
 
 </html>
