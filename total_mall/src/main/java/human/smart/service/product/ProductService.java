@@ -71,6 +71,7 @@ public interface ProductService {
 	default CartVO cartCheck(CartVO vo) {return null;}
 	default int cartOidxUpdate(int m_idx, int o_idx) {return 0;}
 	default List<ProductVO> getProducts5(SearchVO vo){return null;}
+	default int quantityUpdate(CartVO vo2) {return 0;}
 	
 	
 	

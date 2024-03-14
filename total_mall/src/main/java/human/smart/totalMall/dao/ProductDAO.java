@@ -249,6 +249,10 @@ public class ProductDAO{
 	public int cartInsert2(CartVO vo) {
 		return sqlSession.insert(MAPPER + ".cartInsert2", vo);
 	}
+	//직접 구매 시 상품 재고수량 변경하기
+	public int quantityUpdate(CartVO vo) {
+		return sqlSession.update(MAPPER+".quantityUpdate",vo);
+	}
 	
 	//주문 테이블 상품 추가 후 장바구니에 O_idx 업데이트 하기
 	public int cartOidxUpdate(int m_idx, int o_idx) throws SQLException{
