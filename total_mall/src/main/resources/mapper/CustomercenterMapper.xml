@@ -200,7 +200,7 @@
 		SELECT *
 		FROM tb_voc
 		WHERE m_idx=#{m_idx}
-		AND voc_state = 1
+		AND voc_state = 2
 		ORDER BY update_date DESC
 		LIMIT 5
 	</select>
