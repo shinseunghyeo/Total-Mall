@@ -86,7 +86,7 @@
 						<tr>
 							<th class="th_left">판매기간</th>
 							<td colspan="2"><input type="date" class="input_date"
-								name="start_date" id=""><input type="date"
+								name="start_date" id="start_date"><input type="date"
 								class="input_date" name="end_date" id="end_date"></td>
 						</tr>
 

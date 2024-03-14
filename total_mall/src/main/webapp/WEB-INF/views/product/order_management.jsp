@@ -55,7 +55,7 @@ $(document).ready(function () {
             alert("선택된 주문이 없습니다.");
         }
     });
-}
+});
 
 function openOrderDetails(orderIdx) {
     var url = '${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=' + orderIdx;
@@ -227,39 +227,4 @@ function submitParcel(event) {
 
 </body>
 
-<script>
-var orderModifyXhr;  // order-modify-btn 요청을 저장할 변수
-var parcelXhr;       // submitParcel 요청을 저장할 변수
-
-
-function openOrderDetails(orderIdx) {
-    var url = '${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=' + orderIdx;
-    window.open(url, '_blank', 'width=1110, height=600');
-}
-
-function submitParcel(event) {
-    event.preventDefault(); // 기본 제출 동작 방지
-
-    var form = event.target;
-    var formData = new FormData(form);
-
-    $.ajax({
-        type: form.method,
-        url: form.action,
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(data) {
-            alert("송장번호가 입력되었습니다.");
-            loadContent("../member/sellermypage/product/order_management.do"); // 성공하면 페이지 다시로드
-        },
-        error: function(error) {
-            console.error("Ajax request failed: ", error);
-        }
-    });
-}
-
-
-
-</script>
 </html>

@@ -23,7 +23,7 @@ $(document).ready(function(){
     $("#frm_write").submit(function(e){
         // 필수 입력값 확인을 위한 유효성 검사
         let valid = true;
-
+        
         // 카테고리 선택 확인
         if($("#frm_category").val() === ""){
             alert("카테고리를 선택하세요.");
@@ -94,6 +94,17 @@ $(document).ready(function(){
         else if($("#quantity").val().trim() === ""){
             alert("수량을 입력하세요.");
             valid = false;
+        }
+
+        // 판매기간이 입력된 경우에만 종료일이 시작일보다 빠른지 확인
+        if(valid){
+            var startDate = new Date($("#start_date").val().trim());
+            var endDate = new Date($("#end_date").val().trim());
+
+            if (endDate < startDate) {
+                alert("종료일은 시작일보다 빠를 수 없습니다.");
+                valid = false;
+            }
         }
 
         // 필수 입력값이 모두 입력되었는지 확인

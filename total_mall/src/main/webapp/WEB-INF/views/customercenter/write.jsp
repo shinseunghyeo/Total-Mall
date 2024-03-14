@@ -10,9 +10,10 @@
 
 </head>
 <body>
-
+<div id="notice_wrap">
+<h1>공지사항 게시글 작성</h1>
     <div class="container" id="contentDiv">
-        <h1>공지사항 게시글 작성</h1>
+        
         <form id="frm_write" method="post" action="../customercenter/writeProcess.do" enctype="multipart/form-data" onsubmit="return validateForm()">
             <input type="hidden" name="m_idx" value="${member.m_idx}">
             <label for="writer">작성자</label>
@@ -35,6 +36,6 @@
             <input type="submit" value="작성 완료">
         </form>
     </div>
-
+</div>
 </body>
 </html>
