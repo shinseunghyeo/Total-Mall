@@ -6,24 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>기업회원 상품등록</title>
-<script type="text/javascript">
-function cancelRegistration() {
-    // 상품 등록 취소 여부 확인
-    const ans = confirm("상품 등록을 취소하시겠습니까?");
-    
-    if (ans) {
-        alert("마이페이지로 이동합니다.");
-        window.location.href = '../member/sellermypage.do';
-    }
-}
-
-</script>
+<script src="../resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Product/write.js"></script>
 </head>
 <body>
 
 <div id="write_frm">
 	<form name="frm_write" method="post" action="../product/writeProcess.do"
-		enctype="multipart/form-data">
+		enctype="multipart/form-data" id="frm_write">
 
 		<h1>상품 등록</h1>
 		<!-- 상품등록 1 페이지 -->
@@ -71,22 +61,22 @@ function cancelRegistration() {
 						<tr>
 							<th class="th_left">노출상품명</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="product_name" id=""></td>
+								name="product_name" id="product_name"></td>
 						</tr>
 						<tr>
 							<th class="th_left">자체 상품코드</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="product_code" id=""></td>
+								name="product_code" id="product_code"></td>
 						</tr>
 						<tr>
 							<th class="th_left">브랜드/제조사</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="brand" id=""></td>
+								name="brand" id="brand""></td>
 						</tr>
 						<tr>
 							<th class="th_left">상품 요약설명</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="summary" id=""></td>
+								name="summary" id="summary""></td>
 						</tr>
 						<tr>
 							<th class="th_left">상품 상세설명</th>
@@ -97,35 +87,35 @@ function cancelRegistration() {
 							<th class="th_left">판매기간</th>
 							<td colspan="2"><input type="date" class="input_date"
 								name="start_date" id=""><input type="date"
-								class="input_date" name="end_date" id=""></td>
+								class="input_date" name="end_date" id="end_date"></td>
 						</tr>
 
 						<tr>
 							<th class="th_left">대표이미지</th>
 							<td colspan="2"><input type="file" class="input_file"
-								name="uploadFile" id=""></td>
+								name="uploadFile" id="uploadFile"></td>
 						</tr>
 						<tr>
 							<th class="th_left">상세이미지</th>
 							<td colspan="2"><input type="file" class="input_file"
-								name="uploadFile2" id=""></td>
+								name="uploadFile2" id="uploadFile2"></td>
 						</tr>
 						<tr>
 							<th class="th_left">가격</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="price" id=""></td>
+								name="price" id="price"></td>
 						</tr>
 						
 						<tr>
 							<th class="th_left">할인율 (%)</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="discount_rate" id=""></td>
+								name="discount_rate" id="discount_rate"></td>
 						</tr>
 
 						<tr>
 							<th class="th_left">수량</th>
 							<td colspan="2"><input type="text" class="input_txt"
-								name="quantity" id=""></td>
+								name="quantity" id="quantity"></td>
 						</tr>
 					</tbody>
 

@@ -28,6 +28,7 @@ function openPopup(url) {
 	
 		<div class="container">
 		<h1>상품 문의 내역 확인</h1>
+		총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 		<table>
 			<c:choose>
 				

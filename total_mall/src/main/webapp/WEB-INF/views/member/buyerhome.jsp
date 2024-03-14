@@ -27,7 +27,7 @@ function openParcelLink(parcel, parcelMap) {
 
 function openOrderDetails(url) {
     // 새 창을 열기 위한 window.open() 함수 호출
-    window.open(url, '_blank', 'width=800,height=400');
+    window.open(url, '_blank', 'width=1110, height=600');
 }
 
 
@@ -156,12 +156,13 @@ function openOrderDetails(url) {
 									onclick="openReviewPage(${orderList_1[vs.count-1].p_idx});">
 									<input type="button" value="리뷰 작성" class="new-another-button">
 								</a>
+								<c:if test="${orderList_1[vs.count-1].parcel ne 0 and orderList_1[vs.count-1].tracking_number ne 0}">
 								<a
-									href="http://nexs.cjgls.com/web/info.jsp?slipno=${orderList_1[vs.count-1].tracking_number}"
+									href="<c:out value="${parcelMap[orderList_1[vs.count-1].parcel.toString()]}"/>${orderList_1[vs.count-1].tracking_number}"
 									target="_blank"> <input type="button" value="배송 추적하기"
 									class="new-another-button">
 								</a>
-
+								</c:if>
 								<a
 									href="${pageContext.request.contextPath}/product/item.do?p_idx=${orderList_1[vs.count-1].p_idx}"
 									target="_blank"> <input type="button" value="문의 하기"

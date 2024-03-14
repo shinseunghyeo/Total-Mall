@@ -11,8 +11,7 @@
 <script src="../resources/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript"
 	src="../resources/js/Member/loadContent.js"></script>
-<script type="text/javascript"
-	src="../resources/js/Member/loadContent.js"></script>
+<script type="text/javascript" src="../resources/js/Product/parcel.js"></script>
 <script>
 var orderModifyXhr;  // order-modify-btn 요청을 저장할 변수
 var parcelXhr;       // submitParcel 요청을 저장할 변수
@@ -57,34 +56,36 @@ $(document).ready(function () {
         }
     });
 
-    function submitParcel() {
-        var formData = $('#parcelForm').serialize();
-
-        // 이미 실행 중인 요청이 있다면 중지
-        if (parcelXhr && parcelXhr.readyState !== 4) {
-            parcelXhr.abort();
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "../product/parcel.do",
-            data: formData,
-            success: function (response) {
-                console.log(response);
-                alert("송장번호가 입력되었습니다");
-                loadContent("../member/sellermypage/product/order_management.do");
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
-    }
-});
 
 function openOrderDetails(orderIdx) {
     var url = '${pageContext.request.contextPath}/member/ViewOrderDetails.do?o_idx=' + orderIdx;
-    window.open(url, '_blank', 'width=800,height=400');
+    window.open(url, '_blank', 'width=1110, height=600');
 }
+
+function submitParcel(event) {
+    event.preventDefault(); // 기본 제출 동작 방지
+
+    var form = event.target;
+    var formData = new FormData(form);
+
+    $.ajax({
+        type: form.method,
+        url: form.action,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            alert("송장번호가 입력되었습니다.");
+            loadContent("../member/sellermypage/product/order_management.do"); // 성공하면 페이지 다시로드
+        },
+        error: function(error) {
+            console.error("Ajax request failed: ", error);
+        }
+    });
+}
+
+
+
 </script>
 </head>
 <body>
@@ -97,6 +98,7 @@ function openOrderDetails(orderIdx) {
 
 
 			<div class="new_order">
+			총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 				<div class="new-menu">
 					<div class="p-1">
 						<p></p>
@@ -189,9 +191,11 @@ function openOrderDetails(orderIdx) {
 									</div>
 								</form>
 								<form id="parcelForm" action="../product/parcel.do"
-									method="post">
+									method="post" onsubmit="submitParcel(event)">
 									<input type="hidden" name="p_idx"
-										value="${orderList2[vs.count-1].p_idx}">
+										value="${orderList2[vs.count-1].p_idx}"> <input
+										type="hidden" name="o_idx"
+										value="${orderList2[vs.count-1].o_idx}">
 									<div id="parcel_input">
 										<select id="parcelCompany" name="parcel">
 											<c:forEach var="entry" items="${parcel_companyMap}">
@@ -205,9 +209,12 @@ function openOrderDetails(orderIdx) {
 								</form>
 
 
-<a id="order_details" href="#" onclick="openOrderDetails(${orderList2[vs.count-1].o_idx})">
-    <input type="button" value="주문 상세보기" class="new-another-button">
-</a>							</c:if>
+
+								<a id="order_details" href="#"
+									onclick="openOrderDetails(${orderList2[vs.count-1].o_idx})">
+									<input type="button" value="주문 상세보기" class="new-another-button">
+								</a>
+							</c:if>
 						</div>
 					</div>
 				</c:forEach>

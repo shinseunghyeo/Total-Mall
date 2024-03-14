@@ -26,10 +26,14 @@ function openPopup(url) {
 <body>
 <div id="nav_back"></div>
 <div id="inq_wrap">
-	
-
-<div class="container">
+<c:if test="${member.grade == '9'}">	
 <h1>고객센터 문의 내역 확인</h1>
+</c:if>
+<div class="container">
+<c:if test="${member.grade ne '9'}">	
+<h1>고객센터 문의 내역 확인</h1>
+</c:if>
+총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 		<table>
 			<c:choose>
 				<c:when test="${not empty sellerbuyerVocList}"><!-- 관리자 -->

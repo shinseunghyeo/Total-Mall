@@ -15,17 +15,17 @@
     	font-style: normal;
     }
 
-    p,
-    a,
-    h1,
-    h2,
-    h3,
+   p,
+    #inner_wrap a,
+    #inner_wrap h1,
+    #inner_wrap h2,
+    #inner_wrap h3,
     h4,
     h5,
     h6,
     td,
     input[type='button'] {
-        font-family: 'GmarketSansTTFLight';
+        font-family: 'GmarketSansTTFBold';
     }
 
     th {

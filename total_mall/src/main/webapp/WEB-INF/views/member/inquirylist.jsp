@@ -39,6 +39,7 @@ function openPopup(url) {
 			</c:otherwise>
 		</c:choose>
 		<div class="container">
+		총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 		<table>
 			<c:choose>
 				<c:when test="${not empty inquirylist and member.grade eq '8'}"><!-- 관리자 -->
