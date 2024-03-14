@@ -20,6 +20,7 @@
                 <a href="" class="bold">제휴·광고</a>
                 <a style="float: right;" href="" class="bold">판매자 서비스 </a>
             </div><br><hr class="footerline_color2"><br>
+            <a href="${pageContext.request.contextPath}/TotalMall.do"><img src="resources/img/Headerimg/사이트로고.png" width="130"></a><br>
             <div id="Company_box">
                 <p class="bold">
                     <span class="bold">주식회사 토탈몰</span><br>
@@ -35,6 +36,7 @@
                 </p>
             </div><br><hr class="footerline_color2"><br>
             <div id="Notice_box" class="bold">
+            	<img src="resources/img/Mallimg/포트원.png" alt="#"><br>
                 Totalmall은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 상품·거래 정보 및 가격에 대하여 책임을 지지 않습니다.<br>
                 본 사이트의 모든 정보, 콘텐츠, UI 등에 대한 무단 복제, 전송, 배포, 스크래핑 등의 행위는 엄격히 금지됩니다.<br>
                 Copyright Totalmall Inc. All rights reserved.
