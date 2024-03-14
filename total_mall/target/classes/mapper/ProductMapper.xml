@@ -336,15 +336,13 @@
 	<select id="getProducts4" parameterType="searchVO" resultType="productVO">
 		SELECT * FROM tb_product
 		ORDER BY
-		p_last_modified_date DESC
+		p_idx DESC
 		LIMIT #{startIdx}, 10
 	</select>
 	
 	<!-- 관리자 상품조회 합계: select -->
 	<select id="allproductsCnt" parameterType="searchVO" resultType="_int">
 		SELECT count(*) FROM tb_product
-		ORDER BY
-		p_last_modified_date DESC
 		LIMIT #{startIdx}, 10
 	</select>
 

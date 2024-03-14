@@ -10,18 +10,17 @@
 <link rel="stylesheet" href="../resources/css/product/item.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../resources/js/Product/item1.js"></script>
-
 <script type="text/javascript">
-function discontinuedPost() {
-    const ans = confirm("정말로 판매를 중단하겠습니까?");
+function updateProductStatus(action, productId) {
+    const ans = confirm("정말로 판매를 " + (action === 'discontinue' ? '중단' : '재개') + "하겠습니까?");
+    const url = action === 'discontinue' ? "discontinued2.do" : "continued2.do";
 
     if (ans) {
         $.ajax({
             type: "GET",
-            url: "discontinued.do",
+            url: url,
             data: {
-                p_idx: ${product.p_idx}
+                p_idx: productId
             },
             success: function(response) {
                 // 서버 응답에 대한 처리를 여기에 추가
@@ -36,30 +35,9 @@ function discontinuedPost() {
         });
     }
 }
-function continuedPost() {
-    const ans = confirm("정말로 판매를 재개하겠습니까?");
 
-    if (ans) {
-        $.ajax({
-            type: "GET",
-            url: "continued.do",
-            data: {
-                p_idx: ${product.p_idx}
-            },
-            success: function(response) {
-                // 서버 응답에 대한 처리를 여기에 추가
-                console.log(response);
-                // 예를 들어, 페이지 리로드
-                location.reload();
-            },
-            error: function(error) {
-                // 에러 처리를 여기에 추가
-                console.error("Ajax request failed: ", error);
-            }
-        });
-    }
-}
 </script>
+<script type="text/javascript" src="../resources/js/Product/item1.js"></script>
 </head>
 <body>
   	<%@ include file="../Main/Header2.jsp" %>
@@ -165,13 +143,14 @@ function continuedPost() {
 						</c:if>
 						<c:if test="${member.m_idx eq product.m_idx || member.grade eq 8}">
 						<c:choose>
-						<c:when test="${product.p_status eq 0}">
-							<input type="button" value="판매중단" onclick="discontinuedPost()" >
-						</c:when>
-						<c:when test="${product.p_status eq 1}">
-							<input type="button" value="판매재개" onclick="continuedPost()" >
-						</c:when>
-						</c:choose>
+    <c:when test="${product.p_status eq 0}">
+        <input type="button" value="판매중단" onclick="updateProductStatus('discontinue', ${product.p_idx})">
+    </c:when>
+    <c:when test="${product.p_status eq 1}">
+        <input type="button" value="판매재개" onclick="updateProductStatus('continued', ${product.p_idx})">
+    </c:when>
+</c:choose>
+
 						</c:if>
 	                </div>
 	                <div id="Productpurchase">
@@ -209,7 +188,7 @@ function continuedPost() {
             <h2 class="bold">상세정보</h2>
 				<img src="../resources/uploads/${product.save_file_name2}">
             <br><br><br><br><br><br><hr>
-            <h3 class="bold">상세내용</h3>
+            <h3 class="bold">상세설명</h3>
             <span class="bold">${product.detail}</span><br><hr>
             <h3 class="bold">상품 정보 제공 고시</h3><hr>
             <table>
@@ -396,6 +375,7 @@ function continuedPost() {
     <!-- ---------상품정보--------- -->
     <%@include file="../Main/Footer2.jsp" %>
 </body>
+
 <script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
 <script type="text/javascript" src="../resources/js/Product/item.js"></script>
 </html>

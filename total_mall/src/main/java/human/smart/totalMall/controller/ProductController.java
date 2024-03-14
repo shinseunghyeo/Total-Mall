@@ -339,6 +339,27 @@ public class ProductController {
 
 	    return "redirect:/product/list.do";
 	}
+	
+	@GetMapping("/discontinued2.do")
+	public String discontinued(@RequestParam(value = "p_idx", required = true) int p_idx, Model model) {
+	    // 로그 추가
+	    int result = pDiscontinued.discontinued(p_idx);
+	    // 상품에 대한 처리
+
+	    return "redirect:/product/list.do";
+	}
+
+	@GetMapping("/continued2.do")
+	public String continued(@RequestParam(value = "p_idx", required = true) int p_idx, Model model) {
+	    // 로그 추가
+	    int result = pContinued.continued(p_idx);
+	    // 상품에 대한 처리
+
+	    return "redirect:/product/list.do";
+	}
+
+	
+	
 	//기업회원 내 상품보기
 	@GetMapping("myplist.do")
 	public String myplist(@ModelAttribute("sVO") SearchVO searchVO, Model model,
