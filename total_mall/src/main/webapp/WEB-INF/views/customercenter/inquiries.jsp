@@ -66,6 +66,10 @@ textarea {
 input[type=submit], button{
     float: right;
 }
+
+img {
+    width: 100%;
+}
 </style>
 <script>
     // JavaScript 함수: 새 창 닫기
@@ -87,8 +91,11 @@ input[type=submit], button{
 		${inquiries[0].post_date}<br> 이름: ${inquiries[0].writer}<br>
 		이메일: ${inquiries[0].email}<br>
 
-		<c:if test="${product.save_file_name != null}">
-			<img src="../resources/uploads/${product.save_file_name}">
+		<c:if test="${inquiries[0].savefile_name != null}">
+		첨부파일:
+		<br>
+		<br>
+			<img src="../resources/uploads/${inquiries[0].savefile_name}">
 		</c:if>
 		<hr>
 		<c:if test="${inquiries[0].answer != null}">
@@ -112,13 +119,16 @@ input[type=submit], button{
    <c:when test="${member.grade == 9 and not empty inquiries2}"><!-- 기업회원 -->
 		<h1>고객문의내역</h1>
 		<img src="">
-		${product.product_name}
+		상품명: ${inquiries2[0].product_name}
 		<pre>${inquiries2[0].content}</pre>
 		${inquiries2[0].post_date}<br> 이름: ${inquiries2[0].writer}<br>
 		이메일: ${inquiries2[0].email}<br>
 
-		<c:if test="${product.save_file_name != null}">
-			<img src="../resources/uploads/${product.save_file_name}">
+		<c:if test="${inquiries2[0].savefile_name != null}">
+		첨부파일:
+		<br>
+		<br>
+			<img src="../resources/uploads/${inquiries2[0].savefile_name}">
 		</c:if>
 		<hr>
 		<c:if test="${inquiries2[0].answer != null}">
@@ -142,13 +152,16 @@ input[type=submit], button{
     <c:when test="${not empty inquiries2[0].member_id and member.grade != 9}"><!-- 개인회원 -->
 		<h1>고객문의내역</h1>
 		<img src="">
-		${product.product_name}
+		상품명: ${inquiries2[0].product_name}
 		<pre>${inquiries2[0].content}</pre>
 		${inquiries2[0].post_date}<br> 이름: ${inquiries2[0].writer}<br>
 		이메일: ${inquiries2[0].email}<br>
 
-		<c:if test="${product.save_file_name != null}">
-			<img src="../resources/uploads/${product.save_file_name}">
+		<c:if test="${inquiries2[0].savefile_name != null}">
+		첨부파일:
+		<br>
+		<br>
+			<img src="../resources/uploads/${inquiries2[0].savefile_name}">
 		</c:if>
 		<hr>
 
@@ -165,8 +178,11 @@ input[type=submit], button{
 		${inquiries[0].post_date}<br> 이름: ${inquiries[0].writer}<br>
 		이메일: ${inquiries[0].email}<br>
 
-		<c:if test="${product.save_file_name != null}">
-			<img src="../resources/uploads/${product.save_file_name}">
+		<c:if test="${inquiries[0].savefile_name != null}">
+		첨부파일:
+		<br>
+		<br>
+			<img src="../resources/uploads/${inquiries[0].savefile_name}">
 		</c:if>
 		<hr>
 		<c:if test="${inquiries[0].answer != null}">
