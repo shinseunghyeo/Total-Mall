@@ -75,7 +75,7 @@
 	            <h3 id="NoticeContenttitle" class="bold">위해상품</h3>
 	       		</c:when>
 				<c:otherwise>
-	            <h3 id="NoticeContenttitle">토탈소식</h3>
+	            <h3 id="NoticeContenttitle" class="bold">토탈소식</h3>
 	       		</c:otherwise>
 			</c:choose>
             <div id="NoticeContent">
@@ -94,7 +94,7 @@
 					</c:when>
 					<c:otherwise>
 		                <div class="Notceviews" style="height:600px"><br>
-							<h1 style="margin:0">${noticeList[0].title}</h1>
+							<h1 style="margin:0" class="bold">${noticeList[0].title}</h1>
 						<fmt:formatDate value="${noticeList[0].post_date}"
                                     pattern="yyyy-MM-dd HH:mm:ss" /><br><br>
                                     <c:if test="${not empty noticeList[0].savefile_name}">

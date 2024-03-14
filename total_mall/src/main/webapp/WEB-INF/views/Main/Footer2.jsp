@@ -28,7 +28,7 @@
                     대표이사 : 홍길동
                 </p>
                 <p class="bold">
-                    <a href="${pageContext.request.contextPath}/customercenter/QnA.do"><span>고객센터</span>></a><br>
+                    <a href="${pageContext.request.contextPath}/customercenter/QnA.do"><span class="bold">고객센터</span>></a><br>
                     천안시 000-000 0층<br>
                     Tel : 0000-0000 | MVP 유니버스 클럽 전용 Tel : 0000-0000<br>
                     Fax : 000-0000-0000 | Mail : abcd@totalmall.co.kr<br>
