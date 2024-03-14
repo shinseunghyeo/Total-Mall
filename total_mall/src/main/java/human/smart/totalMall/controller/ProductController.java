@@ -578,39 +578,19 @@ public class ProductController {
 		return "forward:/member/adminhome.do"; // JSP 페이지 이름
 	}
 	
-	//송장번호 등록하기
-			@PostMapping("/parcel.do")
-			public String parcel(CartVO vo, Model model) {
-			    
-			    int p_idx = vo.getP_idx();
+	@PostMapping("/parcel.do")
+	public String parcel(@RequestParam int p_idx, @RequestParam int o_idx, CartVO vo, Model model) {
+	    
+		vo.setO_idx(o_idx);
+	    vo.setP_idx(p_idx);
+		
+	    int result = parcel.parcel(vo);
 
-			    String viewPage = "product/order_management";// 글수정 실패시 JSP페이지
+	    // 실패 시에 어떤 페이지로 이동하고자 하는지에 따라서 설정
+	    return "product/order_management";
+	}
 
-				// 글등록 요청을 BoardModifyService클래스로 처리
-				int result = parcel.parcel(vo);
 
-				if (result == 1) {
-					viewPage = "redirect:../product/order_management.do";// 글수정 성공시 JSP페이지
-				}
-
-				return viewPage;
-			}
-			@GetMapping("/parcel.do")
-			public String parcel1(CartVO vo, Model model) {
-			    
-			    int p_idx = vo.getP_idx();
-
-			    String viewPage = "product/order_management";// 글수정 실패시 JSP페이지
-
-				// 글등록 요청을 BoardModifyService클래스로 처리
-				int result = parcel.parcel(vo);
-
-				if (result == 1) {
-					viewPage = "redirect:../product/order_management.do";// 글수정 성공시 JSP페이지
-				}
-
-				return viewPage;
-			}
 			
 			
 			

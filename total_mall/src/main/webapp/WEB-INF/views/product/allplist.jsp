@@ -77,6 +77,7 @@ function updateProductStatus(action) {
 
 
 			<div id="Contaner">
+			총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 				<table id="tb_plist">
 
 					<c:choose>

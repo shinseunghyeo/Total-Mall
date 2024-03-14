@@ -9,7 +9,8 @@
 	<link rel="stylesheet" href="../resources/css/Member/seller.css">
 	<script src="../resources/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="../resources/js/Member/seller_mypage.js"></script>
-  
+    <script type="text/javascript" src="../resources/js/Product/parcel.js"></script>
+<script type="text/javascript" src="../resources/js/Product/write.js"></script>
 </head>
 <body>
     <%@ include file="../Main/Header2.jsp" %>

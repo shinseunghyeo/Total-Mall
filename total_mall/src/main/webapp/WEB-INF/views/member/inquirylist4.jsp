@@ -27,18 +27,12 @@ function openPopup(url) {
 <div id="nav_back"></div>
 <div id="inq_wrap">
 	
-		<c:choose>
-			<c:when test="${member.grade == '8'}">
-				<h1>관리자 문의 내역 확인</h1>
-			</c:when>
-			<c:when test="${member.grade == '9'}">
+		
 				<h1>기업회원 문의 내역 확인</h1>
-			</c:when>
-			<c:otherwise>
-				<h1>상품 문의 내역 확인</h1>
-			</c:otherwise>
-		</c:choose>
+			
+			
 		<div class="container">
+		총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 		<table>
 			<c:choose>
 				

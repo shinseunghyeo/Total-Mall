@@ -175,6 +175,13 @@
 								</tr>
 							</thead>
 							<tbody>
+							<c:choose>
+									<c:when test="${empty homeVList}">
+										<tr>
+											<td colspan="6"><h3>고객 문의 사항이 없습니다</h3></td>
+										</tr>
+									</c:when>
+								<c:when test="${not empty homeVList}">	
 								<c:forEach var="i" begin="1" end="5" varStatus="vs">
 									<tr>
 										<td>${i}</td>
@@ -190,6 +197,8 @@
 												pattern="yyyy/MM/dd" /></td>
 									</tr>
 								</c:forEach>
+								</c:when>
+								</c:choose>
 							</tbody>
 						</table>
 					</div>

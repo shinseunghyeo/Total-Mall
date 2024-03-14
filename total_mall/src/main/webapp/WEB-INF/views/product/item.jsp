@@ -341,10 +341,7 @@ function continuedPost() {
 	                    <td class="bold">상품정보</td>
 	                    <td>${product.product_name}</td>
 	                </tr>
-	                <tr>
-	                    <td class="bold">판매자</td>
-	                    <td>판매자 이름</td>
-	                </tr>
+
 	                <tr>
 	                    <td class="bold">문의 내용</td>
 	                    <td style="display:flex;">

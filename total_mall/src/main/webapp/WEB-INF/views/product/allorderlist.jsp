@@ -51,7 +51,7 @@
         });
         
         function openNewWindow(url) {
-            window.open(url, '_blank', 'width=800,height=400');
+            window.open(url, '_blank', 'width=1110, height=600');
         }
 
     </script>
@@ -69,6 +69,7 @@
 
 
 			<div class="new_order">
+			총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 				<div class="new-menu">
 					<div class="p-1">
 						<p></p>

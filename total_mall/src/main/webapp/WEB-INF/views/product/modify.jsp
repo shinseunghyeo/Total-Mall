@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>기업회원 상품수정</title>
 	<link rel="stylesheet" href="../resources/css/Member/seller.css">
+	<script src="../resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/Product/write.js"></script>
 </head>
 <body>
 	<fmt:formatDate value="${product.start_date}" pattern="yyyy-MM-dd"
@@ -18,8 +20,8 @@
 
 
 				<div id="write_frm">
-					<form name="frm_write" method="post" action="modifyProcess.do"
-						enctype="multipart/form-data">
+					<form name="frm_write" method="post" action="../product/modifyProcess.do"
+						enctype="multipart/form-data" id="frm_write">
 
 						<h1>상품 수정</h1>
 						<!-- 상품등록 1 페이지 -->
@@ -54,22 +56,22 @@
 										<tr>
 											<th class="th_left">노출상품명</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="product_name" value="${product.product_name}" id=""></td>
+												name="product_name" value="${product.product_name}" id="product_name"></td>
 										</tr>
 										<tr>
 											<th class="th_left">자체 상품코드</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="product_code" value="${product.product_code}" id=""></td>
+												name="product_code" value="${product.product_code}" id="product_code"></td>
 										</tr>
 										<tr>
 											<th class="th_left">브랜드/제조사</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="brand" value="${product.brand}" id=""></td>
+												name="brand" value="${product.brand}" id="brand"></td>
 										</tr>
 										<tr>
 											<th class="th_left">상품 요약설명</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="summary" value="${product.summary}" id=""></td>
+												name="summary" value="${product.summary}" id="summary"></td>
 										</tr>
 										<tr>
 											<th class="th_left">상품 상세설명</th>
@@ -80,7 +82,7 @@
 											<th class="th_left">판매기간</th>
 											<td colspan="2"><input type="date" class="input_date"
 												name="start_date" id="" value="${formattedStartDate}">
-												<input type="date" class="input_date" name="end_date" id=""
+												<input type="date" class="input_date" name="end_date" id="end_date"
 												value="${formattedEndDate}"></td>
 										</tr>
 
@@ -105,25 +107,25 @@
 										<tr>
 											<th class="th_left">가격</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="price" id="" value="${product.price}"></td>
+												name="price" id="price" value="${product.price}"></td>
 										</tr>
 
 										<tr>
 											<th class="th_left">할인율 (%)</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="discount_rate" id="" value="${product.discount_rate}"></td>
+												name="discount_rate" id="discount_rate" value="${product.discount_rate}"></td>
 										</tr>
 
 										<tr>
 											<th class="th_left">수량</th>
 											<td colspan="2"><input type="text" class="input_txt"
-												name="quantity" id="" value="${product.quantity}"></td>
+												name="quantity" id="quantity" value="${product.quantity}"></td>
 										</tr>
 									</tbody>
 
 								</table>
 								<div class="btn_wrap">
-									<input type="reset" class="btn_left" value="취소하기"> <input
+									<input type="reset" class="btn_left" value="취소하기"  onclick="cancelModify()"> <input
 										type="submit" class="btn_right" value="수정하기">
 								</div>
 							</div>
