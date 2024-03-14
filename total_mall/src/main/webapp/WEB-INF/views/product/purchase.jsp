@@ -106,7 +106,7 @@
             </table>
         </div>
         <div id="Purchase"><br>
-            <input type="submit" value="결제하기" class="submit-button bold" id="button">
+            <input type="button" value="결제하기" class="submit-button bold" id="button">
         </div><br>
 
     </div>
@@ -115,7 +115,7 @@
     <%@include file="../Main/Footer2.jsp" %>
 </body>
 <script type="text/javascript" src="../resources/js/Main/pricenum.js"></script>
-<!-- 
+
 <script>
 
 $('#button').click(function() {
@@ -150,5 +150,5 @@ $('#button').click(function() {
 });
 
 </script>
- -->
+
 </html>
