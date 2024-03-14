@@ -494,4 +494,11 @@
 			and o_idx is null
 			and payment_or_not=1
 	</update> 
+	
+	<!-- 상품 재고수량 변경하기 -->
+	<update id="quantityUpdate" parameterType="CartVO">
+		update tb_product set quantity= quantity - #{c_quantity}
+			where p_idx=#{p_idx}
+	</update>
+	
 </mapper>

@@ -37,7 +37,7 @@ public class ProductController {
     		pModify, pDiscontinued, pContinued, mypList, myoList,myoList2,
     		allpList, alloList,todayProduct, statusP,oModify, myReview, statusO, statusO2, statusP2,
     		totalOrderCnt, cList5, parcel,pPage2,allorderCnt, allproductsCnt,sellerOrderCnt,myproductCnt,
-    		reviewCnt,
+    		reviewCnt, pQuantityUpdate,
     		
     		
     		pCartInsert, pCartList, pCartQuantityUpdate, pCartDelete, pCartPaymentUpdate,
@@ -754,6 +754,7 @@ public class ProductController {
   		} else if(vo.getDirect() == 0) {
   			pCartInsert2.cartInsert2(vo2);
   			pOrderInsert.orderInsert(vo);
+  			pQuantityUpdate.quantityUpdate(vo2);
   		}
   		int o_idx = vo.getO_idx();
   		pCartOidxUpdate.cartOidxUpdate(m_idx, o_idx);
