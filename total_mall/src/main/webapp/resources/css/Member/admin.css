@@ -453,7 +453,7 @@
         text-align: center;
     }
 
-    #member_management tbody>tr:not(#member_management tbody > tr:last-child) {
+    #member_management tbody>tr {
         background-color: #f5f5f5;
     }
 
