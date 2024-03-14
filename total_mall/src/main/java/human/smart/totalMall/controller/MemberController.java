@@ -509,6 +509,9 @@ public String getInquirylist2(@SessionAttribute("member") MemberVO member, Searc
 //개인회원의 판매자 문의 답변
 @GetMapping("/inquirylist3.do")
 public String getInquirylist3(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
+	String member_id= member.getMember_id();
+	vo.setMember_id(member_id);
+	
 	if(vo.getPageNum() == 0) {
 		vo.setPageNum(1);
 	}
@@ -711,6 +714,9 @@ return "member/buyeraddress";
 //개인회원 상품 문의/답변 설정//////////////////////////////////////
 @GetMapping("/buyermypage/member/inquirylist.do")
 public String inquirylist(@SessionAttribute("member") MemberVO member, SearchVO vo, Model model) {
+	String member_id= member.getMember_id();
+	vo.setMember_id(member_id);
+	
 	if(vo.getPageNum() == 0) {
 		vo.setPageNum(1);
 	}
