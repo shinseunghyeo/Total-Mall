@@ -209,7 +209,6 @@
  	<select id="buyerInqCnt" parameterType="SearchVO" resultType="_int">
  		select count(*) from tb_pvoc
  		where member_id=#{member_id}
- 		order by post_date desc
  	</select>
  	
  	
