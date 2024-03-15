@@ -34,18 +34,18 @@ function CategoryMenuOff(){
     CategoryBackgroundColor2.style.opacity = 0;
 }
 document.getElementById("Category1").style.backgroundColor = "white";
-document.getElementById("Category1").style.color = "green";
+document.getElementById("Category1").style.color = "rgba(52, 152, 219, 1)";
 document.getElementById("ServeCategory1").style.display = "flex";
 function handleMouseOver(CategoryOn, ServeCategoryOn) {
     var CategoryOnElement = document.getElementById(CategoryOn);
     var ServeCategoryOnElement = document.getElementById(ServeCategoryOn);
     for(let i =1;i<10;i++){
         document.getElementById("ServeCategory"+i).style.display = "none";
-        document.getElementById("Category"+i).style.backgroundColor = "yellowgreen";
+        document.getElementById("Category"+i).style.backgroundColor = "rgba(52, 152, 219, 0.7)";
         document.getElementById("Category"+i).style.color = "white";
     }
     CategoryOnElement.style.backgroundColor = "white";
-    CategoryOnElement.style.color = "green";
+    CategoryOnElement.style.color = "rgba(52, 152, 219, 1)";
     ServeCategoryOnElement.style.display = "flex";
 }
 function ServeMall(){

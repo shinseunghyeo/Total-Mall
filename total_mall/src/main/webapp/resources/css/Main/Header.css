@@ -45,7 +45,7 @@
     #CategoryLine{width: 1050px; margin: auto;}
     #CategoryLine #Category{width: 1050px; height: 388px;margin: auto; position: absolute;z-index: -1;background-color: white;display: flex;opacity: 0;}
     #CategoryLine #CategoryContainer_Main{width: 17%;display: flex;flex-direction: column;}
-    #CategoryLine #CategoryContainer_Main div{width: 100%; height: 100%;background-color: yellowgreen;display: flex;align-items: center;border-bottom: 1px solid green;color: white;font-size: 13px;}
+    #CategoryLine #CategoryContainer_Main div{width: 100%; height: 100%;background-color: rgba(52, 152, 219, 0.7);display: flex;align-items: center;border-bottom: 1px solid rgba(52, 152, 219, 0.2);color: white;font-size: 13px;}
     #CategoryLine #CategoryContainer_Main p{margin: 0;margin-left: 10px;font-weight: bold;text-shadow: 1px 1px 1px rgba(0.2, 0.2, 0.2, 0.2);}
     
     #CategoryLine #CategoryContainer_Serve{width: 80%;height: 100%; border-right: 1px solid gray;}
