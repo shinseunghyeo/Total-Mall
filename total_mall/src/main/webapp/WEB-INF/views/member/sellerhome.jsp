@@ -71,6 +71,11 @@
 				<div class="inner_box">
 					<h2>상품관리</h2>
 					<ul>
+					<c:choose>
+							<c:when test="${empty statusPlist}">
+								<li><h3>등록된 상품이 없습니다</h3></li>
+							</c:when>
+							<c:otherwise>
 						<c:forEach var="i" begin="0" end="${statusPlist.size()}" varStatus="vs">
 							<li><a href="#"> <c:if
 										test="${not empty statusPlist[vs.count-1].p_status and statusPlist[vs.count-1].p_status < 4}">
@@ -79,6 +84,8 @@
 									</c:if>
 							</a></li>
 						</c:forEach>
+						</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>
@@ -113,9 +120,9 @@
 					<ul>
 						<c:choose>
 							<c:when test="${empty statusO2list}">
-								<li><h4>
-										진행중인 <br>취소/교환/반품이 없습니다
-									</h4></li>
+								<li><h3>
+										취소/교환/반품 요청이<br>없습니다
+									</h3></li>
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="i" begin="0" end="${statusO2list.size()}" varStatus="vs">
