@@ -56,7 +56,7 @@
     		<div class="CategoryBestLine">
 		        <h2 class="bold">선택 카테고리 상품</h2>
 		        <div class="CategoryBest">
-		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide)" src="resources/img/Mallimg/왼쪽 아이콘.png">
+		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide)" src="resources/img/Mallimg/left-arrow_271220.png">
 		            <div class="CategoryBestContainer">
 		                <div id="FoodSlide" style="margin-left: 0px;">
 		                    <div class="CategoryBestbox">
@@ -86,12 +86,12 @@
 		                    </div>
 		                </div>
 		            </div>
-		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide)" src="resources/img/Mallimg/right-arrow_271228.png">
 		        </div>
 		    </div>
 		    <div class="CategoryBestLine" id="CategoryBestLine2">
 		        <div class="CategoryBest">
-		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide2)" src="resources/img/Mallimg/왼쪽 아이콘.png">
+		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide2)" src="resources/img/Mallimg/left-arrow_271220.png">
 		            <div class="CategoryBestContainer">
 		                <div id="FoodSlide2" style="margin-left: 0px;">
 		                    <div class="CategoryBestbox">
@@ -121,12 +121,12 @@
 			                </div>
 		                </div>
 		            </div>
-		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide2)" src="resources/img/Mallimg/right-arrow_271228.png">
 		        </div>
 		    </div>        
 		    <div class="CategoryBestLine">
 		        <div class="CategoryBest">
-		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide3)" src="resources/img/Mallimg/왼쪽 아이콘.png">
+		            <img class="Category_LeftArrow" onclick="FoodSlideLeft(FoodSlide3)" src="resources/img/Mallimg/left-arrow_271220.png">
 		            <div class="CategoryBestContainer">
 		                <div id="FoodSlide3" style="margin-left: 0px;">
 		                    <div class="CategoryBestbox">
@@ -156,7 +156,7 @@
 		                    </div>
 		                </div>
 		            </div>
-		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide3)" src="resources/img/Mallimg/오른쪽 아이콘.png">
+		            <img class="Category_RightArrow"  onclick="FoodSlideRight(FoodSlide3)" src="resources/img/Mallimg/right-arrow_271228.png">
 		        </div>
 		    </div>
     	</c:when>

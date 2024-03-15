@@ -29,7 +29,11 @@
     a {margin-left: 10px; text-decoration: none;color: inherit;font-weight: bold;}
     a:hover {color: black;text-decoration: underline;}
     
-    #FinalMallLine img, #FoodSlide img, #FoodSlide2 img, #FoodSlide3 img,#CategoryMallLine img{border: 2px solid black;}
+    #FinalMallLine img {border: 2px solid black;}
+    #CategoryMallLine img, #FoodSlide img,#FoodSlide2 img, #FoodSlide3 img{
+    	-webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    }
     /* ---------이벤트--------- */
     #EventLine{width: 100%;display: flex;justify-content: center;overflow-x: hidden;}
     #EventLine #EventMall{margin-left: -6000px; height: 390px;position: relative;}
@@ -47,7 +51,7 @@
     #TodayMallLine .Today img{width: 200px;height: 200px;}
 
     #TodayMallServeLine{width: 1050px; height: 550px;margin: auto;display: flex;}
-    #TodayMallServeLine img{transition: transform 0.3s;border: 2px solid black;}
+    #TodayMallServeLine img{transition: transform 0.3s;border: 0px solid black;}
     #TodayMallServeLine img:hover {transform: scale(1.02);}
     #TodayMallServeLine #TodayMallServebox{width: 1050px; height:500px;}
     #TodayMallServeLine #TodayMallServetoday{width: 100%;display: flex;gap:10px;}
@@ -71,7 +75,7 @@
     /* ---------카테고리별 상품--------- */
     #CategoryMallLine{width: 1050px; height: 5900px;margin: auto;margin-top: 50px;}
     #CategoryMallLine .CategoryMall{width: 1050px;margin: auto; height: 600px;display: flex;text-align: center;gap: 10px;margin-bottom: 50px;}
-    #CategoryMallLine .CategoryMallMainimg{width: 25%;height: 559px;}
+    #CategoryMallLine .CategoryMallMainimg{width: 25%;height: 555px;}
     #CategoryMallLine .CategoryMallMenu{width: 75%;}
     #CategoryMallLine .CategoryMallbox{width: 100%;display: flex;gap: 10px;}
     #CategoryMallLine .CategoryMallbox div{width: 33%;}

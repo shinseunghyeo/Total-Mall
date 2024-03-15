@@ -127,7 +127,7 @@ function updateProductStatus(action, productId) {
 	                    (${hStarsize})
 	                    ${hEvaluationListAverage}
 	                    </h2><br>
-	                    <h2 class="price bold line-through">${product.price}원</h2>
+	                    <h2 class="price line-through">${product.price}원</h2>
 						<c:choose>
 						    <c:when test="${product.discount_rate > 0}">
 						        <h2 style="color:red" class="bold">${product.discount_rate}% <span style="color:red" class="price bold">${discountedPrice}</span>원</h2>
@@ -194,23 +194,23 @@ function updateProductStatus(action, productId) {
             <table>
                 <tr>
                     <td class="bold">상품번호</td>
-                    <td class="bold">${product.product_code}</td>
+                    <td>${product.product_code}</td>
                 </tr>
                 <tr>
                     <td class="bold">브랜드</td>
-                    <td class="bold">${product.brand}</td>
+                    <td>${product.brand}</td>
                 </tr>
                 <tr>
                     <td class="bold">부가세 면세여부</td>
-                    <td class="bold">과세상품</td>
+                    <td>과세상품</td>
                 </tr>
                 <tr>
                     <td class="bold">사업자구분</td>
-                    <td class="bold">개인사업자</td>
+                    <td>개인사업자</td>
                 </tr>
                 <tr>
                     <td class="bold">과세자구분</td>
-                    <td class="bold">일반과세자+간이과세자(세금계산서 발급사업자)</td>
+                    <td>일반과세자+간이과세자(세금계산서 발급사업자)</td>
                 </tr>
             </table><hr>
             <h3 class="bold">주의사항</h3>

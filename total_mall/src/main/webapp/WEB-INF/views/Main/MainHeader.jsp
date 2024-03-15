@@ -131,54 +131,54 @@
 		<div id="CategoryLine">
 			<div id="Category">
 				<div id="CategoryContainer_Main" style="height: 100%;">
-					<div style="background-color: rgb(134, 150, 255);">
+					<div style="background-color: rgba(52, 152, 219, 1);">
 						<h2 style="margin: 0; margin-left: 10px; color: white;" class="bold">전체
 							카테고리</h2>
 						<br>
 					</div>
 					<div id="Category1"
 						onmouseover="handleMouseOver('Category1','ServeCategory1')">
-						<p class="bold">식품></p>
+						<p class="bold">식품 ></p>
 						<br>
 					</div>
 					<div id="Category2"
 						onmouseover="handleMouseOver('Category2','ServeCategory2')">
-						<p class="bold">홈데코></p>
+						<p class="bold">홈데코 ></p>
 						<br>
 					</div>
 					<div id="Category3"
 						onmouseover="handleMouseOver('Category3','ServeCategory3')">
-						<p class="bold">취미></p>
+						<p class="bold">취미 ></p>
 						<br>
 					</div>
 					<div id="Category4"
 						onmouseover="handleMouseOver('Category4','ServeCategory4')">
-						<p class="bold">생필품></p>
+						<p class="bold">생필품 ></p>
 						<br>
 					</div>
 					<div id="Category5"
 						onmouseover="handleMouseOver('Category5','ServeCategory5')">
-						<p class="bold">의류></p>
+						<p class="bold">의류 ></p>
 						<br>
 					</div>
 					<div id="Category6"
 						onmouseover="handleMouseOver('Category6','ServeCategory6')">
-						<p class="bold">도서></p>
+						<p class="bold">도서 ></p>
 						<br>
 					</div>
 					<div id="Category7"
 						onmouseover="handleMouseOver('Category7','ServeCategory7')">
-						<p class="bold">가구></p>
+						<p class="bold">가구 ></p>
 						<br>
 					</div>
 					<div id="Category8"
 						onmouseover="handleMouseOver('Category8','ServeCategory8')">
-						<p class="bold">가전></p>
+						<p class="bold">가전 ></p>
 						<br>
 					</div>
 					<div id="Category9"
 						onmouseover="handleMouseOver('Category9','ServeCategory9')">
-						<p class="bold">스포츠></p>
+						<p class="bold">스포츠 ></p>
 						<br>
 					</div>
 				</div>
