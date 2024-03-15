@@ -28,6 +28,7 @@ function openOrderDetails(url) {
 
 
 			<div class="new_order">
+				총 ${pageNav.totalRows} 개 | ${pageNav.total_pageNum}페이지
 				<div class="new-menu">
 					<div class="p-1">
 						<p><small>주문번호</small></p>
